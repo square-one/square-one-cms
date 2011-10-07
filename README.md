@@ -63,7 +63,7 @@
     * Are you a Developer? http://docs.joomla.org/Developers
     * Are you a Web designer? http://docs.joomla.org/Web_designers
 
-Copyright:
+13. Copyright
     * Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.
     * Credits: http://docs.joomla.org/Joomla_1.6_Credits
     * Distributed under the GNU General Public License version 2 or later
