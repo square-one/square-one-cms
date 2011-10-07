@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="joomla-lite" default="build">
+	
+    <target name="build">
+        <available file="Joomla.zip" property="zip" value="yes" />
+        <if>
+            <equals arg1="${zip}" arg2="yes" />
+            <then>
+                <delete file="Joomla.zip" />
+            </then>
+        </if>
+        
+        <zip destfile="Joomla.zip">
+            <fileset dir="../">
+                <exclude name=".**" />
+                <exclude name="build/**" />
+                <exclude name=".gitignore" />
+                <exclude name="configuration.php" />
+                <exclude name="docs/**" />
+                <exclude name="tests/**" />
+            </fileset>
+        </zip>
+	</target>
+
+</project>
