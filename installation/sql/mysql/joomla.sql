@@ -28,7 +28,6 @@ INSERT INTO `#__assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 VALUES
 	(1, 0, 1, 414, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
 	(2,1,1,2,1,'com_admin','com_admin','{}'),
-	(3,1,3,6,1,'com_banners','com_banners','{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 	(4,1,7,8,1,'com_cache','com_cache','{"core.admin":{"7":1},"core.manage":{"7":1}}'),
 	(5,1,9,10,1,'com_checkin','com_checkin','{"core.admin":{"7":1},"core.manage":{"7":1}}'),
 	(6,1,11,12,1,'com_config','com_config','{}'),
@@ -51,7 +50,6 @@ VALUES
 	(23,1,53,54,1,'com_users','com_users','{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.own":{"6":1},"core.edit.state":[]}'),
 	(24,1,59,60,1,'com_wrapper','com_wrapper','{}'),
 	(25,8,18,19,2,'com_content.category.2', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-	(26,3,4,5,2,'com_banners.category.3', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 	(27,7,14,15,2,'com_contact.category.4', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}');
 
 # -------------------------------------------------------
@@ -67,91 +65,6 @@ CREATE TABLE IF NOT EXISTS `#__associations` (
   PRIMARY KEY `idx_context_id` (`context`, `id`),
   INDEX `idx_key` (`key`)
 ) DEFAULT CHARSET=utf8;
-
-#
-# Table structure for table `#__banners`
-#
-
-CREATE TABLE `#__banners` (
-  `id` INTEGER NOT NULL auto_increment,
-  `cid` INTEGER NOT NULL DEFAULT '0',
-  `type` INTEGER NOT NULL DEFAULT '0',
-  `name` VARCHAR(255) NOT NULL DEFAULT '',
-  `alias` VARCHAR(255) NOT NULL DEFAULT '',
-  `imptotal` INTEGER NOT NULL DEFAULT '0',
-  `impmade` INTEGER NOT NULL DEFAULT '0',
-  `clicks` INTEGER NOT NULL DEFAULT '0',
-  `clickurl` VARCHAR(200) NOT NULL DEFAULT '',
-  `state` TINYINT(3) NOT NULL DEFAULT '0',
-  `catid` INTEGER UNSIGNED NOT NULL DEFAULT 0,
-  `description` TEXT NOT NULL,
-  `custombannercode` VARCHAR(2048) NOT NULL,
-  `sticky` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0,
-  `ordering` INTEGER NOT NULL DEFAULT 0,
-  `metakey` TEXT NOT NULL,
-  `params` TEXT NOT NULL,
-  `own_prefix` TINYINT(1) NOT NULL DEFAULT '0',
-  `metakey_prefix` VARCHAR(255) NOT NULL DEFAULT '',
-  `purchase_type` TINYINT NOT NULL DEFAULT '-1',
-  `track_clicks` TINYINT NOT NULL DEFAULT '-1',
-  `track_impressions` TINYINT NOT NULL DEFAULT '-1',
-  `checked_out` INTEGER UNSIGNED NOT NULL DEFAULT '0',
-  `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `publish_up` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `publish_down` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `reset` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `language` char(7) NOT NULL DEFAULT '',
-  PRIMARY KEY  (`id`),
-  INDEX `idx_state` (`state`),
-  INDEX `idx_own_prefix` (`own_prefix`),
-  INDEX `idx_metakey_prefix` (`metakey_prefix`),
-  INDEX `idx_banner_catid`(`catid`),
-  INDEX `idx_language` (`language`)
-) DEFAULT CHARSET=utf8;
-
-# -------------------------------------------------------
-
-#
-# Table structure for table `#__banner_clients`
-#
-
-CREATE TABLE `#__banner_clients` (
-  `id` INTEGER NOT NULL auto_increment,
-  `name` VARCHAR(255) NOT NULL DEFAULT '',
-  `contact` VARCHAR(255) NOT NULL DEFAULT '',
-  `email` VARCHAR(255) NOT NULL DEFAULT '',
-  `extrainfo` TEXT NOT NULL,
-  `state` TINYINT(3) NOT NULL DEFAULT '0',
-  `checked_out` INTEGER UNSIGNED NOT NULL DEFAULT '0',
-  `checked_out_time` DATETIME NOT NULL default '0000-00-00 00:00:00',
-  `metakey` TEXT NOT NULL,
-  `own_prefix` TINYINT NOT NULL DEFAULT '0',
-  `metakey_prefix` VARCHAR(255) NOT NULL default '',
-  `purchase_type` TINYINT NOT NULL DEFAULT '-1',
-  `track_clicks` TINYINT NOT NULL DEFAULT '-1',
-  `track_impressions` TINYINT NOT NULL DEFAULT '-1',
-  PRIMARY KEY  (`id`),
-  INDEX `idx_own_prefix` (`own_prefix`),
-  INDEX `idx_metakey_prefix` (`metakey_prefix`)
-)  DEFAULT CHARSET=utf8;
-
-# -------------------------------------------------------
-
-#
-# Table structure for table `#__banner_tracks`
-#
-
-CREATE TABLE  `#__banner_tracks` (
-  `track_date` DATETIME NOT NULL,
-  `track_type` INTEGER UNSIGNED NOT NULL,
-  `banner_id` INTEGER UNSIGNED NOT NULL,
-  `count` INTEGER UNSIGNED NOT NULL DEFAULT '0',
-  PRIMARY KEY (`track_date`, `track_type`, `banner_id`),
-  INDEX `idx_track_date` (`track_date`),
-  INDEX `idx_track_type` (`track_type`),
-  INDEX `idx_banner_id` (`banner_id`)
-)  DEFAULT CHARSET=utf8;
 
 # -------------------------------------------------------
 
@@ -199,7 +112,6 @@ CREATE TABLE `#__categories` (
 INSERT INTO `#__categories` VALUES
 (1, 0, 0, 0, 11, 0, '', 'system', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '', 0, '2009-10-18 16:07:09', 0, '0000-00-00 00:00:00', 0, '*'),
 (2, 27, 1, 1, 2, 1, 'uncategorised', 'com_content', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2010-06-28 13:26:37', 0, '0000-00-00 00:00:00', 0, '*'),
-(3, 28, 1, 3, 4, 1, 'uncategorised', 'com_banners', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":"","foobar":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2010-06-28 13:27:35', 0, '0000-00-00 00:00:00', 0, '*'),
 (4, 29, 1, 5, 6, 1, 'uncategorised', 'com_contact', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2010-06-28 13:27:57', 0, '0000-00-00 00:00:00', 0, '*');
 
 # -------------------------------------------------------
@@ -387,7 +299,6 @@ INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (1, 'com_mailto', 'component', 'com_mailto', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (2, 'com_wrapper', 'component', 'com_wrapper', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (3, 'com_admin', 'component', 'com_admin', '', 1, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(4, 'com_banners', 'component', 'com_banners', '', 1, 1, 1, 0, '', '{"purchase_type":"3","track_impressions":"0","track_clicks":"0","metakey_prefix":""}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (5, 'com_cache', 'component', 'com_cache', '', 1, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (6, 'com_categories', 'component', 'com_categories', '', 1, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (7, 'com_checkin', 'component', 'com_checkin', '', 1, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -421,7 +332,6 @@ INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (200, 'mod_articles_archive', 'module', 'mod_articles_archive', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (201, 'mod_articles_latest', 'module', 'mod_articles_latest', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (202, 'mod_articles_popular', 'module', 'mod_articles_popular', '', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(203, 'mod_banners', 'module', 'mod_banners', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (204, 'mod_breadcrumbs', 'module', 'mod_breadcrumbs', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (205, 'mod_custom', 'module', 'mod_custom', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (206, 'mod_feed', 'module', 'mod_feed', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -584,11 +494,6 @@ CREATE TABLE `#__menu` (
 
 INSERT INTO `#__menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `ordering`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
 (1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 41, 0, '*', 0),
-(2, 'menu', 'com_banners', 'Banners', '', 'Banners', 'index.php?option=com_banners', 'component', 0, 1, 1, 4, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 1, 10, 0, '*', 1),
-(3, 'menu', 'com_banners', 'Banners', '', 'Banners/Banners', 'index.php?option=com_banners', 'component', 0, 2, 2, 4, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 2, 3, 0, '*', 1),
-(4, 'menu', 'com_banners_categories', 'Categories', '', 'Banners/Categories', 'index.php?option=com_categories&extension=com_banners', 'component', 0, 2, 2, 6, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-cat', 0, '', 4, 5, 0, '*', 1),
-(5, 'menu', 'com_banners_clients', 'Clients', '', 'Banners/Clients', 'index.php?option=com_banners&view=clients', 'component', 0, 2, 2, 4, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-clients', 0, '', 6, 7, 0, '*', 1),
-(6, 'menu', 'com_banners_tracks', 'Tracks', '', 'Banners/Tracks', 'index.php?option=com_banners&view=tracks', 'component', 0, 2, 2, 4, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-tracks', 0, '', 8, 9, 0, '*', 1),
 (7, 'menu', 'com_contact', 'Contacts', '', 'Contacts', 'index.php?option=com_contact', 'component', 0, 1, 1, 8, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:contact', 0, '', 11, 16, 0, '*', 1),
 (8, 'menu', 'com_contact', 'Contacts', '', 'Contacts/Contacts', 'index.php?option=com_contact', 'component', 0, 7, 2, 8, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:contact', 0, '', 12, 13, 0, '*', 1),
 (9, 'menu', 'com_contact_categories', 'Categories', '', 'Contacts/Categories', 'index.php?option=com_categories&extension=com_contact', 'component', 0, 7, 2, 6, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:contact-cat', 0, '', 14, 15, 0, '*', 1),
