@@ -8,4 +8,52 @@
 
 defined('_JEXEC') or die;
 
-include dirname(__FILE__).DIRECTORY_SEPARATOR.'component.php';
+$left = $this->countModules('left');
+$right = $this->countModules('right');
+
+?>
+<!DOCTYPE html>  
+<html lang="<?php echo substr($this->language, 0, 2); ?>">  
+<head>
+    
+    <meta charset="utf-8" />  
+    <jdoc:include type="head" />
+    <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/general.css" type="text/css" />
+    <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/template.css" type="text/css" />
+    
+</head>  
+<body>
+    
+    <div id="header">
+        <a href="<?php echo $this->baseurl ?>"><img src="<?php echo $this->baseurl ?>/templates/system/images/joomla_logo.jpg" /></a>
+        <jdoc:include type="modules" name="menu" />
+        <div class="clear"></div>
+    </div>
+    
+    <div id="main">
+        
+        <?php if ($left) : ?>
+        <div id="left">
+            <jdoc:include type="modules" name="left" style="xhtml" />
+        </div>
+        <?php endif; ?>
+        
+        <div id="content<?php echo ($left) ? '_left' : ''; echo ($right) ? '_right' : '' ?>">
+            <jdoc:include type="message" />
+            <jdoc:include type="component" />
+        </div>
+        
+        <?php if ($right) : ?>
+        <div id="right">
+            <jdoc:include type="modules" name="right" style="xhtml" />
+        </div>
+        <?php endif; ?>
+        
+        <div class="clear"></div>
+    </div>
+    <div id="footer">
+        <jdoc:include type="modules" name="footer" style="xhtml" />
+    </div>
+    
+</body>
+</html>
