@@ -253,47 +253,6 @@ class JInstallationModelDatabase extends JModel
 		return true;
 	}
 
-	function installSampleData($options)
-	{
-		// Get the options as a JObject for easier handling.
-		$options = JArrayHelper::toObject($options, 'JObject');
-
-		// Get a database object.
-		$db = JInstallationHelperDatabase::getDBO($options->db_type, $options->db_host, $options->db_user, $options->db_pass, $options->db_name, $options->db_prefix);
-
-		// Check for errors.
-		if (JError::isError($db)) {
-			$this->setError(JText::sprintf('INSTL_DATABASE_COULD_NOT_CONNECT', (string)$db));
-			return false;
-		}
-
-		// Check for database errors.
-		if ($err = $db->getErrorNum()) {
-			$this->setError(JText::sprintf('INSTL_DATABASE_COULD_NOT_CONNECT', $db->getErrorNum()));
-			return false;
-		}
-
-		// Build the path to the sample data file.
-		$type = $options->db_type;
-		if ($type == 'mysqli') {
-			$type = 'mysql';
-		}
-
-		$data = JPATH_INSTALLATION.'/sql/'.$type.'/' . $options->sample_file;
-
-		// Attempt to import the database schema.
-		if (!file_exists($data)) {
-			$this->setError(JText::sprintf('INSTL_DATABASE_FILE_DOES_NOT_EXIST', $data));
-			return false;
-		}
-		elseif (!$this->populateDatabase($db, $data)) {
-			$this->setError(JText::sprintf('INSTL_ERROR_DB', $this->getError()));
-			return false;
-		}
-
-		return true;
-	}
-
 	/**
 	 * Method to get a JDatabase object.
 	 *
