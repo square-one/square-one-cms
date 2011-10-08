@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension version="1.7" type="template" client="site">
+	<name>tpl_system</name>
+	<creationDate>October 2011</creationDate>
+	<author>Jeremy Wilken</author>
+	<authorEmail>gnomation@gnomeontherun.com</authorEmail>
+	<authorUrl>http://www.gnomeontherun.com</authorUrl>
+	<copyright>Copyright (C) 2011 Gnome on the run. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.7.0</version>
+	<description>TPL_SYSTEM_XML_DESCRIPTION</description>
+
+	<files>
+		<folder>css</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<filename>index.html</filename>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>favicon.ico</filename>
+		<filename>component.php</filename>
+		<filename>error.php</filename>
+		<filename>offline.php</filename>
+	</files>
+
+	<positions>
+		<position>left</position>
+		<position>right</position>
+        <position>menu</position>
+        <position>footer</position>
+	</positions>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.tpl_system.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_system.sys.ini</language>
+	</languages>
+
+	<config />
+	
+</extension>
