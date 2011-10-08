@@ -123,50 +123,6 @@ defined('_JEXEC') or die;
 				</div>
 			</form>
 
-			<div class="clr"></div>
-
-			<form enctype="multipart/form-data" action="index.php" method="post" id="filename">
-				<h3><?php echo JText::_('INSTL_SITE_LOAD_SAMPLE_TITLE'); ?></h3>
-				<div class="install-text">
-					<p><?php echo JText::_('INSTL_SITE_LOAD_SAMPLE_DESC1'); ?></p>
-					<p><?php echo JText::_('INSTL_SITE_LOAD_SAMPLE_DESC2'); ?></p>
-					<p><?php echo JText::_('INSTL_SITE_LOAD_SAMPLE_DESC3'); ?></p>
-					<p><?php echo JText::_('INSTL_SITE_LOAD_SAMPLE_DESC4'); ?></p>
-					<p><?php echo JText::_('INSTL_SITE_LOAD_SAMPLE_DESC8'); ?></p>
-				</div>
-				<div class="install-body">
-					<div class="m">
-						<fieldset>
-							<table class="content2 sample-data">
-								<tr>
-									<td><?php echo $this->form->getLabel('sample_file'); ?></td>
-									<td><?php echo $this->form->getInput('sample_file'); ?></td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<span id="theDefault"><input class="button" type="button" name="instDefault" value="<?php echo JText::_('INSTL_SITE_INSTALL_SAMPLE_LABEL'); ?>" onclick="Install.sampleData(this, <?php echo $this->form->getField('sample_file')->id;?>);"/></span>
-									</td>
-								</tr>
-								<tr>
-									<td>&#160;</td>
-									<td>
-										<em><?php echo JText::_('INSTL_SITE_INSTALL_SAMPLE_DESC'); ?></em>
-									</td>
-								</tr>
-							</table>
-						</fieldset>
-						<div class="message inlineError" id="theDefaultError" style="display: none">
-							<dl>
-								<dt class="error"><?php echo JText::_('JERROR'); ?></dt>
-								<dd id="theDefaultErrorMessage"></dd>
-							</dl>
-						</div>
-					</div>
-					<?php echo $this->form->getInput('type'); ?>
-					<?php echo JHtml::_('form.token'); ?>
-				</div>
-			</form>
-
 		<div class="clr"></div>
 	</div>
 </div>

@@ -267,49 +267,6 @@ class JInstallationControllerSetup extends JController
 	 * @return	void
 	 * @since	1.6
 	 */
-	public function loadSampleData()
-	{
-		// Check for a valid token. If invalid, send a 403 with the error message.
-		JRequest::checkToken('request') or $this->sendResponse(new Exception(JText::_('JINVALID_TOKEN'), 403));
-
-		// Get the posted config options.
-		$vars = JRequest::getVar('jform', array());
-
-		// Get the setup model.
-		$model = $this->getModel('Setup', 'JInstallationModel', array('dbo' => null));
-
-		// Get the options from the session.
-		$vars = $model->storeOptions($vars);
-
-		// Get the database model.
-		$database = $this->getModel('Database', 'JInstallationModel', array('dbo' => null));
-
-		// Attempt to load the database sample data.
-		$return = $database->installSampleData($vars);
-
-		// If an error was encountered return an error.
-		if (!$return) {
-			$this->sendResponse(new Exception($database->getError(), 500));
-		} else {
-			// Mark sample content as installed
-			$data = array(
-				'sample_installed' => '1'
-			);
-			$dummy = $model->storeOptions($data);
-		}
-
-		// Create a response body.
-		$r = new JObject();
-		$r->sampleDataLoaded = true;
-
-		// Send the response.
-		$this->sendResponse($r);
-	}
-
-	/**
-	 * @return	void
-	 * @since	1.6
-	 */
 	public function detectFtpRoot()
 	{
 		// Check for a valid token. If invalid, send a 403 with the error message.
