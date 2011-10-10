@@ -45,83 +45,59 @@ defined('_JEXEC') or die;
 							</tr>
 						</table>
 					</div>
-
-					<h4 class="title-smenu moofx-toggler" title="<?php echo JText::_('INSTL_SITE_META_ADVANCED_SETTINGS'); ?>">
-						<a href="#"><?php echo JText::_('INSTL_SITE_META_ADVANCED_SETTINGS'); ?></a>
-					</h4>
-					<div class="section-smenu moofx-slider">
-							<table class="content2">
-								<tr>
-									<td title="<?php echo JText::_('INSTL_SITE_METADESC_TITLE_LABEL'); ?>">
-										<?php echo $this->form->getLabel('site_metadesc'); ?>
-									</td>
-									<td>
-										<?php echo $this->form->getInput('site_metadesc'); ?>
-									</td>
-								</tr>
-								<tr>
-									<td title="<?php echo JText::_('INSTL_SITE_METAKEYS_TITLE_LABEL'); ?>">
-										<?php echo $this->form->getLabel('site_metakeys'); ?>
-									</td>
-									<td>
-										<?php echo $this->form->getInput('site_metakeys'); ?>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
 				</div>
+			</div>
 
-				<div class="newsection"></div>
+            <div class="newsection"></div>
 
-				<h4><?php echo JText::_('INSTL_SITE_CONF_TITLE'); ?></h4>
-				<div class="install-text">
-					<?php echo JText::_('INSTL_SITE_CONF_DESC'); ?>
-				</div>
-				<div class="install-body">
-					<div class="m">
-						<fieldset>
-							<table class="content2">
-								<tr>
-									<td class="item">
-										<?php echo $this->form->getLabel('admin_email'); ?>
-									</td>
-									<td>
-										<?php echo $this->form->getInput('admin_email'); ?>
-									</td>
-								</tr>
-								<tr>
-									<td class="item">
-										<?php echo $this->form->getLabel('admin_user'); ?>
-									</td>
-									<td>
-										<?php echo $this->form->getInput('admin_user'); ?>
-									</td>
-								</tr>
-								<tr>
-									<td class="item">
-										<?php echo $this->form->getLabel('admin_password'); ?>
-									</td>
-									<td>
-										<?php echo $this->form->getInput('admin_password'); ?>
-									</td>
-								</tr>
-								<tr>
-									<td class="item">
-										<?php echo $this->form->getLabel('admin_password2'); ?>
-									</td>
-									<td>
-										<?php echo $this->form->getInput('admin_password2'); ?>
-									</td>
-								</tr>
-							</table>
-						</fieldset>
-					</div>
-					<input type="hidden" name="task" value="setup.saveconfig" />
-					<?php echo JHtml::_('form.token'); ?>
-					<?php echo $this->form->getInput('sample_installed'); ?>
-				</div>
-			</form>
+            <h4><?php echo JText::_('INSTL_SITE_CONF_TITLE'); ?></h4>
+            <div class="install-text">
+                <?php echo JText::_('INSTL_SITE_CONF_DESC'); ?>
+            </div>
+            <div class="install-body">
+                <div class="m">
+                    <fieldset>
+                        <table class="content2">
+                            <tr>
+                                <td class="item">
+                                    <?php echo $this->form->getLabel('admin_email'); ?>
+                                </td>
+                                <td>
+                                    <?php echo $this->form->getInput('admin_email'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="item">
+                                    <?php echo $this->form->getLabel('admin_user'); ?>
+                                </td>
+                                <td>
+                                    <?php echo $this->form->getInput('admin_user'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="item">
+                                    <?php echo $this->form->getLabel('admin_password'); ?>
+                                </td>
+                                <td>
+                                    <?php echo $this->form->getInput('admin_password'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="item">
+                                    <?php echo $this->form->getLabel('admin_password2'); ?>
+                                </td>
+                                <td>
+                                    <?php echo $this->form->getInput('admin_password2'); ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+                <input type="hidden" name="task" value="setup.saveconfig" />
+                <?php echo JHtml::_('form.token'); ?>
+                <?php echo $this->form->getInput('sample_installed'); ?>
+            </div>
+        </form>
 
 		<div class="clr"></div>
 	</div>

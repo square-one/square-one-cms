@@ -105,8 +105,8 @@ class JInstallationModelConfiguration extends JModel
 		$registry->set('cachetime', 15);
 
 		/* Meta Settings */
-		$registry->set('MetaDesc', $options->site_metadesc);
-		$registry->set('MetaKeys', $options->site_metakeys);
+		$registry->set('MetaDesc', '');
+		$registry->set('MetaKeys', '');
 		$registry->set('MetaAuthor', 1);
 
 		/* SEO Settings */
