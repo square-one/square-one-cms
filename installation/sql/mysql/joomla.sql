@@ -40,7 +40,6 @@ VALUES
 	(14,1,31,32,1,'com_massmail','com_massmail','{}'),
 	(15,1,33,34,1,'com_media','com_media','{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":{"5":1}}'),
 	(16,1,35,36,1,'com_menus','com_menus','{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-	(17,1,37,38,1,'com_messages','com_messages','{"core.admin":{"7":1},"core.manage":{"7":1}}'),
 	(18,1,39,40,1,'com_modules','com_modules','{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 	(19,1,45,46,1,'com_plugins','com_plugins','{"core.admin":{"7":1},"core.manage":[],"core.edit":[],"core.edit.state":[]}'),
 	(20,1,47,48,1,'com_redirect','com_redirect','{"core.admin":{"7":1},"core.manage":[]}'),
@@ -245,7 +244,6 @@ INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (12, 'com_login', 'component', 'com_login', '', 1, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (13, 'com_media', 'component', 'com_media', '', 1, 1, 0, 1, '', '{"upload_extensions":"bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS","upload_maxsize":"10","file_path":"images","image_path":"images","restrict_uploads":"1","allowed_media_usergroup":"3","check_mime":"1","image_extensions":"bmp,gif,jpg,png","ignore_extensions":"","upload_mime":"image\\/jpeg,image\\/gif,image\\/png,image\\/bmp,application\\/x-shockwave-flash,application\\/msword,application\\/excel,application\\/pdf,application\\/powerpoint,text\\/plain,application\\/x-zip","upload_mime_illegal":"text\\/html","enable_flash":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (14, 'com_menus', 'component', 'com_menus', '', 1, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(15, 'com_messages', 'component', 'com_messages', '', 1, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (16, 'com_modules', 'component', 'com_modules', '', 1, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (17, 'com_plugins', 'component', 'com_plugins', '', 1, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (18, 'com_search', 'component', 'com_search', '', 1, 1, 1, 1, '', '{"enabled":"0","show_date":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -441,37 +439,6 @@ CREATE TABLE `#__menu_types` (
 
 INSERT INTO `#__menu_types` VALUES (1, 'mainmenu', 'Main Menu', 'The main menu for the site');
 
-# -------------------------------------------------------
-
-#
-# Table structure for table `#__messages`
-#
-
-CREATE TABLE `#__messages` (
-  `message_id` integer unsigned NOT NULL auto_increment,
-  `user_id_from` integer unsigned NOT NULL default '0',
-  `user_id_to` integer unsigned NOT NULL default '0',
-  `folder_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `date_time` datetime NOT NULL default '0000-00-00 00:00:00',
-  `state` tinyint(1) NOT NULL DEFAULT '0',
-  `priority` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `subject` varchar(255) NOT NULL DEFAULT '',
-  `message` text NOT NULL,
-  PRIMARY KEY  (`message_id`),
-  KEY `useridto_state` (`user_id_to`, `state`)
-)  DEFAULT CHARSET=utf8;
-# -------------------------------------------------------
-
-#
-# Table structure for table `#__messages_cfg`
-#
-
-CREATE TABLE `#__messages_cfg` (
-  `user_id` integer unsigned NOT NULL default '0',
-  `cfg_name` varchar(100) NOT NULL default '',
-  `cfg_value` varchar(255) NOT NULL default '',
-  UNIQUE `idx_user_var_name` (`user_id`,`cfg_name`)
-)  DEFAULT CHARSET=utf8;
 # -------------------------------------------------------
 
 #
