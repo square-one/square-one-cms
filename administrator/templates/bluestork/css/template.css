@@ -801,22 +801,6 @@ li.acl-resetbtn:hover {
 		background-position,
 		-moz-border-radius-bottomleft,
 		-moz-box-shadow;
-	-webkit-transition-duration: 0.8s;
-	-moz-transition-duration: 0.8s;
-}
-
-#cpanel div.icon a:hover,
-#cpanel div.icon a:focus,
-#cpanel div.icon a:active {
-	background-position: 0;
-	-webkit-border-bottom-left-radius: 50% 20px;
-	-moz-border-radius-bottomleft: 50% 20px;
-	border-bottom-left-radius: 50% 20px;
-	-webkit-box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
-	-moz-box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
-	box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
-	position: relative;
-	z-index: 10;
 }
 
 #cpanel img {
