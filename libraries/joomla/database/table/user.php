@@ -370,34 +370,6 @@ class JTableUser extends JTable
 			return false;
 		}
 
-		/*
-		 * Clean Up Related Data.
-		 */
-
-		$this->_db->setQuery(
-			'DELETE FROM '.$this->_db->quoteName('#__messages_cfg') .
-			' WHERE '.$this->_db->quoteName('user_id').' = '.(int) $this->$k
-		);
-		$this->_db->query();
-
-		// Check for a database error.
-		if ($this->_db->getErrorNum()) {
-			$this->setError($this->_db->getErrorMsg());
-			return false;
-		}
-
-		$this->_db->setQuery(
-			'DELETE FROM '.$this->_db->quoteName('#__messages') .
-			' WHERE '.$this->_db->quoteName('user_id_to').' = '.(int) $this->$k
-		);
-		$this->_db->query();
-
-		// Check for a database error.
-		if ($this->_db->getErrorNum()) {
-			$this->setError($this->_db->getErrorMsg());
-			return false;
-		}
-
 		return true;
 	}
 
