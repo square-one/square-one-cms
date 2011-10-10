@@ -23,15 +23,6 @@ if ($params->get('show_loggedin_users_admin', 1)) :
 	$output[] = '<span class="backloggedin-users">'.JText::plural('MOD_STATUS_BACKEND_USERS', $count).'</span>';
 endif;
 
-//  Print the inbox message.
-if ($params->get('show_messages', 1)) :
-	$output[] = '<span class="'.$inboxClass.'">'.
-			($hideLinks ? '' : '<a href="'.$inboxLink.'">').
-			JText::plural('MOD_STATUS_MESSAGES', $unread).
-			($hideLinks ? '' : '</a>').
-			'</span>';
-endif;
-
 // Reverse rendering order for rtl display.
 if ($lang->isRTL()) :
 	$output = array_reverse($output);
