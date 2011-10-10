@@ -15,6 +15,7 @@ $config	= JFactory::getConfig();
 $user	= JFactory::getUser();
 $db		= JFactory::getDbo();
 $lang	= JFactory::getLanguage();
+$query	= $db->getQuery(true);
 
 // Get the number of back-end logged in users.
 $query->clear();
