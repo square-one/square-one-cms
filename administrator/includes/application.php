@@ -238,8 +238,6 @@ class JAdministrator extends JApplication
 			$lang = JRequest::getCmd('lang');
 			$lang = preg_replace('/[^A-Z-]/i', '', $lang);
 			$this->setUserState('application.lang', $lang );
-
-			JAdministrator::purgeMessages();
 		}
 
 		return $result;
@@ -287,50 +285,5 @@ class JAdministrator extends JApplication
 		}
 
 		return $template->template;
-	}
-
-	/**
-	 * Purge the jos_messages table of old messages
-	 *
-	 * @return	void
-	 * @since	1.5
-	 */
-	public static function purgeMessages()
-	{
-		$db		= JFactory::getDbo();
-		$user	= JFactory::getUser();
-
-		$userid = $user->get('id');
-
-		$query = 'SELECT *'
-		. ' FROM #__messages_cfg'
-		. ' WHERE user_id = ' . (int) $userid
-		. ' AND cfg_name = "auto_purge"'
-		;
-		$db->setQuery($query);
-		$config = $db->loadObject();
-
-		// check if auto_purge value set
-		if (is_object($config) and $config->cfg_name == 'auto_purge') {
-			$purge	= $config->cfg_value;
-		} else {
-			// if no value set, default is 7 days
-			$purge	= 7;
-		}
-		// calculation of past date
-
-		// if purge value is not 0, then allow purging of old messages
-		if ($purge > 0) {
-			// purge old messages at day set in message configuration
-			$past = JFactory::getDate(time() - $purge * 86400);
-			$pastStamp = $past->toMySQL();
-
-			$query = 'DELETE FROM #__messages'
-			. ' WHERE date_time < ' . $db->Quote($pastStamp)
-			. ' AND user_id_to = ' . (int) $userid
-			;
-			$db->setQuery($query);
-			$db->query();
-		}
 	}
 }
