@@ -27,11 +27,66 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+20-Oct-2011 Christophe Demko
+ # [#25031] Support Forum URL as language file option
+
+19-Oct-2011 Jean-Marie Simonet
+ # [#26977] *Multilanguage: adding custom Site Name per Content Language
+ + Adding Austria and Switzerland flags for mod_languages
+ # Modifying version.php to 1.7.2
+ 
+18-Oct-2011 Christophe Demko
+ # [#26897] JDatabasequery work in com_plugins
+
+17-Oct-2011 Jean-Marie Simonet
+ # [#26972] Small regression rev. 22054, skipping translation in <description>, + BC 1.6.x issue. Thanks Cir Tap
+ # [#26885] JText do not recognize "" no-string. Thanks Christophe.
+ # [#26491] Date Icon "string untranslated". Thanks Christophe
+ # [#24973] JHTML select.options with html entities. Thanks Pavel and Bill.
+ 
+16-Oct-2011 Christophe Demko
+ # [#26904] JDatabasequery work in com_redirect and com_search (Elin Waring)
+ # [#26898] JDatabasequery work in com_newsfeeds (Elin Waring)
+ # [#26896] JDatabasequery work in com_users front end (Elin Waring)
+
+15-Oct-2011 Christophe Demko
+ # [#26929] *Unique alias & Unicode alias issue
+ # [#26937] Bluestork tabs fix when more than one row of tabs (Andrea Tarr, Matt Thomas)
+ # [#26910] view metadata.xml isn't considered for parameters
+
+13-Oct-2011 Jean-Marie Simonet
+Pushed to github the following missing SVN commits when joomla-cms was moved
+ # [#26911] Merge some code style changes from platform 11.3 (Rouven Weßling)
+ # [#26912] Merge some code style changes from platform 11.3 (Rouven Weßling)
+ # [#24664] Back-end language switching is working only when Default is selected
+ # [#26907] *Adding tip to batch function (Jean-Marie Simonet)
+ # [#26427] header items in the administrator panel are not in the right order on RTL template
+ 
+12-Oct-2011 Jean-Marie Simonet
+ $ Add new language key to 1.7.2 com_installer file
+ $ Updating uk-UA installation.ini
+ 
+10-Oct-2011 Jean-Marie Simonet
+ + [#26913] Hathor missing notice images in rtl & some colors. Thanks Andrea
+ #+ [#26866] notices in RTL doesn't mirroring. Thanks Ofer.
+
+09-Oct-2011 Jean-Marie Simonet
+ -$ Removing both en-GB.override.ini as they overwrite the existing ones when updating.
+
+09-Oct-2011 Christophe Demko
+ # [#26788] Add language field to batch widget (Michael Babker)
+
 03-Oct-2011 Christophe Demko
  # [#26915] Remove Specific Author Information from Bluestork (Jean-Marie Simonet)
+ # [#26914] Merge some code style changes from platform 11.3 (Rouven Weßling)
 
 01-Oct-2011 Christophe Demko
  # [#26813] Misplaced Bracket on Language Titles in Multilingual Sites Using RTL Language (James Brice)
+ # [#26911] Merge some code style changes from platform 11.3 (Rouven Weßling)
+ # [#26912] Merge some code style changes from platform 11.3 (Rouven Weßling)
+ # [#24664] Back-end language switching is working only when Default is selected
+ # [#26907] *Adding tip to batch function (Jean-Marie Simonet)
+ # [#26427] header items in the administrator panel are not in the right order on RTL template
 
 30-Sep-2011 Christophe Demko
  - [#26903] Remove batch process code from com_contact (Michael Babker)

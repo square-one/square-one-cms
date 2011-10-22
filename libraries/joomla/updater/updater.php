@@ -32,10 +32,10 @@ class JUpdater extends JAdapter {
 	 *
 	 * @since   11.1
 	 */
-	public function __construct() 
+	public function __construct()
 	{
 		// Adapter base path, class prefix
-		parent::__construct(dirname(__FILE__),'JUpdater');
+		parent::__construct(dirname(__FILE__), 'JUpdater');
 	}
 
 	/**
@@ -95,7 +95,7 @@ class JUpdater extends JAdapter {
 			$update_result = $this->_adapters[$result['type']]->findUpdate($result);
 			if(is_array($update_result))
 			{
-				if(array_key_exists('update_sites',$update_result) && count($update_result['update_sites']))
+				if(array_key_exists('update_sites', $update_result) && count($update_result['update_sites']))
 				{
 					$results = JArrayHelper::arrayUnique(array_merge($results, $update_result['update_sites']));
 					$result_count = count($results);
@@ -107,12 +107,12 @@ class JUpdater extends JAdapter {
 						$current_update = &$update_result['updates'][$k];
 						$update = JTable::getInstance('update');
 						$extension = JTable::getInstance('extension');
-						$uid = $update->find(Array('element'=>strtolower($current_update->get('element')),
+						$uid = $update->find(array('element'=>strtolower($current_update->get('element')),
 								'type'=>strtolower($current_update->get('type')),
 								'client_id'=>strtolower($current_update->get('client_id')),
 								'folder'=>strtolower($current_update->get('folder'))));
 
-						$eid = $extension->find(Array('element'=>strtolower($current_update->get('element')),
+						$eid = $extension->find(array('element'=>strtolower($current_update->get('element')),
 								'type'=>strtolower($current_update->get('type')),
 								'client_id'=>strtolower($current_update->get('client_id')),
 								'folder'=>strtolower($current_update->get('folder'))));

@@ -146,8 +146,18 @@ class MenusModelItem extends JModelAdmin
 			$done = true;
 		}
 
+		if (!empty($commands['language_id']))
+		{
+			if (!$this->batchLanguage($commands['language_id'], $pks))
+			{
+				return false;
+			}
+
+			$done = true;
+		}
+
 		if (!$done) {
-			$this->setError(JText::_('JGLOBAL_ERROR_INSUFFICIENT_BATCH_INFORMATION'));
+			$this->setError(JText::_('JLIB_APPLICATION_ERROR_INSUFFICIENT_BATCH_INFORMATION'));
 			return false;
 		}
 
@@ -854,14 +864,18 @@ class MenusModelItem extends JModelAdmin
 			}
 
 			//Now check for a view manifest file
-			if (!$formFile) {
-				$path = JPath::clean($base.'/views/metadata.xml');
-				if (JFile::exists($path)) {
+			if (!$formFile)
+			{
+				if (isset($view) && JFile::exists($path = JPath::clean($base.'/views/'.$view.'/metadata.xml')))
+				{
 					$formFile = $path;
-				} else {
+				}
+				else
+				{
 					//Now check for a component manifest file
 					$path = JPath::clean($base.'/metadata.xml');
-					if (JFile::exists($path)) {
+					if (JFile::exists($path))
+					{
 						$formFile = $path;
 					}
 				}

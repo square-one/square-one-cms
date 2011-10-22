@@ -362,7 +362,7 @@ class JApplication extends JObject
 		// be unlikely and isn't supported by this API.
 		if (!preg_match('#^http#i', $url)) {
 			$uri = JURI::getInstance();
-			$prefix = $uri->toString(Array('scheme', 'user', 'pass', 'host', 'port'));
+			$prefix = $uri->toString(array('scheme', 'user', 'pass', 'host', 'port'));
 
 			if ($url[0] == '/') {
 				// We just need the prefix since we have a path relative to the root.
@@ -370,7 +370,7 @@ class JApplication extends JObject
 			}
 			else {
 				// It's relative to where we are now, so lets add that.
-				$parts = explode('/', $uri->toString(Array('path')));
+				$parts = explode('/', $uri->toString(array('path')));
 				array_pop($parts);
 				$path = implode('/', $parts).'/';
 				$url = $prefix . $path . $url;
@@ -646,7 +646,7 @@ class JApplication extends JObject
 			$authorisations = $authenticate->authorise($response, $options);
 			foreach ($authorisations as $authorisation)
 			{
-				$denied_states = Array(JAuthentication::STATUS_EXPIRED, JAuthentication::STATUS_DENIED);
+				$denied_states = array(JAuthentication::STATUS_EXPIRED, JAuthentication::STATUS_DENIED);
 				if(in_array($authorisation->status, $denied_states))
 				{
 					// Trigger onUserAuthorisationFailure Event.
@@ -656,7 +656,7 @@ class JApplication extends JObject
 					if (isset($options['silent']) && $options['silent']) {
 						return false;
 					}
-			
+
 					// Return the error.
 					switch($authorisation->status)
 					{
@@ -672,7 +672,7 @@ class JApplication extends JObject
 					}
 				}
 			}
-			
+
 			// Import the user plugin group.
 			JPluginHelper::importPlugin('user');
 
@@ -694,16 +694,21 @@ class JApplication extends JObject
 					jimport('joomla.utilities.utility');
 
 					// Create the encryption key, apply extra hardening using the user agent string.
-					$key = JUtility::getHash(@$_SERVER['HTTP_USER_AGENT']);
-
-					$crypt = new JSimpleCrypt($key);
-					$rcookie = $crypt->encrypt(serialize($credentials));
-					$lifetime = time() + 365*24*60*60;
-
-					// Use domain and path set in config for cookie if it exists.
-					$cookie_domain = $this->getCfg('cookie_domain', '');
-					$cookie_path = $this->getCfg('cookie_path', '/');
-					setcookie( JUtility::getHash('JLOGIN_REMEMBER'), $rcookie, $lifetime, $cookie_path, $cookie_domain );
+                    $agent = @$_SERVER['HTTP_USER_AGENT'];
+                    // Ignore empty and crackish user agents
+                    if ($agent != '' && $agent != 'JLOGIN_REMEMBER') {
+                        $key = JUtility::getHash($agent);
+                        $crypt = new JSimpleCrypt($key);
+                        $rcookie = $crypt->encrypt(serialize($credentials));
+                        $lifetime = time() + 365*24*60*60;
+                        // Use domain and path set in config for cookie if it exists.
+                        $cookie_domain = $this->getCfg('cookie_domain', '');
+                        $cookie_path = $this->getCfg('cookie_path', '/');
+                        setcookie(
+                            JUtility::getHash('JLOGIN_REMEMBER'), $rcookie, $lifetime,
+                            $cookie_path, $cookie_domain
+                        );
+                    }
 				}
 
 				return true;

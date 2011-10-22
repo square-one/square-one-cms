@@ -230,7 +230,7 @@ abstract class JHtmlBehavior
 		// Include MooTools framework
 		self::framework(true);
 
-		$sig = md5(serialize(array($selector,$params)));
+		$sig = md5(serialize(array($selector, $params)));
 		if (isset($tips[$sig]) && ($tips[$sig])) {
 			return;
 		}
@@ -317,7 +317,7 @@ abstract class JHtmlBehavior
 			$modals = array();
 		}
 
-		$sig = md5(serialize(array($selector,$params)));
+		$sig = md5(serialize(array($selector, $params)));
 		if (isset($modals[$sig]) && ($modals[$sig])) {
 			return;
 		}
@@ -626,7 +626,7 @@ abstract class JHtmlBehavior
 
 		//Add uncompressed versions when debug is enabled
 		$uncompressed	= JFactory::getConfig()->get('debug') ? '-uncompressed' : '';
-		JHtml::_('stylesheet', 'system/calendar-jos.css', array(' title' => JText::_('JLIB_HTML_BEHAVIOR_GREEN') ,' media' => 'all'), true);
+		JHtml::_('stylesheet', 'system/calendar-jos.css', array(' title' => JText::_('JLIB_HTML_BEHAVIOR_GREEN') , ' media' => 'all'), true);
 		JHtml::_('script', $tag.'/calendar'.$uncompressed.'.js', false, true);
 		JHtml::_('script', $tag.'/calendar-setup'.$uncompressed.'.js', false, true);
 
@@ -832,10 +832,10 @@ abstract class JHtmlBehavior
 "For latest version visit: http://www.dynarch.com/projects/calendar/\n" +
 "Distributed under GNU LGPL.  See http://gnu.org/licenses/lgpl.html for details." +
 "\n\n" +
-"'.JText::_('JLIB_HTML_BEHAVIOR_DATE_SELECTION', true).'" +
-"'.JText::_('JLIB_HTML_BEHAVIOR_YEAR_SELECT', true).'" +
-"'.JText::_('JLIB_HTML_BEHAVIOR_MONTH_SELECT', true).'" +
-"'.JText::_('JLIB_HTML_BEHAVIOR_HOLD_MOUSE', true).'";
+"'.JText::_('JLIB_HTML_BEHAVIOR_DATE_SELECTION', false, false).'" +
+"'.JText::_('JLIB_HTML_BEHAVIOR_YEAR_SELECT', false, false).'" +
+"'.JText::_('JLIB_HTML_BEHAVIOR_MONTH_SELECT', false, false).'" +
+"'.JText::_('JLIB_HTML_BEHAVIOR_HOLD_MOUSE', false, false).'";
 Calendar._TT["ABOUT_TIME"] = "\n\n" +
 "Time selection:\n" +
 "- Click on any of the time parts to increase it\n" +
@@ -855,8 +855,8 @@ Calendar._TT["ABOUT_TIME"] = "\n\n" +
 		.' Calendar._TT["CLOSE"] = "'.JText::_('JLIB_HTML_BEHAVIOR_CLOSE', true).'";'
 		.' Calendar._TT["TODAY"] = "'.JText::_('JLIB_HTML_BEHAVIOR_TODAY', true).'";'
 		.' Calendar._TT["TIME_PART"] = "'.JText::_('JLIB_HTML_BEHAVIOR_SHIFT_CLICK_OR_DRAG_TO_CHANGE_VALUE', true).'";'
-		.' Calendar._TT["DEF_DATE_FORMAT"] = "'.JText::_('%Y-%m-%d', true).'";'
-		.' Calendar._TT["TT_DATE_FORMAT"] = "'.JText::_('%a, %b %e', true).'";'
+		.' Calendar._TT["DEF_DATE_FORMAT"] = "%Y-%m-%d";'
+		.' Calendar._TT["TT_DATE_FORMAT"] = "'.JText::_('JLIB_HTML_BEHAVIOR_TT_DATE_FORMAT', true).'";'
 		.' Calendar._TT["WK"] = "'.JText::_('JLIB_HTML_BEHAVIOR_WK', true).'";'
 		.' Calendar._TT["TIME"] = "'.JText::_('JLIB_HTML_BEHAVIOR_TIME', true).'";';
 			$jsscript = 1;
@@ -867,3 +867,4 @@ Calendar._TT["ABOUT_TIME"] = "\n\n" +
 		}
 	}
 }
+

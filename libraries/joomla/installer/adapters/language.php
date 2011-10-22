@@ -30,7 +30,7 @@ class JInstallerLanguage extends JAdapterInstance
 
 	/**
 	 * Custom install method
-	 * 
+	 *
 	 * Note: This behaves badly due to hacks made in the middle of 1.5.x to add
 	 * the ability to install multiple distinct packs in one install. The
 	 * preferred method is to use a package to install multiple language packs.
@@ -165,7 +165,7 @@ class JInstallerLanguage extends JAdapterInstance
 			// Upgrade manually set or
 			// Update function available or
 			// Update tag detected
-			if ($this->parent->getUpgrade() || ($this->parent->manifestClass && method_exists($this->parent->manifestClass,'update')) || is_a($updateElement, 'JXMLElement')) {
+			if ($this->parent->getUpgrade() || ($this->parent->manifestClass && method_exists($this->parent->manifestClass, 'update')) || is_a($updateElement, 'JXMLElement')) {
 				return $this->update(); // transfer control to the update function
 			}
 			else if (!$this->parent->getOverwrite())
@@ -247,7 +247,7 @@ class JInstallerLanguage extends JAdapterInstance
 
 		// Clobber any possible pending updates
 		$update = JTable::getInstance('update');
-		$uid = $update->find(Array('element'=>$this->get('tag'),
+		$uid = $update->find(array('element'=>$this->get('tag'),
 								'type'=>'language',
 								'client_id'=>'',
 								'folder'=>''));
@@ -358,7 +358,7 @@ class JInstallerLanguage extends JAdapterInstance
 
 		// Clobber any possible pending updates
 		$update = JTable::getInstance('update');
-		$uid = $update->find(Array('element'=>$this->get('tag'),
+		$uid = $update->find(array('element'=>$this->get('tag'),
 								'type'=>'language',
 								'client_id'=>$clientId));
 		if ($uid)
@@ -368,7 +368,7 @@ class JInstallerLanguage extends JAdapterInstance
 
 		// Update an entry to the extension table
 		$row = JTable::getInstance('extension');
-		$eid = $row->find(Array('element'=>strtolower($this->get('tag')),
+		$eid = $row->find(array('element'=>strtolower($this->get('tag')),
 						'type'=>'language', 'client_id'=>$clientId));
 		if ($eid) {
 			$row->load($eid);
@@ -398,7 +398,7 @@ class JInstallerLanguage extends JAdapterInstance
 		// And now we run the postflight
 		ob_start();
 		ob_implicit_flush(false);
-		if ($this->parent->manifestClass && method_exists($this->parent->manifestClass,'postflight'))
+		if ($this->parent->manifestClass && method_exists($this->parent->manifestClass, 'postflight'))
 		{
 			$this->parent->manifestClass->postflight('update', $this);
 		}
@@ -416,7 +416,7 @@ class JInstallerLanguage extends JAdapterInstance
 	 *
 	 * @param   string   $tag       The tag of the language to uninstall
 	 * @param   integer  $clientId  The id of the client (unused)
-	 * 
+	 *
 	 * @return  mixed    Return value for uninstall method in component uninstall file
 	 *
 	 * @since   11.1
@@ -498,7 +498,7 @@ class JInstallerLanguage extends JAdapterInstance
 			$registry = new JRegistry;
 			$registry->loadString($user->params);
 			if ($registry->get($param_name)==$element) {
-				$registry->set($param_name,'');
+				$registry->set($param_name, '');
 				$query=$db->getQuery(true);
 				$query->update('#__users');
 				$query->set('params='.$db->quote($registry));
@@ -524,7 +524,7 @@ class JInstallerLanguage extends JAdapterInstance
 	 */
 	public function discover()
 	{
-		$results = Array();
+		$results = array();
 		$site_languages = JFolder::folders(JPATH_SITE . '/language');
 		$admin_languages = JFolder::folders(JPATH_ADMINISTRATOR . '/language');
 		foreach ($site_languages as $language)
@@ -599,7 +599,7 @@ class JInstallerLanguage extends JAdapterInstance
 	 * Refreshes the extension table cache
 	 *
 	 * @return  boolean result of operation, true if updated, false on failure
-	 * 
+	 *
 	 * @since   11.1
 	 */
 	public function refreshManifestCache()

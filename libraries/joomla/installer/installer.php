@@ -112,7 +112,7 @@ class JInstaller extends JAdapter
 	 */
 	public function __construct()
 	{
-		parent::__construct(dirname(__FILE__),'JInstaller');
+		parent::__construct(dirname(__FILE__), 'JInstaller');
 	}
 
 	/**
@@ -495,12 +495,12 @@ class JInstaller extends JAdapter
 	public function discover()
 	{
 		$this->loadAllAdapters();
-		$results = Array();
+		$results = array();
 
 		foreach ($this->_adapters as $adapter)
 		{
 			// Joomla! 1.5 installation adapter legacy support
-			if (method_exists($adapter,'discover')) {
+			if (method_exists($adapter, 'discover')) {
 				$tmp = $adapter->discover();
 
 				// if its an array and has entries
@@ -771,7 +771,7 @@ class JInstaller extends JAdapter
 
 				// Check that sql files exists before reading. Otherwise raise error for rollback
 				if (!file_exists($sqlfile)) {
-					JError::raiseWarning(1,JText::sprintf('JLIB_INSTALLER_ERROR_SQL_FILENOTFOUND', $sqlfile));
+					JError::raiseWarning(1, JText::sprintf('JLIB_INSTALLER_ERROR_SQL_FILENOTFOUND', $sqlfile));
 
 					return false;
 				}
@@ -851,8 +851,8 @@ class JInstaller extends JAdapter
 				}
 
 				if (strlen($schemapath)) {
-					$files = str_replace('.sql','', JFolder::files($this->getPath('extension_root') . '/' . $schemapath,'\.sql$'));
-					usort($files,'version_compare');
+					$files = str_replace('.sql', '', JFolder::files($this->getPath('extension_root') . '/' . $schemapath, '\.sql$'));
+					usort($files, 'version_compare');
 					// Update the database
 					$query = $db->getQuery(true);
 					$query->delete()->from('#__schemas')->where('extension_id = ' . $eid);
@@ -880,7 +880,7 @@ class JInstaller extends JAdapter
 	 */
 	public function parseSchemaUpdates($schema, $eid)
 	{
-		$files = Array();
+		$files = array();
 		$update_count = 0;
 
 		// Ensure we have an XML element and a valid extension id
@@ -907,8 +907,8 @@ class JInstaller extends JAdapter
 				}
 
 				if (strlen($schemapath)) {
-					$files = str_replace('.sql','', JFolder::files($this->getPath('extension_root') . '/' . $schemapath,'\.sql$'));
-					usort($files,'version_compare');
+					$files = str_replace('.sql', '', JFolder::files($this->getPath('extension_root') . '/' . $schemapath, '\.sql$'));
+					usort($files, 'version_compare');
 
 					if (!count($files)) {
 						return false;
@@ -923,7 +923,7 @@ class JInstaller extends JAdapter
 						// We have a version!
 						foreach($files as $file)
 						{
-							if (version_compare($file,$version) > 0) {
+							if (version_compare($file, $version) > 0) {
 								$buffer = file_get_contents($this->getPath('extension_root') . '/' . $schemapath . '/' . $file.'.sql');
 
 								// Graceful exit and rollback if read not successful
@@ -1389,7 +1389,7 @@ class JInstaller extends JAdapter
 						$step = array ('type' => 'folder', 'path' => $filedest);
 					}
 					else {
-						if (!(JFile::copy($filesource, $filedest,null))) {
+						if (!(JFile::copy($filesource, $filedest, null))) {
 							JError::raiseWarning(1, JText::sprintf('JLIB_INSTALLER_ERROR_FAIL_COPY_FILE', $filesource, $filedest));
 
 							return false;
@@ -1716,15 +1716,15 @@ class JInstaller extends JAdapter
 	{
 		// The magic find deleted files function!
 		// The files that are new
-		$files = Array();
+		$files = array();
 		// The folders that are new
-		$folders = Array();
+		$folders = array();
 		// The folders of the files that are new
-		$containers = Array();
+		$containers = array();
 		// A list of files to delete
-		$files_deleted = Array();
+		$files_deleted = array();
 		// A list of folders to delete
-		$folders_deleted = Array();
+		$folders_deleted = array();
 
 		foreach ($new_files as $file)
 		{
@@ -1741,7 +1741,7 @@ class JInstaller extends JAdapter
 					$files[] = (string)$file;
 					// Now handle the folder part of the file to ensure we get any containers
 					// Break up the parts of the directory
-					$container_parts = explode('/',dirname((string)$file));
+					$container_parts = explode('/', dirname((string)$file));
 					// Make sure this is clean and empty
 					$container = '';
 
@@ -1787,7 +1787,7 @@ class JInstaller extends JAdapter
 			}
 		}
 
-		return Array('files'=>$files_deleted, 'folders'=>$folders_deleted);
+		return array('files'=>$files_deleted, 'folders'=>$folders_deleted);
 	}
 
 	/**
@@ -1806,12 +1806,12 @@ class JInstaller extends JAdapter
 		}
 
 		$data = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-		$retval = Array();
+		$retval = array();
 
 		foreach ($data as $row)
 		{
 			$results = explode('  ', $row); // split up the data
-			$results[1] = str_replace('./','', $results[1]); // cull any potential prefix
+			$results[1] = str_replace('./', '', $results[1]); // cull any potential prefix
 			$retval[$results[1]] = $results[0]; // throw into the array
 		}
 

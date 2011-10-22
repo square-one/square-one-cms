@@ -446,7 +446,7 @@ class JController extends JObject
 	{
 		// Deprecation warning.
 		JLog::add('JController::authorize() is deprecated.', JLog::WARNING, 'deprecated');
-		
+
 		$this->authorise($task);
 	}
 
@@ -634,7 +634,7 @@ class JController extends JObject
 					$registeredurlparams = new stdClass;
 				}
 
-				foreach ($urlparams AS $key => $value)
+				foreach ($urlparams as $key => $value)
 				{
 					// Add your safe url parameters with variable type as value {@see JFilterInput::clean()}.
 					$registeredurlparams->$key = $value;
