@@ -17,7 +17,7 @@ defined('_JEXEC') or die;
 final class JVersion
 {
 	/** @var  string  Product name. */
-	public $PRODUCT = 'Joomla!';
+	public $PRODUCT = 'Square One';
 
 	/** @var  string  Release version. */
 	public $RELEASE = '1.7';
