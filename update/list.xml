@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <extensionset name="Square One" description="Square One CMS">
 	<extension name="Square One" element="joomla" type="file" version="1.7.2" detailsurl="http://update.squareonecms.org/versions.xml"/>
 </extensionset>
