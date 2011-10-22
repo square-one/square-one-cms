@@ -589,8 +589,7 @@ CREATE TABLE  `#__update_sites` (
 )  DEFAULT CHARSET=utf8 COMMENT='Update Sites';
 
 INSERT INTO `#__update_sites` VALUES
-(1, 'Joomla Core', 'collection', 'http://update.joomla.org/core/list.xml', 1),
-(2, 'Joomla Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1);
+(1, 'Square One', 'collection', 'http://update.squareonecms.org/list.xml', 1);
 
 CREATE TABLE `#__update_sites_extensions` (
   `update_site_id` INT DEFAULT 0,
