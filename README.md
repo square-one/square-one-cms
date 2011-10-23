@@ -1,18 +1,18 @@
-# Square one
+# Square One
 
-Square one is a light distribution of Joomla! It is being designed to meet the needs of developers who want a cleaner installation than Joomla. It removes many of the core extensions that are not required, so that you can install only the extensions that you need for your website.
+Square One is a light distribution of Joomla! It is being designed to meet the needs of developers who want a cleaner installation than Joomla. It removes many of the core extensions that are not required, so that you can install only the extensions that you need for your website.
 
-## Can I use Square one?
+## Can I use Square One?
 
 I wouldn't just yet. The update notification system has not been reconfigured yet to make this a self-updating distribution like Joomla. Feel free to test it out and provide some feedback. For production websites, please do not use this until its ready.
 
-## Differences between Joomla! and Square one
+## Differences between Joomla! and Square One
 
 At this point, the only real differences are what is missing. In the future it might include some minor tweaks or additions.
 
 The Joomla! Platform (also known as the framework) will remain as is. The only changes pushed to the platform will be extreme circumstances where a removed portion of the CMS is coupled with the platform. In those cases the patch will be forwarded to the platform project if necessary. The idea is to retain full Joomla compatibility by keeping the framework in sync with Joomla.
 
-Square one will also function on a release cycle along with Joomla! Once it is ready for public use, whenever Joomla! has a new release, Square one will follow shortly after with the same numbering system.
+Square One will also function on a release cycle along with Joomla! Once it is ready for public use, whenever Joomla! has a new release, Square One will follow shortly after with the same numbering system.
 
 ####Items removed:
 
@@ -55,4 +55,4 @@ Jeremy Wilken of Gnome on the run (www.gnomeontherun.com) is heading this initia
 ## Legal info
 
 Joomla! is Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.
-Joomla! and Square one are both distributed under the GNU General Public License v2.0 or later
+Joomla! and Square One are both distributed under the GNU General Public License v2.0 or later
