@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="joomla-lite" default="build">
+<project name="square-one" default="build" basedir="../">
 	
     <target name="build">
-        <available file="Joomla.zip" property="zip" value="yes" />
+        
+        <xmlproperty file="administrator/manifests/files/squareone.xml" />
+        <property name="version" value="${extension.version}" />
+        <property name="filename" value="square-one-cms-${version}.zip" />
+        
+        <available file="${filename}" property="zip" value="yes" />
         <if>
             <equals arg1="${zip}" arg2="yes" />
             <then>
-                <delete file="Joomla.zip" />
+                <delete file="${filename}" />
             </then>
         </if>
         
-        <zip destfile="Joomla.zip">
-            <fileset dir="../">
+        <copy file="administrator/manifests/files/squareone.xml" tofile="squareone.xml" />
+        
+        <zip destfile="${filename}">
+            <fileset dir=".">
                 <exclude name=".**" />
                 <exclude name="build/**" />
                 <exclude name=".gitignore" />
@@ -20,6 +27,8 @@
                 <exclude name="tests/**" />
             </fileset>
         </zip>
+        
+        <delete file="squareone.xml" />
 	</target>
 
 </project>

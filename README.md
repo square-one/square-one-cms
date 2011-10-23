@@ -14,7 +14,7 @@ The Joomla! Platform (also known as the framework) will remain as is. The only c
 
 Square One will also function on a release cycle along with Joomla! Once it is ready for public use, whenever Joomla! has a new release, Square One will follow shortly after with the same numbering system.
 
-####Items removed:
+#### Items removed:
 
 * Weblinks component 
 * Weblinks module
@@ -26,8 +26,11 @@ Square One will also function on a release cycle along with Joomla! Once it is r
 * Contacts component
 * Contacts search plugin
 * Contactcreator user plugin
+* Vote content plugin
+* Page Navigation content plugin
 * Messages component 
 * Footer module (frontend)
+* Syndicate module (frontend)
 * Stats module (frontend)
 * Random Image module (frontend)
 * Who is online module (frontend)
@@ -41,6 +44,11 @@ Square One will also function on a release cycle along with Joomla! Once it is r
 * Atomic template (frontend)
 * Hathor template (administrator)
 * Sample data from installer
+
+#### Changes
+ * Updater system syncs with a new update feed for Square One
+ * Renamed to Square One
+ * Installer process no longer has sample data as an option
 
 ## This sounds great, but how do I get started?
 

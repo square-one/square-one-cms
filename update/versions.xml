@@ -15,6 +15,6 @@
         <category></category>
 		<maintainer>Jeremy Wilken</maintainer>
 		<maintainerurl>http://www.gnomeontherun.com</maintainerurl>
-		<targetplatform name="joomla" version="1.7" />
+		<targetplatform name="squareone" version="1.7" />
 	</update>
 </updates>
