@@ -2,9 +2,22 @@
 
 Square One is a light distribution of Joomla! It is being designed to meet the needs of developers who want a cleaner installation than Joomla. It removes many of the core extensions that are not required, so that you can install only the extensions that you need for your website.
 
+## Goals for Square One
+
+Square One is being designed to fit specific needs, which primarily focus around making a more streamlined version of Joomla that doesn't include a lot of what are called 'core' extensions. It does not attempt to do suit everyone's needs or wishes though, as it has a specific purpose to fill. The main goals are:
+
+ * Simplify Joomla by removing core extensions, particularly ones that are old.
+ * Tweak the CMS slightly to provide some additional basic features that improve simplicity.
+ * Keep a focus on simplicity and being a solid base for development.
+ * Stay in sync with the Joomla Platform and Joomla CMS as much as possible.
+
 ## Can I use Square One?
 
-I wouldn't just yet. The update notification system has not been reconfigured yet to make this a self-updating distribution like Joomla. Feel free to test it out and provide some feedback. For production websites, please do not use this until its ready.
+Square One is not yet even in alpha, which means don't use it except for testing. Seriously, don't do it on a live site, site security or performance cannot be validated until the code is finalized.
+
+The update notification system has not been reconfigured yet to make this a self-updating distribution like Joomla. Feel free to test it out and provide some feedback. For production websites, please do not use this until its ready.
+
+If you are looking for a timeline, the hope is to have the basic distribution setup and ready for alpha testing sometime in November 2011. After that, a beta cycle will occur for at least 3 releases. A stable version will be released 
 
 ## Differences between Joomla! and Square One
 
@@ -52,15 +65,18 @@ Square One will also function on a release cycle along with Joomla! Once it is r
 
 ## This sounds great, but how do I get started?
 
-If you are having trouble getting this setup or running, you should clone the git repository into your local server. Then you can install Joomla like normal.
+If you are having trouble getting this setup or running, you should clone the git repository into your local server. Then you can just go to the web root of that directory and install. When cloning, you do not need to delete the installation directory, as the security check is disabled except on the official releases.
 
 If you want to contribute, you will need a github account, and a working knowledge of how to use git for source code management. Please open a new issue for any ideas or suggestions, especially if code will be committed to it.
 
 ## Who is running this?
 
-Jeremy Wilken of Gnome on the run (www.gnomeontherun.com) is heading this initiative to give the Joomla community an option for a lighter weight distribution.
+Jeremy Wilken of Gnome on the run (www.gnomeontherun.com) is heading this initiative to give the Joomla! community an option for a lighter weight distribution.
 
 ## Legal info
 
+Square One is primarily Joomla! code, and except in cases where code has been modified or added for Square One, the Joomla! project retains the copyright on those materials. The rest is copyright of the individual authors.
+
 Joomla! is Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.
+Square One is Copyright (C) 2011 Gnome on the run. All rights reserved.
 Joomla! and Square One are both distributed under the GNU General Public License v2.0 or later

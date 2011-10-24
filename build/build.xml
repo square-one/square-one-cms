@@ -25,6 +25,7 @@
                 <exclude name="configuration.php" />
                 <exclude name="docs/**" />
                 <exclude name="tests/**" />
+                <exclude name="update/**" />
             </fileset>
         </zip>
         
