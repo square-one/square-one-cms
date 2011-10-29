@@ -17,7 +17,7 @@
         
         <copy file="administrator/manifests/files/squareone.xml" tofile="squareone.xml" />
         
-        <zip destfile="${filename}">
+        <zip destfile="build/${filename}">
             <fileset dir=".">
                 <exclude name=".**" />
                 <exclude name="build/**" />
