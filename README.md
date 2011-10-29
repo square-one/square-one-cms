@@ -31,14 +31,17 @@ Square One will also function on a release cycle along with Joomla! Once it is r
 
 #### Items removed
 
-Components
+#####Components
+
 * Weblinks component 
 * Banners component
 * Newsfeeds component
 * Contacts component
 * Messages component 
+* Redirect component
 
-Modules
+#####Modules
+
 * Weblinks module
 * Banners module
 * Footer module (frontend)
@@ -48,7 +51,8 @@ Modules
 * Who is online module (frontend)
 * Latest users module (frontend)
 
-Plugins
+#####Plugins
+
 * Weblinks search plugin
 * Newsfeeds search plugin
 * Contacts search plugin
@@ -60,14 +64,17 @@ Plugins
 * Codemirror editor plugin
 * Geshi content plugin
 * Emailcloak content plugin
+* Redirect system plugin
 
-Templates
+#####Templates
+
 * Beez5 template (frontend)
 * Beez_20 template (frontend)
 * Atomic template (frontend)
 * Hathor template (administrator)
 
-Miscellaneous
+#####Miscellaneous
+
 * Sample data from installer
 
 #### Changes
