@@ -1,4 +1,4 @@
-# Square One
+# Square One CMS
 
 Square One is a light distribution of Joomla! It is being designed to meet the needs of developers who want a cleaner installation than Joomla. It removes many of the core extensions that are not required, so that you can install only the extensions that you need for your website.
 
@@ -11,6 +11,8 @@ Square One is being designed to fit specific needs, which primarily focus around
  * Keep a focus on simplicity and being a solid base for development.
  * Stay in sync with the Joomla Platform and Joomla CMS as much as possible.
 
+Just because Square One has removed a feature or functionality doesn't mean that it isn't useful. The mindset is to create a baseline for Joomla! which has the fewest number of default extensions while still being capable of being a CMS.
+ 
 ## Can I use Square One?
 
 Square One is not yet even in alpha, which means don't use it except for testing. Seriously, don't do it on a live site, site security or performance cannot be validated until the code is finalized.
@@ -27,35 +29,45 @@ The Joomla! Platform (also known as the framework) will remain as is. The only c
 
 Square One will also function on a release cycle along with Joomla! Once it is ready for public use, whenever Joomla! has a new release, Square One will follow shortly after with the same numbering system.
 
-#### Items removed:
+#### Items removed
 
+Components
 * Weblinks component 
-* Weblinks module
-* Weblinks search plugin
 * Banners component
-* Banners module
 * Newsfeeds component
-* Newsfeeds search plugin
 * Contacts component
-* Contacts search plugin
-* Contactcreator user plugin
-* Vote content plugin
-* Page Navigation content plugin
 * Messages component 
+
+Modules
+* Weblinks module
+* Banners module
 * Footer module (frontend)
 * Syndicate module (frontend)
 * Stats module (frontend)
 * Random Image module (frontend)
 * Who is online module (frontend)
 * Latest users module (frontend)
+
+Plugins
+* Weblinks search plugin
+* Newsfeeds search plugin
+* Contacts search plugin
+* Contactcreator user plugin
+* Vote content plugin
+* Page Navigation content plugin
 * Gmail authentication plugin
 * LDAP authentication plugin
 * Codemirror editor plugin
 * Geshi content plugin
+* Emailcloak content plugin
+
+Templates
 * Beez5 template (frontend)
 * Beez_20 template (frontend)
 * Atomic template (frontend)
 * Hathor template (administrator)
+
+Miscellaneous
 * Sample data from installer
 
 #### Changes
