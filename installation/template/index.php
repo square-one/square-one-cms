@@ -51,8 +51,8 @@ JHtml::_('script', 'installation/template/js/installation.js', true, false, fals
 	</head>
 	<body>
 		<div id="header">
-			<span class="logo"><a href="http://www.joomla.org" target="_blank"><img src="template/images/logo.png" alt="Joomla!" /></a></span>
-			<h1>Joomla! <?php echo JVERSION; ?> <?php echo JText::_('INSTL_INSTALLATION') ?></h1>
+			<span class="logo"><a href="http://www.squareonecms.org" target="_blank"><img src="template/images/logo.png" alt="Square One" /></a></span>
+			<h1>Square One <?php echo JVERSION; ?> <?php echo JText::_('INSTL_INSTALLATION') ?></h1>
 		</div>
 		<jdoc:include type="message" />
 		<div id="content-box">
@@ -75,10 +75,6 @@ JHtml::_('script', 'installation/template/js/installation.js', true, false, fals
 				</div>
 				<div class="clr"></div>
 			</div>
-		</div>
-		<div id="copyright">
-			<?php $joomla= '<a href="http://www.joomla.org">Joomla!&#174;</a>';
-			echo JText::sprintf('JGLOBAL_ISFREESOFTWARE', $joomla) ?>
 		</div>
 	</body>
 </html>
