@@ -25,7 +25,7 @@ $right = $this->countModules('right');
 <body>
     
     <div id="header">
-        <a href="<?php echo $this->baseurl ?>"><img src="<?php echo $this->baseurl ?>/templates/system/images/joomla_logo.jpg" /></a>
+        <a href="<?php echo $this->baseurl ?>"><img src="<?php echo $this->baseurl ?>/templates/system/images/square-one-logo.png" /></a>
         <jdoc:include type="modules" name="menu" />
         <div class="clear"></div>
     </div>
