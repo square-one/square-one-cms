@@ -39,6 +39,7 @@ Square One will also function on a release cycle along with Joomla! Once it is r
 * Contacts component
 * Messages component 
 * Redirect component
+* Wrapper component
 
 #####Modules
 
@@ -50,6 +51,7 @@ Square One will also function on a release cycle along with Joomla! Once it is r
 * Random Image module (frontend)
 * Who is online module (frontend)
 * Latest users module (frontend)
+* Wrapper module
 
 #####Plugins
 
