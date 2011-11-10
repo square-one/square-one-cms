@@ -48,6 +48,39 @@ class InstallerControllerUpdate extends JController {
 		}
 		$this->setRedirect($redirect_url);
 	}
+    
+    /**
+	 * Install a set of extensions.
+	 *
+	 * @since	1.7
+	 */
+	function install()
+	{
+		// Check for request forgeries
+		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+		$model	= $this->getModel('update');
+		$eid	= JRequest::getVar('eid', array(), '', 'array');
+
+		JArrayHelper::toInteger($eid, array());
+		if ($model->install($eid)) {
+			$cache = JFactory::getCache('mod_menu');
+			$cache->clean();
+		}
+
+		$app = JFactory::getApplication();
+		$redirect_url = $app->getUserState('com_installer.redirect_url');
+		if(empty($redirect_url)) {
+			$redirect_url = JRoute::_('index.php?option=com_installer&view=update',false);
+		} else
+		{
+			// wipe out the user state when we're going to redirect
+			$app->setUserState('com_installer.redirect_url', '');
+			$app->setUserState('com_installer.message', '');
+			$app->setUserState('com_installer.extension_message', '');
+		}
+		$this->setRedirect($redirect_url);
+	}
 
 	/**
 	 * Find new updates.

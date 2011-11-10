@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 // Import library dependencies
 jimport('joomla.application.component.modellist');
 jimport('joomla.installer.installer');
+jimport('joomla.installer.helper');
 jimport('joomla.updater.updater');
 jimport('joomla.updater.update');
 
@@ -75,7 +76,7 @@ class InstallerModelUpdate extends JModelList
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
 		// grab updates ignoring new installs
-		$query->select('*')->from('#__updates')->where('extension_id != 0');
+		$query->select('*')->from('#__updates');
 		$query->order($this->getState('list.ordering').' '.$this->getState('list.direction'));
 
 		return $query;
@@ -154,7 +155,7 @@ class InstallerModelUpdate extends JModelList
 			$instance->load($uid);
 			$update->loadFromXML($instance->detailsurl);
 			// install sets state and enqueues messages
-			$res = $this->install($update);
+			$res = $this->install_update($update);
 
 			if ($res) {
 				$this->purge();
@@ -166,6 +167,123 @@ class InstallerModelUpdate extends JModelList
 		// Set the final state
 		$this->setState('result', $result);
 	}
+    
+    /**
+	 * Install function.
+	 *
+	 * Sets the "result" state with the result of the operation.
+	 *
+	 * @param	Array[int] List of updates to apply
+	 * @since	1.7
+	 */
+	public function install($eids)
+	{
+		$result = true;
+		foreach($eids as $eid) {
+			$update = new JUpdate();
+			$instance = JTable::getInstance('update');
+			$instance->load($eid);
+			$update->loadFromXML($instance->detailsurl);
+			// install sets state and enqueues messages
+			$res = $this->install_install($update->get('downloadurl')->_data);
+
+			if ($res) {
+				$this->purge();
+			}
+
+			$result = $res & $result;
+		}
+
+		// Set the final state
+		$this->setState('result', $result);
+	}
+    
+    function install_install($url)
+	{
+		jimport('joomla.client.helper');
+		$this->setState('action', 'install');
+
+		// Set FTP credentials, if given.
+		JClientHelper::setCredentialsFromRequest('ftp');
+		$app = JFactory::getApplication();
+        
+        $package = $this->_getPackageFromUrl($url);
+
+		// Was the package unpacked?
+		if (!$package) {
+			$app->setUserState('com_installer.message', JText::_('COM_INSTALLER_UNABLE_TO_FIND_INSTALL_PACKAGE'));
+			return false;
+		}
+
+		// Get an installer instance
+		$installer = JInstaller::getInstance();
+
+		// Install the package
+		if (!$installer->install($package['dir'])) {
+			// There was an error installing the package
+			$msg = JText::sprintf('COM_INSTALLER_INSTALL_ERROR', JText::_('COM_INSTALLER_TYPE_TYPE_'.strtoupper($package['type'])));
+			$result = false;
+		} else {
+			// Package installed sucessfully
+			$msg = JText::sprintf('COM_INSTALLER_INSTALL_SUCCESS', JText::_('COM_INSTALLER_TYPE_TYPE_'.strtoupper($package['type'])));
+			$result = true;
+		}
+
+		// Set some model state values
+		$app	= JFactory::getApplication();
+		$app->enqueueMessage($msg);
+		$this->setState('name', $installer->get('name'));
+		$this->setState('result', $result);
+		$app->setUserState('com_installer.message', $installer->message);
+		$app->setUserState('com_installer.extension_message', $installer->get('extension_message'));
+		$app->setUserState('com_installer.redirect_url', $installer->get('redirect_url'));
+
+		// Cleanup the install files
+		if (!is_file($package['packagefile'])) {
+			$config = JFactory::getConfig();
+			$package['packagefile'] = $config->get('tmp_path') . '/' . $package['packagefile'];
+		}
+
+		JInstallerHelper::cleanupInstall($package['packagefile'], $package['extractdir']);
+
+
+		return $result;
+	}
+    
+    /**
+	 * Install an extension from a URL
+	 *
+	 * @return	Package details or false on failure
+	 * @since	1.5
+	 */
+	protected function _getPackageFromUrl($url)
+	{
+		// Get a database connector
+		$db = JFactory::getDbo();
+
+		// Did you give us a URL?
+		if (!$url) {
+			JError::raiseWarning('', JText::_('COM_INSTALLER_MSG_INSTALL_ENTER_A_URL'));
+			return false;
+		}
+
+		// Download the package at the URL given
+		$p_file = JInstallerHelper::downloadPackage($url);
+
+		// Was the package downloaded?
+		if (!$p_file) {
+			JError::raiseWarning('', JText::_('COM_INSTALLER_MSG_INSTALL_INVALID_URL'));
+			return false;
+		}
+
+		$config		= JFactory::getConfig();
+		$tmp_dest	= $config->get('tmp_path');
+
+		// Unpack the downloaded package file
+		$package = JInstallerHelper::unpack($tmp_dest . '/' . $p_file);
+
+		return $package;
+	}
 
 	/**
 	 * Handles the actual update installation.
@@ -174,7 +292,7 @@ class InstallerModelUpdate extends JModelList
 	 * @return	boolean	Result of install
 	 * @since	1.6
 	 */
-	private function install($update)
+	private function install_update($update)
 	{
 		$app = JFactory::getApplication();
 		if (isset($update->get('downloadurl')->_data)) {
