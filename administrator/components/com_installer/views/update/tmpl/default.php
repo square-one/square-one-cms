@@ -24,8 +24,11 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	<?php if ($this->ftp) : ?>
 		<?php echo $this->loadTemplate('ftp'); ?>
 	<?php endif; ?>
-
+    
 	<?php if (count($this->items)) : ?>
+    <div class="width-100 fltlft">
+    <fieldset>
+        <legend><?php echo JText::_('COM_INSTALLER_MSG_UPDATE_UPDATE') ?></legend>
 	<table class="adminlist" cellspacing="1">
 		<thead>
 			<tr>
@@ -45,7 +48,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			</tr>
 		</tfoot>
 		<tbody>
-		<?php foreach($this->items as $i=>$item):
+		<?php foreach($this->items as $i=>$item) : if ($item->extension_id) :
 			$client	= $item->client_id ? JText::_('JADMINISTRATOR') : JText::_('JSITE');
 		?>
 			<tr class="row<?php echo $i%2; ?>">
@@ -64,9 +67,59 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				<td class="center"><?php echo $client; ?></td>
 				<td><?php echo $item->detailsurl ?></td>
 			</tr>
-		<?php endforeach;?>
+		<?php endif; endforeach;?>
 		</tbody>
 	</table>
+    </fieldset>
+    </div>
+        
+    <div class="width-100 fltlft">
+    <fieldset>
+        <legend><?php echo JText::_('COM_INSTALLER_NEW_INSTALL') ?></legend>
+        
+    <table class="adminlist" cellspacing="1">
+		<thead>
+			<tr>
+				<th width="20"><input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" /></th>
+				<th class="nowrap"><?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_NAME', 'name', $listDirn, $listOrder); ?></th>
+				<th class="nowrap"><?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_INSTALLTYPE', 'extension_id', $listDirn, $listOrder); ?></th>
+				<th ><?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_TYPE', 'type', $listDirn, $listOrder); ?></th>
+				<th width="10%" class="center"><?php echo JText::_('JVERSION'); ?></th>
+				<th><?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_FOLDER', 'folder', $listDirn, $listOrder); ?></th>
+				<th><?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_CLIENT', 'client_id', $listDirn, $listOrder); ?></th>
+				<th width="25%"><?php echo JText::_('COM_INSTALLER_HEADING_DETAILSURL'); ?></th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+			<td colspan="9"><?php echo $this->pagination->getListFooter(); ?></td>
+			</tr>
+		</tfoot>
+		<tbody>
+		<?php foreach($this->items as $i=>$item) : if (!$item->extension_id) :
+			$client	= $item->client_id ? JText::_('JADMINISTRATOR') : JText::_('JSITE');
+		?>
+			<tr class="row<?php echo $i%2; ?>">
+				<td><?php echo JHtml::_('grid.id', $i, $item->update_id, false, 'eid'); ?></td>
+				<td>
+					<span class="editlinktip hasTip" title="<?php echo JText::_('JGLOBAL_DESCRIPTION');?>::<?php echo $item->description ? $item->description : JText::_('COM_INSTALLER_MSG_UPDATE_NODESC'); ?>">
+					<?php echo $item->name; ?>
+					</span>
+				</td>
+				<td class="center">
+					<?php echo $item->extension_id ? JText::_('COM_INSTALLER_MSG_UPDATE_UPDATE') : JText::_('COM_INSTALLER_NEW_INSTALL') ?>
+				</td>
+				<td><?php echo JText::_('COM_INSTALLER_TYPE_' . $item->type) ?></td>
+				<td class="center"><?php echo $item->version ?></td>
+				<td class="center"><?php echo @$item->folder != '' ? $item->folder : JText::_('COM_INSTALLER_TYPE_NONAPPLICABLE'); ?></td>
+				<td class="center"><?php echo $client; ?></td>
+				<td><?php echo $item->detailsurl ?></td>
+			</tr>
+		<?php endif; endforeach;?>
+		</tbody>
+	</table>
+    </fieldset>
+    </div>
 	<?php else : ?>
 		<p class="nowarning"><?php echo JText::_('COM_INSTALLER_MSG_UPDATE_NOUPDATES'); ?></p>
 	<?php endif; ?>
