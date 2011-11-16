@@ -8,6 +8,8 @@
 // No direct access
 defined('_JEXEC') or die;
 
+jimport('joomla.language.helper');
+
 /**
  * Multilang status helper.
  *
@@ -33,7 +35,7 @@ abstract class multilangstatusHelper
 
 	public static function getLangfilter()
 	{
-		// check for activation of languagefilter 
+		// check for activation of languagefilter
 		$db		= JFactory::getDBO();
 		$query	= $db->getQuery(true);
 		$query->select('COUNT(*)');
@@ -70,10 +72,10 @@ abstract class multilangstatusHelper
 		$db->setQuery($query);
 		return $db->loadObjectList();
 	}
-	
+
 	public static function getSitelangs()
 	{
-		// check for published Site Languages 
+		// check for published Site Languages
 		$db		= JFactory::getDBO();
 		$query	= $db->getQuery(true);
 		$query->select('a.element AS element');
@@ -83,7 +85,7 @@ abstract class multilangstatusHelper
 		$db->setQuery($query);
 		return $db->loadObjectList('element');
 	}
-	
+
 	public static function getHomepages()
 	{
 		// Check for Home pages languages
@@ -120,7 +122,25 @@ abstract class multilangstatusHelper
 		$query->where('e.client_id = 0');
 		$query->where('e.enabled = 1');
 		$query->where('e.state = 0');
-		
+
+		$db->setQuery($query);
+		return $db->loadObjectList();
+	}
+
+	public function getContacts()
+	{
+		$db = JFactory::getDBO();
+		$query = $db->getQuery(true);
+		$query->select('u.name, count(cd.language) as counted, MAX(cd.language='.$db->quote('*').') as all_languages');
+		$query->from('#__users AS u');
+		$query->leftJOIN('#__contact_details AS cd ON cd.user_id=u.id');
+		$query->leftJOIN('#__languages as l on cd.language=l.lang_code');
+		$query->where('EXISTS (SELECT * from #__content as c where  c.created_by=u.id)');
+		$query->where('(l.published=1 or cd.language='.$db->quote('*').')');
+		$query->where('cd.published=1');
+		$query->group('u.id');
+		$query->having('(counted !=' . count(JLanguageHelper::getLanguages()).' OR all_languages=1)');
+		$query->having('(counted !=1 OR all_languages=0)');
 		$db->setQuery($query);
 		return $db->loadObjectList();
 	}
