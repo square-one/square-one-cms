@@ -7,9 +7,10 @@ Square One is a light distribution of Joomla! It is being designed to meet the n
 Square One is being designed to fit specific needs, which primarily focus around making a more streamlined version of Joomla that doesn't include a lot of what are called 'core' extensions. It does not attempt to do suit everyone's needs or wishes though, as it has a specific purpose to fill. The main goals are:
 
  * Simplify Joomla by removing core extensions, particularly ones that are old.
+ * Make it possible to reinstall most of the removed extensions as separate packages.
  * Tweak the CMS slightly to provide some additional basic features that improve simplicity.
  * Keep a focus on simplicity and being a solid base for development.
- * Stay in sync with the Joomla Platform and Joomla CMS as much as possible.
+ * Stay in sync with the Joomla Platform and Joomla CMS.
 
 Just because Square One has removed a feature or functionality doesn't mean that it isn't useful. The mindset is to create a baseline for Joomla! which has the fewest number of default extensions while still being capable of being a CMS.
  
