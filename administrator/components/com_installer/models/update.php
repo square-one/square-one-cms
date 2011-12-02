@@ -137,6 +137,23 @@ class InstallerModelUpdate extends JModelList
 			return false;
 		}
 	}
+    
+    /**
+     * Get current extensions
+     * 
+     * @since   2.5
+     * @return  object
+     */
+    public function getExtensions()
+    {
+        $db = JFactory::getDBO();
+        $db->setQuery('SELECT * FROM #__extensions');
+        if ($extensions = $db->loadObjectList())
+        {
+            return $extensions;
+        }
+        return false;
+    }
 
 	/**
 	 * Update function.
@@ -157,9 +174,11 @@ class InstallerModelUpdate extends JModelList
 			// install sets state and enqueues messages
 			$res = $this->install_update($update);
 
+            // Disabling the purging of the update list, instead deleting specific row
 			if ($res) {
-				$this->purge();
+				$instance->delete($uid);
 			}
+            
 
 			$result = $res & $result;
 		}
@@ -187,8 +206,9 @@ class InstallerModelUpdate extends JModelList
 			// install sets state and enqueues messages
 			$res = $this->install_install($update->get('downloadurl')->_data);
 
+            // Disabling the purging of the update list, instead deleting specific row
 			if ($res) {
-				$this->purge();
+				$instance->delete($uid);
 			}
 
 			$result = $res & $result;

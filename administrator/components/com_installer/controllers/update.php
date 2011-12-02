@@ -10,6 +10,9 @@
 // No direct access
 defined('_JEXEC') or die;
 
+// Import dependencies
+require_once JPATH_COMPONENT_ADMINISTRATOR . '/models/extension.php';
+
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_installer
@@ -95,7 +98,37 @@ class InstallerControllerUpdate extends JController {
 		$model	= $this->getModel('update');
 		$model->purge();
 		$result = $model->findUpdates();
-		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=update',false));
+        
+        // Workaround for removing extentions that are already installed without
+        // overwriting the Platform. Major breech of MVC but I can live with myself for the time being.
+        $updates = $model->getItems();
+        $extensions = $model->getExtensions();
+        $installed = array();
+        foreach ($updates as $update)
+        {
+            foreach ($extensions as $extension)
+            {
+                if ($extension->element == $update->element && $extension->folder == $update->folder && $extension->type == $update->type)
+                {
+                    $installed[] = $update->update_id;
+                    continue;
+                }
+            }
+        }
+        
+        if (count($installed))
+        {
+            $db = JFactory::getDBO();
+            $db->setQuery('DELETE FROM #__updates WHERE update_id IN ('.implode(',', $installed).')');
+            if (!$db->query())
+            {
+                // Should throw an error, but no language strings available
+            }
+        }
+        
+        // End Workaround
+        
+		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=update', false));
 		//$view->display();
 	}
 
