@@ -34,39 +34,42 @@ $doc->addCustomTag('<![endif]-->');
 <jdoc:include type="head" />
 </head>
 <body<?php echo ($column1 || $column2) ? ' class="' . (($column1) ? 'column-1' : '') . (($column1 && $column2) ? ' ' : '') . (($column2) ? 'column-2' : ''). '"':'' ?>>
+  <div id="footer-push">
 
-  <header>
+  <header class="clearfix">
     <h1>
       <a href="<?php echo $baseUrl; ?>"><img src="<?php echo $baseUrl.$template; ?>/images/square-one-logo.png" /></a>
     </h1>
+
+	<?php if ($this->countModules('nav')) : ?>
+	<nav>
+		<jdoc:include type="modules" name="nav" />
+	</nav>
+	<?php endif; ?>
 
     <?php if ($this->countModules('header')) : ?>
     <div>
     <jdoc:include type="modules" name="header" style="xhtml" />
     </div>
     <?php endif; ?>
+
   </header>
 
     <div id="main">
-		<?php if ($this->countModules('nav')) : ?>
-		<nav>
-			<jdoc:include type="modules" name="nav" />
-		</nav>
-		<?php endif; ?>
-        
-        <?php if ($column1) : ?>
-        <div id="column-1">
-            <jdoc:include type="modules" name="column-1" style="xhtml" />
-        </div>
-        <?php endif; ?>
-        
-        <div id="content-main">
+
+	    <div id="content-main">
 			<?php if ($this->getBuffer('message')) : ?>
 				<jdoc:include type="message" />
 			<?php endif; ?>
 
             <jdoc:include type="component" />
         </div>
+
+		<?php if ($column1) : ?>
+		<div id="column-1">
+			<jdoc:include type="modules" name="column-1" style="xhtml" />
+		</div>
+		<?php endif; ?>
         
         <?php if ($column2) : ?>
         <div id="column-2">
@@ -74,6 +77,7 @@ $doc->addCustomTag('<![endif]-->');
         </div>
         <?php endif; ?>
     </div>
+</div>
 
     <footer>
         <jdoc:include type="modules" name="footer" style="xhtml" />
