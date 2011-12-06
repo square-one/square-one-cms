@@ -32,6 +32,11 @@ class InstallerHelper
 			$vName == 'install'
 		);
 		JSubMenuHelper::addEntry(
+			JText::_('COM_INSTALLER_SUBMENU_CORE'),
+			'index.php?option=com_installer&view=core',
+			$vName == 'core'
+		);
+		JSubMenuHelper::addEntry(
 			JText::_('COM_INSTALLER_SUBMENU_UPDATE'),
 			'index.php?option=com_installer&view=update',
 			$vName == 'update'

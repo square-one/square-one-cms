@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: view.html.php 21655 2011-06-23 05:43:24Z chdemko $
+ * @version		$Id$
  * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
@@ -17,7 +17,7 @@ include_once dirname(__FILE__).'/../default/view.php';
  * @subpackage	com_installer
  * @since		1.6
  */
-class InstallerViewUpdate extends InstallerViewDefault
+class InstallerViewCore extends InstallerViewDefault
 {
 	/**
 	 * @since	1.6
@@ -46,9 +46,9 @@ class InstallerViewUpdate extends InstallerViewDefault
 	{
 		$canDo	= InstallerHelper::getActions();
 
-		JToolBarHelper::custom('update.update', 'upload', 'upload', 'COM_INSTALLER_TOOLBAR_UPDATE', true, false);
-		JToolBarHelper::custom('update.find', 'refresh', 'refresh', 'COM_INSTALLER_TOOLBAR_FIND_UPDATES',false,false);
-		JToolBarHelper::custom('update.purge', 'purge', 'purge', 'JTOOLBAR_PURGE_CACHE', false,false);
+        JToolBarHelper::custom('core.install', 'upload', 'upload', 'JTOOLBAR_INSTALL', true, false);
+		JToolBarHelper::custom('core.find', 'refresh', 'refresh', 'COM_INSTALLER_TOOLBAR_FIND_EXTENSIONS',false,false);
+		JToolBarHelper::custom('core.purge', 'purge', 'purge', 'JTOOLBAR_PURGE_CACHE', false,false);
 		JToolBarHelper::divider();
 		parent::addToolbar();
 		JToolBarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_UPDATE');

@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: update.php 22338 2011-11-04 17:24:53Z github_bot $
+ * @version		$Id$
  * @package		Joomla.Administrator
  * @subpackage	com_installer
  * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
@@ -10,27 +10,30 @@
 // No direct access
 defined('_JEXEC') or die;
 
+// Import dependencies
+require_once JPATH_COMPONENT_ADMINISTRATOR . '/models/extension.php';
+
 /**
  * @package		Joomla.Administrator
  * @subpackage	com_installer
  */
-class InstallerControllerUpdate extends JController {
-
-	/**
-	 * Update a set of extensions.
+class InstallerControllerCore extends JController {
+    
+    /**
+	 * Install a set of extensions.
 	 *
-	 * @since	1.6
+	 * @since	1.7
 	 */
-	function update()
+	function install()
 	{
 		// Check for request forgeries
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
-		$model	= $this->getModel('update');
-		$uid	= JRequest::getVar('cid', array(), '', 'array');
+		$model	= $this->getModel('core');
+		$eid	= JRequest::getVar('eid', array(), '', 'array');
 
-		JArrayHelper::toInteger($uid, array());
-		if ($model->update($uid)) {
+		JArrayHelper::toInteger($eid, array());
+		if ($model->install($eid)) {
 			$cache = JFactory::getCache('mod_menu');
 			$cache->clean();
 		}
@@ -38,7 +41,7 @@ class InstallerControllerUpdate extends JController {
 		$app = JFactory::getApplication();
 		$redirect_url = $app->getUserState('com_installer.redirect_url');
 		if(empty($redirect_url)) {
-			$redirect_url = JRoute::_('index.php?option=com_installer&view=update',false);
+			$redirect_url = JRoute::_('index.php?option=com_installer&view=core',false);
 		} else
 		{
 			// wipe out the user state when we're going to redirect
@@ -59,7 +62,7 @@ class InstallerControllerUpdate extends JController {
 		// Find updates
 		// Check for request forgeries
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-		$model	= $this->getModel('update');
+		$model	= $this->getModel('core');
 		$model->purge();
 		$result = $model->findUpdates();
         
@@ -93,8 +96,7 @@ class InstallerControllerUpdate extends JController {
         }
         // End Workaround
         
-		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=update',false));
-		//$view->display();
+		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=core', false));
 	}
 
 	/**
@@ -107,9 +109,9 @@ class InstallerControllerUpdate extends JController {
 		// Purge updates
 		// Check for request forgeries
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-		$model = $this->getModel('update');
+		$model = $this->getModel('core');
 		$model->purge();
 		$model->enableSites();
-		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=update',false), $model->_message);
+		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=core',false), $model->_message);
 	}
 }

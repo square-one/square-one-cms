@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: default.php 22137 2011-09-22 23:45:02Z dextercowley $
+ * @version		$Id$
  * @package		Joomla.Administrator
  * @subpackage	com_installer
  * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
@@ -16,7 +16,7 @@ JHtml::_('behavior.multiselect');
 $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_installer&view=update');?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_installer&view=core');?>" method="post" name="adminForm" id="adminForm">
 	<?php if ($this->showMessage) : ?>
 		<?php echo $this->loadTemplate('message'); ?>
 	<?php endif; ?>
@@ -24,12 +24,13 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	<?php if ($this->ftp) : ?>
 		<?php echo $this->loadTemplate('ftp'); ?>
 	<?php endif; ?>
-
+    
 	<?php if (count($this->items)) : ?>
     <div class="width-100 fltlft">
     <fieldset>
-        <legend><?php echo JText::_('COM_INSTALLER_MSG_UPDATE_UPDATE') ?></legend>
-	<table class="adminlist" cellspacing="1">
+        <legend><?php echo JText::_('COM_INSTALLER_NEW_INSTALL') ?></legend>
+        
+    <table class="adminlist" cellspacing="1">
 		<thead>
 			<tr>
 				<th width="20"><input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" /></th>
@@ -48,11 +49,11 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			</tr>
 		</tfoot>
 		<tbody>
-		<?php foreach($this->items as $i=>$item):
+		<?php foreach($this->items as $i=>$item) : if (!$item->extension_id) :
 			$client	= $item->client_id ? JText::_('JADMINISTRATOR') : JText::_('JSITE');
 		?>
 			<tr class="row<?php echo $i%2; ?>">
-				<td><?php echo JHtml::_('grid.id', $i, $item->update_id); ?></td>
+				<td><?php echo JHtml::_('grid.id', $i, $item->update_id, false, 'eid'); ?></td>
 				<td>
 					<span class="editlinktip hasTip" title="<?php echo JText::_('JGLOBAL_DESCRIPTION');?>::<?php echo $item->description ? $item->description : JText::_('COM_INSTALLER_MSG_UPDATE_NODESC'); ?>">
 					<?php echo $item->name; ?>
@@ -67,13 +68,13 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				<td class="center"><?php echo $client; ?></td>
 				<td><?php echo $item->detailsurl ?></td>
 			</tr>
-		<?php endforeach;?>
+		<?php endif; endforeach;?>
 		</tbody>
 	</table>
     </fieldset>
     </div>
 	<?php else : ?>
-		<p class="nowarning"><?php echo JText::_('COM_INSTALLER_MSG_UPDATE_NOUPDATES'); ?></p>
+		<p class="nowarning"><?php echo JText::_('COM_INSTALLER_MSG_CORE_NOEXTENSIONS'); ?></p>
 	<?php endif; ?>
 
 	<div>

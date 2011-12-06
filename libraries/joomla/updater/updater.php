@@ -109,12 +109,12 @@ class JUpdater extends JAdapter {
 						$extension = JTable::getInstance('extension');
 						$uid = $update->find(array('element'=>strtolower($current_update->get('element')),
 								'type'=>strtolower($current_update->get('type')),
-								'client_id'=>strtolower($current_update->get('client_id')),
+								//'client_id'=>strtolower($current_update->get('client_id')),
 								'folder'=>strtolower($current_update->get('folder'))));
 
 						$eid = $extension->find(array('element'=>strtolower($current_update->get('element')),
 								'type'=>strtolower($current_update->get('type')),
-								'client_id'=>strtolower($current_update->get('client_id')),
+								//'client_id'=>strtolower($current_update->get('client_id')),
 								'folder'=>strtolower($current_update->get('folder'))));
 						if(!$uid)
 						{
