@@ -1,31 +1,4 @@
-#header, #main, #footer {
-    width: 1000px;
+#main {
+    max-width: 80.5em;
     margin: 0 auto;
-}
-#header ul.menu {
-    float: right;
-    list-style: none;
-    margin: 0;
-}
-#header ul.menu li {
-    line-height: 71px;
-    display: inline;
-    padding-left: 10px;
-}
-#content_left, #content_right, #content_left_right, #left, #right {
-    float: left;
-}
-#content_left, #content_right {
-    width: 710px;
-    padding: 0 20px;
-}
-#content_left_right {
-    width: 460px;
-    padding: 0 20px;
-}
-#left, #right {
-    width: 250px;
-}
-.clear {
-    clear: both;
 }
