@@ -76,7 +76,7 @@ a:hover {
 .column-1 #content-main,
 .column-2 #content-main{
 	float: left;
-	width:71.5%;
+	width:69.5%;
 }
 .column-1 #column-1,
 .column-2 #column-2{
@@ -85,7 +85,7 @@ a:hover {
 }
 .column-1.column-2 #content-main{
 	float: left;
-	width: 62%;
+	width: 60%;
 }
 .column-1.column-2 #column-1,
 .column-1.column-2 #column-2 {
@@ -96,7 +96,7 @@ a:hover {
 	margin-right: 1%;
 }
 #main {
-	padding: 0 1em;
+	padding: 1em;
 }
 
 #main,
