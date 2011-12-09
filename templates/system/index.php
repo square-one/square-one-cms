@@ -37,22 +37,23 @@ $doc->addCustomTag('<![endif]-->');
   <div id="footer-push">
 
   <header class="clearfix">
-    <h1>
-      <a href="<?php echo $baseUrl; ?>"><img src="<?php echo $baseUrl.$template; ?>/images/square-one-logo.png" /></a>
-    </h1>
+	  <div class="inner">
+		<h1>
+		  <a href="<?php echo $baseUrl; ?>"><img src="<?php echo $baseUrl.$template; ?>/images/square-one-logo.png" /></a>
+		</h1>
 
-	<?php if ($this->countModules('nav')) : ?>
-	<nav>
-		<jdoc:include type="modules" name="nav" />
-	</nav>
-	<?php endif; ?>
+		<?php if ($this->countModules('nav')) : ?>
+		<nav>
+			<jdoc:include type="modules" name="nav" />
+		</nav>
+		<?php endif; ?>
 
-    <?php if ($this->countModules('header')) : ?>
-    <div>
-    <jdoc:include type="modules" name="header" style="xhtml" />
-    </div>
-    <?php endif; ?>
-
+		<?php if ($this->countModules('header')) : ?>
+		<div>
+		<jdoc:include type="modules" name="header" style="xhtml" />
+		</div>
+		<?php endif; ?>
+	</div>
   </header>
 
     <div id="main">

@@ -1,17 +1,21 @@
 #main {
     max-width: 80.5em;
-    margin: 0 auto;
+	margin: 0 auto;
 }
 header {
-	background: #000;
+	background: #111;
 	padding: 2em 0;
 	border-bottom: 2px solid #00a8ff;
 	  -webkit-box-shadow: 0px 0px 4px #999;
 	     -moz-box-shadow: 0px 0px 4px #999;
 	          box-shadow: 0px 0px 4px #999;
 }
+header .inner {
+	max-width: 80.5em;
+	margin: 0 auto;
+}
 header h1{
-	margin: 0 0 0 1em;
+	margin: 0 1em 0 0;
 	float : left;
 }
 
@@ -19,8 +23,6 @@ header a{
 	color: #fff;
 	text-decoration: none;
 }
-
-
 body{
 	background: #EDEDED;
 	font-size: 76%;
@@ -37,23 +39,27 @@ footer .moduletable{
 	max-width: 80.5em;
 	margin: 0 auto;
 }
-
 nav{
 	max-width:80.5em;
 	margin:0 auto;
 	position:relative;
 	z-index:999;
 }
-nav ul.menu li{float:right;
-	color:#fff;
+nav ul.menu{
+	float : left;
+	padding-top:.5em;
+	margin-left: 1em;
 }
-
+nav ul.menu li{
+	float:left;
+	color:#fff;
+	font-weight: bold;
+	line-height: 1em;
+}
 /*
  * Typography
  */
-
-a
- {
+a {
     text-decoration: none;
 	color:#00a8ff;
 }
@@ -62,6 +68,58 @@ a:hover {
     text-decoration: underline;
 }
 
+/*
+ * Column Layout
+ */
+.column-1 #content-main,
+.column-2 #content-main{
+	float: left;
+	width:71.5%;
+}
+.column-1 #column-1,
+.column-2 #column-2{
+	float : right;
+	width: 28.5%;
+}
+.column-1.column-2 #content-main{
+	float: left;
+	width:62%;
+}
+.column-1.column-2 #column-1,
+.column-1.column-2 #column-2 {
+	float : right;
+	width:19%;
+}
+
+#main {
+	padding: 0 1em;
+}
+
+#main,
+#column-1 .moduletable,
+#column-2 .moduletable {
+	 background: #fff;
+	 -webkit-box-shadow: 0 2px 3px #999;
+     	-moz-box-shadow: 0 2px 3px #999;
+          	box-shadow: 0 2px 3px #999;
+ }
+
+#main h2 {
+border-top: 2px solid #00A8FF;
+background: #111;
+color: #fff;
+padding: .25em 0 .3em .5em;
+}
+
+/* Modules
+****************/
+#column-1 h3,
+#column-2 h3{
+	border-top: 2px solid #00A8FF;
+	background: #111;
+	color: #fff;
+	padding: .25em 0 .5em .5em;
+}
 
 
 /*
@@ -75,7 +133,7 @@ ul.menu {
 ul.menu li {
     float: left;
     position: relative;
-	margin: 0;
+	margin: 0 1em 0 0;
     padding: 0;
 }
 
@@ -148,8 +206,13 @@ nav ul li {
 
 nav ul.menu li a,
 nav ul.menu li span.separator {
-    line-height: 1.8em;
-    padding: 6px 15px 5px;
+    padding: 1em 0 .25em 0 ;
+	border-bottom: 2px solid #00A8FF;
+}
+nav ul.menu li a:hover {
+	text-decoration: none;
+	color:#00A8FF;
+	border-bottom: 2px solid #fff;
 }
 
 nav ul.menu ul ul{
@@ -185,23 +248,27 @@ nav ul.menu ul ul{
  * CSS Sticky Footer
  */
 
-html, body {height: 100%;}
-
-#footer-push {min-height: 100%;}
-
-#main {overflow:auto;
-	padding-bottom: 150px;}  /* must be same height as the footer */
-
-footer {position: relative;
+html, body {
+	height: 100%;
+}
+#footer-push {
+	min-height: 100%;
+}
+#main {
+	overflow:auto;
+	padding-bottom: 150px; /* must be same height as the footer */
+}
+footer {
+	position: relative;
 	margin-top: -152px; /* negative value of footer height */
 	height: 150px;
-	clear:both;}
-
+	clear:both;
+}
 /*Opera Fix*/
-body:before {/* thanks to Maleika (Kohoutec)*/
+body:before {
 content:"";
 height:100%;
 float:left;
 width:0;
-margin-top:-32767px;/* thank you Erik J - negate effect of float*/
-}*/
+margin-top:-32767px;
+}
