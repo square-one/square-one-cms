@@ -11,10 +11,6 @@ body {
  	font-family: Helvetica,Arial,FreeSans,sans-serif;
 	color: #444;
 }
-#main {
-    max-width: 80.5em;
-	margin: 0 auto;
-}
 header {
 	background: #111;
 	padding: 2em 0;
@@ -23,6 +19,7 @@ header {
 	     -moz-box-shadow: 0px 0px 4px #999;
 	          box-shadow: 0px 0px 4px #999;
 }
+#main,
 header .inner {
 	max-width: 80.5em;
 	margin: 0 auto;
@@ -93,9 +90,11 @@ a:hover {
 .column-1.column-2 #column-1,
 .column-1.column-2 #column-2 {
 	float : right;
-	width: 19%;
+	width: 18.5%;
 }
-
+.column-1.column-2 #column-1 {
+	margin-right: 1%;
+}
 #main {
 	padding: 0 1em;
 }
@@ -108,12 +107,6 @@ a:hover {
      	-moz-box-shadow: 0 2px 3px #999;
           	box-shadow: 0 2px 3px #999;
  }
-#main h2 {
-border-top: 2px solid #00A8FF;
-background: #111;
-color: #fff;
-padding: .25em 0 .3em .5em;
-}
 
 /* Modules
  *
@@ -159,12 +152,10 @@ ul.menu ul {
 ul.menu ul li {
     width: 100%;
 }
-
 ul.menu ul ul {
     margin: 0 0 0 100%;
     top: 0;
 }
-
 nav:after,
 #column-1 ul.menu:after,
 #column-2 ul.menu:after {
@@ -175,7 +166,6 @@ nav:after,
     height: 0;
     visibility: hidden;
 }
-
 #column-1 ul.menu,
 #column-2 ul.menu {
     padding: 0;
@@ -187,35 +177,37 @@ nav:after,
     width: 100%;
     margin: 0;
 }
-
 #column-1 ul.menu ul {
     margin: 0 0 0 100%;
     top: 0;
 }
-
 #column-2 ul.menu ul {
     right: 100%;
     top: 0;
 }
-
 nav {
     z-index: 999;
 }
-
 nav ul,
 nav ul li {
     margin: 0;
     padding: 0;
 }
-
 nav ul.menu li a,
 nav ul.menu li span.separator {
     padding: 1em 0 .25em 0 ;
+}
+nav ul.menu li.current a,
+nav ul.menu li.current span.separator {
 	border-bottom: 2px solid #00A8FF;
 }
-nav ul.menu li a:hover {
+nav ul.menu li a:hover,
+nav ul.menu li span.separator:hover {
 	text-decoration: none;
 	color:#00A8FF;
+}
+nav ul.menu li.current a:hover,
+nav ul.menu li.current span.separator:hover {
 	border-bottom: 2px solid #fff;
 }
 

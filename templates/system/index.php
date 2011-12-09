@@ -66,17 +66,18 @@ $doc->addCustomTag('<![endif]-->');
             <jdoc:include type="component" />
         </div>
 
+        <?php if ($column2) : ?>
+        <div id="column-2">
+            <jdoc:include type="modules" name="column-2" style="xhtml" />
+        </div>
+        <?php endif; ?>
+
 		<?php if ($column1) : ?>
 		<div id="column-1">
 			<jdoc:include type="modules" name="column-1" style="xhtml" />
 		</div>
 		<?php endif; ?>
         
-        <?php if ($column2) : ?>
-        <div id="column-2">
-            <jdoc:include type="modules" name="column-2" style="xhtml" />
-        </div>
-        <?php endif; ?>
     </div>
 </div>
 
