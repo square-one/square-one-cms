@@ -1,3 +1,16 @@
+/**
+ * @version		$Id$
+ * @copyright	Copyright (C) 2011 Matt Thomas. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+body {
+	background: #EDEDED;
+	font-size: 76%;
+	line-height: 1.6em;
+ 	font-family: Helvetica,Arial,FreeSans,sans-serif;
+	color: #444;
+}
 #main {
     max-width: 80.5em;
 	margin: 0 auto;
@@ -18,17 +31,9 @@ header h1{
 	margin: 0 1em 0 0;
 	float : left;
 }
-
 header a{
 	color: #fff;
 	text-decoration: none;
-}
-body{
-	background: #EDEDED;
-	font-size: 76%;
-	line-height: 1.6em;
- 	font-family: Helvetica,Arial,FreeSans,sans-serif;
-	color: #444;
 }
 footer {
 	background: #fff;
@@ -56,6 +61,7 @@ nav ul.menu li{
 	font-weight: bold;
 	line-height: 1em;
 }
+
 /*
  * Typography
  */
@@ -63,7 +69,6 @@ a {
     text-decoration: none;
 	color:#00a8ff;
 }
-
 a:hover {
     text-decoration: underline;
 }
@@ -83,12 +88,12 @@ a:hover {
 }
 .column-1.column-2 #content-main{
 	float: left;
-	width:62%;
+	width: 62%;
 }
 .column-1.column-2 #column-1,
 .column-1.column-2 #column-2 {
 	float : right;
-	width:19%;
+	width: 19%;
 }
 
 #main {
@@ -103,7 +108,6 @@ a:hover {
      	-moz-box-shadow: 0 2px 3px #999;
           	box-shadow: 0 2px 3px #999;
  }
-
 #main h2 {
 border-top: 2px solid #00A8FF;
 background: #111;
@@ -112,7 +116,8 @@ padding: .25em 0 .3em .5em;
 }
 
 /* Modules
-****************/
+ *
+ */
 #column-1 h3,
 #column-2 h3{
 	border-top: 2px solid #00A8FF;
@@ -121,9 +126,8 @@ padding: .25em 0 .3em .5em;
 	padding: .25em 0 .5em .5em;
 }
 
-
 /*
- * Menu CSS
+ * Menu
  */
 
 ul.menu {
@@ -219,7 +223,6 @@ nav ul.menu ul ul{
     margin:0 0 0 100%;top:0
 }
 
-
 /*
  * Float Clearing
  */
@@ -231,15 +234,12 @@ nav ul.menu ul ul{
     height: 0;
     overflow: hidden;
 }
-
 .clearfix:after {
     clear: both;
 }
-
 .clearfix {
     zoom: 1;
 }
-
 .clear {
     clear: both;
 }
@@ -266,9 +266,9 @@ footer {
 }
 /*Opera Fix*/
 body:before {
-content:"";
-height:100%;
-float:left;
-width:0;
-margin-top:-32767px;
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;
 }
