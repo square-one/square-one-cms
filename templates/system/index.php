@@ -32,6 +32,11 @@ $doc->addCustomTag('<![endif]-->');
 <!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo substr($this->language, 0, 2); ?>"> <!--<![endif]-->
 <head>
 <jdoc:include type="head" />
+<!--[if !IE 7]>
+	<style type="text/css">
+		#footer-push {display:table;height:100%}
+	</style>
+<![endif]-->
 </head>
 <body<?php echo ($column1 || $column2) ? ' class="' . (($column1) ? 'column-1' : '') . (($column1 && $column2) ? ' ' : '') . (($column2) ? 'column-2' : ''). '"':'' ?>>
   <div id="footer-push">
