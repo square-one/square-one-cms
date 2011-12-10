@@ -97,12 +97,17 @@ a:hover {
 }
 #main {
 	padding: 1em;
+	border-right: 1px solid #999;
+	border-left: 1px solid #999;
 }
 
 #main,
 #column-1 .moduletable,
 #column-2 .moduletable {
 	 background: #fff;
+	border-right: 1px solid #999;
+	border-left: 1px solid #999;
+	border-bottom: 1px solid #999;
 	 -webkit-box-shadow: 0 2px 3px #999;
      	-moz-box-shadow: 0 2px 3px #999;
           	box-shadow: 0 2px 3px #999;

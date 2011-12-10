@@ -15,17 +15,40 @@ if (!isset($this->error)) {
 $doc = JFactory::getDocument();
 $this->language = $doc->language;
 $this->direction = $doc->direction;
+$baseUrl	= JURI::base();
+$template 	= 'templates/'.$this->template;
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="<?php echo substr($this->language, 0, 2); ?>"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="<?php echo substr($this->language, 0, 2); ?>"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="<?php echo substr($this->language, 0, 2); ?>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo substr($this->language, 0, 2); ?>"> <!--<![endif]-->
 <head>
 	<title><?php echo $this->error->getCode(); ?> - <?php echo $this->title; ?></title>
+	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/normalize.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/template.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/error.css" type="text/css" />
 	<?php if ($this->direction == 'rtl') : ?>
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/error_rtl.css" type="text/css" />
 	<?php endif; ?>
+	<!--[if !IE 7]>
+		<style type="text/css">
+			#footer-push {display:table;height:100%}
+		</style>
+	<![endif]-->
 </head>
 <body>
+<div id="footer-push">
+
+	<header class="clearfix">
+	 <div class="inner">
+		<h1>
+		  <a href="<?php echo $baseUrl; ?>"><img src="<?php echo $baseUrl.$template; ?>/images/square-one-logo.png" /></a>
+		</h1>
+	</div>
+	</header>
+
 	<div class="error">
 		<div id="outline">
 		<div id="errorboxoutline">
@@ -59,5 +82,12 @@ $this->direction = $doc->direction;
 		</div>
 		</div>
 	</div>
+</div>
+
+    <footer>
+		<div class="moduletable">
+		<div class="footer1">Copyright © 2011 Square One. All Rights Reserved.</div>
+		<div class="footer2"><a href="http://www.joomla.org">Joomla!</a> is Free Software released under the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License.</a></div>		</div>
+    </footer>
 </body>
 </html>
