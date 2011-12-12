@@ -555,6 +555,7 @@ CREATE TABLE  `#__update_sites` (
   `name` varchar(100) default '',
   `type` varchar(20) default '',
   `location` text NOT NULL,
+  `description` text NOT NULL COMMENT 'Added by Square One for distribution descriptions',
   `enabled` int(11) default '0',
   PRIMARY KEY  (`update_site_id`)
 )  DEFAULT CHARSET=utf8 COMMENT='Update Sites';
