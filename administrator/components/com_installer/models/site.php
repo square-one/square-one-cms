@@ -135,6 +135,17 @@ class InstallerModelSite extends JModelList
         return false;
     }
     
+    public function getDistro($id)
+    {
+        $db = JFactory::getDBO();
+        $db->setQuery('SELECT * FROM #__update_sites WHERE update_site_id = '.$id);
+        if ($row = $db->loadObject())
+        {
+            return $row;
+        }
+        return false;
+    }
+    
     /**
      * Get current extensions
      * 
