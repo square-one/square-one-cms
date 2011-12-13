@@ -111,7 +111,6 @@ class InstallerControllerCore extends JController {
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 		$model = $this->getModel('core');
 		$model->purge();
-		$model->enableSites();
 		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=core',false), $model->_message);
 	}
 }

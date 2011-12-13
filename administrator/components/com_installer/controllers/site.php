@@ -31,6 +31,7 @@ class InstallerControllerSite extends JController {
 
 		$model	= $this->getModel('site');
 		$eid	= JRequest::getVar('eid', array(), '', 'array');
+        $id = JRequest::getVar('id', 0, '', 'int');
 
 		JArrayHelper::toInteger($eid, array());
 		if ($model->install($eid)) {
@@ -41,7 +42,7 @@ class InstallerControllerSite extends JController {
 		$app = JFactory::getApplication();
 		$redirect_url = $app->getUserState('com_installer.redirect_url');
 		if(empty($redirect_url)) {
-			$redirect_url = JRoute::_('index.php?option=com_installer&view=site',false);
+			$redirect_url = JRoute::_('index.php?option=com_installer&view=site&id='.$id,false);
 		} else
 		{
 			// wipe out the user state when we're going to redirect
@@ -65,6 +66,8 @@ class InstallerControllerSite extends JController {
 		$model	= $this->getModel('site');
 		$model->purge();
 		$result = $model->findUpdates();
+        
+        $id = JRequest::getVar('id', 0, '', 'int');
         
         // Workaround for removing extentions that are already installed without
         // overwriting the Platform. Major breech of MVC but I can live with myself for the time being.
@@ -91,12 +94,12 @@ class InstallerControllerSite extends JController {
             $db->setQuery('DELETE FROM #__updates WHERE update_id IN ('.implode(',', $installed).')');
             if (!$db->query())
             {
-                $this->setRedirect(JRoute::_('index.php?option=com_installer&view=site'), JText::_('COM_INSTALLER_MSG_UPDATEERROR'));
+                $this->setRedirect(JRoute::_('index.php?option=com_installer&view=site&id='.$id), JText::_('COM_INSTALLER_MSG_UPDATEERROR'));
             }
         }
         // End Workaround
         
-		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=site', false));
+		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=site&id='.$id, false));
 	}
 
 	/**
@@ -111,7 +114,7 @@ class InstallerControllerSite extends JController {
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 		$model = $this->getModel('core');
 		$model->purge();
-		$model->enableSites();
-		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=site',false), $model->_message);
+        $id = JRequest::getVar('id', 0, '', 'int');
+		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=site&id='.$id,false), $model->_message);
 	}
 }

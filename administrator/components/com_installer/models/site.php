@@ -117,27 +117,6 @@ class InstallerModelSite extends JModelList
 			return false;
 		}
 	}
-
-	/**
-	 * Enables any disabled rows in #__update_sites table
-	 *
-	 * @return	boolean result of operation
-	 * @since	1.6
-	 */
-	public function enableSites()
-	{
-		$db = JFactory::getDBO();
-		$db->setQuery('UPDATE #__update_sites SET enabled = 1 WHERE enabled = 0');
-		if ($db->Query()) {
-			if ($rows = $db->getAffectedRows()) {
-				$this->_message .= JText::plural('COM_INSTALLER_ENABLED_UPDATES', $rows);
-			}
-			return true;
-		} else {
-			$this->_message .= JText::_('COM_INSTALLER_FAILED_TO_ENABLE_UPDATES');
-			return false;
-		}
-	}
     
     /**
      * Get current extensions
@@ -172,38 +151,6 @@ class InstallerModelSite extends JModelList
         }
         return false;
     }
-
-	/**
-	 * Update function.
-	 *
-	 * Sets the "result" state with the result of the operation.
-	 *
-	 * @param	Array[int] List of updates to apply
-	 * @since	1.6
-	 */
-	public function update($uids)
-	{
-		$result = true;
-		foreach($uids as $uid) {
-			$update = new JUpdate();
-			$instance = JTable::getInstance('update');
-			$instance->load($uid);
-			$update->loadFromXML($instance->detailsurl);
-			// install sets state and enqueues messages
-			$res = $this->install_update($update);
-
-            // Disabling the purging of the update list, instead deleting specific row
-			if ($res) {
-				$instance->delete($uid);
-			}
-            
-
-			$result = $res & $result;
-		}
-
-		// Set the final state
-		$this->setState('result', $result);
-	}
     
     /**
 	 * Install function.
