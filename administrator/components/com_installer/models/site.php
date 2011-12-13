@@ -22,7 +22,7 @@ jimport('joomla.updater.update');
  * @subpackage	com_installer
  * @since		1.6
  */
-class InstallerModelCore extends JModelList
+class InstallerModelSite extends JModelList
 {
 	/**
 	 * Constructor.
@@ -75,8 +75,9 @@ class InstallerModelCore extends JModelList
 	{
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
+        $id = JRequest::getVar('id', 0, '', 'int');
 		// grab updates ignoring new installs
-		$query->select('*')->from('#__updates')->where('extension_id = 0')->where('update_site_id = 1');
+		$query->select('*')->from('#__updates')->where('extension_id = 0')->where('update_site_id = '.$id);
 		$query->order($this->getState('list.ordering').' '.$this->getState('list.direction'));
 
 		return $query;
@@ -171,6 +172,38 @@ class InstallerModelCore extends JModelList
         }
         return false;
     }
+
+	/**
+	 * Update function.
+	 *
+	 * Sets the "result" state with the result of the operation.
+	 *
+	 * @param	Array[int] List of updates to apply
+	 * @since	1.6
+	 */
+	public function update($uids)
+	{
+		$result = true;
+		foreach($uids as $uid) {
+			$update = new JUpdate();
+			$instance = JTable::getInstance('update');
+			$instance->load($uid);
+			$update->loadFromXML($instance->detailsurl);
+			// install sets state and enqueues messages
+			$res = $this->install_update($update);
+
+            // Disabling the purging of the update list, instead deleting specific row
+			if ($res) {
+				$instance->delete($uid);
+			}
+            
+
+			$result = $res & $result;
+		}
+
+		// Set the final state
+		$this->setState('result', $result);
+	}
     
     /**
 	 * Install function.
@@ -193,12 +226,12 @@ class InstallerModelCore extends JModelList
 
             // Disabling the purging of the update list, instead deleting specific row
 			if ($res) {
-				$instance->delete($ed);
+				$instance->delete($uid);
 			}
 
 			$result = $res & $result;
 		}
-        
+
 		// Set the final state
 		$this->setState('result', $result);
 	}

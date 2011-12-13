@@ -41,7 +41,7 @@ $listOrder = $this->escape($this->state->get('list.order'));
             <?php foreach ($this->items as $i => $item) : ?>
             <tr class="row<?php echo $i%2; ?>">
                 <td><?php echo JHtml::_('grid.id', $i, $item->update_site_id, false, 'cid'); ?></td>
-                <td><a href=""><?php echo $item->name; ?></a></td>
+                <td><a href="<?php echo JRoute::_('index.php?option=com_installer&view=site&id='.$item->update_site_id); ?>"><?php echo $item->name; ?></a></td>
                 <td><?php echo $item->location; ?></td>
                 <td><?php echo $item->description; ?></td>
                 <td align="center"><?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'sites.'); ?></td>
