@@ -11,12 +11,12 @@ if (!isset($this->error)) {
 	$this->error = JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 	$this->debug = false;
 }
-//get language and direction
+
+$app		= JFactory::getApplication();
 $doc 				= JFactory::getDocument();
+$template 			= 'templates/'.$this->template;
 $this->language 	= $doc->language;
 $this->direction 	= $doc->direction;
-$baseUrl			= JURI::base();
-$template 			= 'templates/'.$this->template;
 
 $renderer  			= $doc->loadRenderer( 'modules' );
 $xhtml 				= array( 'style' => 'xhtml' );
@@ -45,7 +45,7 @@ $xhtml 				= array( 'style' => 'xhtml' );
 	<header class="clearfix">
 	 <div class="inner">
 		<h1>
-		  <a href="<?php echo $baseurl ?>" title="<?php echo $app->getCfg('sitename');?>"><?php echo $app->getCfg('sitename');?></a>
+		  <a href="<?php echo $this->baseurl; ?>" title="<?php echo $app->getCfg('sitename');?>"><?php echo $app->getCfg('sitename');?></a>
 		</h1>
 	</div>
 	</header>

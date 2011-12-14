@@ -9,7 +9,6 @@
 defined('_JEXEC') or die;
 
 $app		= JFactory::getApplication();
-$baseUrl	= JURI::base();
 $doc 		= JFactory::getDocument();
 $template 	= 'templates/'.$this->template;
 
@@ -56,7 +55,7 @@ $doc->addCustomTag('<![endif]-->');
   <header class="clearfix">
 	  <div class="inner">
 		<h1>
-		  <a href="<?php echo $baseUrl; ?>" title="<?php echo $app->getCfg('sitename');?>"><?php echo $app->getCfg('sitename');?></a>
+		  <a href="<?php echo $this->baseurl; ?>" title="<?php echo $app->getCfg('sitename');?>"><?php echo $app->getCfg('sitename');?></a>
 		</h1>
 
 		<?php if ($this->countModules('nav')) : ?>
