@@ -20,7 +20,6 @@ body {
 	margin: 0px;
 	padding: 0px;
 	height: 100%;
-	background: #EDEDED;
 	font-size: 76%;
 	line-height: 1.6em;
  	font-family: Helvetica,Arial,FreeSans,sans-serif;
@@ -64,7 +63,7 @@ table, td, th, div, pre, blockquote, ul, ol, dl, address,.componentheading,.cont
 	font-size: 12px;
 	line-height: 22px;
 	text-align: center;
-	border-bottom: 1px solid #00a8ff;
+	border-bottom: 1px solid #96d300;
 }
 #errorboxbody {
 	margin: 0px;

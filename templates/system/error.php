@@ -12,11 +12,15 @@ if (!isset($this->error)) {
 	$this->debug = false;
 }
 //get language and direction
-$doc = JFactory::getDocument();
-$this->language = $doc->language;
-$this->direction = $doc->direction;
-$baseUrl	= JURI::base();
-$template 	= 'templates/'.$this->template;
+$doc 				= JFactory::getDocument();
+$this->language 	= $doc->language;
+$this->direction 	= $doc->direction;
+$baseUrl			= JURI::base();
+$template 			= 'templates/'.$this->template;
+
+$renderer  			= $doc->loadRenderer( 'modules' );
+$xhtml 				= array( 'style' => 'xhtml' );
+
 ?>
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -31,25 +35,22 @@ $template 	= 'templates/'.$this->template;
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/error.css" type="text/css" />
 	<?php if ($this->direction == 'rtl') : ?>
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/error_rtl.css" type="text/css" />
-	<?php endif; ?>
-	<!--[if !IE 7]>
-		<style type="text/css">
-			#footer-push {display:table;height:100%}
-		</style>
+	<?php endif; ?>	
+	<!--[if lt IE 9]>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
 <body>
-<div id="footer-push">
 
 	<header class="clearfix">
 	 <div class="inner">
 		<h1>
-		  <a href="<?php echo $baseUrl; ?>"><img src="<?php echo $baseUrl.$template; ?>/images/square-one-logo.png" /></a>
+		  <a href="<?php echo $baseurl ?>" title="<?php echo $app->getCfg('sitename');?>"><?php echo $app->getCfg('sitename');?></a>
 		</h1>
 	</div>
 	</header>
 
-	<div class="error">
+	<section class="content error">
 		<div id="outline">
 		<div id="errorboxoutline">
 			<div id="errorboxheader"><?php echo $this->error->getCode(); ?> - <?php echo $this->error->getMessage(); ?></div>
@@ -81,13 +82,10 @@ $template 	= 'templates/'.$this->template;
 			</div>
 		</div>
 		</div>
-	</div>
-</div>
+	</section>
 
     <footer>
-		<div class="moduletable">
-		<div class="footer1">Copyright © 2011 Square One. All Rights Reserved.</div>
-		<div class="footer2"><a href="http://www.joomla.org">Joomla!</a> is Free Software released under the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License.</a></div>		</div>
+		<?php echo $renderer->render('footer', $xhtml, null);  ?>
     </footer>
 </body>
 </html>

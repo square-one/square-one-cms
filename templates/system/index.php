@@ -8,6 +8,7 @@
 
 defined('_JEXEC') or die;
 
+$app		= JFactory::getApplication();
 $baseUrl	= JURI::base();
 $doc 		= JFactory::getDocument();
 $template 	= 'templates/'.$this->template;
@@ -18,6 +19,18 @@ $column2 	= $this->countModules('column-2');
 $doc->addStyleSheet($template.'/css/normalize.css','text/css','screen');
 $doc->addStyleSheet($template.'/css/general.css','text/css','screen');
 $doc->addStyleSheet($template.'/css/template.css','text/css','screen');
+
+// Always force latest IE rendering engine (even in intranet) & Chrome Frame
+$doc->addCustomTag('<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">');
+// Mobile viewport optimized: j.mp/bplateviewport
+$doc->addCustomTag('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
+$doc->addCustomTag('<meta name="copyright" content="'.$app->getCfg('sitename').'" />');
+
+// Site icons
+$doc->addFavicon($template.'/favicon.png','image/png','shortcut icon');
+$doc->addFavicon($template.'/apple-touch-icon-iphone.png','image/png','apple-touch-icon');
+$doc->addCustomTag('<link rel="apple-touch-icon" sizes="72x72" href="' . $template . '/apple-touch-icon-ipad.png"    />');
+$doc->addCustomTag('<link rel="apple-touch-icon" sizes="114x114" href="' . $template . '/apple-touch-icon-iphone4.png" />');
 
 // Internet Explorer Fixes
 $doc->addCustomTag("\n".'  <!--[if lt IE 9]>');
@@ -39,12 +52,11 @@ $doc->addCustomTag('<![endif]-->');
 <![endif]-->
 </head>
 <body<?php echo ($column1 || $column2) ? ' class="' . (($column1) ? 'column-1' : '') . (($column1 && $column2) ? ' ' : '') . (($column2) ? 'column-2' : ''). '"':'' ?>>
-  <div id="footer-push">
 
   <header class="clearfix">
 	  <div class="inner">
 		<h1>
-		  <a href="<?php echo $baseUrl; ?>"><img src="<?php echo $baseUrl.$template; ?>/images/square-one-logo.png" /></a>
+		  <a href="<?php echo $baseUrl; ?>" title="<?php echo $app->getCfg('sitename');?>"><?php echo $app->getCfg('sitename');?></a>
 		</h1>
 
 		<?php if ($this->countModules('nav')) : ?>
@@ -58,11 +70,11 @@ $doc->addCustomTag('<![endif]-->');
 		<jdoc:include type="modules" name="header" style="xhtml" />
 		</div>
 		<?php endif; ?>
-	</div>
+	  </div>
   </header>
 
-    <div id="main">
-
+  <section class="content">
+    <div id="content-container" class="clearfix">
 	    <div id="content-main">
 			<?php if ($this->getBuffer('message')) : ?>
 				<jdoc:include type="message" />
@@ -82,9 +94,10 @@ $doc->addCustomTag('<![endif]-->');
 			<jdoc:include type="modules" name="column-1" style="xhtml" />
 		</div>
 		<?php endif; ?>
-        
+        </div>
     </div>
-</div>
+  </section>
+
 
     <footer>
         <jdoc:include type="modules" name="footer" style="xhtml" />
