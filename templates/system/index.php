@@ -8,52 +8,99 @@
 
 defined('_JEXEC') or die;
 
-$left = $this->countModules('left');
-$right = $this->countModules('right');
+$app		= JFactory::getApplication();
+$doc 		= JFactory::getDocument();
+$template 	= 'templates/'.$this->template;
 
+$column1 	= $this->countModules('column-1');
+$column2 	= $this->countModules('column-2');
+
+$doc->addStyleSheet($template.'/css/normalize.css','text/css','screen');
+$doc->addStyleSheet($template.'/css/general.css','text/css','screen');
+$doc->addStyleSheet($template.'/css/template.css','text/css','screen');
+
+// Always force latest IE rendering engine (even in intranet) & Chrome Frame
+$doc->addCustomTag('<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">');
+// Mobile viewport optimized: j.mp/bplateviewport
+$doc->addCustomTag('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
+$doc->addCustomTag('<meta name="copyright" content="'.$app->getCfg('sitename').'" />');
+
+// Site icons
+$doc->addFavicon($template.'/favicon.png','image/png','shortcut icon');
+$doc->addFavicon($template.'/apple-touch-icon-iphone.png','image/png','apple-touch-icon');
+$doc->addCustomTag('<link rel="apple-touch-icon" sizes="72x72" href="' . $template . '/apple-touch-icon-ipad.png"    />');
+$doc->addCustomTag('<link rel="apple-touch-icon" sizes="114x114" href="' . $template . '/apple-touch-icon-iphone4.png" />');
+
+// Internet Explorer Fixes
+$doc->addCustomTag("\n".'  <!--[if lt IE 9]>');
+$doc->addCustomTag("\n".'  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>');
+$doc->addCustomTag('<![endif]-->');
 ?>
-<!DOCTYPE html>  
-<html lang="<?php echo substr($this->language, 0, 2); ?>">  
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="<?php echo substr($this->language, 0, 2); ?>"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="<?php echo substr($this->language, 0, 2); ?>"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="<?php echo substr($this->language, 0, 2); ?>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo substr($this->language, 0, 2); ?>"> <!--<![endif]-->
 <head>
-    
-    <meta charset="utf-8" />  
-    <jdoc:include type="head" />
-    <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/general.css" type="text/css" />
-    <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/template.css" type="text/css" />
-    
-</head>  
-<body>
-    
-    <div id="header">
-        <a href="<?php echo $this->baseurl ?>"><img src="<?php echo $this->baseurl ?>/templates/system/images/square-one-logo.png" /></a>
-        <jdoc:include type="modules" name="menu" />
-        <div class="clear"></div>
-    </div>
-    
-    <div id="main">
-        
-        <?php if ($left) : ?>
-        <div id="left">
-            <jdoc:include type="modules" name="left" style="xhtml" />
-        </div>
-        <?php endif; ?>
-        
-        <div id="content<?php echo ($left) ? '_left' : ''; echo ($right) ? '_right' : '' ?>">
-            <jdoc:include type="message" />
+<jdoc:include type="head" />
+<!--[if !IE 7]>
+	<style type="text/css">
+		#footer-push {display:table;height:100%}
+	</style>
+<![endif]-->
+</head>
+<body<?php echo ($column1 || $column2) ? ' class="' . (($column1) ? 'column-1' : '') . (($column1 && $column2) ? ' ' : '') . (($column2) ? 'column-2' : ''). '"':'' ?>>
+
+  <header class="clearfix">
+	  <div class="inner">
+		<h1>
+		  <a href="<?php echo $this->baseurl; ?>" title="<?php echo $app->getCfg('sitename');?>"><?php echo $app->getCfg('sitename');?></a>
+		</h1>
+
+		<?php if ($this->countModules('nav')) : ?>
+		<nav>
+			<jdoc:include type="modules" name="nav" />
+		</nav>
+		<?php endif; ?>
+
+		<?php if ($this->countModules('header')) : ?>
+		<div>
+		<jdoc:include type="modules" name="header" style="xhtml" />
+		</div>
+		<?php endif; ?>
+	  </div>
+  </header>
+
+  <section class="content">
+    <div id="content-container" class="clearfix">
+	    <div id="content-main">
+			<?php if ($this->getBuffer('message')) : ?>
+				<jdoc:include type="message" />
+			<?php endif; ?>
+
             <jdoc:include type="component" />
         </div>
-        
-        <?php if ($right) : ?>
-        <div id="right">
-            <jdoc:include type="modules" name="right" style="xhtml" />
+
+        <?php if ($column2) : ?>
+        <div id="column-2">
+            <jdoc:include type="modules" name="column-2" style="xhtml" />
         </div>
         <?php endif; ?>
-        
-        <div class="clear"></div>
+
+		<?php if ($column1) : ?>
+		<div id="column-1">
+			<jdoc:include type="modules" name="column-1" style="xhtml" />
+		</div>
+		<?php endif; ?>
+        </div>
     </div>
-    <div id="footer">
+  </section>
+
+
+    <footer>
         <jdoc:include type="modules" name="footer" style="xhtml" />
-    </div>
+    </footer>
     
 </body>
 </html>

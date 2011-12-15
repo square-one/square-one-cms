@@ -1,30 +1,248 @@
-#header, #main, #footer {
-    width: 1000px;
-    margin: 0 auto;
+/**
+ * @version		$Id$
+ * @copyright	Copyright (C) 2011 Matt Thomas. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+body {
+	font-size: 76%;
+	line-height: 1.6em;
+ 	font-family: Helvetica,Arial,FreeSans,sans-serif;
+	color: #444;
 }
-#header ul.menu {
-    float: right;
-    list-style: none;
+header {
+	background: #111;
+	padding: 2em 0;
+	border-bottom: 2px solid #96d300;
+	  -webkit-box-shadow: 0px 0px 4px #999;
+	     -moz-box-shadow: 0px 0px 4px #999;
+	          box-shadow: 0px 0px 4px #999;
+}
+#content-container,
+header .inner {
+	max-width: 80.5em;
+	margin: 0 auto;
+}
+header h1{
+	margin: 0 1em 0 0;
+	float : left;
+}
+header h1 a{
+    background: url(../images/square-one-logo.png) 0 0 no-repeat;
+    display: block;
+    width: 300px;
+    height: 38px;
+    text-decoration: none;
+    text-indent: -9000em;*/
+}
+header a:hover {
+	border:0;
+}
+header a{
+	color: #fff;
+	text-decoration: none;
+}
+section.content {
+		background: #EDEDED;
+}
+footer {
+	background: #fff;
+	border-top: 2px solid #96d300;
+
+}
+footer .moduletable{
+	max-width: 80.5em;
+	margin: 0 auto;
+}
+/*
+ * Typography
+ */
+a {
+    text-decoration: none;
+	color:/*#00a8ff*/ #0060A1;
+	font-weight: bold;
+}
+a:hover {
+    border-bottom: 2px solid #96d300;
+}
+
+/*
+ * Column Layout
+ */
+.column-1 #content-main,
+.column-2 #content-main{
+	float: left;
+	width:69.5%;
+}
+.column-1 #column-1,
+.column-2 #column-2{
+	float : right;
+	width: 28.5%;
+}
+.column-1.column-2 #content-main{
+	float: left;
+	width: 60%;
+}
+.column-1.column-2 #column-1,
+.column-1.column-2 #column-2 {
+	float : right;
+	width: 18.5%;
+}
+.column-1.column-2 #column-1 {
+	margin-right: 1%;
+}
+#content-container {
+	padding: 1em;
+	border-right: 1px solid #999;
+	border-left: 1px solid #999;
+}
+
+#content-container,
+#column-1 .moduletable,
+#column-2 .moduletable {
+	 background: #fff;
+	border-right: 1px solid #999;
+	border-left: 1px solid #999;
+	border-bottom: 1px solid #999;
+	 -webkit-box-shadow: 0 2px 3px #999;
+     	-moz-box-shadow: 0 2px 3px #999;
+          	box-shadow: 0 2px 3px #999;
+ }
+
+/* Modules
+ *
+ */
+#column-1 h3,
+#column-2 h3{
+	border-top: 2px solid #96d300;
+	background: #111;
+	color: #fff;
+	padding: .25em 0 .5em .5em;
+}
+
+/*
+ * Menu
+ */
+nav ul.menu{
+	float : left;
+	padding-top:.5em;
+	margin-left: 1em;
+}
+nav ul.menu li{
+	float:left;
+	color:#fff;
+	font-weight: bold;
+	line-height: 1em;
+}
+ul.menu {
+    list-style-type: none;
+}
+
+ul.menu li {
+    float: left;
+    position: relative;
+	margin: 0 1em 0 0;
+    padding: 0;
+}
+
+ul.menu a,
+ul.menu span.separator {
+	display: block;
+	padding: .1em .7em;
+}
+/* use padding to indent text */
+
+ul.menu ul {
+    position: absolute;
+    left: -999em;
+    z-index: 999;
+    width: 16em;
+}
+/* change width to alter sub-menu widths */
+
+ul.menu ul li {
+    width: 100%;
+}
+ul.menu ul ul {
+    margin: 0 0 0 100%;
+    top: 0;
+}
+nav:after,
+#column-1 ul.menu:after,
+#column-2 ul.menu:after {
+    clear: both;
+    content: ".";
+    font: 1px/0;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+#column-1 ul.menu,
+#column-2 ul.menu {
+    padding: 0;
+}
+/* adjust to resize menus */
+
+#column-1 ul.menu li,
+#column-2 ul.menu li {
+    width: 100%;
     margin: 0;
 }
-#header ul.menu li {
-    line-height: 71px;
-    display: inline;
-    padding-left: 10px;
+#column-1 ul.menu ul {
+    margin: 0 0 0 100%;
+    top: 0;
 }
-#content_left, #content_right, #content_left_right, #left, #right {
-    float: left;
+#column-2 ul.menu ul {
+    right: 100%;
+    top: 0;
 }
-#content_left, #content_right {
-    width: 710px;
-    padding: 0 20px;
+nav {
+    z-index: 999;
 }
-#content_left_right {
-    width: 460px;
-    padding: 0 20px;
+nav ul,
+nav ul li {
+    margin: 0;
+    padding: 0;
 }
-#left, #right {
-    width: 250px;
+nav ul.menu li a,
+nav ul.menu li span.separator {
+    padding: 1em 0 .25em 0 ;
+}
+nav ul.menu li.current a,
+nav ul.menu li.current span.separator {
+	border-bottom: 2px solid #96d300;
+}
+nav ul.menu li a:hover,
+nav ul.menu li span.separator:hover {
+	text-decoration: none;
+	color:#96d300;
+	border:0;
+}
+nav ul.menu li.current a:hover,
+nav ul.menu li.current span.separator:hover {
+	border-bottom: 2px solid #fff;
+}
+
+nav ul.menu ul ul{
+    margin:0 0 0 100%;top:0
+}
+
+/*
+ * Float Clearing
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    zoom: 1;
 }
 .clear {
     clear: both;
