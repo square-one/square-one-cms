@@ -33,6 +33,14 @@ class InstallerModelSites extends JModelList
         return $query;
     }
     
+    public function getUnprotectedExtensions()
+    {
+        $db = $this->getDbo();
+
+        $list = $db->setQuery('SELECT name, element, folder, type, client_id FROM #__extensions WHERE protected = 0 AND enabled = 1')->loadObjectList();
+        return $list;
+    }
+    
     public function refreshList()
     {
         jimport('joomla.utilities.xmlelement');

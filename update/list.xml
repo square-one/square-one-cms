@@ -6,6 +6,7 @@
 	<extension name="Newsfeeds" element="com_newsfeeds" type="component" version="1.7.0" detailsurl="http://update.squareonecms.org/extensions/com_newsfeeds.xml"/>
 	<extension name="Contacts" element="com_contact" type="component" version="1.7.0" detailsurl="http://update.squareonecms.org/extensions/com_contact.xml"/>
 	<extension name="Banners" element="com_banners" type="component" version="1.7.0" detailsurl="http://update.squareonecms.org/extensions/com_banners.xml"/>
+	<extension name="Messages" element="com_messages" type="component" version="1.7.0" detailsurl="http://update.squareonecms.org/extensions/com_messages.xml"/>
 	
 	<extension name="Banners Module" element="mod_banners" type="module" version="1.7.0" detailsurl="http://update.squareonecms.org/extensions/mod_banners.xml"/>
 	<extension name="Footer Module" element="mod_footer" type="module" version="1.7.0" detailsurl="http://update.squareonecms.org/extensions/mod_footer.xml"/>

@@ -32,6 +32,8 @@ class InstallerViewSites extends InstallerViewDefault
         JToolBarHelper::publish('sites.publish', 'JTOOLBAR_ENABLE', true);
         JToolBarHelper::unpublish('sites.unpublish', 'JTOOLBAR_DISABLE', true);
         JToolBarHelper::divider();
+        JToolBarHelper::custom('sites.generate', 'export', 'export', 'COM_INSTALLER_TOOLBAR_GENERATE', false, false);
+        JToolBarHelper::divider();
         parent::addToolbar();
     }
 }

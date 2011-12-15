@@ -22,6 +22,59 @@ class InstallerControllerSites extends JController {
         $this->setRedirect(JRoute::_('index.php?option=com_installer&view=sites', false));
     }
     
+    public function generate()
+    {
+        JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = $this->getModel('sites');
+        $list = $model->getUnprotectedExtensions();
+        
+        // Render XML
+        $xml = new JXMLElement('<extensionset></extensionset>');
+        $xml->addAttribute('name', 'My Distro');
+        $xml->addAttribute('description', 'My Distro Description');
+        
+        // Bind additional data from manifest and add to xml
+        foreach ($list as $item)
+        {
+            $child = $xml->addChild('extension');
+            $child->addAttribute('name', $item->name);
+            $child->addAttribute('element', $item->element);
+            $child->addAttribute('type', $item->type);
+            
+            switch ($item->type)
+            {
+                case 'component' :
+                    $file = JFile::read(JPATH_ADMINISTRATOR.'/components/'.$item->element.'/'.substr($item->element, 4).'.xml');
+                    break;
+                case 'module' : 
+                    if ($item->client_id) $file = JFile::read(JPATH_ADMINISTRATOR.'/modules/'.$item->element.'/'.substr($item->element, 4).'.xml');
+                    else $file = JFile::read(JPATH_SITE.'/modules/'.$item->element.'/'.substr($item->element, 4).'.xml');
+                    break;
+                case 'plugin' :
+                    $file = JFile::read(JPATH_PLUGINS.'/'.$item->folder.'/'.$item->element.'/'.$item->element.'.xml');
+                    break;
+                case 'template' : 
+                    if ($item->client_id) $file = JFile::read(JPATH_ADMINISTRATOR.'/templates/'.$item->element.'/templateDetails.xml');
+                    else $file = JFile::read(JPATH_SITE.'/templates/'.$item->element.'/templateDetails.xml');
+                    break;
+            }
+            $extension = simplexml_load_string($file);
+            
+            $child->addAttribute('version', $extension->version);
+            $child->addAttribute('detailsurl', $extension->detailsurl);
+        }
+        
+        header('Content-Type: text/xml');
+        header('Content-Disposition: attachment; filename="distro.xml"');
+        header('Content-Transfer-Encoding: binary');
+        print $xml->asXML();
+        
+        exit();
+        
+        //$this->setRedirect(JRoute::_('index.php?option=com_installer&view=sites', false));
+    }
+    
     public function publish()
     {
         JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
