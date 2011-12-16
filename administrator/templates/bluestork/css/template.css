@@ -2069,6 +2069,7 @@ a.jgrid:hover {	text-decoration: none;}
 /* -- TOOLBAR ICON STYLES ----------------------------- */
 .icon-32-send						{	background-image: url(../images/toolbar/icon-32-send.png);	}
 .icon-32-delete						{	background-image: url(../images/toolbar/icon-32-delete.png);	}
+.icon-32-download                   {   background-image: url(../images/toolbar/icon-32-download.png);  }
 .icon-32-help						{	background-image: url(../images/toolbar/icon-32-help.png);	}
 .icon-32-cancel						{	background-image: url(../images/toolbar/icon-32-cancel.png);	}
 .icon-32-checkin					{	background-image: url(../images/toolbar/icon-32-checkin.png);	}
@@ -3147,3 +3148,7 @@ div#element-box.login  {
 div.CodeMirror-wrapping {
 	border: 1px solid #cccccc;
 }
+
+/* Square One Deviations */
+#system-message-container #system-message { margin: 10px 10px 0; }
+#system-message-container #system-message ul { margin-bottom: 0; }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extensionset name="Square One" description="Square One CMS">
-	<extension name="Square One" element="squareone" type="file" version="1.7.2" detailsurl="http://update.squareonecms.org/versions.xml"/>
+	<extension name="Square One" element="squareone" type="file" version="1.7.3" detailsurl="http://update.squareonecms.org/versions.xml"/>
 	
 	<extension name="Weblinks" element="com_weblinks" type="component" version="1.7.0" detailsurl="http://update.squareonecms.org/extensions/com_weblinks.xml"/>
 	<extension name="Newsfeeds" element="com_newsfeeds" type="component" version="1.7.0" detailsurl="http://update.squareonecms.org/extensions/com_newsfeeds.xml"/>

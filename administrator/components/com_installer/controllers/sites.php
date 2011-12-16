@@ -22,7 +22,7 @@ class InstallerControllerSites extends JController {
         $this->setRedirect(JRoute::_('index.php?option=com_installer&view=sites', false));
     }
     
-    public function generate()
+    public function export()
     {
         JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         
@@ -73,6 +73,11 @@ class InstallerControllerSites extends JController {
         exit();
         
         //$this->setRedirect(JRoute::_('index.php?option=com_installer&view=sites', false));
+    }
+    
+    public function import()
+    {
+        
     }
     
     public function publish()

@@ -16,9 +16,17 @@ class InstallerViewSites extends InstallerViewDefault
 {
     public function display($tpl = null)
     {
-        $this->state = $this->get('State');
-        $this->items = $this->get('Items');
-        $this->pagination = $this->get('Pagination');
+        if ($this->getLayout() == 'export')
+        {
+            $model = $this->getModel('sites');
+            $this->items = $model->getUnprotectedExtensions();
+        }
+        else
+        {
+            $this->state = $this->get('State');
+            $this->items = $this->get('Items');
+            $this->pagination = $this->get('Pagination');
+        }
         
         parent::display($tpl);
     }
@@ -32,8 +40,16 @@ class InstallerViewSites extends InstallerViewDefault
         JToolBarHelper::publish('sites.publish', 'JTOOLBAR_ENABLE', true);
         JToolBarHelper::unpublish('sites.unpublish', 'JTOOLBAR_DISABLE', true);
         JToolBarHelper::divider();
-        JToolBarHelper::custom('sites.generate', 'export', 'export', 'COM_INSTALLER_TOOLBAR_GENERATE', false, false);
+        JToolBarHelper::custom('sites.export', 'download', 'download', 'COM_INSTALLER_TOOLBAR_EXPORT', false, false);
+        JToolBarHelper::custom('sites.import', 'upload', 'upload', 'COM_INSTALLER_TOOLBAR_IMPORT', false, false);
         JToolBarHelper::divider();
         parent::addToolbar();
+        
+        if ($this->getLayout() == 'export')
+        {
+            JToolBarHelper::title(JText::_('COM_INSTALLER_HEADER_EXPORT'), 'install');
+            $doc = JFactory::getDocument();
+            $doc->setTitle(JText::_('COM_INSTALLER_TITLE_EXPORT'));
+        }
     }
 }

@@ -36,8 +36,34 @@ class InstallerModelSites extends JModelList
     public function getUnprotectedExtensions()
     {
         $db = $this->getDbo();
-
-        $list = $db->setQuery('SELECT name, element, folder, type, client_id FROM #__extensions WHERE protected = 0 AND enabled = 1')->loadObjectList();
+        $list = $db->setQuery('SELECT extension_id, name, element, folder, type, client_id FROM #__extensions WHERE protected = 0 AND enabled = 1')->loadObjectList();
+        
+        // Bind additional data from manifest and add to xml
+        for ($i = 0; count($list) > $i; $i++)
+        {
+            switch ($list[$i]->type)
+            {
+                case 'component' :
+                    $file = JFile::read(JPATH_ADMINISTRATOR.'/components/'.$list[$i]->element.'/'.substr($list[$i]->element, 4).'.xml');
+                    break;
+                case 'module' : 
+                    if ($list[$i]->client_id) $file = JFile::read(JPATH_ADMINISTRATOR.'/modules/'.$list[$i]->element.'/'.substr($list[$i]->element, 4).'.xml');
+                    else $file = JFile::read(JPATH_SITE.'/modules/'.$list[$i]->element.'/'.substr($list[$i]->element, 4).'.xml');
+                    break;
+                case 'plugin' :
+                    $file = JFile::read(JPATH_PLUGINS.'/'.$list[$i]->folder.'/'.$list[$i]->element.'/'.$list[$i]->element.'.xml');
+                    break;
+                case 'template' : 
+                    if ($list[$i]->client_id) $file = JFile::read(JPATH_ADMINISTRATOR.'/templates/'.$list[$i]->element.'/templateDetails.xml');
+                    else $file = JFile::read(JPATH_SITE.'/templates/'.$list[$i]->element.'/templateDetails.xml');
+                    break;
+            }
+            $extension = simplexml_load_string($file);
+            
+            $list[$i]->version = $extension->version;
+            $list[$i]->detailsurl = $extension->detailsurl;
+        }
+        
         return $list;
     }
     
