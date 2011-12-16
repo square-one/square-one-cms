@@ -20,12 +20,10 @@ body {
 	margin: 0px;
 	padding: 0px;
 	height: 100%;
-	margin-bottom: 1px;
-	background: #FFFFFF;
-	font-family: helvetica, arial, sans-serif;
-	font-weight: normal;
-	padding-top: 0px;
-	margin-top: 0px;
+	font-size: 76%;
+	line-height: 1.6em;
+ 	font-family: Helvetica,Arial,FreeSans,sans-serif;
+	color: #444;
 }
 
 .error {
@@ -39,30 +37,33 @@ table, td, th, div, pre, blockquote, ul, ol, dl, address,.componentheading,.cont
 }
 
 #outline {
-	width: 900px;
+	max-width: 80.5em;
 	margin: 0 auto;
 	padding: 0px;
 	padding-top: 60px;
 	padding-bottom: 60px;
-	background: #FFFFFF;
 }
 #errorboxoutline {
 	width: 900px;
 	margin: 0px;
 	padding: 0px;
 	border: 1px solid #000000;
+	background: #fff;
+ -webkit-box-shadow: 0 2px 3px #999;
+    	-moz-box-shadow: 0 2px 3px #999;
+         	box-shadow: 0 2px 3px #999;
 }
 #errorboxheader {
 	width: 900px;
 	margin: 0px;
 	padding: 0px;
-	background: #E44249;
+	background: #111;
 	color: #FFFFFF;
 	font-weight: bold;
 	font-size: 12px;
 	line-height: 22px;
 	text-align: center;
-	border-bottom: 1px solid #000000;
+	border-bottom: 1px solid #96d300;
 }
 #errorboxbody {
 	margin: 0px;
