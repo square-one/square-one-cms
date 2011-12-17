@@ -28,6 +28,7 @@ class InstallerControllerSites extends JController {
         
         $model = $this->getModel('sites');
         $list = $model->getUnprotectedExtensions();
+        $ids = JRequest::getVar('cid', array(), '', 'array');
         
         // Render XML
         $xml = new JXMLElement('<extensionset></extensionset>');
@@ -37,6 +38,8 @@ class InstallerControllerSites extends JController {
         // Bind additional data from manifest and add to xml
         foreach ($list as $item)
         {
+            if (!in_array($item->extension_id, $ids)) continue;
+            
             $child = $xml->addChild('extension');
             $child->addAttribute('name', $item->name);
             $child->addAttribute('element', $item->element);
@@ -71,8 +74,6 @@ class InstallerControllerSites extends JController {
         print $xml->asXML();
         
         exit();
-        
-        //$this->setRedirect(JRoute::_('index.php?option=com_installer&view=sites', false));
     }
     
     public function import()

@@ -18,7 +18,7 @@ class InstallerViewSites extends InstallerViewDefault
     {
         if ($this->getLayout() == 'export')
         {
-            $model = $this->getModel('sites');
+            $model = JModel::getInstance('Extensions', 'InstallerModel');
             $this->items = $model->getUnprotectedExtensions();
         }
         else
@@ -40,16 +40,10 @@ class InstallerViewSites extends InstallerViewDefault
         JToolBarHelper::publish('sites.publish', 'JTOOLBAR_ENABLE', true);
         JToolBarHelper::unpublish('sites.unpublish', 'JTOOLBAR_DISABLE', true);
         JToolBarHelper::divider();
-        JToolBarHelper::custom('sites.export', 'download', 'download', 'COM_INSTALLER_TOOLBAR_EXPORT', false, false);
-        JToolBarHelper::custom('sites.import', 'upload', 'upload', 'COM_INSTALLER_TOOLBAR_IMPORT', false, false);
+        $toolbar = JToolbar::getInstance();
+        $toolbar->appendButton('Popup', 'download', 'COM_INSTALLER_TOOLBAR_EXPORT', 'index.php?option=com_installer&view=sites&layout=export&tmpl=component', 800, 600);
+        $toolbar->appendButton('Popup', 'upload', 'COM_INSTALLER_TOOLBAR_IMPORT', 'index.php?option=com_installer&view=sites&layout=import&tmpl=component', 600, 200);
         JToolBarHelper::divider();
         parent::addToolbar();
-        
-        if ($this->getLayout() == 'export')
-        {
-            JToolBarHelper::title(JText::_('COM_INSTALLER_HEADER_EXPORT'), 'install');
-            $doc = JFactory::getDocument();
-            $doc->setTitle(JText::_('COM_INSTALLER_TITLE_EXPORT'));
-        }
     }
 }

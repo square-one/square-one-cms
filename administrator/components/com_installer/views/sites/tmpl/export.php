@@ -16,28 +16,37 @@ $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
 
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_installer&view=site');?>" method="post" name="adminForm" id="adminForm">
+
+<form action="<?php echo JRoute::_('index.php?option=com_installer&view=sites');?>" method="post" name="adminForm" id="adminForm">
+  
+    <fieldset>
+		<div class="fltrt">
+			<button type="button" onclick="Joomla.submitform('sites.export', this.form);">
+				<?php echo JText::_('COM_INSTALLER_TOOLBAR_EXPORT');?></button>
+			<button type="button" onclick="<?php echo JRequest::getBool('refresh', 0) ? 'window.parent.location.href=window.parent.location.href;' : '';?>  window.parent.SqueezeBox.close();">
+				<?php echo JText::_('JCANCEL');?></button>
+		</div>
+        <div class="fltlft configuration">
+			<?php echo JText::_('COM_INSTALLER_SELECT_EXTENSIONS_TO_EXPORT') ?>
+		</div>
+	</fieldset>
     
 	<?php if (count($this->items)) : ?>
-    <div class="width-100 fltlft">
-    <fieldset>
-        <legend><?php echo JText::_('COM_INSTALLER_NEW_INSTALL') ?></legend>
-        
     <table class="adminlist" cellspacing="1">
 		<thead>
 			<tr>
 				<th width="20"><input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" /></th>
-				<th class="nowrap"><?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_NAME', 'name', $listDirn, $listOrder); ?></th>
-				<th ><?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_TYPE', 'type', $listDirn, $listOrder); ?></th>
-				<th><?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_FOLDER', 'folder', $listDirn, $listOrder); ?></th>
-				<th><?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_CLIENT', 'client_id', $listDirn, $listOrder); ?></th>
-				<th width="25%"><?php echo JText::_('COM_INSTALLER_HEADING_DETAILSURL'); ?></th>
+				<th class="nowrap"><?php echo JText::_('COM_INSTALLER_HEADING_NAME'); ?></th>
+				<th><?php echo JText::_('COM_INSTALLER_HEADING_TYPE'); ?></th>
+				<th><?php echo JText::_('COM_INSTALLER_HEADING_FOLDER'); ?></th>
+				<th><?php echo JText::_('COM_INSTALLER_HEADING_CLIENT'); ?></th>
+				<th><?php echo JText::_('COM_INSTALLER_HEADING_DETAILSURL'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
 		<?php foreach($this->items as $i=>$item) : ?>
 			<tr class="row<?php echo $i%2; ?>">
-				<td><?php echo JHtml::_('grid.id', $i, $item->extension_id, false, 'eid'); ?></td>
+				<td><?php echo JHtml::_('grid.id', $i, $item->extension_id, false, 'cid'); ?></td>
 				<td><?php echo $item->name; ?></td>
 				<td><?php echo JText::_('COM_INSTALLER_TYPE_' . $item->type) ?></td>
 				<td class="center"><?php echo @$item->folder != '' ? $item->folder : JText::_('COM_INSTALLER_TYPE_NONAPPLICABLE'); ?></td>
@@ -47,17 +56,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<?php endforeach;?>
 		</tbody>
 	</table>
-    </fieldset>
-    </div>
 	<?php else : ?>
-		<p class="nowarning"><?php echo JText::_('COM_INSTALLER_MSG_CORE_NOEXTENSIONS'); ?></p>
+		<p class="nowarning"><?php echo JText::_('COM_INSTALLER_MSG_NOEXTENSIONS'); ?></p>
 	<?php endif; ?>
 
 	<div>
-		<input type="hidden" name="task" value="" />
-		<input type="hidden" name="boxchecked" value="0" />
-		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+		<input type="hidden" name="task" value="export" />
 		<?php echo JHtml::_('form.token'); ?>
 	</div>
 </form>
