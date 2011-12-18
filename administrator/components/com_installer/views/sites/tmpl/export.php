@@ -31,14 +31,21 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		</div>
 	</fieldset>
     
+    <fieldset>
+        <legend>Distribution Details</legend>
+        
+        <input type="text" name="distro[name]" /><label>Name: </label>
+        <input type="text" name="distro[description]" /><label>Description: </label>
+    </fieldset>
+    
 	<?php if (count($this->items)) : ?>
     <table class="adminlist" cellspacing="1">
 		<thead>
 			<tr>
 				<th width="20"><input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" /></th>
 				<th class="nowrap"><?php echo JText::_('COM_INSTALLER_HEADING_NAME'); ?></th>
-				<th><?php echo JText::_('COM_INSTALLER_HEADING_TYPE'); ?></th>
-				<th><?php echo JText::_('COM_INSTALLER_HEADING_FOLDER'); ?></th>
+				<th width="30px"><?php echo JText::_('COM_INSTALLER_HEADING_TYPE'); ?></th>
+				<th width="30px"><?php echo JText::_('COM_INSTALLER_HEADING_FOLDER'); ?></th>
 				<th><?php echo JText::_('COM_INSTALLER_HEADING_CLIENT'); ?></th>
 				<th><?php echo JText::_('COM_INSTALLER_HEADING_DETAILSURL'); ?></th>
 			</tr>
@@ -48,8 +55,8 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<tr class="row<?php echo $i%2; ?>">
 				<td><?php echo JHtml::_('grid.id', $i, $item->extension_id, false, 'cid'); ?></td>
 				<td><?php echo $item->name; ?></td>
-				<td><?php echo JText::_('COM_INSTALLER_TYPE_' . $item->type) ?></td>
-				<td class="center"><?php echo @$item->folder != '' ? $item->folder : JText::_('COM_INSTALLER_TYPE_NONAPPLICABLE'); ?></td>
+				<td class="center"><?php echo JText::_('COM_INSTALLER_TYPE_' . $item->type) ?></td>
+				<td class="center"><?php echo ($item->folder != '') ? $item->folder : JText::_('COM_INSTALLER_TYPE_NONAPPLICABLE'); ?></td>
 				<td class="center"><?php echo $item->client_id ? JText::_('JADMINISTRATOR') : JText::_('JSITE'); ?></td>
 				<td><?php echo $item->detailsurl ?></td>
 			</tr>

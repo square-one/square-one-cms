@@ -10,7 +10,10 @@
 
 defined('_JEXEC') or die;
 
-class InstallerControllerSites extends JController {
+jimport('joomla.application.component.controlleradmin');
+
+class InstallerControllerSites extends JControllerAdmin 
+{
     
     public function refresh()
     {
@@ -29,18 +32,23 @@ class InstallerControllerSites extends JController {
         $model = $this->getModel('sites');
         $list = $model->getUnprotectedExtensions();
         $ids = JRequest::getVar('cid', array(), '', 'array');
+        $distro = JRequest::getVar('distro', array(), '', 'array');
         
         // Render XML
-        $xml = new JXMLElement('<extensionset></extensionset>');
-        $xml->addAttribute('name', 'My Distro');
-        $xml->addAttribute('description', 'My Distro Description');
+        $xml = new JXMLElement('<distribution></distribution>');
+        $xml->addChild('name');
+        $xml->name = $distro['name'];
+        $xml->addChild('description');
+        $xml->description = $distro['description'];
+        
+        $extensions = $xml->addChild('extensions');
         
         // Bind additional data from manifest and add to xml
         foreach ($list as $item)
         {
             if (!in_array($item->extension_id, $ids)) continue;
             
-            $child = $xml->addChild('extension');
+            $child = $extensions->addChild('extension');
             $child->addAttribute('name', $item->name);
             $child->addAttribute('element', $item->element);
             $child->addAttribute('type', $item->type);
@@ -68,71 +76,21 @@ class InstallerControllerSites extends JController {
             $child->addAttribute('detailsurl', $extension->detailsurl);
         }
         
+        $host = JURI::getInstance();
+        $filename = 'distro-'.$host->getHost();
+        
         header('Content-Type: text/xml');
-        header('Content-Disposition: attachment; filename="distro.xml"');
+        header('Content-Disposition: attachment; filename="'.$filename.'.xml"');
         header('Content-Transfer-Encoding: binary');
         print $xml->asXML();
         
         exit();
     }
     
-    public function import()
-    {
-        
-    }
-    
-    public function publish()
-    {
-        JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-        
-        $ids = JRequest::getVar('cid', array(), '', 'array');
-        if (empty($ids))
-        {
-            JError::raiseWarning(500, JText::_('COM_INSTALLER_ERROR_NO_DISTRIBUTIONS_SELECTED'));
-        }
-        else
-        {
-            $model = $this->getModel('sites');
-            
-            if ($model->publish($ids, 1))
-            {
-                $this->setMessage(JText::plural('COM_INSTALLER_MSG_DISTRIBUTIONS_PUBLISHED', count($ids)));
-            }
-            else
-            {
-                JError::raiseWarning(500, implode('<br />', $model->getErrors()));
-            }
-        }
-        
-        
-        $this->setRedirect(JRoute::_('index.php?option=com_installer&view=sites', false));
-    }
-    
-    public function unpublish()
-    {
-        JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-        
-        $ids = JRequest::getVar('cid', array(), '', 'array');
-        if (empty($ids))
-        {
-            JError::raiseWarning(500, JText::_('COM_INSTALLER_ERROR_NO_DISTRIBUTIONS_SELECTED'));
-        }
-        else
-        {
-            $model = $this->getModel('sites');
-            
-            if ($model->publish($ids, 0))
-            {
-                $this->setMessage(JText::plural('COM_INSTALLER_MSG_DISTRIBUTIONS_UNPUBLISHED', count($ids)));
-            }
-            else
-            {
-                JError::raiseWarning(500, implode('<br />', $model->getErrors()));
-            }
-        }
-        
-        
-        $this->setRedirect(JRoute::_('index.php?option=com_installer&view=sites', false));
-    }
+	public function &getModel($name = 'Sites', $prefix = 'InstallerModel', $config = array())
+	{
+		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
+		return $model;
+	}
     
 }

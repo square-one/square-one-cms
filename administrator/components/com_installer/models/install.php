@@ -64,6 +64,11 @@ class InstallerModelInstall extends JModel
 		$this->setState('install.directory', $path);
 		parent::populateState();
 	}
+    
+    public function install_distribution()
+    {
+        // Handle distribution installation
+    }
 
 	/**
 	 * Install an extension from either folder, url or upload.
@@ -94,7 +99,7 @@ class InstallerModelInstall extends JModel
 			case 'url':
 				$package = $this->_getPackageFromUrl();
 				break;
-
+            
 			default:
 				$app->setUserState('com_installer.message', JText::_('COM_INSTALLER_NO_INSTALL_TYPE_FOUND'));
 				return false;

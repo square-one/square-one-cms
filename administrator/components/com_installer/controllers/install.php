@@ -27,12 +27,25 @@ class InstallerControllerInstall extends JController
 		// Check for request forgeries
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
+        
 		$model = $this->getModel('install');
-		if ($model->install()) {
-			$cache = JFactory::getCache('mod_menu');
-			$cache->clean();
-			// TODO: Reset the users acl here as well to kill off any missing bits
-		}
+        if (JRequest::getWord('installtype') == 'distribution')
+        {
+            if ($model->install_distribution())
+            {
+                $cache = JFactory::getCache('mod_menu');
+                $cache->clean();
+            }
+        }
+        else
+        {
+            if ($model->install()) {
+                $cache = JFactory::getCache('mod_menu');
+                $cache->clean();
+                // TODO: Reset the users acl here as well to kill off any missing bits
+            }
+        }
+		
 
 		$app = JFactory::getApplication();
 		$redirect_url = $app->getUserState('com_installer.redirect_url');

@@ -42,7 +42,6 @@ class InstallerViewSites extends InstallerViewDefault
         JToolBarHelper::divider();
         $toolbar = JToolbar::getInstance();
         $toolbar->appendButton('Popup', 'download', 'COM_INSTALLER_TOOLBAR_EXPORT', 'index.php?option=com_installer&view=sites&layout=export&tmpl=component', 800, 600);
-        $toolbar->appendButton('Popup', 'upload', 'COM_INSTALLER_TOOLBAR_IMPORT', 'index.php?option=com_installer&view=sites&layout=import&tmpl=component', 600, 200);
         JToolBarHelper::divider();
         parent::addToolbar();
     }
