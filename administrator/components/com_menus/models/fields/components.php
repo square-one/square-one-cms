@@ -25,7 +25,7 @@ class JFormFieldComponents extends JFormFieldList
 							||	$lang->load($component->element.'.sys', JPATH_ADMINISTRATOR.'/components/'.$component->element, $lang->getDefault(), false, false);
 			$options[] = JHtml::_('select.option', $component->extension_id, JText::_($component->name));
 		}
-        
+                
         return $options;
     }
 

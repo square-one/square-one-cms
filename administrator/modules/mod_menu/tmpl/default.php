@@ -21,9 +21,7 @@ foreach ($list as $i => &$item) :
 		$class .= ' current';
 	}
 
-	if ($item->deeper) {
-		$class .= ' deeper';
-	}
+	
 
 	if ($item->parent) {
 		$class .= ' node';
@@ -32,21 +30,32 @@ foreach ($list as $i => &$item) :
 	if (!empty($class)) {
 		$class = ' class="'.trim($class) .'"';
 	}
+    
+    if ($disabled) {
+		$class = ' class="disabled"';
+	}
 
 	echo '<li'.$class.'>';
 
 	// Render the menu item.
-	switch ($item->type) :
-		case 'separator':
-		case 'url':
-		case 'component':
-			require JModuleHelper::getLayoutPath('mod_menu', 'default_'.$item->type);
-			break;
+    if ($disabled) {
+        require JModuleHelper::getLayoutPath('mod_menu', 'default_disabled');
+        
+    }
+    else 
+    {
+        switch ($item->type) :
+            case 'separator':
+            case 'url':
+            case 'component':
+                require JModuleHelper::getLayoutPath('mod_menu', 'default_'.$item->type);
+                break;
 
-		default:
-			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
-			break;
-	endswitch;
+            default:
+                require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+                break;
+        endswitch;
+    }
 
 	// The next item is deeper.
 	if ($item->deeper) {

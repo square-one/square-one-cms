@@ -123,7 +123,7 @@ class MenusControllerAdminitem extends JControllerForm
 		$model		= $this->getModel('adminitem', '', array());
 		$data		= JRequest::getVar('jform', array(), 'post', 'array');
 		$task		= $this->getTask();
-		$context	= 'com_menus.edit.item';
+		$context	= 'com_menus.edit.adminitem';
 		$recordId	= JRequest::getInt('id');
 
 		if (!$this->checkEditId($context, $recordId)) {

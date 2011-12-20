@@ -109,7 +109,7 @@ class MenusViewAdminitems extends JView
 											// Look for the first view node off of the root node.
 											if ($layout = $xml->xpath('layout[1]')) {
 												if (!empty($layout[0]['title'])) {
-													$value .= ' » ' . JText::_(trim((string) $layout[0]['title']));
+													//$value .= ' » ' . JText::_(trim((string) $layout[0]['title']));
 												}
 											}
 											if (!empty($layout[0]->message[0])) {
@@ -122,7 +122,7 @@ class MenusViewAdminitems extends JView
 							}
 							else {
 								// Special case for absent views
-								$value .= ' » ' . JText::_($item->componentname.'_'.$vars['view'].'_VIEW_DEFAULT_TITLE');
+								//$value .= ' » ' . JText::_($item->componentname.'_'.$vars['view'].'_VIEW_DEFAULT_TITLE');
 							}
 						}
 					}

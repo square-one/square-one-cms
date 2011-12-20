@@ -23,7 +23,7 @@ class modMenuHelper
 	 * @return	array
 	 * @since	1.5
 	 */
-	static function getList()
+	static function getList($disabled = false)
 	{
 		$user = JFactory::getUser();
 		$levels = $user->getAuthorisedViewLevels();
@@ -44,8 +44,8 @@ class modMenuHelper
 
 			$path		= $active->tree;
 			$start		= 0;
-			$end		= false;
-			$showAll	= true;
+			$end		= ($disabled) ? false : true;
+			$showAll	= ($disabled) ? false : true;
 			$maxdepth	= false;
 			$items 		= $menu->getItems('menutype', 'main');
             
@@ -83,30 +83,6 @@ class modMenuHelper
 					$lastitem			= $i;
 					$item->active		= false;
 					$item->flink = $item->link;
-
-					switch ($item->type)
-					{
-						case 'separator':
-							// No further action needed.
-							continue;
-
-						case 'url':
-							if ((strpos($item->link, 'index.php?') === 0) && (strpos($item->link, 'Itemid=') === false)) {
-								// If this is an internal Joomla link, ensure the Itemid is set.
-								$item->flink = $item->link.'&Itemid='.$item->id;
-							}
-							break;
-
-						default:
-							$router = JAdministrator::getRouter();
-							if ($router->getMode() == JROUTER_MODE_SEF) {
-								$item->flink = 'index.php?Itemid='.$item->id;
-							}
-							else {
-								$item->flink .= '&Itemid='.$item->id;
-							}
-							break;
-					}
 
 					if (strcasecmp(substr($item->flink, 0, 4), 'http') && (strpos($item->flink, 'index.php?') !== false)) {
 						$item->flink = JRoute::_($item->flink, true, $item->params->get('secure'));
