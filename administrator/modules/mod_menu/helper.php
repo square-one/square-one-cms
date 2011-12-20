@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id:mod_menu.php 2463 2006-02-18 06:05:38Z webImagery $
+ * @version		$Id$
  * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
@@ -9,121 +9,127 @@
 defined('_JEXEC') or die;
 
 /**
- * @package		Joomla.Administrator
+ * @package		Joomla.Site
  * @subpackage	mod_menu
  * @since		1.5
  */
-abstract class ModMenuHelper
+class modMenuHelper
 {
 	/**
-	 * Get a list of the available menus.
+	 * Get a list of the menu items.
 	 *
-	 * @return	array	An array of the available menus (from the menu types table).
-	 * @since	1.6
+	 * @param	JRegistry	$params	The module options.
+	 *
+	 * @return	array
+	 * @since	1.5
 	 */
-	public static function getMenus()
+	static function getList()
 	{
-		$db		= JFactory::getDbo();
-		$query	= $db->getQuery(true);
+		$user = JFactory::getUser();
+		$levels = $user->getAuthorisedViewLevels();
+		asort($levels);
+		$key = 'menu_items'.implode(',', $levels);
+		$cache = JFactory::getCache('mod_menu', '');
+		if (!($items = $cache->get($key)))
+		{
+			// Initialise variables.
+			$list		= array();
+			$db			= JFactory::getDbo();
+			$user		= JFactory::getUser();
+			$app		= JFactory::getApplication();
+			$menu		= JMenu::getInstance('administrator');
 
-		$query->select('a.*, SUM(b.home) AS home');
-		$query->from('#__menu_types AS a');
-		$query->leftJoin('#__menu AS b ON b.menutype = a.menutype AND b.home != 0');
-		$query->select('b.language');
-		$query->leftJoin('#__languages AS l ON l.lang_code = language');
-		$query->select('l.image');
-		$query->select('l.sef');
-		$query->select('l.title_native');
-		$query->where('(b.client_id = 0 OR b.client_id IS NULL)');
-		$query->group('a.id');
+			// If no active menu, use default
+			$active = ($menu->getActive()) ? $menu->getActive() : $menu->getDefault();
 
-		$db->setQuery($query);
+			$path		= $active->tree;
+			$start		= 0;
+			$end		= false;
+			$showAll	= true;
+			$maxdepth	= false;
+			$items 		= $menu->getItems('menutype', 'main');
+            
+            $lang = JFactory::getLanguage();
 
-		$result = $db->loadObjectList();
+			$lastitem	= 0;
 
-		return $result;
-	}
+			if ($items) {
+				foreach($items as $i => $item)
+				{
+					if (($start && $start > $item->level)
+						|| ($end && $item->level > $end)
+						|| (!$showAll && $item->level > 1 && !in_array($item->parent_id, $path))
+						|| ($maxdepth && $item->level > $maxdepth)
+						|| ($start > 1 && !in_array($item->tree[$start-2], $path))
+					) {
+						unset($items[$i]);
+						continue;
+					}
+                    
+                    if ($item->component) $lang->load($item->component.'.sys', JPATH_ADMINISTRATOR);
 
-	/**
-	 * Get a list of the authorised, non-special components to display in the components menu.
-	 *
-	 * @param	boolean	$authCheck	An optional switch to turn off the auth check (to support custom layouts 'grey out' behaviour).
-	 *
-	 * @return	array	A nest array of component objects and submenus
-	 * @since	1.6
-	 */
-	public static function getComponents($authCheck = true)
-	{
-		// Initialise variables.
-		$lang	= JFactory::getLanguage();
-		$user	= JFactory::getUser();
-		$db		= JFactory::getDbo();
-		$query	= $db->getQuery(true);
-		$result	= array();
-		$langs	= array();
+					$item->deeper = false;
+					$item->shallower = false;
+					$item->level_diff = 0;
 
-		// Prepare the query.
-		$query->select('m.id, m.title, m.alias, m.link, m.parent_id, m.img, e.element');
-		$query->from('#__menu AS m');
-
-		// Filter on the enabled states.
-		$query->leftJoin('#__extensions AS e ON m.component_id = e.extension_id');
-		$query->where('m.client_id = 1');
-		$query->where('e.enabled = 1');
-        $query->where('m.published = 1');
-		$query->where('m.id > 1');
-
-		// Order by lft.
-		$query->order('m.lft');
-
-		$db->setQuery($query);
-		// component list
-		$components	= $db->loadObjectList();
-
-		// Parse the list of extensions.
-		foreach ($components as &$component) {
-			// Trim the menu link.
-			$component->link = trim($component->link);
-
-			if ($component->parent_id == 1) {
-				// Only add this top level if it is authorised and enabled.
-				if ($authCheck == false || ($authCheck && $user->authorise('core.manage', $component->element))) {
-					// Root level.
-					$result[$component->id] = $component;
-					if (!isset($result[$component->id]->submenu)) {
-						$result[$component->id]->submenu = array();
+					if (isset($items[$lastitem])) {
+						$items[$lastitem]->deeper		= ($item->level > $items[$lastitem]->level);
+						$items[$lastitem]->shallower	= ($item->level < $items[$lastitem]->level);
+						$items[$lastitem]->level_diff	= ($items[$lastitem]->level - $item->level);
 					}
 
-					// If the root menu link is empty, add it in.
-					if (empty($component->link)) {
-						$component->link = 'index.php?option='.$component->element;
+					$item->parent = (boolean) $menu->getItems('parent_id', (int) $item->id, true);
+
+					$lastitem			= $i;
+					$item->active		= false;
+					$item->flink = $item->link;
+
+					switch ($item->type)
+					{
+						case 'separator':
+							// No further action needed.
+							continue;
+
+						case 'url':
+							if ((strpos($item->link, 'index.php?') === 0) && (strpos($item->link, 'Itemid=') === false)) {
+								// If this is an internal Joomla link, ensure the Itemid is set.
+								$item->flink = $item->link.'&Itemid='.$item->id;
+							}
+							break;
+
+						default:
+							$router = JAdministrator::getRouter();
+							if ($router->getMode() == JROUTER_MODE_SEF) {
+								$item->flink = 'index.php?Itemid='.$item->id;
+							}
+							else {
+								$item->flink .= '&Itemid='.$item->id;
+							}
+							break;
 					}
 
-					if (!empty($component->element)) {
-						// Load the core file then
-						// Load extension-local file.
-						$lang->load($component->element.'.sys', JPATH_BASE, null, false, false)
-					||	$lang->load($component->element.'.sys', JPATH_ADMINISTRATOR.'/components/'.$component->element, null, false, false)
-					||	$lang->load($component->element.'.sys', JPATH_BASE, $lang->getDefault(), false, false)
-					||	$lang->load($component->element.'.sys', JPATH_ADMINISTRATOR.'/components/'.$component->element, $lang->getDefault(), false, false);
+					if (strcasecmp(substr($item->flink, 0, 4), 'http') && (strpos($item->flink, 'index.php?') !== false)) {
+						$item->flink = JRoute::_($item->flink, true, $item->params->get('secure'));
 					}
-					$component->text = $lang->hasKey($component->title) ? JText::_($component->title) : $component->alias;
+					else {
+						$item->flink = JRoute::_($item->flink);
+					}
+
+					$item->title = htmlspecialchars($item->title);
+					$item->anchor_css = htmlspecialchars($item->params->get('menu-anchor_css', ''));
+					$item->anchor_title = htmlspecialchars($item->params->get('menu-anchor_title', ''));
+					$item->menu_image = $item->params->get('menu_image', '') ? htmlspecialchars($item->params->get('menu_image', '')) : '';
 				}
-			} else {
-				// Sub-menu level.
-				if (isset($result[$component->parent_id])) {
-					// Add the submenu link if it is defined.
-					if (isset($result[$component->parent_id]->submenu) && !empty($component->link)) {
-						$component->text = $lang->hasKey($component->title) ? JText::_($component->title) : $component->alias;
-						$result[$component->parent_id]->submenu[] = &$component;
-					}
+
+				if (isset($items[$lastitem])) {
+					$items[$lastitem]->deeper		= (($start?$start:1) > $items[$lastitem]->level);
+					$items[$lastitem]->shallower	= (($start?$start:1) < $items[$lastitem]->level);
+					$items[$lastitem]->level_diff	= ($items[$lastitem]->level - ($start?$start:1));
 				}
 			}
+
+			$cache->store($items, $key);
 		}
-
-        // Disable the sorting to retain the ordering selected
-		//$result = JArrayHelper::sortObjects($result, 'text', 1, true, $lang->getLocale());
-
-		return $result;
+		return $items;
 	}
 }
