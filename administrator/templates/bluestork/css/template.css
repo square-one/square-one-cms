@@ -2255,7 +2255,7 @@ a.jgrid:hover {	text-decoration: none;}
 
 #menu a,
 #menu div {
-	padding: 0.35em 1em 0.35em;
+	padding: 0.35em 0.5em 0.35em 2em;
 	margin: 0 1px 0 1px;
 	color: #333333;
 	line-height: 1.6em;

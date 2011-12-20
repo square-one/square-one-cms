@@ -39,6 +39,11 @@ class MenusHelper
 			'index.php?option=com_menus&view=items',
 			$vName == 'items'
 		);
+        JSubMenuHelper::addEntry(
+			JText::_('COM_MENUS_SUBMENU_ADMINITEMS'),
+			'index.php?option=com_menus&view=adminitems',
+			$vName == 'adminitems'
+		);
 	}
 
 	/**

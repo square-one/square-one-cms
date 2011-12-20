@@ -70,10 +70,11 @@ abstract class ModMenuHelper
 		$query->leftJoin('#__extensions AS e ON m.component_id = e.extension_id');
 		$query->where('m.client_id = 1');
 		$query->where('e.enabled = 1');
+        $query->where('m.published = 1');
 		$query->where('m.id > 1');
 
 		// Order by lft.
-		$query->order('m.lft');
+		$query->order('m.ordering');
 
 		$db->setQuery($query);
 		// component list
@@ -120,7 +121,8 @@ abstract class ModMenuHelper
 			}
 		}
 
-		$result = JArrayHelper::sortObjects($result, 'text', 1, true, $lang->getLocale());
+        // Disable the sorting to retain the ordering selected
+		//$result = JArrayHelper::sortObjects($result, 'text', 1, true, $lang->getLocale());
 
 		return $result;
 	}
