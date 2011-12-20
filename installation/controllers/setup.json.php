@@ -140,8 +140,17 @@ class JInstallationControllerSetup extends JController
 				'sample_installed' => '0'
 			);
 			$dummy = $model->storeOptions($data);
+            
+            // Skips FTP Config if server is a good boy
+            if (is_writable(dirname(__FILE__).'/index.html')) 
+            {
+                $r->view = 'site';
+            }
+            else
+            {
+                $r->view = 'filesystem';
+            }
 
-			$r->view = 'filesystem';
 			$this->sendResponse($r);
 		}
 	}
