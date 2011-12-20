@@ -39,6 +39,13 @@
 			description="COM_MENUS_ITEM_FIELD_NOTE_DESC"
 			class="inputbox"
 			size="40"/>
+            
+        <field
+            name="img"
+            type="classes"
+            label="COM_MENUS_ITEM_FIELD_MENU_IMAGE_LABEL"
+            descripton="COM_MENUS_ITEM_FIELD_MENU_IMAGE_DESC"
+            class="inputbox" />
 
 		<field
 			name="link"
@@ -81,7 +88,7 @@
 
 		<field
 			name="parent_id"
-			type="menuparent"
+			type="adminmenuparent"
 			label="COM_MENUS_ITEM_FIELD_PARENT_LABEL"
 			description="COM_MENUS_ITEM_FIELD_PARENT_DESC"
 			default="1"
@@ -94,7 +101,7 @@
 
 		<field
 			name="menuordering"		
-			type="menuordering"
+			type="adminmenuordering"
 			label="COM_MENUS_ITEM_FIELD_ORDERING_LABEL"
 			description="COM_MENUS_ITEM_FIELD_ORDERING_DESC"
 			default="-1"

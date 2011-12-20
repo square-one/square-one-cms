@@ -31,6 +31,7 @@ class JFormFieldComponents extends JFormFieldList
 
 	protected function _getComponents()
 	{
+        $lang = JFactory::getLanguage();
 		// Get the list of components.
 		$db = JFactory::getDBO();
 		$db->setQuery(
@@ -41,6 +42,8 @@ class JFormFieldComponents extends JFormFieldList
 			' ORDER BY `name`'
 		);
 		$components = $db->loadObjectList();
+        
+        $components = JArrayHelper::sortObjects($components, 'name', 1, true, $lang->getLocale());
 
 		return $components;
 	}

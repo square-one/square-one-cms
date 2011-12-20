@@ -228,32 +228,6 @@ if ($user->authorise('core.manage', 'com_content'))
 }
 
 //
-// Components Submenu
-//
-
-// Get the authorised components and sub-menus.
-$components = ModMenuHelper::getComponents( true );
-
-// Check if there are any components, otherwise, don't render the menu
-if ($components) {
-
-	foreach ($components as &$component) {
-		if (!empty($component->submenu)) {
-			// This component has a db driven submenu.
-			$menu->addChild(new JMenuNode($component->text, $component->link, $component->img), true);
-			foreach ($component->submenu as $sub) {
-				$menu->addChild(new JMenuNode($sub->text, $sub->link, $sub->img));
-			}
-			$menu->getParent();
-		}
-		else {
-			$menu->addChild(new JMenuNode($component->text, $component->link, $component->img));
-		}
-	}
-	//$menu->getParent();
-}
-
-//
 // Extensions Submenu
 //
 $im = $user->authorise('core.manage', 'com_installer');
@@ -284,4 +258,39 @@ if ($im || $mm || $pm || $tm || $lm)
 		$menu->addChild(new JMenuNode(JText::_('MOD_MENU_EXTENSIONS_LANGUAGE_MANAGER'), 'index.php?option=com_languages', 'class:language'));
 	}
 	$menu->getParent();
+}
+
+
+//
+// Components Submenu
+//
+
+// Get the authorised components and sub-menus.
+$components = ModMenuHelper::getComponents( true );
+
+// Check if there are any components, otherwise, don't render the menu
+if ($components) {
+
+	foreach ($components as &$component) {
+		if (!empty($component->submenu)) {
+			// This component has a db driven submenu.
+			$menu->addChild(new JMenuNode($component->text, $component->link, $component->img), true);
+			foreach ($component->submenu as $sub) {
+				$menu->addChild(new JMenuNode($sub->text, $sub->link, $sub->img));
+                if (!empty($sub->submenu)) {
+                    $menu->addChild(new JMenuNode($sub->text, $sub->link, $sub->img), true);
+                    foreach ($sub->submenu as $third)
+                    {
+                        $menu->addChild(new JMenuNode($third->text, $third->link, $third->img), true);
+                    }
+                    $menu->getParent();
+                }
+			}
+			$menu->getParent();
+		}
+		else {
+			$menu->addChild(new JMenuNode($component->text, $component->link, $component->img));
+		}
+	}
+	//$menu->getParent();
 }

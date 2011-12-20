@@ -74,7 +74,7 @@ abstract class ModMenuHelper
 		$query->where('m.id > 1');
 
 		// Order by lft.
-		$query->order('m.ordering');
+		$query->order('m.lft');
 
 		$db->setQuery($query);
 		// component list

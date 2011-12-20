@@ -38,7 +38,7 @@ JHtml::_('behavior.modal');
 	}
 </script>
 
-<form action="<?php echo JRoute::_('index.php?option=com_menus&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_menus&view=adminitem&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 
 <div class="width-100 fltlft">
 	<fieldset class="adminform">
@@ -65,6 +65,9 @@ JHtml::_('behavior.modal');
 					<li><?php echo $this->form->getLabel('alias'); ?>
 					<?php echo $this->form->getInput('alias'); ?></li>
 				<?php endif; ?>
+                
+                <li><?php echo $this->form->getLabel('img'); ?>
+				<?php echo $this->form->getInput('img'); ?></li>
 
 				<li><?php echo $this->form->getLabel('note'); ?>
 				<?php echo $this->form->getInput('note'); ?></li>
@@ -112,6 +115,7 @@ JHtml::_('behavior.modal');
 
 
 	<input type="hidden" name="task" value="" />
+    <input type="hidden" name="type" value="component" />
 	<?php echo JHtml::_('form.token'); ?>
 	<input type="hidden" id="fieldtype" name="fieldtype" value="" />
 

@@ -123,7 +123,7 @@ class MenusControllerAdminitem extends JControllerForm
 		$model		= $this->getModel('adminitem', '', array());
 		$data		= JRequest::getVar('jform', array(), 'post', 'array');
 		$task		= $this->getTask();
-		$context	= 'com_menus.edit.adminitem';
+		$context	= 'com_menus.edit.item';
 		$recordId	= JRequest::getInt('id');
 
 		if (!$this->checkEditId($context, $recordId)) {
@@ -164,7 +164,7 @@ class MenusControllerAdminitem extends JControllerForm
 		$data = $model->validate($form, $data);
 
 		// Check for the special 'request' entry.
-		if ($data['type'] == 'component' && isset($data['request']) && is_array($data['request']) && !empty($data['request'])) {
+		if (isset($data['request']) && is_array($data['request']) && !empty($data['request'])) {
 			// Parse the submitted link arguments.
 			$args = array();
 			parse_str(parse_url($data['link'], PHP_URL_QUERY), $args);
@@ -195,7 +195,7 @@ class MenusControllerAdminitem extends JControllerForm
 			$app->setUserState('com_menus.edit.item.data', $data);
 
 			// Redirect back to the edit screen.
-			$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_item.$this->getRedirectToItemAppend($recordId), false));
+			$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view=adminitem&layout=edit&id='.$recordId, false));
 
 			return false;
 		}
@@ -207,7 +207,7 @@ class MenusControllerAdminitem extends JControllerForm
 
 			// Redirect back to the edit screen.
 			$this->setMessage(JText::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $model->getError()), 'warning');
-			$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_item.$this->getRedirectToItemAppend($recordId), false));
+			$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view=adminitem&layout=edit&id='.$recordId, false));
 
 			return false;
 		}
@@ -216,8 +216,7 @@ class MenusControllerAdminitem extends JControllerForm
 		if ($model->checkin($data['id']) === false) {
 			// Check-in failed, go back to the row and display a notice.
 			$this->setMessage(JText::sprintf('JLIB_APPLICATION_ERROR_CHECKIN_FAILED', $model->getError()), 'warning');
-			$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_item.$this->getRedirectToItemAppend($recordId), false));
-
+			$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view=adminitem&layout=edit&id='.$recordId, false));
 			return false;
 		}
 
@@ -227,14 +226,14 @@ class MenusControllerAdminitem extends JControllerForm
 		switch ($task) {
 			case 'apply':
 				// Set the row data in the session.
-				$recordId = $model->getState($this->context.'.id');
+				$recordId = $model->getState('item.id');
 				$this->holdEditId($context, $recordId);
 				$app->setUserState('com_menus.edit.item.data',	null);
 				$app->setUserState('com_menus.edit.item.type',	null);
 				$app->setUserState('com_menus.edit.item.link',	null);
 
 				// Redirect back to the edit screen.
-				$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_item.$this->getRedirectToItemAppend($recordId), false));
+				$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view=adminitem&layout=edit&id='.$recordId, false));
 				break;
 
 			case 'save2new':
@@ -246,7 +245,7 @@ class MenusControllerAdminitem extends JControllerForm
 				$app->setUserState('com_menus.edit.item.menutype',	$model->getState('item.menutype'));
 
 				// Redirect back to the edit screen.
-				$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_item.$this->getRedirectToItemAppend(), false));
+				$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view=adminitem&layout=edit', false));
 				break;
 
 			default:
@@ -257,7 +256,7 @@ class MenusControllerAdminitem extends JControllerForm
 				$app->setUserState('com_menus.edit.item.link',	null);
 
 				// Redirect to the list screen.
-				$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_list.$this->getRedirectToListAppend(), false));
+				$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view=adminitems', false));
 				break;
 		}
 	}

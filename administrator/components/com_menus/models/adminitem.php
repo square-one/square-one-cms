@@ -776,11 +776,6 @@ class MenusModelAdminitem extends JModelAdmin
 		}
 		$this->setState('item.parent_id', $parentId);
 
-		if (!($menuType = $app->getUserState('com_menus.edit.item.menutype'))) {
-			$menuType = JRequest::getCmd('menutype', 'mainmenu');
-		}
-		$this->setState('item.menutype', $menuType);
-
 		if (!($type = $app->getUserState('com_menus.edit.item.type'))){
 			$type = JRequest::getCmd('type');
 			// Note a new menu item will have no field type.
@@ -1048,10 +1043,6 @@ class MenusModelAdminitem extends JModelAdmin
 		// This is a new menu
 		if ($data['id'] == 0) {
 			$table->setLocation($data['parent_id'], 'last-child');
-		}
-		// The menu type has changed, set the parent to be the root menu item
-		elseif ($table->menutype != $data['menutype']) {
-			$table->setLocation(1, 'last-child');
 		}
 		// Set the new parent id if parent id not matched
 		elseif ($table->parent_id != $data['parent_id']) {
