@@ -52,6 +52,8 @@ components/com_contact/*
 components/com_newsfeeds/*
 components/com_weblinks/*
 components/com_wrapper/*
+installation/CHANGELOG
+installation/sql/mysql/sample_data.sql
 language/en-GB/en-GB.com_contact.ini
 language/en-GB/en-GB.com_messages.ini
 language/en-GB/en-GB.com_newsfeeds.ini
