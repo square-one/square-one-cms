@@ -26,27 +26,17 @@ class InstallerControllerInstall extends JController
 	{
 		// Check for request forgeries
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
         
 		$model = $this->getModel('install');
-        if (JRequest::getWord('installtype') == 'distribution')
-        {
-            if ($model->install_distribution())
-            {
-                $cache = JFactory::getCache('mod_menu');
-                $cache->clean();
-            }
+        
+        $result = $model->install();
+        
+        if ($result == true) {
+            $cache = JFactory::getCache('mod_menu');
+            $cache->clean();
+            // TODO: Reset the users acl here as well to kill off any missing bits
         }
-        else
-        {
-            if ($model->install()) {
-                $cache = JFactory::getCache('mod_menu');
-                $cache->clean();
-                // TODO: Reset the users acl here as well to kill off any missing bits
-            }
-        }
-		
-
+        
 		$app = JFactory::getApplication();
 		$redirect_url = $app->getUserState('com_installer.redirect_url');
 		if(empty($redirect_url)) {
@@ -60,4 +50,52 @@ class InstallerControllerInstall extends JController
 		}
 		$this->setRedirect($redirect_url);
 	}
+    
+    public function distro_redirect()
+    {
+        
+    }
+    
+    public function distro_download()
+    {
+        JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = $this->getModel('install');
+        
+        print json_encode($model->distro_download());
+        
+        exit();
+    }
+    
+    public function distro_extract()
+    {
+        JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = $this->getModel('install');
+        
+        print json_encode($model->distro_extract());
+        
+        exit();
+    }
+    
+    public function distro_install()
+    {
+        JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = $this->getModel('install');
+        
+        print json_encode($model->distro_install());
+        
+        exit();
+    }
+    
+    public function install_script()
+    {
+        
+    }
+    
+    public function install_sql()
+    {
+        
+    }
 }

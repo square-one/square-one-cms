@@ -15,6 +15,7 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.model');
 jimport('joomla.installer.installer');
 jimport('joomla.installer.helper');
+jimport('joomla.updater.update');
 
 /**
  * Extension Manager Install Model
@@ -105,46 +106,58 @@ class InstallerModelInstall extends JModel
 				return false;
 				break;
 		}
-
+        
 		// Was the package unpacked?
 		if (!$package) {
 			$app->setUserState('com_installer.message', JText::_('COM_INSTALLER_UNABLE_TO_FIND_INSTALL_PACKAGE'));
 			return false;
 		}
 
-		// Get an installer instance
-		$installer = JInstaller::getInstance();
+        // Check if its a distribution        
+        
+        if ($package['type'] == 'distribution')
+        {
+            // Set some model state values
+            $app	= JFactory::getApplication();
+            $app->setUserState('com_installer.redirect_url', 'index.php?option=com_installer&view=install&layout=distribution');
+            $this->setState('install.directory', $package['dir']);
+        }
+        else
+        {
+            // Get an installer instance
+            $installer = JInstaller::getInstance();
 
-		// Install the package
-		if (!$installer->install($package['dir'])) {
-			// There was an error installing the package
-			$msg = JText::sprintf('COM_INSTALLER_INSTALL_ERROR', JText::_('COM_INSTALLER_TYPE_TYPE_'.strtoupper($package['type'])));
-			$result = false;
-		} else {
-			// Package installed sucessfully
-			$msg = JText::sprintf('COM_INSTALLER_INSTALL_SUCCESS', JText::_('COM_INSTALLER_TYPE_TYPE_'.strtoupper($package['type'])));
-			$result = true;
-		}
+            // Install the package
+            if (!$installer->install($package['dir'])) {
+                // There was an error installing the package
+                $msg = JText::sprintf('COM_INSTALLER_INSTALL_ERROR', JText::_('COM_INSTALLER_TYPE_TYPE_'.strtoupper($package['type'])));
+                $result = false;
+            } else {
+                // Package installed sucessfully
+                $msg = JText::sprintf('COM_INSTALLER_INSTALL_SUCCESS', JText::_('COM_INSTALLER_TYPE_TYPE_'.strtoupper($package['type'])));
+                $result = true;
+            }
 
-		// Set some model state values
-		$app	= JFactory::getApplication();
-		$app->enqueueMessage($msg);
-		$this->setState('name', $installer->get('name'));
-		$this->setState('result', $result);
-		$app->setUserState('com_installer.message', $installer->message);
-		$app->setUserState('com_installer.extension_message', $installer->get('extension_message'));
-		$app->setUserState('com_installer.redirect_url', $installer->get('redirect_url'));
+            // Set some model state values
+            $app	= JFactory::getApplication();
+            $app->enqueueMessage($msg);
+            $this->setState('name', $installer->get('name'));
+            $this->setState('result', $result);
+            $app->setUserState('com_installer.message', $installer->message);
+            $app->setUserState('com_installer.extension_message', $installer->get('extension_message'));
+            $app->setUserState('com_installer.redirect_url', $installer->get('redirect_url'));
 
-		// Cleanup the install files
-		if (!is_file($package['packagefile'])) {
-			$config = JFactory::getConfig();
-			$package['packagefile'] = $config->get('tmp_path') . '/' . $package['packagefile'];
-		}
+            // Cleanup the install files
+            if (!is_file($package['packagefile'])) {
+                $config = JFactory::getConfig();
+                $package['packagefile'] = $config->get('tmp_path') . '/' . $package['packagefile'];
+            }
 
-		JInstallerHelper::cleanupInstall($package['packagefile'], $package['extractdir']);
+            JInstallerHelper::cleanupInstall($package['packagefile'], $package['extractdir']);
 
-
-		return $result;
+        }
+        
+        return $result;
 	}
 
 	/**
@@ -268,4 +281,106 @@ class InstallerModelInstall extends JModel
 
 		return $package;
 	}
+    
+    
+    /**
+     * Square One Additions
+     */
+    public function distro_download()
+    {
+        $update = new JUpdate();
+        $detailsurl = JRequest::getString('detailsurl', '', 'post');
+        $update->loadFromXML($detailsurl);
+        
+        $result->result = false;
+        
+        $file = JInstallerHelper::downloadPackage($update->get('downloadurl')->_data);
+        if (!$file) {
+			JError::raiseWarning('', JText::_('COM_INSTALLER_MSG_INSTALL_INVALID_URL'));
+		}
+        else
+        {
+            $result->result = true;
+            $result->task = 'distro_download';
+            $result->file = $file;
+            $result->message = JText::_('Downloaded the package');
+        }
+        
+        return $result;
+    }
+    
+    public function distro_extract()
+    {
+        $file = JRequest::getString('file', '', 'post');
+        
+        $config		= JFactory::getConfig();
+		$tmp_dest	= $config->get('tmp_path');
+
+        $result->result = false;
+        
+        $package = JInstallerHelper::unpack($tmp_dest . '/' . $file);
+        if (!$package) {
+			JError::raiseWarning('', JText::_('TODO'));
+		}
+        else
+        {
+            $result->result = true;
+            $result->task = 'distro_extract';
+            $result->dir = $package['dir'];
+            $result->extractdir = $package['extractdir'];
+            $result->packagefile = $package['packagefile'];
+            $result->type = $package['type'];
+            $result->message = JText::_('Extracted the package');
+        }
+        
+        return $result;
+    }
+    
+    function distro_install()
+	{
+        $dir = JRequest::getString('dir', '', 'post');
+        $extractdir = JRequest::getString('extractdir', '', 'post');
+        $packagefile = JRequest::getString('packagefile', '', 'post');
+        $type = JRequest::getString('type', '', 'post');
+        
+		// Get an installer instance
+		$installer = JInstaller::getInstance();
+
+		// Install the package
+		if (!$installer->install($dir)) {
+			// There was an error installing the package
+			$msg = JText::sprintf('COM_INSTALLER_INSTALL_ERROR', JText::_('COM_INSTALLER_TYPE_TYPE_'.strtoupper($type)));
+			$result->result = false;
+		} else {
+			// Package installed sucessfully
+			$msg = JText::sprintf('COM_INSTALLER_INSTALL_SUCCESS', JText::_('COM_INSTALLER_TYPE_TYPE_'.strtoupper($type)));
+			$result->result = true;
+		}
+
+		// Set some model state values
+		$app	= JFactory::getApplication();
+		$app->enqueueMessage($msg);
+		$this->setState('name', $installer->get('name'));
+		$this->setState('result', $result);
+		$app->setUserState('com_installer.message', $installer->message);
+		$app->setUserState('com_installer.extension_message', $installer->get('extension_message'));
+		$app->setUserState('com_installer.redirect_url', $installer->get('redirect_url'));
+
+		// Cleanup the install files
+		if (!is_file($packagefile)) {
+			$config = JFactory::getConfig();
+			$packagefile = $config->get('tmp_path') . '/' . $packagefile;
+		}
+
+		JInstallerHelper::cleanupInstall($packagefile, $extractdir);
+
+        if ($result->result) {
+            $result->result = true;
+            $result->task = 'distro_install';
+            $result->message = JText::_('Installed the package');
+        }
+
+		return $result;
+	}
+    
 }

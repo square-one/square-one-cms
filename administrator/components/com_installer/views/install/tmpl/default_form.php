@@ -23,18 +23,6 @@ defined('_JEXEC') or die;
 			form.submit();
 		}
 	}
-    
-    Joomla.submitbutton2 = function(pressbutton) {
-		var form = document.getElementById('adminForm');
-
-		// do field validation
-		if (form.install_distribution.value == ""){
-			alert("<?php echo JText::_('COM_INSTALLER_MSG_INSTALL_PLEASE_SELECT_A_PACKAGE', true); ?>");
-		} else {
-			form.installtype.value = 'distribution';
-			form.submit();
-		}
-	}
 
 	Joomla.submitbutton3 = function(pressbutton) {
 		var form = document.getElementById('adminForm');
@@ -66,7 +54,7 @@ defined('_JEXEC') or die;
 	<?php if ($this->ftp) : ?>
 		<?php echo $this->loadTemplate('ftp'); ?>
 	<?php endif; ?>
-	<div class="width-70 fltlft">
+	<div class="width-100 fltlft">
 		<fieldset class="uploadform">
 			<legend><?php echo JText::_('COM_INSTALLER_UPLOAD_PACKAGE_FILE'); ?></legend>
 			<label for="install_package"><?php echo JText::_('COM_INSTALLER_PACKAGE_FILE'); ?></label>
@@ -85,13 +73,6 @@ defined('_JEXEC') or die;
 			<label for="install_url"><?php echo JText::_('COM_INSTALLER_INSTALL_URL'); ?></label>
 			<input type="text" id="install_url" name="install_url" class="input_box" size="70" value="http://" />
 			<input type="button" class="button" value="<?php echo JText::_('COM_INSTALLER_INSTALL_BUTTON'); ?>" onclick="Joomla.submitbutton4()" />
-		</fieldset>
-        <div class="clr"></div>
-        <fieldset class="uploadform">
-			<legend><?php echo JText::_('COM_INSTALLER_INSTALL_DISTRIBUTION'); ?></legend>
-			<label for="install_distribution"><?php echo JText::_('COM_INSTALLER_DISTRIBUTION_FILE'); ?></label>
-			<input class="input_box" id="install_distribution" name="install_package" type="file" size="57" />
-			<input class="button" type="button" value="<?php echo JText::_('COM_INSTALLER_UPLOAD_AND_INSTALL'); ?>" onclick="Joomla.submitbutton2()" />
 		</fieldset>
 		<input type="hidden" name="type" value="" />
 		<input type="hidden" name="installtype" value="upload" />

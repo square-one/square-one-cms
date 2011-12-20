@@ -31,6 +31,27 @@ class InstallerViewInstall extends InstallerViewDefault
 
 		$this->assignRef('paths', $paths);
 		$this->assignRef('state', $state);
+        
+        if ($this->getLayout() == 'distribution')
+        {
+            jimport('joomla.installer.installer');
+            
+            // Extract the list and return it
+            $installer = JInstaller::getInstance();
+            $installer->setPath('source', $state->get('install.directory'));
+            $manifest = $installer->getManifest();
+            
+            $result = false;
+            
+            if ($manifest)
+            {
+                $result->extensions = isset($manifest->extensions) ? $manifest->extensions : false;
+                $result->sql = isset($manifest->install) ? true : false;
+                $result->script = isset($manifest->scriptfile) ? true : false;
+            }
+            
+            $this->result = $result;
+        }
 
 		parent::display($tpl);
 	}

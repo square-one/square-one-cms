@@ -159,7 +159,7 @@ abstract class JInstallerHelper
 		 * to detecting the extension type.
 		 */
 		$retval['dir'] = $extractdir;
-
+        
 		/*
 		 * Get the extension type and return the directory/type array on success or
 		 * false on fail.
@@ -198,7 +198,7 @@ abstract class JInstallerHelper
 				continue;
 			}
 
-			if($xml->getName() != 'install' && $xml->getName() != 'extension')
+			if($xml->getName() != 'install' && $xml->getName() != 'extension'&& $xml->getName() != 'distribution')
 			{
 				unset($xml);
 				continue;
