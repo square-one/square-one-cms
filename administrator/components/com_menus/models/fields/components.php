@@ -17,6 +17,8 @@ class JFormFieldComponents extends JFormFieldList
         $options = array();
         $lang = JFactory::getLanguage();
         
+        $options[] = JHtml::_('select.option', '0', JText::_('JNONE'));
+        
         foreach ($this->_getComponents() as $component) 
         {
             $lang->load($component->element.'.sys', JPATH_ADMINISTRATOR, null, false, false)

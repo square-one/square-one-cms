@@ -131,7 +131,8 @@ class MenusViewAdminitems extends JView
 							$value = JText::sprintf('COM_MENUS_TYPE_UNEXISTING',$result[1]);
 						}
 						else {
-							$value = JText::_('COM_MENUS_TYPE_UNKNOWN');
+                            if ($item->type == 'separator')
+							$value = JText::_('COM_MENUS_TYPE_SEPARATOR');
 						}
 					}
 					break;

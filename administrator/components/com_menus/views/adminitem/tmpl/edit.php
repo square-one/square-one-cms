@@ -45,11 +45,14 @@ JHtml::_('behavior.modal');
 		<legend><?php echo JText::_('COM_MENUS_ITEM_DETAILS');?></legend>
 			<ul class="adminformlist">
 
+                <li><?php echo $this->form->getLabel('type'); ?>
+				<?php echo $this->form->getInput('type'); ?></li>
+                
 				<li><?php echo $this->form->getLabel('component_id'); ?>
 				<?php echo $this->form->getInput('component_id'); ?></li>
 
 				<li><?php echo $this->form->getLabel('title'); ?>
-				<?php echo $this->form->getInput('title'); ?> (<?php echo JText::_($this->form->getField('title')->value); ?>)</li>
+				<?php echo $this->form->getInput('title'); ?></li>
 
 				<?php if ($this->item->type =='url'): ?>
 					<?php $this->form->setFieldAttribute('link','readonly','false');?>
@@ -115,7 +118,6 @@ JHtml::_('behavior.modal');
 
 
 	<input type="hidden" name="task" value="" />
-    <input type="hidden" name="type" value="component" />
 	<?php echo JHtml::_('form.token'); ?>
 	<input type="hidden" id="fieldtype" name="fieldtype" value="" />
 

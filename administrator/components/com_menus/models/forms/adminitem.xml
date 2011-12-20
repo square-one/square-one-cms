@@ -19,6 +19,18 @@
 			class="inputbox"
 			size="40"
 			required="true"/>
+            
+        <field
+            name="type"
+            type="list"
+            label="COM_MENUS_TYPE_CHOOSE"
+            description=""
+            class="inputbox"
+            required="true">
+                <option value="component">COM_MENUS_COMPONENT</option>
+                <option value="separator">COM_MENUS_TYPE_SEPARATOR</option>
+                <option value="url">COM_MENUS_TYPE_EXTERNAL_URL</option>
+        </field>
 
 		<field
 			name="alias"
@@ -53,7 +65,6 @@
 			label="COM_MENUS_ITEM_FIELD_LINK_LABEL"
 			description="COM_MENUS_ITEM_FIELD_LINK_DESC"
 			class="inputbox"
-            required="true"
 			size="50"/>
 
 		<field
@@ -61,8 +72,7 @@
 			type="components"
 			label="COM_MENUS_COMPONENT"
 			description="COM_MENUS_COMPONENT_DESC"
-			class="inputbox"
-			required="true" />
+			class="inputbox" />
 
 		<field
 			name="published"

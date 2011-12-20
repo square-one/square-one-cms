@@ -21,8 +21,6 @@ foreach ($list as $i => &$item) :
 		$class .= ' current';
 	}
 
-	
-
 	if ($item->parent) {
 		$class .= ' node';
 	}
@@ -34,6 +32,10 @@ foreach ($list as $i => &$item) :
     if ($disabled) {
 		$class = ' class="disabled"';
 	}
+    
+    if ($item->type == 'separator') {
+        $class = ' class="separator"';
+    }
 
 	echo '<li'.$class.'>';
 
