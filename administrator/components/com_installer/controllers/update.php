@@ -64,11 +64,11 @@ class InstallerControllerUpdate extends JController {
 		$params = $component->params;
 		$cache_timeout = $params->getValue('cachetimeout', 6, 'int');
 		$cache_timeout = 3600 * $cache_timeout;
+        
 		// Find updates
 		$model	= $this->getModel('update');
-<<<<<<< HEAD
 		$model->purge();
-		$result = $model->findUpdates();
+		$result = $model->findUpdates(0, $cache_timeout);
         
         // Workaround for removing extentions that are already installed without
         // overwriting the Platform. Major breech of MVC but I can live with myself for the time being.
@@ -100,11 +100,7 @@ class InstallerControllerUpdate extends JController {
         }
         // End Workaround
         
-=======
-		$result = $model->findUpdates(0, $cache_timeout);
->>>>>>> remotes/joomla/master
 		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=update',false));
-		//$view->display();
 	}
 
 	/**

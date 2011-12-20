@@ -580,7 +580,7 @@ CREATE TABLE  `#__update_sites` (
 )  DEFAULT CHARSET=utf8 COMMENT='Update Sites';
 
 INSERT INTO `#__update_sites` VALUES
-(1, 'Square One', 'collection', 'http://update.squareonecms.org/list.xml', 1);
+(1, 'Square One', 'collection', 'http://update.squareonecms.org/list.xml', 1, 0);
 
 CREATE TABLE `#__update_sites_extensions` (
   `update_site_id` INT DEFAULT 0,

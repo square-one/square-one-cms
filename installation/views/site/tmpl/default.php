@@ -54,39 +54,6 @@ else
 							</tr>
 						</table>
 					</div>
-
-					<h4 class="title-smenu moofx-toggler" title="<?php echo JText::_('INSTL_SITE_META_ADVANCED_SETTINGS'); ?>">
-						<a href="#"><?php echo JText::_('INSTL_SITE_META_ADVANCED_SETTINGS'); ?></a>
-					</h4>
-					<div class="section-smenu moofx-slider">
-							<table class="content2">
-								<tr>
-									<td title="<?php echo JText::_('INSTL_SITE_METADESC_TITLE_LABEL'); ?>">
-										<?php echo $this->form->getLabel('site_metadesc'); ?>
-									</td>
-									<td>
-										<?php echo $this->form->getInput('site_metadesc'); ?>
-									</td>
-								</tr>
-								<tr>
-									<td title="<?php echo JText::_('INSTL_SITE_METAKEYS_TITLE_LABEL'); ?>">
-										<?php echo $this->form->getLabel('site_metakeys'); ?>
-									</td>
-									<td>
-										<?php echo $this->form->getInput('site_metakeys'); ?>
-									</td>
-								</tr>
-								<tr>
-									<td title="<?php echo JText::_('INSTL_SITE_OFFLINE_TITLE_LABEL'); ?>">
-										<?php echo $this->form->getLabel('site_offline'); ?>
-									</td>
-									<td>
-										<?php echo $this->form->getInput('site_offline'); ?>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
 				</div>
 			</div>
 

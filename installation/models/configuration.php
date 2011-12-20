@@ -47,7 +47,7 @@ class JInstallationModelConfiguration extends JModel
 		$registry = new JRegistry();
 
 		/* Site Settings */
-		$registry->set('offline', $options->site_offline);
+		$registry->set('offline', isset($options->site_offline) ? $options->site_offline : 0);
 		$registry->set('offline_message', JText::_('INSTL_STD_OFFLINE_MSG'));
 		$registry->set('display_offline_message', 1);
 		$registry->set('offline_image', '');
@@ -74,12 +74,12 @@ class JInstallationModelConfiguration extends JModel
 		$registry->set('gzip', 0);
 		$registry->set('error_reporting', 'default');
 		$registry->set('helpurl', 'http://help.joomla.org/proxy/index.php?option=com_help&amp;keyref=Help{major}{minor}:{keyref}');
-		$registry->set('ftp_host', $options->ftp_host);
-		$registry->set('ftp_port', $options->ftp_port);
-		$registry->set('ftp_user', $options->ftp_save ? $options->ftp_user : '');
-		$registry->set('ftp_pass', $options->ftp_save ? $options->ftp_pass : '');
-		$registry->set('ftp_root', $options->ftp_save ? $options->ftp_root : '');
-		$registry->set('ftp_enable', $options->ftp_enable);
+		$registry->set('ftp_host', isset($options->ftp_host) ? $options->ftp_host : '');
+		$registry->set('ftp_port', isset($options->ftp_port) ? $options->ftp_port : '');
+		$registry->set('ftp_user', isset($options->ftp_save) ? $options->ftp_user : '');
+		$registry->set('ftp_pass', isset($options->ftp_save) ? $options->ftp_pass : '');
+		$registry->set('ftp_root', isset($options->ftp_save) ? $options->ftp_root : '');
+		$registry->set('ftp_enable', isset($options->ftp_enable) ? $options->ftp_enable : 0);
 
 		/* Locale Settings */
 		$registry->set('offset', 'UTC');
@@ -103,14 +103,9 @@ class JInstallationModelConfiguration extends JModel
 		$registry->set('cachetime', 15);
 
 		/* Meta Settings */
-<<<<<<< HEAD
-		$registry->set('MetaDesc', '');
-		$registry->set('MetaKeys', '');
-=======
-		$registry->set('MetaDesc', $options->site_metadesc);
-		$registry->set('MetaKeys', $options->site_metakeys);
+		$registry->set('MetaDesc', isset($options->site_metadesc) ? $options->site_metadesc : '');
+		$registry->set('MetaKeys', isset($options->site_metakeys) ? $options->site_metakeys : '');
 		$registry->set('MetaTitle', 1);
->>>>>>> remotes/joomla/master
 		$registry->set('MetaAuthor', 1);
 
 		/* SEO Settings */
