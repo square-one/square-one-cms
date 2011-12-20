@@ -27,7 +27,7 @@ html {
 }
 
 body {
-	margin: 10px;
+	margin: 0;
 	padding: 0;
 	background: #fff;
 	padding-bottom: 1px;
@@ -201,13 +201,7 @@ span.unwritable  {
 /* Header */
 #border-top.h_blue {
 	background: url(../images/j_header_middle.png) repeat-x;
-	height: 54px;
-	-webkit-border-top-right-radius: 8px;
-	-webkit-border-top-left-radius: 8px;
-	-moz-border-radius-topleft: 8px;
-	-moz-border-radius-topright: 8px;
-	border-top-right-radius: 8px;
-	border-top-left-radius: 8px;
+	height: 45px;
 }
 
 #border-top .title,
@@ -227,7 +221,7 @@ span.unwritable  {
 }
 
 #header-box {
-	border: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 	background: #f0f0f0;
 }
 
@@ -249,12 +243,10 @@ p.footer-tip {
 
 /* Body */
 #content-box {
-	border: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 	border-top: 0;
 	float: left;
 	width: 99.85%;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
 	margin-bottom: 5px;
 }
 
@@ -799,6 +791,9 @@ li.acl-resetbtn:hover {
 		background-position,
 		-moz-border-radius-bottomleft,
 		-moz-box-shadow;
+}
+#cpanel div.icon a:hover {
+    background: #fafafa;
 }
 
 #cpanel img {
@@ -1683,6 +1678,7 @@ a.saveorder.inactive {
 .button1 div {
 	height: 1%;
 	float: right;
+    border-radius: 6px;
 }
 
 .button2-left,
@@ -1697,6 +1693,7 @@ a.saveorder.inactive {
 	white-space: nowrap;
 	padding-left: 10px;
 	margin-left: 5px;
+    border-raidus: 6px;
 }
 
 .button1 .next {
@@ -1967,6 +1964,7 @@ select#lang {
 	padding-right: 5px;
 	clear: right;
 	margin-top: 10px;
+    border-radius: 5px;
 }
 
 /* -- JGRID STYLES ----------------------------- */
@@ -2283,15 +2281,15 @@ a.jgrid:hover {	text-decoration: none;}
 	font-size: 1em;
 	font-weight: normal;
 	padding-left: 25px;
-	padding-right: 20px;
+	padding-right: 25px;
 	line-height: 1.2em;
 }
 
 /* 1 level - hover */
 #menu li:hover a {
-	background-color: #dbe4e9;
-	border-left: 1px solid #025a8d;
-	border-right: 1px solid #025a8d;
+	background-color: #ddd;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
 	margin: 0;
 }
 
@@ -2299,13 +2297,12 @@ a.jgrid:hover {	text-decoration: none;}
 #menu li:hover li a {
 	background-color: transparent;
 	border: 1px solid transparent;
-	margin: 1px;
 }
 
 /* 2 level - hover */
 #menu li:hover li:hover a {
-	background-color: #dbe4e9;
-	border-color: #025a8d;
+	background-color: #ddd;
+	border-color: #aaa;
 }
 
 /* 3 level - normal */
@@ -2316,8 +2313,8 @@ a.jgrid:hover {	text-decoration: none;}
 
 /* 3 level - hover */
 #menu li:hover li:hover li a:hover {
-	background-color: #dbe4e9;
-	border-color: #025a8d;
+	background-color: #ddd;
+	border-color: #aaa;
 }
 
 a.icon-16-menu span img {
