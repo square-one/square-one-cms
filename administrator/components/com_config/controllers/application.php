@@ -49,7 +49,6 @@ class ConfigControllerApplication extends JController
 		}
 
 		// Set FTP credentials, if given.
-		jimport('joomla.client.helper');
 		JClientHelper::setCredentialsFromRequest('ftp');
 
 		// Initialise variables.
@@ -69,7 +68,7 @@ class ConfigControllerApplication extends JController
 
 			// Push up to three validation messages out to the user.
 			for ($i = 0, $n = count($errors); $i < $n && $i < 3; $i++) {
-				if (JError::isError($errors[$i])) {
+				if ($errors[$i] instanceof Exception) {
 					$app->enqueueMessage($errors[$i]->getMessage(), 'warning');
 				} else {
 					$app->enqueueMessage($errors[$i], 'warning');
@@ -132,7 +131,6 @@ class ConfigControllerApplication extends JController
 		}
 
 		// Set FTP credentials, if given
-		jimport('joomla.client.helper');
 		JClientHelper::setCredentialsFromRequest('ftp');
 
 		// Clean the session data.
@@ -147,7 +145,6 @@ class ConfigControllerApplication extends JController
 		jimport('joomla.filesystem.file');
 
 		// Set FTP credentials, if given
-		jimport('joomla.client.helper');
 		JClientHelper::setCredentialsFromRequest('ftp');
 
 		if (($data = file_get_contents('http://help.joomla.org/helpsites.xml')) === false) {

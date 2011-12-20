@@ -91,7 +91,6 @@ plugins/authentication/ldap/*
 plugins/content/emailcloak/*
 plugins/content/example/*
 plugins/content/geshi/*
-plugins/content/pagenavigation/*
 plugins/editors/codemirror/*
 plugins/editors-xtd/article/*
 plugins/editors-xtd/image/*

@@ -111,7 +111,7 @@ class JInstallation extends JApplication
 	 *
 	 * @return	void
 	 */
-	public function initialise(array $options = array())
+	public function initialise($options = array())
 	{
 		//Get the localisation information provided in the localise.xml file.
 		$forced = $this->getLocalise();
@@ -137,7 +137,6 @@ class JInstallation extends JApplication
 			if (!empty($forced['language'])) {
 				$options['language'] = $forced['language'];
 			} else {
-				jimport('joomla.language.helper');
 				$options['language'] = JLanguageHelper::detectLanguage();
 				if (empty($options['language'])) {
 					$options['language'] = 'en-GB';
@@ -239,8 +238,6 @@ class JInstallation extends JApplication
 	 */
 	public function _createConfiguration()
 	{
-		jimport('joomla.registry.registry');
-
 		// Create the registry with a default namespace of config which is read only
 		$this->_registry = new JRegistry('config');
 	}
