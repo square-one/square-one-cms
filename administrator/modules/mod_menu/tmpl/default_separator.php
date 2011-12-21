@@ -10,4 +10,5 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-?><span></span>
+?>
+<span></span>

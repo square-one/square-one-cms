@@ -2237,6 +2237,7 @@ a.jgrid:hover {	text-decoration: none;}
 	border: 0;
 	display: block;
 	float: none;
+    padding: 1px 0;
 }
 
 #menu ul {
@@ -2263,7 +2264,7 @@ a.jgrid:hover {	text-decoration: none;}
 	font-size: 1em;
 	font-weight: bold;
 	text-decoration: none;
-	cursor: default;
+	cursor: pointer;
 	background-repeat: no-repeat;
 	background-position: 3px 50%;
 }

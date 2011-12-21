@@ -28,6 +28,7 @@
             class="inputbox"
             required="true">
                 <option value="component">COM_MENUS_COMPONENT</option>
+                <option value="menus">COM_MENUS_SUBMENU_MENUS</option>
                 <option value="separator">COM_MENUS_TYPE_SEPARATOR</option>
                 <option value="url">COM_MENUS_TYPE_EXTERNAL_URL</option>
         </field>

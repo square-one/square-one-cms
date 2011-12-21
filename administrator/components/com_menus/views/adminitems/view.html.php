@@ -132,7 +132,9 @@ class MenusViewAdminitems extends JView
 						}
 						else {
                             if ($item->type == 'separator')
-							$value = JText::_('COM_MENUS_TYPE_SEPARATOR');
+                                $value = JText::_('COM_MENUS_TYPE_SEPARATOR');
+                            if ($item->type == 'menus')
+                                $value = JText::_('COM_MENUS_SUBMENU_MENUS');
 						}
 					}
 					break;

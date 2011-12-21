@@ -42,7 +42,6 @@ foreach ($list as $i => &$item) :
 	// Render the menu item.
     if ($disabled) {
         require JModuleHelper::getLayoutPath('mod_menu', 'default_disabled');
-        
     }
     else 
     {
@@ -50,6 +49,7 @@ foreach ($list as $i => &$item) :
             case 'separator':
             case 'url':
             case 'component':
+            case 'menus':
                 require JModuleHelper::getLayoutPath('mod_menu', 'default_'.$item->type);
                 break;
 
