@@ -10,7 +10,7 @@ html {
 }
 
 body {
-	margin: 10px;
+	margin: 0;
 	padding: 0;
 	background: #fff;
 	height: 100%;
@@ -74,13 +74,7 @@ td.item + td {
 /* installer */
 #header {
 	background: url(../images/j_header_middle.png) repeat-x;
-	height: 54px;
-	-webkit-border-top-right-radius: 8px;
-	-webkit-border-top-left-radius: 8px;
-	-moz-border-radius-topright: 8px;
-	-moz-border-radius-topleft: 8px;
-	border-top-right-radius: 8px;
-	border-top-left-radius: 8px;
+	height: 45px;
 }
 
 #header h1 {
@@ -89,6 +83,7 @@ td.item + td {
 	font-weight: bold;
 	padding-left: 15px;
 	line-height: 44px;
+    margin: 0;
 }
 
 #header .logo {
@@ -111,12 +106,8 @@ td.item + td {
 #content-box {
   float: none !important;
   float: left;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   padding-bottom: 11px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
 }
 
 #content-pad {
@@ -385,8 +376,6 @@ div.moofx-slider {
 
 .final-table {
 	text-align: center;
-	margin-top: 90px;
-	margin-right: 20px;
 }
 
 td em {

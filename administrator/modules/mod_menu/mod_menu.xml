@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension
 	type="module"
-	version="1.7"
-	client="site"
-	method="upgrade">
+	version="2.5"
+	client="administrator">
 	<name>mod_menu</name>
 	<author>Joomla! Project</author>
 	<creationDate>July 2004</creationDate>
@@ -17,13 +16,13 @@
 		<filename module="mod_menu">mod_menu.php</filename>
 		<folder>tmpl</folder>
 		<filename>helper.php</filename>
-		<filename>index.html</filename>		<filename>mod_menu.xml</filename>
+		<filename>index.html</filename>		
 	</files>
 	<languages>
 		<language tag="en-GB">en-GB.mod_menu.ini</language>
 		<language tag="en-GB">en-GB.mod_menu.sys.ini</language>
 	</languages>
-	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_MENU" />
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_MENU" />
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
