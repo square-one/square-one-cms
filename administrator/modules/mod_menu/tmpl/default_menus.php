@@ -1,10 +1,8 @@
 <?php
 /**
- * @version		$Id$
- * @package		Joomla.Site
- * @subpackage	mod_menu
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @package     Square One
+ * @link        www.squareonecms.org
+ * @copyright   Copyright 2011 Square One and Open Source Matters. All Rights Reserved.
  */
 
 // No direct access.

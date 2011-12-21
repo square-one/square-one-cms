@@ -1,8 +1,8 @@
 <?php
 /**
- * @version		$Id$
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ * @package     Square One
+ * @link        www.squareonecms.org
+ * @copyright   Copyright 2011 Square One and Open Source Matters. All Rights Reserved.
  */
 
 defined('_JEXEC') or die;
@@ -28,7 +28,7 @@ class MenusControllerAdminitem extends JControllerForm
 	{
 		// Initialise variables.
 		$app		= JFactory::getApplication();
-		$context	= 'com_menus.edit.item';
+		$context	= 'com_menus.edit.adminitem';
 
 		$result = parent::add();
 		if ($result) {
@@ -54,10 +54,10 @@ class MenusControllerAdminitem extends JControllerForm
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		// Initialise variables.
-		$model	= $this->getModel('Item', '', array());
+		$model	= $this->getModel('Adminitem', '', array());
 
 		// Preset the redirect
-		$this->setRedirect(JRoute::_('index.php?option=com_menus&view=items'.$this->getRedirectToListAppend(), false));
+		$this->setRedirect(JRoute::_('index.php?option=com_menus&view=adminitems'.$this->getRedirectToListAppend(), false));
 
 		return parent::batch($model);
 	}
@@ -192,7 +192,7 @@ class MenusControllerAdminitem extends JControllerForm
 			}
 
 			// Save the data in the session.
-			$app->setUserState('com_menus.edit.item.data', $data);
+			$app->setUserState('com_menus.edit.adminitem.data', $data);
 
 			// Redirect back to the edit screen.
 			$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view=adminitem&layout=edit&id='.$recordId, false));
@@ -203,7 +203,7 @@ class MenusControllerAdminitem extends JControllerForm
 		// Attempt to save the data.
 		if (!$model->save($data)) {
 			// Save the data in the session.
-			$app->setUserState('com_menus.edit.item.data', $data);
+			$app->setUserState('com_menus.edit.adminitem.data', $data);
 
 			// Redirect back to the edit screen.
 			$this->setMessage(JText::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $model->getError()), 'warning');
@@ -228,9 +228,9 @@ class MenusControllerAdminitem extends JControllerForm
 				// Set the row data in the session.
 				$recordId = $model->getState('item.id');
 				$this->holdEditId($context, $recordId);
-				$app->setUserState('com_menus.edit.item.data',	null);
-				$app->setUserState('com_menus.edit.item.type',	null);
-				$app->setUserState('com_menus.edit.item.link',	null);
+				$app->setUserState('com_menus.edit.adminitem.data',	null);
+				$app->setUserState('com_menus.edit.adminitem.type',	null);
+				$app->setUserState('com_menus.edit.adminitem.link',	null);
 
 				// Redirect back to the edit screen.
 				$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view=adminitem&layout=edit&id='.$recordId, false));
@@ -239,10 +239,10 @@ class MenusControllerAdminitem extends JControllerForm
 			case 'save2new':
 				// Clear the row id and data in the session.
 				$this->releaseEditId($context, $recordId);
-				$app->setUserState('com_menus.edit.item.data',	null);
-				$app->setUserState('com_menus.edit.item.type',	null);
-				$app->setUserState('com_menus.edit.item.link',	null);
-				$app->setUserState('com_menus.edit.item.menutype',	$model->getState('item.menutype'));
+				$app->setUserState('com_menus.edit.adminitem.data',	null);
+				$app->setUserState('com_menus.edit.adminitem.type',	null);
+				$app->setUserState('com_menus.edit.adminitem.link',	null);
+				$app->setUserState('com_menus.edit.adminitem.menutype',	$model->getState('item.menutype'));
 
 				// Redirect back to the edit screen.
 				$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view=adminitem&layout=edit', false));
@@ -251,9 +251,9 @@ class MenusControllerAdminitem extends JControllerForm
 			default:
 				// Clear the row id and data in the session.
 				$this->releaseEditId($context, $recordId);
-				$app->setUserState('com_menus.edit.item.data',	null);
-				$app->setUserState('com_menus.edit.item.type',	null);
-				$app->setUserState('com_menus.edit.item.link',	null);
+				$app->setUserState('com_menus.edit.adminitem.data',	null);
+				$app->setUserState('com_menus.edit.adminitem.type',	null);
+				$app->setUserState('com_menus.edit.adminitem.link',	null);
 
 				// Redirect to the list screen.
 				$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view=adminitems', false));
@@ -287,7 +287,7 @@ class MenusControllerAdminitem extends JControllerForm
 			$title = 'component';
 		}
 
-		$app->setUserState('com_menus.edit.item.type',	$title);
+		$app->setUserState('com_menus.edit.adminitem.type',	$title);
 		if ($title == 'component') {
 			if (isset($type->request)) {
 				$component = JComponentHelper::getComponent($type->request->option);
@@ -300,17 +300,17 @@ class MenusControllerAdminitem extends JControllerForm
 		}
 		// If the type is alias you just need the item id from the menu item referenced.
 		elseif ($title == 'alias') {
-			$app->setUserState('com_menus.edit.item.link', 'index.php?Itemid=');
+			$app->setUserState('com_menus.edit.adminitem.link', 'index.php?Itemid=');
 		}
 
 		unset($data['request']);
 		$data['type'] = $title;
 		if (JRequest::getCmd('fieldtype') == 'type') {
-			$data['link'] = $app->getUserState('com_menus.edit.item.link');
+			$data['link'] = $app->getUserState('com_menus.edit.adminitem.link');
 		}
 
 		//Save the data in the session.
-		$app->setUserState('com_menus.edit.item.data', $data);
+		$app->setUserState('com_menus.edit.adminitem.data', $data);
 
 		$this->type = $type;
 		$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_item.$this->getRedirectToItemAppend($recordId), false));

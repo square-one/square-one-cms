@@ -1,11 +1,9 @@
 <?php
 
 /**
- * @author      Jeremy Wilken - Gnome on the run
- * @link        www.gnomeontherun.com
- * @copyright   Copyright 2011 Gnome on the run. All Rights Reserved.
- * @category    
- * @package     
+ * @package     Square One
+ * @link        www.squareonecms.org
+ * @copyright   Copyright 2011 Square One and Open Source Matters. All Rights Reserved.
  */
 
 defined('_JEXEC') or die;
