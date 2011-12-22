@@ -243,7 +243,7 @@ p.footer-tip {
 
 /* Body */
 #content-box {
-	border-bottom: 1px solid #ccc;
+	/*border-bottom: 1px solid #ccc;*/
 	border-top: 0;
 	float: left;
 	width: 99.85%;
@@ -1889,8 +1889,8 @@ a img.calendar {
 /* -- LOGIN STYLES ----------------------------- */
 
 .login {
-	margin: 50px auto 100px !important;
-	width: 575px;
+	margin: 0px auto;
+	width: 400px;
 }
 
 form#form-login {
@@ -1909,11 +1909,14 @@ p {
 }
 
 #section-box {
-	float: right;
-	width: 340px;
+	/*float: right;
+	width: 340px; */
 	margin-left: 10px;
 	margin-right: 10px;
 	background-color: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 1px 5px 1px #ccc;
+    margin-bottom: 20px;
 }
 
 #section-box .m {
@@ -1925,22 +1928,21 @@ p {
 	padding: 0;
 }
 
-#lock {
-	background: url(../images/j_login_lock.png) 50% 0 no-repeat;
-	width: 150px;
-	height: 137px;
-}
-
 fieldset.loginform {
 	border: 0 none;
 	width: auto;
 }
 
+.login div.m { border-radius: 0; }
+div#element-box.login div.m { border: 0; }
+.login .return { text-align: center; }
+
 label#mod-login-password-lbl,
 label#mod-login-username-lbl,
 label#mod-login-language-lbl {
 	display:block;
-	margin:5px 15px 16px 0;
+	margin:5px 15px 20px 0;
+    line-height: 20px;
 }
 
 input#mod-login-username,
@@ -1949,8 +1951,11 @@ select#lang {
 	float:right;
 	margin: 0 0 20px 0;
 	clear:right;
-	min-width: 145px;
+	width: 200px;
+    font-size: 16px; 
+    padding: 2px;
 }
+select#lang { width: 206px; }
 
 .login-submit {
 	border: 0;
