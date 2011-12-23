@@ -229,7 +229,6 @@ class InstallerModelUpdate extends JModelList
 			return false;
 		}
 
-		jimport('joomla.installer.helper');
 		$p_file = JInstallerHelper::downloadPackage($url);
 
 		// Was the package downloaded?

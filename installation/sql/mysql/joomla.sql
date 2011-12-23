@@ -42,7 +42,9 @@ INSERT INTO `#__assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 (23, 1, 55, 56, 1, 'com_templates', 'com_templates', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (24, 1, 57, 58, 1, 'com_users', 'com_users', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.own":{"6":1},"core.edit.state":[]}'),
 (27, 8, 18, 23, 2, 'com_content.category.2', 'Uncategorised', '{"core.create":{"8":1},"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(29, 27, 23, 24, 3, 'com_content.article.1', 'Welcome to Square One', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+(29, 27, 23, 24, 3, 'com_content.article.1', 'Welcome to Square One', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(32, 24, 54, 55, 1, 'com_users.notes.category.7','Uncategorised','{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(33, 1, 63,64,1,'com_finder','com_finder','{"core.admin":{"7":1},"core.manage":{"6":1}}');
 
 # -------------------------------------------------------
 
@@ -242,12 +244,16 @@ INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (13, 'com_media', 'component', 'com_media', '', 1, 1, 0, 1, '', '{"upload_extensions":"bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS","upload_maxsize":"10","file_path":"images","image_path":"images","restrict_uploads":"1","allowed_media_usergroup":"3","check_mime":"1","image_extensions":"bmp,gif,jpg,png","ignore_extensions":"","upload_mime":"image\\/jpeg,image\\/gif,image\\/png,image\\/bmp,application\\/x-shockwave-flash,application\\/msword,application\\/excel,application\\/pdf,application\\/powerpoint,text\\/plain,application\\/x-zip","upload_mime_illegal":"text\\/html","enable_flash":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (14, 'com_menus', 'component', 'com_menus', '', 1, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (16, 'com_modules', 'component', 'com_modules', '', 1, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(17, 'com_plugins', 'component', 'com_plugins', '', 1, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(18, 'com_search', 'component', 'com_search', '', 1, 1, 1, 1, '', '{"enabled":"0","show_date":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(19, 'com_templates', 'component', 'com_templates', '', 1, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(20, 'com_content', 'component', 'com_content', '', 1, 1, 0, 1, '', '{"article_layout":"_:default","show_title":"1","link_titles":"1","show_intro":"1","show_category":"1","link_category":"1","show_parent_category":"0","link_parent_category":"0","show_author":"1","link_author":"0","show_create_date":"0","show_modify_date":"0","show_publish_date":"1","show_item_navigation":"1","show_vote":"0","show_readmore":"1","show_readmore_title":"1","readmore_limit":"100","show_icons":"1","show_print_icon":"1","show_email_icon":"1","show_hits":"1","show_noauth":"0","category_layout":"_:blog","show_category_title":"0","show_description":"0","show_description_image":"0","maxLevel":"1","show_empty_categories":"0","show_no_articles":"1","show_subcat_desc":"1","show_cat_num_articles":"0","show_base_description":"1","maxLevelcat":"-1","show_empty_categories_cat":"0","show_subcat_desc_cat":"1","show_cat_num_articles_cat":"1","num_leading_articles":"1","num_intro_articles":"4","num_columns":"2","num_links":"4","multi_column_order":"0","orderby_pri":"order","orderby_sec":"rdate","order_date":"published","show_pagination_limit":"1","filter_field":"hide","show_headings":"1","list_show_date":"0","date_format":"","list_show_hits":"1","list_show_author":"1","show_pagination":"2","show_pagination_results":"1","show_feed_link":"1","feed_summary":"0","filters":{"1":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"6":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"7":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"2":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"3":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"4":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"5":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"10":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"12":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"8":{"filter_type":"BL","filter_tags":"","filter_attributes":""}}}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(21, 'com_config', 'component', 'com_config', '', 1, 1, 0, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(23, 'com_users', 'component', 'com_users', '', 1, 1, 0, 1, '', '{"allowUserRegistration":"1","new_usertype":"2","useractivation":"1","frontend_userparams":"1","mailSubjectPrefix":"","mailBodySuffix":""}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
+(17, 'com_newsfeeds', 'component', 'com_newsfeeds', '', 1, 1, 1, 0, '', '{"show_feed_image":"1","show_feed_description":"1","show_item_description":"1","feed_word_count":"0","show_headings":"1","show_name":"1","show_articles":"0","show_link":"1","show_description":"1","show_description_image":"1","display_num":"","show_pagination_limit":"1","show_pagination":"1","show_pagination_results":"1","show_cat_items":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(18, 'com_plugins', 'component', 'com_plugins', '', 1, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(19, 'com_search', 'component', 'com_search', '', 1, 1, 1, 1, '', '{"enabled":"0","show_date":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(20, 'com_templates', 'component', 'com_templates', '', 1, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(21, 'com_weblinks', 'component', 'com_weblinks', '', 1, 1, 1, 0, '', '{"show_comp_description":"1","comp_description":"","show_link_hits":"1","show_link_description":"1","show_other_cats":"0","show_headings":"0","show_numbers":"0","show_report":"1","count_clicks":"1","target":"0","link_icons":""}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(22, 'com_content', 'component', 'com_content', '', 1, 1, 0, 1, '{"legacy":false,"name":"com_content","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2011 Open Source Matters. All rights reserved.\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"1.7.0","description":"COM_CONTENT_XML_DESCRIPTION","group":""}', '{"article_layout":"_:default","show_title":"1","link_titles":"1","show_intro":"1","show_category":"1","link_category":"1","show_parent_category":"0","link_parent_category":"0","show_author":"1","link_author":"0","show_create_date":"0","show_modify_date":"0","show_publish_date":"1","show_item_navigation":"1","show_vote":"0","show_readmore":"1","show_readmore_title":"1","readmore_limit":"100","show_icons":"1","show_print_icon":"1","show_email_icon":"1","show_hits":"1","show_noauth":"0","show_publishing_options":"1","show_article_options":"1","show_urls_images_frontend":"0","show_urls_images_backend":"1","targeta":0,"targetb":0,"targetc":0,"float_intro":"left","float_fulltext":"left","category_layout":"_:blog","show_category_title":"0","show_description":"0","show_description_image":"0","maxLevel":"1","show_empty_categories":"0","show_no_articles":"1","show_subcat_desc":"1","show_cat_num_articles":"0","show_base_description":"1","maxLevelcat":"-1","show_empty_categories_cat":"0","show_subcat_desc_cat":"1","show_cat_num_articles_cat":"1","num_leading_articles":"1","num_intro_articles":"4","num_columns":"2","num_links":"4","multi_column_order":"0","show_subcategory_content":"0","show_pagination_limit":"1","filter_field":"hide","show_headings":"1","list_show_date":"0","date_format":"","list_show_hits":"1","list_show_author":"1","orderby_pri":"order","orderby_sec":"rdate","order_date":"published","show_pagination":"2","show_pagination_results":"1","show_feed_link":"1","feed_summary":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(23, 'com_config', 'component', 'com_config', '', 1, 1, 0, 1, '{"legacy":false,"name":"com_config","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2011 Open Source Matters. All rights reserved.\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"1.7.0","description":"COM_CONFIG_XML_DESCRIPTION","group":""}', '{"filters":{"1":{"filter_type":"NH","filter_tags":"","filter_attributes":""},"6":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"7":{"filter_type":"NONE","filter_tags":"","filter_attributes":""},"2":{"filter_type":"NH","filter_tags":"","filter_attributes":""},"3":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"4":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"5":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"10":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"12":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"8":{"filter_type":"NONE","filter_tags":"","filter_attributes":""}}}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(24, 'com_redirect', 'component', 'com_redirect', '', 1, 1, 0, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(25, 'com_users', 'component', 'com_users', '', 1, 1, 0, 1, '', '{"allowUserRegistration":"1","new_usertype":"2","useractivation":"1","frontend_userparams":"1","mailSubjectPrefix":"","mailBodySuffix":""}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(27, 'com_finder', 'component', 'com_finder', '', 1, 1, 0, 0, '', '{"show_description":"1","description_length":255,"allow_empty_query":"0","show_url":"1","show_advanced":"1","expand_advanced":"0","show_date_filters":"0","highlight_terms":"1","opensearch_name":"","opensearch_description":"","batch_size":"50","memory_table_limit":30000,"title_multiplier":"1.7","text_multiplier":"0.7","meta_multiplier":"1.2","path_multiplier":"2.0","misc_multiplier":"0.3","stemmer":"porter_en"}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
 
 # Libraries
 INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
@@ -272,7 +278,8 @@ INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (213, 'mod_search', 'module', 'mod_search', '', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (219, 'mod_articles_category', 'module', 'mod_articles_category', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (220, 'mod_articles_categories', 'module', 'mod_articles_categories', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(221, 'mod_languages', 'module', 'mod_languages', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0);
+(221, 'mod_languages', 'module', 'mod_languages', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(223, 'mod_finder', 'module', 'mod_finder', '', 0, 1, 0, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0);
 
 ## Administrator
 INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
@@ -289,6 +296,7 @@ INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (311, 'mod_title', 'module', 'mod_title', '', 1, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (312, 'mod_toolbar', 'module', 'mod_toolbar', '', 1, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (313, 'mod_multilangstatus', 'module', 'mod_multilangstatus', '', 1, 1, 1, 0, '{"legacy":false,"name":"mod_multilangstatus","type":"module","creationDate":"September 2011","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"1.7.1","description":"MOD_MULTILANGSTATUS_XML_DESCRIPTION","group":""}', '{"cache":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
+
 # Plug-ins
 
 INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
@@ -317,7 +325,15 @@ INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (435, 'plg_content_joomla', 'plugin', 'joomla', 'content', 0, 1, 1, 0, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (436, 'plg_system_languagecode', 'plugin', 'languagecode', 'system', 0, 0, 1, 0, '', '{}', '', '', 0, '0000-00-00 00:00:00', 10, 0),
 (437, 'plg_quickicon_joomlaupdate', 'plugin', 'joomlaupdate', 'quickicon', 0, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(438, 'plg_quickicon_extensionupdate', 'plugin', 'extensionupdate', 'quickicon', 0, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
+(438, 'plg_quickicon_extensionupdate', 'plugin', 'extensionupdate', 'quickicon', 0, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(439, 'plg_captcha_recaptcha', 'plugin', 'recaptcha', 'captcha', 0, 1, 1, 0, '{}', '{"public_key":"","private_key":"","theme":"clean"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(440, 'plg_system_highlight', 'plugin', 'highlight', 'system', 0, 1, 1, 0, '', '{}', '', '', 0, '0000-00-00 00:00:00', 7, 0),
+(441, 'plg_content_finder', 'plugin', 'finder', 'content', 0, 0, 1, 0, '{"legacy":false,"name":"plg_content_finder","type":"plugin","creationDate":"December 2011","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"1.7.0","description":"PLG_CONTENT_FINDER_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(442, 'plg_finder_categories', 'plugin', 'categories', 'finder', 0, 1, 1, 0, '', '{}', '', '', 0, '0000-00-00 00:00:00', 1, 0),
+(443, 'plg_finder_contacts', 'plugin', 'contacts', 'finder', 0, 1, 1, 0, '', '{}', '', '', 0, '0000-00-00 00:00:00', 2, 0),
+(444, 'plg_finder_content', 'plugin', 'content', 'finder', 0, 1, 1, 0, '', '{}', '', '', 0, '0000-00-00 00:00:00', 3, 0),
+(445, 'plg_finder_newsfeeds', 'plugin', 'newsfeeds', 'finder', 0, 1, 1, 0, '', '{}', '', '', 0, '0000-00-00 00:00:00', 4, 0),
+(446, 'plg_finder_weblinks', 'plugin', 'weblinks', 'finder', 0, 1, 1, 0, '', '{}', '', '', 0, '0000-00-00 00:00:00', 5, 0);
 
 # Templates
 
@@ -337,6 +353,548 @@ INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (800, 'joomla', 'package', 'pkg_joomla', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0);
 
 # -------------------------------------------------------
+
+#
+# Table structure for table `#__finder_filters`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_filters` (
+  `filter_id` int(10) unsigned NOT NULL auto_increment,
+  `title` varchar(255) NOT NULL,
+  `alias` varchar(255) NOT NULL,
+  `state` tinyint(1) NOT NULL default '1',
+  `created` datetime NOT NULL default '0000-00-00 00:00:00',
+  `created_by` int(10) unsigned NOT NULL,
+  `created_by_alias` varchar(255) NOT NULL,
+  `modified` datetime NOT NULL default '0000-00-00 00:00:00',
+  `modified_by` int(10) unsigned NOT NULL default '0',
+  `checked_out` int(10) unsigned NOT NULL default '0',
+  `checked_out_time` datetime NOT NULL default '0000-00-00 00:00:00',
+  `map_count` int(10) unsigned NOT NULL default '0',
+  `data` text NOT NULL,
+  `params` mediumtext,
+  PRIMARY KEY  (`filter_id`)
+) DEFAULT CHARSET=utf8;
+
+# -------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links` (
+  `link_id` int(10) unsigned NOT NULL auto_increment,
+  `url` varchar(255) NOT NULL,
+  `route` varchar(255) NOT NULL,
+  `title` varchar(255) default NULL,
+  `description` varchar(255) default NULL,
+  `indexdate` datetime NOT NULL default '0000-00-00 00:00:00',
+  `md5sum` varchar(32) default NULL,
+  `published` tinyint(1) NOT NULL default '1',
+  `state` int(5) default '1',
+  `access` int(5) default '0',
+  `language` varchar(8) NOT NULL,
+  `publish_start_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `publish_end_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `start_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `end_date` datetime NOT NULL default '0000-00-00 00:00:00',
+  `list_price` double unsigned NOT NULL default '0',
+  `sale_price` double unsigned NOT NULL default '0',
+  `type_id` int(11) NOT NULL,
+  `object` mediumblob NOT NULL,
+  PRIMARY KEY  (`link_id`),
+  KEY `idx_type` (`type_id`),
+  KEY `idx_title` (`title`),
+  KEY `idx_md5` (`md5sum`),
+  KEY `idx_url` (`url`(75)),
+  KEY `idx_published_list` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`list_price`),
+  KEY `idx_published_sale` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`sale_price`)
+) DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_terms0`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_terms0` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+) DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_terms1`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_terms1` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+) DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_terms2`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_terms2` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+) DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_terms3`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_terms3` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_terms4`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_terms4` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_terms5`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_terms5` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_terms6`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_terms6` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_terms7`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_terms7` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_terms8`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_terms8` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_terms9`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_terms9` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_termsa`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_termsa` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_termsb`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_termsb` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_termsc`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_termsc` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_termsd`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_termsd` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_termse`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_termse` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_links_termsf`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_links_termsf` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`term_id`),
+  KEY `idx_term_weight` (`term_id`,`weight`),
+  KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_taxonomy`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_taxonomy` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `parent_id` int(10) unsigned NOT NULL default '0',
+  `title` varchar(255) NOT NULL,
+  `state` tinyint(1) unsigned NOT NULL default '1',
+  `access` tinyint(1) unsigned NOT NULL default '0',
+  `ordering` tinyint(1) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`id`),
+  KEY `parent_id` (`parent_id`),
+  KEY `state` (`state`),
+  KEY `ordering` (`ordering`),
+  KEY `access` (`access`),
+  KEY `idx_parent_published` (`parent_id`,`state`,`access`)
+)   DEFAULT CHARSET=utf8;
+
+REPLACE INTO `#__finder_taxonomy` (`id`, `parent_id`, `title`, `state`, `access`, `ordering`) VALUES
+(1, 0, 'ROOT', 0, 0, 0);
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_taxonomy_map`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_taxonomy_map` (
+  `link_id` int(10) unsigned NOT NULL,
+  `node_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`link_id`,`node_id`),
+  KEY `link_id` (`link_id`),
+  KEY `node_id` (`node_id`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_terms`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_terms` (
+  `term_id` int(10) unsigned NOT NULL auto_increment,
+  `term` varchar(75) NOT NULL,
+  `stem` varchar(75) NOT NULL,
+  `common` tinyint(1) unsigned NOT NULL default '0',
+  `phrase` tinyint(1) unsigned NOT NULL default '0',
+  `weight` float unsigned NOT NULL default '0',
+  `soundex` varchar(75) NOT NULL,
+  `links` int(10) NOT NULL default '0',
+  PRIMARY KEY  (`term_id`),
+  UNIQUE KEY `idx_term` (`term`),
+  KEY `idx_term_phrase` (`term`,`phrase`),
+  KEY `idx_stem_phrase` (`stem`,`phrase`),
+  KEY `idx_soundex_phrase` (`soundex`,`phrase`)
+)  DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_terms_common`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_terms_common` (
+  `term` varchar(75) NOT NULL,
+  `language` varchar(3) NOT NULL,
+  KEY `idx_word_lang` (`term`,`language`),
+  KEY `idx_lang` (`language`)
+)  DEFAULT CHARSET=utf8;
+
+REPLACE INTO `#__finder_terms_common` (`term`, `language`) VALUES
+('a', 'en'),
+('about', 'en'),
+('after', 'en'),
+('ago', 'en'),
+('all', 'en'),
+('am', 'en'),
+('an', 'en'),
+('and', 'en'),
+('ani', 'en'),
+('any', 'en'),
+('are', 'en'),
+('aren''t', 'en'),
+('as', 'en'),
+('at', 'en'),
+('be', 'en'),
+('but', 'en'),
+('by', 'en'),
+('for', 'en'),
+('from', 'en'),
+('get', 'en'),
+('go', 'en'),
+('how', 'en'),
+('if', 'en'),
+('in', 'en'),
+('into', 'en'),
+('is', 'en'),
+('isn''t', 'en'),
+('it', 'en'),
+('its', 'en'),
+('me', 'en'),
+('more', 'en'),
+('most', 'en'),
+('must', 'en'),
+('my', 'en'),
+('new', 'en'),
+('no', 'en'),
+('none', 'en'),
+('not', 'en'),
+('noth', 'en'),
+('nothing', 'en'),
+('of', 'en'),
+('off', 'en'),
+('often', 'en'),
+('old', 'en'),
+('on', 'en'),
+('onc', 'en'),
+('once', 'en'),
+('onli', 'en'),
+('only', 'en'),
+('or', 'en'),
+('other', 'en'),
+('our', 'en'),
+('ours', 'en'),
+('out', 'en'),
+('over', 'en'),
+('page', 'en'),
+('she', 'en'),
+('should', 'en'),
+('small', 'en'),
+('so', 'en'),
+('some', 'en'),
+('than', 'en'),
+('thank', 'en'),
+('that', 'en'),
+('the', 'en'),
+('their', 'en'),
+('theirs', 'en'),
+('them', 'en'),
+('then', 'en'),
+('there', 'en'),
+('these', 'en'),
+('they', 'en'),
+('this', 'en'),
+('those', 'en'),
+('thus', 'en'),
+('time', 'en'),
+('times', 'en'),
+('to', 'en'),
+('too', 'en'),
+('true', 'en'),
+('under', 'en'),
+('until', 'en'),
+('up', 'en'),
+('upon', 'en'),
+('use', 'en'),
+('user', 'en'),
+('users', 'en'),
+('veri', 'en'),
+('version', 'en'),
+('very', 'en'),
+('via', 'en'),
+('want', 'en'),
+('was', 'en'),
+('way', 'en'),
+('were', 'en'),
+('what', 'en'),
+('when', 'en'),
+('where', 'en'),
+('whi', 'en'),
+('which', 'en'),
+('who', 'en'),
+('whom', 'en'),
+('whose', 'en'),
+('why', 'en'),
+('wide', 'en'),
+('will', 'en'),
+('with', 'en'),
+('within', 'en'),
+('without', 'en'),
+('would', 'en'),
+('yes', 'en'),
+('yet', 'en'),
+('you', 'en'),
+('your', 'en'),
+('yours', 'en');
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_tokens`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_tokens` (
+  `term` varchar(75) NOT NULL,
+  `stem` varchar(75) NOT NULL,
+  `common` tinyint(1) unsigned NOT NULL default '0',
+  `phrase` tinyint(1) unsigned NOT NULL default '0',
+  `weight` float unsigned NOT NULL default '1',
+  `context` tinyint(1) unsigned NOT NULL default '2',
+  KEY `idx_word` (`term`),
+  KEY `idx_context` (`context`)
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_tokens_aggregate`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_tokens_aggregate` (
+  `term_id` int(10) unsigned NOT NULL,
+  `map_suffix` char(1) NOT NULL,
+  `term` varchar(75) NOT NULL,
+  `stem` varchar(75) NOT NULL,
+  `common` tinyint(1) unsigned NOT NULL default '0',
+  `phrase` tinyint(1) unsigned NOT NULL default '0',
+  `term_weight` float unsigned NOT NULL,
+  `context` tinyint(1) unsigned NOT NULL default '2',
+  `context_weight` float unsigned NOT NULL,
+  `total_weight` float unsigned NOT NULL,
+  KEY `token` (`term`),
+  KEY `keyword_id` (`term_id`)
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
+
+#
+# Table structure for table `#__finder_types`
+#
+
+CREATE TABLE IF NOT EXISTS `#__finder_types` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `title` varchar(100) NOT NULL,
+  `mime` varchar(100) NOT NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `title` (`title`)
+)   DEFAULT CHARSET=utf8;
+
+# --------------------------------------------------------
 
 #
 # Table structure for table `#__languages`
@@ -442,7 +1000,8 @@ INSERT INTO `#__menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 (137, 'admin', 'MOD_MENU_EXTENSIONS_TEMPLATE_MANAGER', 'modmenuextensionstemplatemanager', '', 'modmenuextensionsextensions/modmenuextensionstemplatemanager', 'index.php?option=com_templates', 'component', 1, 133, 2, 10, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:themes', 0, '', 66, 67, 0, '*', 1),
 (138, 'admin', 'MOD_MENU_EXTENSIONS_LANGUAGE_MANAGER', 'modmenuextensionslanguagemanager', '', 'modmenuextensionsextensions/modmenuextensionslanguagemanager', 'index.php?option=com_languages', 'component', 1, 133, 2, 11, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:language', 0, '', 68, 69, 0, '*', 1),
 (139, 'admin', 'Separator', 'separator', '', 'modmenucontrolpanel/separator', '', 'separator', 1, 109, 2, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '', 16, 17, 0, '*', 1),
-(140, 'admin', 'COM_MENUS_SUBMENU_MENUS', 'commenussubmenumenus', '', 'modmenumenus/commenussubmenumenus', '', 'menus', 1, 125, 2, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:menu', 0, '', 42, 43, 0, '*', 1);
+(140, 'admin', 'COM_MENUS_SUBMENU_MENUS', 'commenussubmenumenus', '', 'modmenumenus/commenussubmenumenus', '', 'menus', 1, 125, 2, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:menu', 0, '', 42, 43, 0, '*', 1),
+(21, 'admin', 'com_finder', 'Smart Search', '', 'Smart Search', 'index.php?option=com_finder', 'component', 0, 1, 1, 27, 0, 0, '0000-00-00 00:00:00', 0, 0, 'class:finder', 0, '', 41, 42, 0, '*', 1);
 
 # -------------------------------------------------------
 
@@ -534,7 +1093,8 @@ INSERT INTO `#__modules_menu` VALUES
 (13,0),
 (14,0),
 (15,0),
-(79,0);
+(79,0),
+(85,0);
 
 
 # -------------------------------------------------------
