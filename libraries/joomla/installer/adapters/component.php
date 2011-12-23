@@ -1437,7 +1437,7 @@ class JInstallerComponent extends JAdapterInstance
 			$data['alias'] = (string) $menuElement;
 			$data['link'] = 'index.php?option=' . $option;
 			$data['type'] = 'component';
-			$data['published'] = 0;
+			$data['published'] = 1;
 			$data['parent_id'] = 1;
 			$data['component_id'] = $component_id;
 			$data['img'] = ((string) $menuElement->attributes()->img) ? (string) $menuElement->attributes()->img : 'class:component';
@@ -1466,7 +1466,7 @@ class JInstallerComponent extends JAdapterInstance
 			$data['alias'] = $option;
 			$data['link'] = 'index.php?option=' . $option;
 			$data['type'] = 'component';
-			$data['published'] = 0;
+			$data['published'] = 1;
 			$data['parent_id'] = 1;
 			$data['component_id'] = $component_id;
 			$data['img'] = 'class:component';
@@ -1507,7 +1507,7 @@ class JInstallerComponent extends JAdapterInstance
 			$data['title'] = (string) $child;
 			$data['alias'] = (string) $child;
 			$data['type'] = 'component';
-			$data['published'] = 0;
+			$data['published'] = 1;
 			$data['parent_id'] = $parent_id;
 			$data['component_id'] = $component_id;
 			$data['img'] = ((string) $child->attributes()->img) ? (string) $child->attributes()->img : 'class:component';
