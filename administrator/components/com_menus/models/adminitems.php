@@ -191,7 +191,7 @@ class MenusModelAdminitems extends JModelList
 		}
 
 		// Filter the items over the menu id if set.
-        $query->where('a.menutype = '.$db->quote('main'));
+        $query->where('a.menutype = '.$db->quote('admin'));
 
 		// Filter on the access level.
 		if ($access = $this->getState('filter.access')) {

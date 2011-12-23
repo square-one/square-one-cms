@@ -1431,7 +1431,7 @@ class JInstallerComponent extends JAdapterInstance
 		if ($menuElement)
 		{
 			$data = array();
-			$data['menutype'] = 'main';
+			$data['menutype'] = 'admin';
 			$data['client_id'] = 1;
 			$data['title'] = (string) $menuElement;
 			$data['alias'] = (string) $menuElement;
@@ -1460,7 +1460,7 @@ class JInstallerComponent extends JAdapterInstance
 		else
 		{
 			$data = array();
-			$data['menutype'] = 'main';
+			$data['menutype'] = 'admin';
 			$data['client_id'] = 1;
 			$data['title'] = $option;
 			$data['alias'] = $option;
@@ -1502,7 +1502,7 @@ class JInstallerComponent extends JAdapterInstance
 		foreach ($this->manifest->administration->submenu->menu as $child)
 		{
 			$data = array();
-			$data['menutype'] = 'main';
+			$data['menutype'] = 'admin';
 			$data['client_id'] = 1;
 			$data['title'] = (string) $child;
 			$data['alias'] = (string) $child;

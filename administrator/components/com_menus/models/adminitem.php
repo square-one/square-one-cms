@@ -1061,7 +1061,7 @@ class MenusModelAdminitem extends JModelAdmin
         
         // Implicitly set the menutype and client_id
         $data['client_id'] = 1;
-        $data['menutype'] = 'main';
+        $data['menutype'] = 'admin';
 
 		// Bind the data.
 		if (!$table->bind($data)) {

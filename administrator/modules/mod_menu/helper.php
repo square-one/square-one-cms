@@ -47,7 +47,7 @@ class modMenuHelper
 			$end		= ($disabled) ? false : true;
 			$showAll	= ($disabled) ? false : true;
 			$maxdepth	= false;
-			$items 		= $menu->getItems('menutype', 'main');
+			$items 		= $menu->getItems('menutype', 'admin');
             
             $lang = JFactory::getLanguage();
 

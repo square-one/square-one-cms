@@ -53,7 +53,7 @@ class JFormFieldAdminMenuOrdering extends JFormFieldList
 		$query->where('a.published >= 0');
 		$query->where('a.parent_id =' . (int) $parent_id);
         $query->where('a.client_id = 1');
-        $query->where('a.menutype = '.$db->quote('main'));
+        $query->where('a.menutype = '.$db->quote('admin'));
 
 		$query->order('a.lft ASC');
 
