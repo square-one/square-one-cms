@@ -54,7 +54,7 @@ class JFormFieldClasses extends JFormFieldList
 
 	protected function _getClasses()
 	{
-		$css = file_get_contents(JPATH_ADMINISTRATOR.'/templates/bluestork/css/template.css');
+		$css = file_get_contents(JPATH_ADMINISTRATOR.'/templates/system/css/template.css');
         
         preg_match_all('/\n\.icon-16-(.*?)\s/i', $css, $classes);
 
