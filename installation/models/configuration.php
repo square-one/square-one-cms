@@ -52,7 +52,7 @@ class JInstallationModelConfiguration extends JModel
 		$registry->set('display_offline_message', 1);
 		$registry->set('offline_image', '');
 		$registry->set('sitename', $options->site_name);
-		$registry->set('editor', 'tinymce');
+		$registry->set('editor', 'none');
 		$registry->set('captcha', 'recaptcha');
 		$registry->set('list_limit', 20);
 		$registry->set('access', 1);
