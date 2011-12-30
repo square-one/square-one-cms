@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="square-one" default="build" basedir="../">
 	
-    <taskdef name="changelog" classname="phing.tasks.squareone.changelogtask" />
+    <taskdef name="changelog" classname=".usr.share.php.phing.tasks.squareone.ChangelogTask" />
     
     <target name="build">
         
@@ -20,13 +20,8 @@
         <!-- Copy manifest to root -->
         <copy file="administrator/manifests/files/squareone.xml" tofile="squareone.xml" />
         
-        <!-- Run Changelog if Release variable set -->
-        <if>
-            <equals arg1="$RELEASE" arg2="1" />
-            <then>
-                <changelog />
-            </then>
-        </if>
+        <!-- Build Changelog -->
+        <changelog />
         
         <!-- Build zip file -->
         <zip destfile="build/${filename}">
