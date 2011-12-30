@@ -13,21 +13,48 @@ defined('_JEXEC') or die;
 
 <?php if ($this->result) : ?>
 
-Tasks to run:
-
-<ul id="distro_tasks">
-    <?php foreach ($this->result->extensions->xpath('//extension') as $extension) : if (isset($extension['detailsurl'])) : ?>
-    <li data-detailsurl="<?php echo urlencode($extension['detailsurl']); ?>" data-type="extension">
-        <?php echo $extension['name']; ?>
-    </li>
-    <?php endif; endforeach; ?>
-    <?php if (isset($this->result->install)) : ?>
-    <li>Install SQL</li>
-    <?php endif; ?>
-    <?php if (isset($this->result->scriptfile)) : ?>
-    <li>Install Script</li>
-    <?php endif; ?>
-</ul>
+	<table class="adminlist" id="distro_tasks">
+		<thead>
+			<tr>
+				<th width="20">
+					
+				</th>
+				<th width="150">
+					<?php echo JText::_('COM_INSTALLER_HEADING_NAME'); ?>
+				</th>
+				<th width="100">
+					<?php echo JText::_('COM_INSTALLER_HEADING_TYPE'); ?>
+				</th>
+				<th width="50" class="center">
+					<?php echo JText::_('JVERSION'); ?>
+				</th>
+                <th>
+                    <?php echo JText::_('COM_INSTALLER_RESULT') ?>
+                </th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($this->result->extensions->xpath('//extension') as $i => $extension) : if (isset($extension['detailsurl'])) : ?>
+			<tr class="row<?php echo $i%2; ?> extension" data-detailsurl="<?php echo $extension['detailsurl']; ?>">
+				<td class="jgrid">
+                    <span class="state unpublish">&nbsp;</span>
+				</td>
+				<td>
+					<?php echo $extension['name']; ?>
+				</td>
+				<td class="center">
+					<?php echo JText::_('COM_INSTALLER_TYPE_'.$extension['type']); ?>
+				</td>
+				<td class="center">
+					<?php echo $extension['version']; ?>
+				</td>
+                <td class="result">
+                    
+                </td>
+			</tr>
+		<?php endif; endforeach; ?>
+		</tbody>
+	</table>
         
 <?php else : ?>
 <?php echo JText::_('COM_INSTALLER_DISTRIBUTION_NOTHING_TO_DO') ?>
@@ -37,7 +64,7 @@ Tasks to run:
     
 window.addEvent('domready', function() {
 
-    var extensions = $$('#distro_tasks li');
+    var extensions = $$('#distro_tasks tr.extension');
     var i = 0;
     
     var installer = new DistroInstaller();
@@ -45,7 +72,7 @@ window.addEvent('domready', function() {
     // Loop through extensions to install
     for (i = 0; i < extensions.length; i++)
     {
-        installer.addItem(extensions[i].get('data-detailsurl'));
+        installer.addItem(extensions[i]);
     }
     
     installer.process();
@@ -58,8 +85,8 @@ var DistroInstaller = new Class({
     queue : new Array(),
     errors : false,
     
-    addItem : function(url) {
-        this.queue.push(url);
+    addItem : function(item) {
+        this.queue.push(item);
     },
     
     process : function() {
@@ -75,16 +102,27 @@ var DistroInstaller = new Class({
     
     complete: function() {
         
-        window.location.href = '<?php echo JRoute::_('index.php?option=com_installer&view=installer') ?>';
+        //window.location.href = '<?php echo JRoute::_('index.php?option=com_installer&view=installer') ?>';
     },
     
     install : function() {
         this.request = new Request({
             url:    'index.php?option=com_installer',
             data:   '<?php echo JUtility::getToken(); ?>=1&task=install.distro_install&dir='+this.response.dir+'&extractdir='+this.response.extractdir+'&packagefile='+this.response.packagefile+'&type='+this.response.type,
-            link: 'chain',
+            onFailure : function() {
+                this.queue[0].getFirst('td.result').set('text', '<?php echo JText::_('COM_INSTALLER_INSTALL_FAILED') ?>');
+                this.queue[0].getFirst('td.jgrid span').set('class', 'state unpublish');
+                this.queue.shift();
+                this.process();
+            },
             onSuccess : function(response) {
                 this.response = JSON.decode(response);
+                this.queue[0].getFirst('td.result').set('text', this.response.message);
+                if (this.response.result == true) {
+                    this.queue[0].getFirst('td.jgrid span').set('class', 'state publish');
+                } else {
+                    this.queue[0].getFirst('td.jgrid span').set('class', 'state unpublish');
+                }
                 this.queue.shift();
                 this.process();
             }.bind(this)
@@ -95,25 +133,48 @@ var DistroInstaller = new Class({
         this.request = new Request({
             url:    'index.php?option=com_installer',
             data:   '<?php echo JUtility::getToken(); ?>=1&task=install.distro_extract&file='+this.response.file,
-            link: 'chain',
-            onStart : function() {
-                console.info(this.response.file);
+            onFailure : function() {
+                this.queue[0].getFirst('td.result').set('text', '<?php echo JText::_('COM_INSTALLER_EXTRACT_FAILED') ?>');
+                this.queue[0].getFirst('td.jgrid span').set('class', 'state unpublish');
+                this.queue.shift();
+                this.process();
             },
             onSuccess : function(response) {
                 this.response = JSON.decode(response);
-                this.install();
+                this.queue[0].getFirst('td.result').set('text', this.response.message);
+                if (this.response.result == true) {
+                    this.install();
+                } else {
+                    this.queue[0].getFirst('td.jgrid span').set('class', 'state unpublish');
+                    this.queue.shift();
+                    this.process();
+                }
             }.bind(this)
         }).send();
     },
     
     download : function() {
+        this.queue[0].getFirst('td.jgrid span').set('class', 'state progress');
         this.request = new Request({
             url:    'index.php?option=com_installer',
-            data:   '<?php echo JUtility::getToken(); ?>=1&task=install.distro_download&detailsurl='+this.queue[0],
-            link: 'chain',
+            data:   '<?php echo JUtility::getToken(); ?>=1&task=install.distro_download&detailsurl='+this.queue[0].get('data-detailsurl'),
+            onFailure : function() {
+                this.queue[0].getFirst('td.result').set('text', '<?php echo JText::_('COM_INSTALLER_DOWNLOAD_FAILED') ?>');
+                this.queue[0].getFirst('td.jgrid span').set('class', 'state unpublish');
+                this.queue.shift();
+                this.process();
+            },
             onSuccess : function(response) {
                 this.response = JSON.decode(response);
-                this.extract();
+                this.queue[0].getFirst('td.result').set('text', this.response.message);
+                if (this.response.result == true) {
+                    this.extract();
+                } else {
+                    this.queue[0].getFirst('td.jgrid span').set('class', 'state unpublish');
+                    this.queue.shift();
+                    this.process();
+                }
+                
             }.bind(this)
         }).send();
     }

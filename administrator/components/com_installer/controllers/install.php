@@ -50,21 +50,16 @@ class InstallerControllerInstall extends JController
 		}
 		$this->setRedirect($redirect_url);
 	}
-    
-    public function distro_redirect()
-    {
         
-    }
-    
     public function distro_download()
     {
         JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
         
         $model = $this->getModel('install');
         
-        print json_encode($model->distro_download());
+        echo json_encode($model->distro_download());
         
-        exit();
+        JFactory::getApplication()->close();
     }
     
     public function distro_extract()
@@ -73,9 +68,9 @@ class InstallerControllerInstall extends JController
         
         $model = $this->getModel('install');
         
-        print json_encode($model->distro_extract());
+        echo json_encode($model->distro_extract());
         
-        exit();
+        JFactory::getApplication()->close();
     }
     
     public function distro_install()
@@ -84,9 +79,9 @@ class InstallerControllerInstall extends JController
         
         $model = $this->getModel('install');
         
-        print json_encode($model->distro_install());
+        echo json_encode($model->distro_install());
         
-        exit();
+        JFactory::getApplication()->close();
     }
     
     public function install_script()

@@ -296,7 +296,7 @@ class InstallerModelInstall extends JModel
         
         $file = JInstallerHelper::downloadPackage($update->get('downloadurl')->_data);
         if (!$file) {
-			JError::raiseWarning('', JText::_('COM_INSTALLER_MSG_INSTALL_INVALID_URL'));
+            $result->message = JText::_('COM_INSTALLER_MSG_INSTALL_INVALID_URL');
 		}
         else
         {
@@ -320,7 +320,7 @@ class InstallerModelInstall extends JModel
         
         $package = JInstallerHelper::unpack($tmp_dest . '/' . $file);
         if (!$package) {
-			JError::raiseWarning('', JText::_('TODO'));
+            $result->message = JText::_('COM_INSTALLER_EXTRACT_FAILED');
 		}
         else
         {
@@ -377,7 +377,7 @@ class InstallerModelInstall extends JModel
         if ($result->result) {
             $result->result = true;
             $result->task = 'distro_install';
-            $result->message = JText::_('Installed the package');
+            $result->message = $msg;
         }
 
 		return $result;
