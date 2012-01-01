@@ -7,15 +7,24 @@
  */
 
 defined('_JEXEC') or die;
+// Skips FTP Config if server is a good boy
+if (is_writable(dirname(__FILE__).'/index.html')) 
+{
+    $return = 'database';
+}
+else
+{
+    $return = 'filesystem';
+}
 ?>
 <div id="step">
 	<div class="far-right">
 <?php if ($this->document->direction == 'ltr') : ?>
-		<div class="button1-right"><div class="prev"><a href="index.php?view=filesystem" onclick="return Install.goToPage('filesystem');" rel="prev" title="<?php echo JText::_('JPrevious'); ?>"><?php echo JText::_('JPrevious'); ?></a></div></div>
+		<div class="button1-right"><div class="prev"><a href="index.php?view=<?php echo $return ?>" onclick="return Install.goToPage('<?php echo $return ?>');" rel="prev" title="<?php echo JText::_('JPrevious'); ?>"><?php echo JText::_('JPrevious'); ?></a></div></div>
 		<div class="button1-left"><div class="next"><a href="#" onclick="Install.submitform();" rel="next" title="<?php echo JText::_('JNext'); ?>"><?php echo JText::_('JNext'); ?></a></div></div>
 <?php elseif ($this->document->direction == 'rtl') : ?>
 		<div class="button1-right"><div class="prev"><a href="#" onclick="Install.submitform();" rel="next" title="<?php echo JText::_('JNext'); ?>"><?php echo JText::_('JNext'); ?></a></div></div>
-		<div class="button1-left"><div class="next"><a href="index.php?view=filesystem" onclick="return Install.goToPage('filesystem');" rel="prev" title="<?php echo JText::_('JPrevious'); ?>"><?php echo JText::_('JPrevious'); ?></a></div></div>
+		<div class="button1-left"><div class="next"><a href="index.php?view=<?php echo $return ?>" onclick="return Install.goToPage('<?php echo $return ?>');" rel="prev" title="<?php echo JText::_('JPrevious'); ?>"><?php echo JText::_('JPrevious'); ?></a></div></div>
 <?php endif; ?>
 	</div>
 	<h2><?php echo JText::_('INSTL_SITE'); ?></h2>

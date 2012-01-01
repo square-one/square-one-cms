@@ -51,8 +51,6 @@ class ConfigModelComponent extends JModelForm
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
-		jimport('joomla.form.form');
-
 		if ($path = $this->getState('component.path')) {
 			// Add the search path for the admin component config.xml file.
 			JForm::addFormPath($path);
@@ -115,8 +113,7 @@ class ConfigModelComponent extends JModelForm
 
 		// Save the rules.
 		if (isset($data['params']) && isset($data['params']['rules'])) {
-			jimport('joomla.access.rules');
-			$rules	= new JRules($data['params']['rules']);
+			$rules	= new JAccessRules($data['params']['rules']);
 			$asset	= JTable::getInstance('asset');
 
 			if (!$asset->loadByName($data['option'])) {

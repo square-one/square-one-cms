@@ -57,9 +57,14 @@ class InstallerHelper
 			$vName == 'sites'
 		);
 		JSubMenuHelper::addEntry(
-			JText::_('COM_INSTALLER_SUBMENU_WARNINGS'),
-			'index.php?option=com_installer&view=warnings',
-			$vName == 'warnings'
+			JText::_('COM_INSTALLER_SUBMENU_DATABASE'),
+			'index.php?option=com_installer&view=database',
+			$vName == 'database'
+		);
+		JSubMenuHelper::addEntry(
+		JText::_('COM_INSTALLER_SUBMENU_WARNINGS'),
+					'index.php?option=com_installer&view=warnings',
+		$vName == 'warnings'
 		);
 	}
 

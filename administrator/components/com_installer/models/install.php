@@ -13,8 +13,6 @@ defined('_JEXEC') or die;
 // Import library dependencies
 
 jimport('joomla.application.component.model');
-jimport('joomla.installer.installer');
-jimport('joomla.installer.helper');
 jimport('joomla.updater.update');
 
 /**
@@ -65,11 +63,6 @@ class InstallerModelInstall extends JModel
 		$this->setState('install.directory', $path);
 		parent::populateState();
 	}
-    
-    public function install_distribution()
-    {
-        // Handle distribution installation
-    }
 
 	/**
 	 * Install an extension from either folder, url or upload.
@@ -79,7 +72,6 @@ class InstallerModelInstall extends JModel
 	 */
 	function install()
 	{
-		jimport('joomla.client.helper');
 		$this->setState('action', 'install');
 
 		// Set FTP credentials, if given.

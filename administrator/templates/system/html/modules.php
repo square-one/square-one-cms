@@ -74,3 +74,20 @@ function modChrome_tabs($module, &$params, &$attribs)
 		echo $content;
 	}
 }
+
+/*
+ * Rounded
+ */
+function modChrome_rounded($module, &$params, &$attribs)
+{
+	if ($module->content) {
+		?>
+		<div id="<?php echo $attribs['id'] ?>">
+			<div class="m">
+				<?php echo $module->content; ?>
+				<div class="clr"></div>
+			</div>
+		</div>
+		<?php
+	}
+}

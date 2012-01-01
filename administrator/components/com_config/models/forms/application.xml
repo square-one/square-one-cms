@@ -92,15 +92,11 @@
 		label="CONFIG_DATABASE_SETTINGS_LABEL">
 		<field
 			name="dbtype"
-			type="list"
+			type="databaseconnection"
 			label="COM_CONFIG_FIELD_DATABASE_TYPE_LABEL"
 			description="COM_CONFIG_FIELD_DATABASE_TYPE_DESC"
-			filter="string">
-			<option
-				value="mysql">COM_CONFIG_FIELD_VALUE_MYSQL</option>
-			<option
-				value="mysqli">COM_CONFIG_FIELD_VALUE_MYSQLI</option>
-		</field>
+			supported="mysql,mysqli,sqlsrv,sqlazure"
+			filter="string" />
 
 		<field
 			name="host"
@@ -600,13 +596,33 @@
 			rows="2" />
 
 		<field
+			name="offline_image"
+			type="media"
+			label="COM_CONFIG_FIELD_OFFLINE_IMAGE_LABEL"
+			description="COM_CONFIG_FIELD_OFFLINE_IMAGE_DESC" />
+
+		<field
 			name="editor"
-			type="editors"
+			type="plugins"
+			folder="editors"
 			default="tinymce"
 			label="COM_CONFIG_FIELD_DEFAULT_EDITOR_LABEL"
 			description="COM_CONFIG_FIELD_DEFAULT_EDITOR_DESC"
 			required="true"
 			filter="cmd" />
+
+		<field
+			name="captcha"
+			type="plugins"
+			folder="captcha"
+			default="securimage"
+			label="COM_CONFIG_FIELD_DEFAULT_CAPTCHA_LABEL"
+			description="COM_CONFIG_FIELD_DEFAULT_CAPTCHA_DESC"
+			required="true"
+			filter="cmd" >
+			<option
+				value="0">JOPTION_DO_NOT_USE</option>
+		</field>
 
 		<field
 			name="access"
@@ -786,6 +802,20 @@
 				description="COM_CONFIG_ACTION_EDITOWN_DESC" />
 		</field>
 
+	</fieldset>
+
+	<fieldset
+		name="filters"
+		label="COM_CONFIG_TEXT_FILTERS"
+		description="COM_CONFIG_TEXT_FILTERS_DESC"
+		>
+
+		<field
+			name="filters"
+			type="filters"
+			label="COM_CONFIG_TEXT_FILTERS"
+			class="inputbox"
+			filter="" />
 	</fieldset>
 
 	<fieldset>
