@@ -27,7 +27,6 @@ class InstallerModelSites extends JModelList
         
         $query->select('*')
               ->from('#__update_sites')
-              ->where('type = "distribution"')
               ->order($this->getState('list.ordering').' '.$this->getState('list.direction'));
         
         return $query;
@@ -80,8 +79,7 @@ class InstallerModelSites extends JModelList
         $db = $this->getDbo();
         $query = $db->getQuery(true);
         $query->select('location')
-              ->from('#__update_sites')
-              ->where('type = "distribution"');
+              ->from('#__update_sites');
         $locations = $db->setQuery($query)->loadResultArray();
         
         JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.'/tables');
@@ -95,7 +93,6 @@ class InstallerModelSites extends JModelList
                     'name' => $site->getAttribute('name'),
                     'location' => $site->getAttribute('location'),
                     'type' => $site->getAttribute('type'),
-                    'description' => $site->getAttribute('description')
                 ));
                 
                 if (!$update_site->store())

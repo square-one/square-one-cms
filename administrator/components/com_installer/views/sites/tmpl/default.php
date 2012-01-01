@@ -15,7 +15,7 @@ $listOrder = $this->escape($this->state->get('list.order'));
 
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_installer&view=sites'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_installer&view=servers'); ?>" method="post" name="adminForm" id="adminForm">
         
     <fieldset id="filter-bar">
 
@@ -27,7 +27,6 @@ $listOrder = $this->escape($this->state->get('list.order'));
                 <th width="20"><input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" /></th>
                 <th><?php echo JHtml::_('grid.sort', 'COM_INSTALLER_HEADING_NAME', 'name', $listDirection, $listOrder); ?></th>
                 <th><?php echo JText::_('COM_INSTALLER_HEADING_LOCATION'); ?></th>
-                <th><?php echo JText::_('JGLOBAL_DESCRIPTION') ?></th>
                 <th width="50"><?php echo JHtml::_('grid.sort', 'JSTATUS', 'enabled', $listDirection, $listOrder); ?></th>
             </tr>
         </thead>
@@ -43,7 +42,6 @@ $listOrder = $this->escape($this->state->get('list.order'));
                 <td><?php echo JHtml::_('grid.id', $i, $item->update_site_id, false, 'cid'); ?></td>
                 <td><a href="<?php echo JRoute::_('index.php?option=com_installer&view=site&id='.$item->update_site_id); ?>"><?php echo $item->name; ?></a></td>
                 <td><?php echo $item->location; ?></td>
-                <td><?php echo $item->description; ?></td>
                 <td align="center"><?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'sites.'); ?></td>
             </tr>
             <?php endforeach; ?>
