@@ -42,6 +42,7 @@ class InstallerModelCore extends JModelList
 				'extension_id',
 				'update_id',
 				'update_site_id',
+                'update_site',
 			);
 		}
 
@@ -57,11 +58,25 @@ class InstallerModelCore extends JModelList
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
-		$app = JFactory::getApplication('administrator');
+        // Initialise variables.
+		$app = JFactory::getApplication();
+		$filters = JRequest::getVar('filters');
+		if (empty($filters)) {
+			$data = $app->getUserState($this->context.'.data');
+			$filters = $data['filters'];
+		}
+		else {
+			$app->setUserState($this->context.'.data', array('filters'=>$filters));
+		}
+        
 		$this->setState('message',$app->getUserState('com_installer.message'));
 		$this->setState('extension_message',$app->getUserState('com_installer.extension_message'));
 		$app->setUserState('com_installer.message','');
 		$app->setUserState('com_installer.extension_message','');
+        $this->setState('filter.type', isset($filters['type']) ? $filters['type'] : '');
+        $this->setState('filter.update_site_id', isset($filters['update_site_id']) ? $filters['update_site_id'] : '');
+        $this->setState('filter.folder', isset($filters['folder']) ? $filters['folder'] : '');
+        
 		parent::populateState('name', 'asc');
 	}
 
@@ -76,8 +91,15 @@ class InstallerModelCore extends JModelList
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
 		// grab updates ignoring new installs
-		$query->select('*')->from('#__updates')->where('extension_id = 0')->where('update_site_id = 1');
+		$query->select('a.*, u.name AS update_site')->from('#__updates AS a')->where('extension_id = 0');
 		$query->order($this->getState('list.ordering').' '.$this->getState('list.direction'));
+        
+        if ($this->getState('filter.type') != '') $query->where('a.type = '.$db->quote($this->getState('filter.type')));
+        if ($this->getState('filter.update_site_id') != '') $query->where('a.update_site_id = '.$db->quote($this->getState('filter.update_site_id')));
+        if ($this->getState('filter.folder') != '') $query->where('a.folder = '.$db->quote($this->getState('filter.folder')));
+        
+        // Join update_sites
+        $query->join('left', $db->nameQuote('#__update_sites').' AS u ON u.update_site_id = a.update_site_id');
 
 		return $query;
 	}
@@ -337,5 +359,51 @@ class InstallerModelCore extends JModelList
 		JInstallerHelper::cleanupInstall($package['packagefile'], $package['extractdir']);
 
 		return $result;
+	}
+    
+    	/**
+	 * Method to get the row form.
+	 *
+	 * @param	array	$data		Data for the form.
+	 * @param	boolean	$loadData	True if the form is to load its own data (default case), false if not.
+	 * @return	mixed	A JForm object on success, false on failure
+	 * @since	1.6
+	 */
+	public function getForm($data = array(), $loadData = true)
+	{
+		// Get the form.
+		$app = JFactory::getApplication();
+		JForm::addFormPath(JPATH_COMPONENT . '/models/forms');
+		JForm::addFieldPath(JPATH_COMPONENT . '/models/fields');
+		$form = JForm::getInstance('com_installer.core', 'core', array('load_data' => $loadData));
+
+		// Check for an error.
+		if ($form == false) {
+			$this->setError($form->getMessage());
+			return false;
+		}
+		// Check the session for previously entered form data.
+		$data = $this->loadFormData();
+
+		// Bind the form data if present.
+		if (!empty($data)) {
+			$form->bind($data);
+		}
+
+		return $form;
+	}
+
+	/**
+	 * Method to get the data that should be injected in the form.
+	 *
+	 * @return	mixed	The data for the form.
+	 * @since	1.6
+	 */
+	protected function loadFormData()
+	{
+		// Check the session for previously entered form data.
+		$data = JFactory::getApplication()->getUserState('com_installer.core.data', array());
+
+		return $data;
 	}
 }
