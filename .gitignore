@@ -55,6 +55,8 @@ administrator/language/en-GB/en-GB.plg_editors-xtd_image.ini
 administrator/language/en-GB/en-GB.plg_editors-xtd_image.sys.ini
 administrator/language/en-GB/en-GB.plg_editors-xtd_pagebreak.ini
 administrator/language/en-GB/en-GB.plg_editors-xtd_pagebreak.sys.ini
+administrator/language/en-GB/en-GB.plg_editors-xtd_readmore.ini
+administrator/language/en-GB/en-GB.plg_editors-xtd_readmore.sys.ini
 administrator/language/en-GB/en-GB.plg_finder_categories.ini
 administrator/language/en-GB/en-GB.plg_finder_categories.sys.ini
 administrator/language/en-GB/en-GB.plg_finder_contacts.ini
@@ -171,6 +173,7 @@ plugins/content/pagenavigation/*
 plugins/content/vote/*
 plugins/editors/codemirror/*
 plugins/editors/tinymce/*
+plugins/editors-xtd/*
 plugins/editors-xtd/article/*
 plugins/editors-xtd/image/*
 plugins/editors-xtd/pagebreak/*
