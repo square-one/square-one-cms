@@ -30,8 +30,7 @@ class InstallerViewInstall extends InstallerViewDefault
 
 		$this->assignRef('paths', $paths);
 		$this->state = $this->get('State');
-        $core = JModel::getInstance('Core', 'InstallerModel');
-        $this->items        = $core->getItems();
+        $this->items        = $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
         $this->form			= $this->get('Form');
         
