@@ -106,6 +106,8 @@ language/en-GB/en-GB.mod_articles_latest.ini
 language/en-GB/en-GB.mod_articles_latest.sys.ini
 language/en-GB/en-GB.mod_articles_news.ini
 language/en-GB/en-GB.mod_articles_news.sys.ini
+language/en-GB/en-GB.mod_articles_popular.ini
+language/en-GB/en-GB.mod_articles_popular.sys.ini
 language/en-GB/en-GB.mod_banners.ini
 language/en-GB/en-GB.mod_banners.sys.ini
 language/en-GB/en-GB.mod_finder.ini
@@ -137,6 +139,7 @@ modules/mod_articles_categories/*
 modules/mod_articles_category/*
 modules/mod_articles_latest/*
 modules/mod_articles_news/*
+modules/mod_articles_popular/*
 modules/mod_banners/*
 modules/mod_finder/*
 modules/mod_footer/*
