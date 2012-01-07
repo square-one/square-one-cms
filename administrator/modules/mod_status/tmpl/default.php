@@ -23,11 +23,6 @@ if ($params->get('show_loggedin_users_admin', 1)) :
 	$output[] = '<span class="backloggedin-users">'.JText::plural('MOD_STATUS_BACKEND_USERS', $count).'</span>';
 endif;
 
-// Reverse rendering order for rtl display.
-if ($lang->isRTL()) :
-	$output = array_reverse($output);
-endif;
-
 // Output the items.
 foreach ($output as $item) :
 	echo $item;
