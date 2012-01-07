@@ -146,6 +146,8 @@ media/contacts/*
 media/com_finder/*
 media/editors/codemirror/*
 media/editors/tinymce/*
+media/plg_system_finder/*
+media/plg_system_highlight/*
 modules/mod_articles_archive/*
 modules/mod_articles_categories/*
 modules/mod_articles_category/*
@@ -191,6 +193,7 @@ plugins/search/content/*
 plugins/search/contacts/*
 plugins/search/newsfeeds/*
 plugins/search/weblinks/*
+plugins/system/highlight/*
 plugins/system/redirect/*
 plugins/user/contactcreator/*
 plugins/user/profile/*
