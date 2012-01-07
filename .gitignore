@@ -83,6 +83,8 @@ administrator/language/en-GB/en-GB.plg_system_redirect.ini
 administrator/language/en-GB/en-GB.plg_system_redirect.sys.ini
 administrator/language/en-GB/en-GB.plg_user_contactcreator.ini
 administrator/language/en-GB/en-GB.plg_user_contactcreator.sys.ini
+administrator/language/en-GB/en-GB.plg_user_profile.ini
+administrator/language/en-GB/en-GB.plg_user_profile.sys.ini
 administrator/language/en-GB/en-GB.tpl_hathor.ini
 administrator/language/en-GB/en-GB.tpl_hathor.sys.ini
 administrator/templates/hathor/*
@@ -191,6 +193,7 @@ plugins/search/newsfeeds/*
 plugins/search/weblinks/*
 plugins/system/redirect/*
 plugins/user/contactcreator/*
+plugins/user/profile/*
 templates/atomic/*
 templates/beez_20/*
 templates/beez5/*
