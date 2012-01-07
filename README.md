@@ -1,14 +1,14 @@
 # Square One CMS
 
-Square One is a light distribution of Joomla! It is being designed to meet the needs of developers who want a cleaner installation than Joomla. It removes many of the core extensions that are not required, so that you can install only the extensions that you need for your website.
+Square One is a distribution of Joomla! It is being designed to be a base to build custom distributions on top of as well as a light version of Joomla. 
 
 ## How to use Square One
 
 If you know Joomla, then you will find Square One to be almost exactly the same. The major differences are many core extensions were removed, there are no additional frontend templates, you can reinstall the removed core extensions, the installer does not have sample content, and the branding was changed to Square One.
 
-You can download Square One two ways. Go to https://github.com/gnomeontherun/square-one-cms/downloads and you will see a list of download packages. These are the official releases. If you want to test the more recent version, use the 'Download as zip/tar.gz' buttons to get a copy of the most current code. Be sure you are on the staging branch, which you should be on by default.
+You can download Square One two ways. Go to https://github.com/square-one/square-one-cms/downloads and you will see a list of download packages. These are the official releases. If you want to test the more recent version, use the 'Download as zip/tar.gz' buttons to get a copy of the most current code. Be sure you are on the staging branch, which you should be on by default.
 
-To use the new Core Extensions installer, simply to go the Extension Manager -> Core Extensions. There you can find the list of extensions, and select ones to install. They are downloaded and installed directly without having to do it manually.
+To use the new Core Extensions installer, simply to go the Extension Manager. There you can find the list of extensions, and select ones to install. They are downloaded and installed directly without having to do it manually.
 
 ## Goals for Square One
 
@@ -28,7 +28,7 @@ You can use Square One for testing, and the timeline is to provide a stable rele
 
 ## Differences between Joomla! and Square One
 
-At this point, the only real differences are what is missing. In the future it might include some minor tweaks or additions.
+See the wiki for full details, but the main differences are the removed core extensions, tweaks to the administrator and front-end templates, addition of new installation features, and a different administrator menu system.
 
 The Joomla! Platform (also known as the framework) will remain as is. The only changes pushed to the platform will be extreme circumstances where a removed portion of the CMS is coupled with the platform. In those cases the patch will be forwarded to the platform project if necessary. The idea is to retain full Joomla compatibility by keeping the framework in sync with Joomla.
 
@@ -36,29 +36,33 @@ Square One will also function on a release cycle along with Joomla! Once it is r
 
 #### Items removed
 
-#####Components
+##### Components
 
-* Weblinks component 
-* Banners component
-* Newsfeeds component
-* Contacts component
-* Messages component 
-* Redirect component
-* Wrapper component
+* com_banners - Banners component
+* com_contact - Contacts component
+* com_finder - Finder component
+* com_messages - Messages component 
+* com_newsfeeds - Newsfeeds component
+* com_redirect - Redirect component
+* com_search - Search component
+* com_weblinks - Weblinks component 
+* com_wrapper - Wrapper component
 
-#####Modules
+##### Frontend Modules
 
-* Weblinks module
-* Banners module
-* Footer module (frontend)
-* Syndicate module (frontend)
-* Stats module (frontend)
-* Random Image module (frontend)
-* Who is online module (frontend)
-* Latest users module (frontend)
-* Wrapper module
+* mod_banners - Banners module
+* mod_finder - Finder module
+* mod_footer - Footer module
+* mod_random_image - Random Image module
+* mod_search - Search module
+* mod_stats - Stats module
+* mod_syndicate - Syndicate module
+* mod_users_latest - Latest users module
+* mod_weblinks - Weblinks module
+* mod_whoisonline - Who is online module
+* mod_wrapper - Wrapper module
 
-#####Plugins
+##### Plugins
 
 * Weblinks search plugin
 * Newsfeeds search plugin
@@ -73,18 +77,21 @@ Square One will also function on a release cycle along with Joomla! Once it is r
 * Emailcloak content plugin
 * Redirect system plugin
 
-#####Templates
+##### Templates
 
 * Beez5 template (frontend)
 * Beez_20 template (frontend)
 * Atomic template (frontend)
 * Hathor template (administrator)
 
-#####Miscellaneous
+##### Miscellaneous
 
 * Sample data from installer
 
 #### Changes
+ * Administrator menu is now customizable and managed in the Menu Manager
+ * Improved installation process, new distribution package
+ * Updated templates
  * Updater system syncs with a new update feed for Square One
  * Renamed to Square One
  * Installer process no longer has sample data as an option
@@ -98,7 +105,7 @@ If you want to contribute, you will need a github account, and a working knowled
 
 ## Who is running this?
 
-Jeremy Wilken of Gnome on the run (www.gnomeontherun.com) is heading this initiative to give the Joomla! community an option for a lighter weight distribution.
+Jeremy Wilken of Gnome on the run (www.gnomeontherun.com) is heading this initiative. You can help too, just check out the mailing list to start, and more information is on the wiki.
 
 ## Legal info
 
