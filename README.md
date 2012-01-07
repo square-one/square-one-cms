@@ -34,7 +34,7 @@ The Joomla! Platform (also known as the framework) will remain as is. The only c
 
 Square One will also function on a release cycle along with Joomla! Once it is ready for public use, whenever Joomla! has a new release, Square One will follow shortly after with the same numbering system.
 
-#### Items removed (47 extensions)
+#### Items removed (60 extensions)
 
 ##### Components
 
