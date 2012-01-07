@@ -1424,9 +1424,16 @@ input.text-area-order {
 	margin-right: 5px;
 }
 
-fieldset.uploadform label {
-	clear: left;
-	min-width: 100px;
+fieldset.uploadform input {
+    margin: 5px;
+}
+
+div.width-100 fieldset.uploadform {
+    clear: none;
+    float: left;
+    width: 31%;
+    padding: 0;
+    margin-right: 1%;
 }
 
 span.gi {

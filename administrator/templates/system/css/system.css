@@ -6,3 +6,4 @@
 
 /* Import project-level system CSS */
 @import url(../../../../media/system/css/system.css);
+.jgrid span.progress { background-image: url("../images/progress.gif"); }

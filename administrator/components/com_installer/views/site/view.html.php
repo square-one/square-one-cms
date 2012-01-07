@@ -17,7 +17,7 @@ include_once dirname(__FILE__).'/../default/view.php';
  * @subpackage	com_installer
  * @since		1.6
  */
-class InstallerViewCore extends InstallerViewDefault
+class InstallerViewSite extends InstallerViewDefault
 {
 	/**
 	 * @since	1.6
@@ -28,11 +28,10 @@ class InstallerViewCore extends InstallerViewDefault
 		$this->state		= $this->get('State');
 		$this->items		= $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
-
-		$paths = new stdClass();
-		$paths->first = '';
-
-		$this->assignRef('paths', $paths);
+        
+        $distro = $this->getModel()->getDistro(JRequest::getVar('id', 0, '', 'int'));
+        
+        $this->assign('distro', $distro);
 
 		parent::display($tpl);
 	}
@@ -45,12 +44,15 @@ class InstallerViewCore extends InstallerViewDefault
 	protected function addToolbar()
 	{
 		$canDo	= InstallerHelper::getActions();
-
-        JToolBarHelper::custom('core.install', 'upload', 'upload', 'JTOOLBAR_INSTALL', true, false);
-		JToolBarHelper::custom('core.find', 'refresh', 'refresh', 'COM_INSTALLER_TOOLBAR_FIND_EXTENSIONS',false,false);
-		JToolBarHelper::custom('core.purge', 'purge', 'purge', 'JTOOLBAR_PURGE_CACHE', false,false);
+        
+        JToolBarHelper::custom('site.install', 'upload', 'upload', 'JTOOLBAR_INSTALL', true, false);
+		JToolBarHelper::custom('site.find', 'refresh', 'refresh', 'COM_INSTALLER_TOOLBAR_FIND_EXTENSIONS',false,false);
+		JToolBarHelper::custom('site.purge', 'purge', 'purge', 'JTOOLBAR_PURGE_CACHE', false,false);
 		JToolBarHelper::divider();
 		parent::addToolbar();
 		JToolBarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_UPDATE');
+        JToolBarHelper::title(JText::sprintf('COM_INSTALLER_TITLE_SITE', $this->distro->name), 'install');
+        $document = JFactory::getDocument();
+		$document->setTitle(JText::sprintf('COM_INSTALLER_TITLE_' . $this->getName(), $this->distro->name));
 	}
 }

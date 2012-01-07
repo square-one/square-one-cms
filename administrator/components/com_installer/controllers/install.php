@@ -26,12 +26,42 @@ class InstallerControllerInstall extends JController
 	{
 		// Check for request forgeries
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
+        
 		$model = $this->getModel('install');
-		if ($model->install()) {
+        
+        $result = $model->install();
+        
+        if ($result == true) {
+            $cache = JFactory::getCache('mod_menu');
+            $cache->clean();
+            // TODO: Reset the users acl here as well to kill off any missing bits
+        }
+        
+		$app = JFactory::getApplication();
+		$redirect_url = $app->getUserState('com_installer.redirect_url');
+		if(empty($redirect_url)) {
+			$redirect_url = JRoute::_('index.php?option=com_installer&view=install',false);
+		} else
+		{
+			// wipe out the user state when we're going to redirect
+			$app->setUserState('com_installer.redirect_url', '');
+			$app->setUserState('com_installer.message', '');
+			$app->setUserState('com_installer.extension_message', '');
+		}
+		$this->setRedirect($redirect_url);
+	}
+    
+    public function install_remote()
+    {
+        JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+		$model	= $this->getModel('install');
+		$cid	= JRequest::getVar('cid', array(), '', 'array');
+
+		JArrayHelper::toInteger($cid, array());
+		if ($model->install_remote($cid)) {
 			$cache = JFactory::getCache('mod_menu');
 			$cache->clean();
-			// TODO: Reset the users acl here as well to kill off any missing bits
 		}
 
 		$app = JFactory::getApplication();
@@ -46,5 +76,110 @@ class InstallerControllerInstall extends JController
 			$app->setUserState('com_installer.extension_message', '');
 		}
 		$this->setRedirect($redirect_url);
+    }
+        
+    public function distro_download()
+    {
+        JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = $this->getModel('install');
+        
+        echo json_encode($model->distro_download());
+        
+        JFactory::getApplication()->close();
+    }
+    
+    public function distro_extract()
+    {
+        JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = $this->getModel('install');
+        
+        echo json_encode($model->distro_extract());
+        
+        JFactory::getApplication()->close();
+    }
+    
+    public function distro_install()
+    {
+        JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = $this->getModel('install');
+        
+        echo json_encode($model->distro_install());
+        
+        JFactory::getApplication()->close();
+    }
+    
+    public function install_script()
+    {
+        
+    }
+    
+    public function install_sql()
+    {
+        
+    }
+    
+    	/**
+	 * Find new updates.
+	 *
+	 * @since	1.6
+	 */
+	function find()
+	{
+		// Find updates
+		// Check for request forgeries
+		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		$model	= $this->getModel('core');
+		$model->purge();
+		$result = $model->findUpdates();
+        
+        // Workaround for removing extentions that are already installed without
+        // overwriting the Platform. Major breech of MVC but I can live with myself for the time being.
+        $db = JFactory::getDBO();
+        $updates = $model->getUpdates();
+        $extensions = $model->getExtensions();
+        $installed = array();
+        foreach ($updates as $update)
+        {
+            if ($update->extension_id) continue;
+            foreach ($extensions as $extension)
+            {
+                if ($extension->element == $update->element && $extension->folder == $update->folder && $extension->type == $update->type)
+                {
+                    $installed[] = $update->update_id;
+                    continue;
+                }
+            }
+        }
+        
+        if (count($installed))
+        {
+            
+            $db->setQuery('DELETE FROM #__updates WHERE update_id IN ('.implode(',', $installed).')');
+            if (!$db->query())
+            {
+                $this->setRedirect(JRoute::_('index.php?option=com_installer&view=install'), JText::_('COM_INSTALLER_MSG_UPDATEERROR'));
+            }
+        }
+        // End Workaround
+        
+		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=install', false));
+	}
+
+	/**
+	 * Purges updates.
+	 *
+	 * @since	1.6
+	 */
+	function purge()
+	{
+		// Purge updates
+		// Check for request forgeries
+		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		$model = $this->getModel('core');
+		$model->purge();
+		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=install',false), $model->_message);
 	}
 }
