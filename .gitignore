@@ -98,6 +98,8 @@ language/en-GB/en-GB.com_weblinks.ini
 language/en-GB/en-GB.com_wrapper.ini
 language/en-GB/en-GB.mod_articles_archive.ini
 language/en-GB/en-GB.mod_articles_archive.sys.ini
+language/en-GB/en-GB.mod_articles_categories.ini
+language/en-GB/en-GB.mod_articles_categories.sys.ini
 language/en-GB/en-GB.mod_banners.ini
 language/en-GB/en-GB.mod_banners.sys.ini
 language/en-GB/en-GB.mod_finder.ini
@@ -125,6 +127,7 @@ media/com_finder/*
 media/editors/codemirror/*
 media/editors/tinymce/*
 modules/mod_articles_archive/*
+modules/mod_articles_categories/*
 modules/mod_banners/*
 modules/mod_finder/*
 modules/mod_footer/*
