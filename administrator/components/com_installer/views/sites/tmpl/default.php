@@ -47,7 +47,7 @@ $listOrder = $this->escape($this->state->get('list.order'));
             <?php endforeach; ?>
             <?php else : ?>
             <tr>
-                <td colspan="5" align="center"><?php echo JText::_('COM_INSTALLER_MSG_NODISTROS'); ?></td>
+                <td colspan="5" align="center"><?php echo JText::_('COM_INSTALLER_MSG_NOSITES'); ?></td>
             </tr>
             <?php endif; ?>
         </tbody>

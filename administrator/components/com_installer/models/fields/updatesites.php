@@ -42,7 +42,7 @@ class JFormFieldUpdatesites extends JFormField
 
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('name, update_site_id')->from('#__update_sites');
+		$query->select('a.name, a.update_site_id')->from('#__update_sites AS a')->where('u.enabled = 1')->join('left', $db->nameQuote('#__update_sites').' AS u ON u.update_site_id = a.update_site_id');
 		$db->setQuery($query);
 		$sites = $db->loadObjectList();
 		foreach($sites as $site)

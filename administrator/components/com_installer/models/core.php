@@ -74,7 +74,8 @@ class InstallerModelCore extends JModelList
 		$app->setUserState('com_installer.message','');
 		$app->setUserState('com_installer.extension_message','');
         $this->setState('filter.type', isset($filters['type']) ? $filters['type'] : '');
-        $this->setState('filter.update_site_id', isset($filters['update_site_id']) ? $filters['update_site_id'] : '');
+        if (!isset($filters['update_site_id'])) JRequest::setVar('update_site_id', '1');
+        $this->setState('filter.update_site_id', isset($filters['update_site_id']) ? $filters['update_site_id'] : '1');
         $this->setState('filter.folder', isset($filters['folder']) ? $filters['folder'] : '');
         
 		parent::populateState('name', 'asc');
@@ -91,7 +92,7 @@ class InstallerModelCore extends JModelList
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
 		// grab updates ignoring new installs
-		$query->select('a.*, u.name AS update_site')->from('#__updates AS a')->where('extension_id = 0');
+		$query->select('a.*, u.name AS update_site')->from('#__updates AS a')->where('extension_id = 0')->where('u.enabled = 1');
 		$query->order($this->getState('list.ordering').' '.$this->getState('list.direction'));
         
         if ($this->getState('filter.type') != '') $query->where('a.type = '.$db->quote($this->getState('filter.type')));

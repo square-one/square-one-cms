@@ -27,10 +27,13 @@ class InstallerViewInstall extends InstallerViewDefault
 	{
 		$paths = new stdClass();
 		$paths->first = '';
-		$state = $this->get('state');
 
 		$this->assignRef('paths', $paths);
-		$this->assignRef('state', $state);
+		$this->state = $this->get('State');
+        $core = JModel::getInstance('Core', 'InstallerModel');
+        $this->items        = $core->getItems();
+		$this->pagination	= $this->get('Pagination');
+        $this->form			= $this->get('Form');
         
         if ($this->getLayout() == 'distribution')
         {
@@ -52,6 +55,8 @@ class InstallerViewInstall extends InstallerViewDefault
             
             $this->result = $result;
         }
+        
+        
 
 		parent::display($tpl);
 	}
@@ -63,6 +68,10 @@ class InstallerViewInstall extends InstallerViewDefault
 	 */
 	protected function addToolbar()
 	{
+        JToolBarHelper::custom('install.install_remote', 'upload', 'upload', 'JTOOLBAR_INSTALL', true, false);
+		JToolBarHelper::custom('install.find', 'refresh', 'refresh', 'COM_INSTALLER_TOOLBAR_FIND_EXTENSIONS',false,false);
+		JToolBarHelper::custom('install.purge', 'purge', 'purge', 'JTOOLBAR_PURGE_CACHE', false,false);
+		JToolBarHelper::divider();
 		parent::addToolbar();
 		JToolBarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_INSTALL');
 	}
