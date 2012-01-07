@@ -34,7 +34,7 @@ The Joomla! Platform (also known as the framework) will remain as is. The only c
 
 Square One will also function on a release cycle along with Joomla! Once it is ready for public use, whenever Joomla! has a new release, Square One will follow shortly after with the same numbering system.
 
-#### Items removed
+#### Items removed (47 extensions)
 
 ##### Components
 
@@ -50,10 +50,17 @@ Square One will also function on a release cycle along with Joomla! Once it is r
 
 ##### Frontend Modules
 
+* mod_articles_archive - Archived Articles module
+* mod_articles_categories - Content Categories module
+* mod_articles_category - Content Category module
+* mod_articles_latest - Latest Articles module
+* mod_articles_news - Articles Newsflash module
+* mod_articles_popular - Most Popular Articles module
 * mod_banners - Banners module
 * mod_finder - Finder module
 * mod_footer - Footer module
 * mod_random_image - Random Image module
+* mod_related_items - Related Items module
 * mod_search - Search module
 * mod_stats - Stats module
 * mod_syndicate - Syndicate module
@@ -64,25 +71,42 @@ Square One will also function on a release cycle along with Joomla! Once it is r
 
 ##### Plugins
 
-* Weblinks search plugin
-* Newsfeeds search plugin
-* Contacts search plugin
-* Contactcreator user plugin
-* Vote content plugin
-* Page Navigation content plugin
-* Gmail authentication plugin
-* LDAP authentication plugin
-* Codemirror editor plugin
-* Geshi content plugin
-* Emailcloak content plugin
-* Redirect system plugin
+* plg_authentication_gmail - Gmail authentication plugin
+* plg_authentication_ldap - LDAP authentication plugin
+* plg_content_emailcloak - Emailcloak content plugin
+* plg_content_geshi - Geshi content plugin
+* plg_content_loadmodule - Load Module content plugin
+* plg_content_pagebreak - Page Break content plugin
+* plg_content_pagenavigation - Page Navigation content plugin
+* plg_content_vote - Vote content plugin
+* plg_editors_codemirror - Codemirror editor plugin
+* plg_editors_tinymce - TinyMCE editor plugin
+* plg_editors-xtd_article - Article editor button plugin
+* plg_editors-xtd_image - Image editor button plugin
+* plg_editors-xtd_pagebreak - Page Break editor button plugin
+* plg_editors-xtd_readmore - Readmore editor button plugin
+* plg_finder_categories - Categories finder plugin
+* plg_finder_contacts - Contacts finder plugin
+* plg_finder_content - Content finder plugin
+* plg_finder_newsfeeds - Newsfeeds finder plugin
+* plg_finder_weblinks - Weblinks finder plugin
+* plg_search_categories - Categories search plugin
+* plg_search_contacts - Contacts search plugin
+* plg_serach_content - Content search plugin
+* plg_search_newsfeeds - Newsfeeds search plugin
+* plg_search_weblinks - Weblinks search plugin
+* plg_system_highlight - Highlight system plugin
+* plg_system_finder - Finder system plugin
+* plg_system_redirect - Redirect system plugin
+* plg_user_contactcreator - Contactcreator user plugin
+* plg_user_profile - Profile user plugin
 
 ##### Templates
 
-* Beez5 template (frontend)
-* Beez_20 template (frontend)
-* Atomic template (frontend)
-* Hathor template (administrator)
+* tpl_beez5 - Beez5 template
+* tpl_beez_20 - Beez_20 template
+* tpl_atomic - Atomic template
+* tpl_hathor - Hathor Administrator template
 
 ##### Miscellaneous
 
