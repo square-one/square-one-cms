@@ -7,11 +7,13 @@
 body {
 	font-size: 76%;
 	line-height: 1.6em;
- 	font-family: Helvetica,Arial,FreeSans,sans-serif;
-	color: #444;
+	font-size: 13px;
+ 	font-family: Verdana, Geneva, sans-serif;
+	background: #333;
+	color: #333;
 }
 header {
-	background: #111;
+	background: #333333;
 	padding: 2em 0;
 	border-bottom: 2px solid #96d300;
 	  -webkit-box-shadow: 0px 0px 4px #999;
@@ -24,7 +26,7 @@ header .inner {
 	margin: 0 auto;
 }
 header h1{
-	margin: 0 1em 0 0;
+	margin: 0 2em 0 0;
 	float : left;
 }
 header h1 a{
@@ -33,7 +35,7 @@ header h1 a{
     width: 300px;
     height: 38px;
     text-decoration: none;
-    text-indent: -9000em;*/
+    text-indent: -9000em;
 }
 header a:hover {
 	border:0;
@@ -46,13 +48,22 @@ section.content {
 		background: #EDEDED;
 }
 footer {
-	background: #fff;
+	background: #333333;
 	border-top: 2px solid #96d300;
-
+	color: #fff;
+	text-shadow: 1px 1px #000;
 }
-footer .moduletable{
+footer a {
+	color: #4AADEF;
+}
+footer #footer-container {
 	max-width: 80.5em;
 	margin: 0 auto;
+}
+footer .moduletable_grid2 {
+	width: 48%;
+	margin: 0% 1%;
+	float: left;
 }
 /*
  * Typography
@@ -62,9 +73,12 @@ a {
 	color:/*#00a8ff*/ #0060A1;
 	font-weight: bold;
 }
-a:hover {
-    border-bottom: 2px solid #96d300;
-}
+a:hover { color:#96D300; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 2em; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+h4 { font-size: 1.3em; }
+h5 { font-size: 1.2em; }
+h6 { font-size: 1.1em; }
 
 /*
  * Column Layout
@@ -98,16 +112,17 @@ a:hover {
 }
 
 #content-container,
-#column-1 .moduletable,
-#column-2 .moduletable {
-	 background: #fff;
+#column-1 .module,
+#column-2 .module {
+	background: #fff;
 	border-right: 1px solid #999;
 	border-left: 1px solid #999;
 	border-bottom: 1px solid #999;
 	 -webkit-box-shadow: 0 2px 3px #999;
      	-moz-box-shadow: 0 2px 3px #999;
-          	box-shadow: 0 2px 3px #999;
- }
+          	 box-shadow: 0 2px 3px #999;
+}
+#content-container { border-bottom: 0; }
 
 /* Modules
  *
@@ -115,10 +130,14 @@ a:hover {
 #column-1 h3,
 #column-2 h3{
 	border-top: 2px solid #96d300;
-	background: #111;
+	background: #333333;
 	color: #fff;
-	padding: .25em 0 .5em .5em;
+	padding: 0.5em;
+	text-shadow: 1px 1px #000;
+	font-size: 1.2em;
+	line-height: 1.2em;
 }
+div.modulecontent { padding: 5px; }
 
 /*
  * Menu
@@ -141,7 +160,7 @@ ul.menu {
 ul.menu li {
     float: left;
     position: relative;
-	margin: 0 1em 0 0;
+	margin: 0 2em 0 0;
     padding: 0;
 }
 
@@ -149,6 +168,8 @@ ul.menu a,
 ul.menu span.separator {
 	display: block;
 	padding: .1em .7em;
+	font-size: 1.1em;
+	text-shadow: 1px 1px #000;
 }
 /* use padding to indent text */
 

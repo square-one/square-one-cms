@@ -143,6 +143,7 @@ language/en-GB/en-GB.mod_whosonline.sys.ini
 language/en-GB/en-GB.mod_wrapper.ini
 language/en-GB/en-GB.mod_wrapper.sys.ini
 media/contacts/*
+media/editors/*
 media/com_finder/*
 media/editors/codemirror/*
 media/editors/tinymce/*
