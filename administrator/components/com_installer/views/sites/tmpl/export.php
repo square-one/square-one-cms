@@ -31,11 +31,11 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		</div>
 	</fieldset>
     
-    <fieldset>
+    <fieldset class="adminform">
         <legend>Distribution Details</legend>
         
-        <input type="text" name="distro[name]" /><label>Name: </label>
-        <input type="text" name="distro[description]" /><label>Description: </label>
+        <label>Name: </label><input type="text" name="distro[name]" size="40" />
+        <label>Description: </label><input type="text" name="distro[description]" size="40" />
     </fieldset>
     
 	<?php if (count($this->items)) : ?>
@@ -54,7 +54,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<?php foreach($this->items as $i=>$item) : ?>
 			<tr class="row<?php echo $i%2; ?>">
 				<td><?php echo JHtml::_('grid.id', $i, $item->extension_id, false, 'cid'); ?></td>
-				<td><?php echo $item->name; ?></td>
+				<td><?php echo JText::_($item->name); ?></td>
 				<td class="center"><?php echo JText::_('COM_INSTALLER_TYPE_' . $item->type) ?></td>
 				<td class="center"><?php echo ($item->folder != '') ? $item->folder : JText::_('COM_INSTALLER_TYPE_NONAPPLICABLE'); ?></td>
 				<td class="center"><?php echo $item->client_id ? JText::_('JADMINISTRATOR') : JText::_('JSITE'); ?></td>

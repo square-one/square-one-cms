@@ -51,6 +51,9 @@ class InstallerControllerInstall extends JController
 		$this->setRedirect($redirect_url);
 	}
     
+    /**
+     * Installs an extension from a url
+     */
     public function install_remote()
     {
         JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
@@ -77,7 +80,11 @@ class InstallerControllerInstall extends JController
 		}
 		$this->setRedirect($redirect_url);
     }
-        
+    
+    /**
+     * Ajax method for distro management
+     * @return  object
+     */
     public function distro_download()
     {
         JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
@@ -89,6 +96,10 @@ class InstallerControllerInstall extends JController
         JFactory::getApplication()->close();
     }
     
+    /**
+     * Ajax method for distro management
+     * @return  object
+     */
     public function distro_extract()
     {
         JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
@@ -100,6 +111,10 @@ class InstallerControllerInstall extends JController
         JFactory::getApplication()->close();
     }
     
+    /**
+     * Ajax method for distro management
+     * @return  object
+     */
     public function distro_install()
     {
         JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
@@ -111,27 +126,47 @@ class InstallerControllerInstall extends JController
         JFactory::getApplication()->close();
     }
     
-    public function install_script()
+    /**
+     * Ajax method for distro management
+     * @return  object
+     */
+    public function distro_script()
     {
+        JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
         
+        $model = $this->getModel('install');
+        
+        echo json_encode($model->distro_script());
+        
+        JFactory::getApplication()->close();
     }
     
-    public function install_sql()
+    /**
+     * Ajax method for distro management
+     * @return  object
+     */
+    public function distro_sql()
     {
+        JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
         
+        $model = $this->getModel('install');
+        
+        echo json_encode($model->distro_sql());
+        
+        JFactory::getApplication()->close();
     }
     
-    	/**
+    /**
 	 * Find new updates.
 	 *
-	 * @since	1.6
+	 * @since	2.5
 	 */
 	function find()
 	{
 		// Find updates
 		// Check for request forgeries
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-		$model	= $this->getModel('core');
+		$model	= $this->getModel('install');
 		$model->purge();
 		$result = $model->findUpdates();
         
@@ -171,14 +206,14 @@ class InstallerControllerInstall extends JController
 	/**
 	 * Purges updates.
 	 *
-	 * @since	1.6
+	 * @since	2.5
 	 */
 	function purge()
 	{
 		// Purge updates
 		// Check for request forgeries
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-		$model = $this->getModel('core');
+		$model = $this->getModel('install');
 		$model->purge();
 		$this->setRedirect(JRoute::_('index.php?option=com_installer&view=install',false), $model->_message);
 	}

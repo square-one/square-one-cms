@@ -4,8 +4,9 @@
  * @author      Jeremy Wilken - Gnome on the run
  * @link        www.gnomeontherun.com
  * @copyright   Copyright 2011 Gnome on the run. All Rights Reserved.
- * @category    
- * @package     
+ * @category    Administrator
+ * @package     com_installer
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
@@ -39,9 +40,6 @@ class InstallerViewSites extends InstallerViewDefault
         JToolBarHelper::divider();
         JToolBarHelper::publish('sites.publish', 'JTOOLBAR_ENABLE', true);
         JToolBarHelper::unpublish('sites.unpublish', 'JTOOLBAR_DISABLE', true);
-        JToolBarHelper::divider();
-        $toolbar = JToolbar::getInstance();
-        $toolbar->appendButton('Popup', 'download', 'COM_INSTALLER_TOOLBAR_EXPORT', 'index.php?option=com_installer&view=sites&layout=export&tmpl=component', 800, 600);
         JToolBarHelper::divider();
         parent::addToolbar();
     }

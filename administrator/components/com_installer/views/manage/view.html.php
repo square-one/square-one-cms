@@ -74,6 +74,9 @@ class InstallerViewManage extends InstallerViewDefault
 			JToolBarHelper::deleteList('', 'manage.remove', 'JTOOLBAR_UNINSTALL');
 			JToolBarHelper::divider();
 		}
+        $toolbar = JToolbar::getInstance();
+        $toolbar->appendButton('Popup', 'export', 'COM_INSTALLER_TOOLBAR_EXPORT', 'index.php?option=com_installer&view=sites&layout=export&tmpl=component', 800, 600);
+        JToolBarHelper::divider();
 		parent::addToolbar();
 		JToolBarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_MANAGE');
 	}

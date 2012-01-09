@@ -16,6 +16,7 @@ class InstallerModelExtensions extends JModel
     {
         $db = $this->getDbo();
         $list = $db->setQuery('SELECT extension_id, name, element, folder, type, client_id FROM #__extensions WHERE protected = 0 AND enabled = 1')->loadObjectList();
+        $lang = JFactory::getLanguage();
         
         // Bind additional data from manifest and add to xml
         for ($i = 0; count($list) > $i; $i++)
@@ -24,17 +25,32 @@ class InstallerModelExtensions extends JModel
             {
                 case 'component' :
                     $file = JFile::read(JPATH_ADMINISTRATOR.'/components/'.$list[$i]->element.'/'.substr($list[$i]->element, 4).'.xml');
+                    $lang->load($list[$i]->element);
                     break;
                 case 'module' : 
-                    if ($list[$i]->client_id) $file = JFile::read(JPATH_ADMINISTRATOR.'/modules/'.$list[$i]->element.'/'.substr($list[$i]->element, 4).'.xml');
-                    else $file = JFile::read(JPATH_SITE.'/modules/'.$list[$i]->element.'/'.substr($list[$i]->element, 4).'.xml');
+                    if ($list[$i]->client_id) 
+                    {   
+                        $file = JFile::read(JPATH_ADMINISTRATOR.'/modules/'.$list[$i]->element.'/'.$list[$i]->element.'.xml');
+                        $lang->load($list[$i]->element);
+                    }
+                    else {
+                        $file = JFile::read(JPATH_SITE.'/modules/'.$list[$i]->element.'/'.$list[$i]->element.'.xml');
+                        $lang->load($list[$i]->element, JPATH_SITE);
+                    }
                     break;
                 case 'plugin' :
                     $file = JFile::read(JPATH_PLUGINS.'/'.$list[$i]->folder.'/'.$list[$i]->element.'/'.$list[$i]->element.'.xml');
+                    $lang->load('plg_'.$list[$i]->folder.'_'.$list[$i]->element);
                     break;
                 case 'template' : 
-                    if ($list[$i]->client_id) $file = JFile::read(JPATH_ADMINISTRATOR.'/templates/'.$list[$i]->element.'/templateDetails.xml');
-                    else $file = JFile::read(JPATH_SITE.'/templates/'.$list[$i]->element.'/templateDetails.xml');
+                    if ($list[$i]->client_id) {
+                        $file = JFile::read(JPATH_ADMINISTRATOR.'/templates/'.$list[$i]->element.'/templateDetails.xml');
+                        $lang->load('tpl_'.$list[$i]->element);
+                    }
+                    else {
+                        $file = JFile::read(JPATH_SITE.'/templates/'.$list[$i]->element.'/templateDetails.xml');
+                        $lang->load('tpl_'.$list[$i]->element, JPATH_SITE);
+                    }
                     break;
             }
             $extension = simplexml_load_string($file);

@@ -1,7 +1,11 @@
 <?php
+
 /**
- * @version		$Id$
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @author      Jeremy Wilken - Gnome on the run
+ * @link        www.gnomeontherun.com
+ * @copyright   Copyright 2011 Gnome on the run. All Rights Reserved.
+ * @category    Administrator
+ * @package     com_installer
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -11,16 +15,16 @@ defined('_JEXEC') or die;
 include_once dirname(__FILE__).'/../default/view.php';
 
 /**
- * Extension Manager Update View
+ * Extension Manager Site View
  *
- * @package		Joomla.Administrator
+ * @package		SquareOne.Administrator
  * @subpackage	com_installer
- * @since		1.6
+ * @since		2.5
  */
 class InstallerViewSite extends InstallerViewDefault
 {
 	/**
-	 * @since	1.6
+	 * @since	2.5
 	 */
 	function display($tpl=null)
 	{
@@ -39,7 +43,7 @@ class InstallerViewSite extends InstallerViewDefault
 	/**
 	 * Add the page title and toolbar.
 	 *
-	 * @since	1.6
+	 * @since	2.5
 	 */
 	protected function addToolbar()
 	{

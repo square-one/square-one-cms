@@ -29,7 +29,7 @@ class InstallerControllerSites extends JControllerAdmin
     {
         JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         
-        $model = $this->getModel('sites');
+        $model = $this->getModel('extensions');
         $list = $model->getUnprotectedExtensions();
         $ids = JRequest::getVar('cid', array(), '', 'array');
         $distro = JRequest::getVar('distro', array(), '', 'array');
@@ -52,28 +52,8 @@ class InstallerControllerSites extends JControllerAdmin
             $child->addAttribute('name', $item->name);
             $child->addAttribute('element', $item->element);
             $child->addAttribute('type', $item->type);
-            
-            switch ($item->type)
-            {
-                case 'component' :
-                    $file = JFile::read(JPATH_ADMINISTRATOR.'/components/'.$item->element.'/'.substr($item->element, 4).'.xml');
-                    break;
-                case 'module' : 
-                    if ($item->client_id) $file = JFile::read(JPATH_ADMINISTRATOR.'/modules/'.$item->element.'/'.substr($item->element, 4).'.xml');
-                    else $file = JFile::read(JPATH_SITE.'/modules/'.$item->element.'/'.substr($item->element, 4).'.xml');
-                    break;
-                case 'plugin' :
-                    $file = JFile::read(JPATH_PLUGINS.'/'.$item->folder.'/'.$item->element.'/'.$item->element.'.xml');
-                    break;
-                case 'template' : 
-                    if ($item->client_id) $file = JFile::read(JPATH_ADMINISTRATOR.'/templates/'.$item->element.'/templateDetails.xml');
-                    else $file = JFile::read(JPATH_SITE.'/templates/'.$item->element.'/templateDetails.xml');
-                    break;
-            }
-            $extension = simplexml_load_string($file);
-            
-            $child->addAttribute('version', $extension->version);
-            $child->addAttribute('detailsurl', $extension->detailsurl);
+            $child->addAttribute('version', $item->version);
+            $child->addAttribute('detailsurl', $item->detailsurl);
         }
         
         $host = JURI::getInstance();
@@ -84,7 +64,7 @@ class InstallerControllerSites extends JControllerAdmin
         header('Content-Transfer-Encoding: binary');
         print $xml->asXML();
         
-        exit();
+        JFactory::getApplication()->close();
     }
     
 	public function &getModel($name = 'Sites', $prefix = 'InstallerModel', $config = array())
