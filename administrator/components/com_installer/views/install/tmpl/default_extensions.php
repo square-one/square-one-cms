@@ -24,7 +24,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
     
     <div class="width-100 fltlft">
     <fieldset>
-        <legend><?php echo JText::_('COM_INSTALLER_REMOTE_INSTALL') ?></legend>
+        <legend><?php echo JText::_('COM_INSTALLER_AVAILABLE_EXTENSIONS') ?></legend>
         
     <table class="adminlist" cellspacing="1">
 		<thead>

@@ -32,34 +32,34 @@
 	<extension name="Wrapper Module" element="mod_wrapper" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_wrapper.xml"/>
 	
 	<!-- Plugins -->
-	<extension name="Gmail Authentication Plugin" element="plg_authentication_gmail" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_authentication_gmail.xml"/>
-	<extension name="LDAP Authentication Plugin" element="plg_authentication_ldap" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_authentication_ldap.xml"/>
-	<extension name="Email Cloak Content Plugin" element="plg_content_emailcloak" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_emailcloak.xml"/>
-	<extension name="Geshi Content Plugin" element="plg_content_geshi" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_geshi.xml"/>
-	<extension name="Load Module Content Plugin" element="plg_content_loadmodule" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_loadmodule.xml"/>
-	<extension name="Page Break Content Plugin" element="plg_content_pagebreak" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_pagebreak.xml"/>
-	<extension name="Page Navigation Content Plugin" element="plg_content_pagenavigation" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_pagenavigation.xml"/>
-	<extension name="Vote Content Plugin" element="plg_content_vote" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_vote.xml"/>
-	<extension name="Codemirror Editor Plugin" element="plg_editors_codemirror" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors_codemirror.xml"/>
-	<extension name="TinyMCE Editor Plugin" element="plg_editors_tinymce" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors_tinymce.xml"/>
-	<extension name="Article Editor Button Plugin" element="plg_editors-xtd_article" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_article.xml"/>
-	<extension name="Image Editor Button Plugin" element="plg_editors-xtd_image" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_image.xml"/>
-	<extension name="Page Break Editor Button Plugin" element="plg_editors-xtd_pagebreak" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_pagebreak.xml"/>
-	<extension name="Readmore Editor Button Plugin" element="plg_editors-xtd_readmore" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_readmore.xml"/>
-	<extension name="Categories Search Plugin" element="plg_search_categories" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_categories.xml"/>
-	<extension name="Contacts Search Plugin" element="plg_search_contacts" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_contacts.xml"/>
-	<extension name="Content Search Plugin" element="plg_search_content" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_content.xml"/>
-	<extension name="Newsfeeds Search Plugin" element="plg_search_newsfeeds" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_newsfeeds.xml"/>
-	<extension name="Weblinks Search Plugin" element="plg_search_weblinks" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_weblinks.xml"/>
-	<extension name="Redirect System Plugin" element="plg_system_redirect" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_system_redirect.xml"/>
-	<extension name="Highlight System Plugin" element="plg_system_highlight" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_system_highlight.xml"/>
-	<extension name="Contact Creator User Plugin" element="plg_user_contactcreator" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_contactcreator.xml"/>
-	<extension name="Profile User Plugin" element="plg_user_profile" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_profile.xml"/>
+	<extension name="Gmail Authentication Plugin" element="gmail" type="plugin" folder="authentication" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_authentication_gmail.xml"/>
+	<extension name="LDAP Authentication Plugin" element="ldap" type="plugin" folder="authentication" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_authentication_ldap.xml"/>
+	<extension name="Email Cloak Content Plugin" element="emailcloak" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_emailcloak.xml"/>
+	<extension name="Geshi Content Plugin" element="geshi" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_geshi.xml"/>
+	<extension name="Load Module Content Plugin" element="loadmodule" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_loadmodule.xml"/>
+	<extension name="Page Break Content Plugin" element="pagebreak" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_pagebreak.xml"/>
+	<extension name="Page Navigation Content Plugin" element="pagenavigation" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_pagenavigation.xml"/>
+	<extension name="Vote Content Plugin" element="vote" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_vote.xml"/>
+	<extension name="Codemirror Editor Plugin" element="codemirror" type="plugin" folder="editors" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors_codemirror.xml"/>
+	<extension name="TinyMCE Editor Plugin" element="tinymce" type="plugin" folder="editors" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors_tinymce.xml"/>
+	<extension name="Article Editor Button Plugin" element="article" type="plugin" folder="editors-xtd" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_article.xml"/>
+	<extension name="Image Editor Button Plugin" element="image" type="plugin" folder="editors-xtd" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_image.xml"/>
+	<extension name="Page Break Editor Button Plugin" element="pagebreak" type="plugin" folder="editors-xtd" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_pagebreak.xml"/>
+	<extension name="Readmore Editor Button Plugin" element="readmore" type="plugin" folder="editors-xtd" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_readmore.xml"/>
+	<extension name="Categories Search Plugin" element="categories" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_categories.xml"/>
+	<extension name="Contacts Search Plugin" element="contacts" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_contacts.xml"/>
+	<extension name="Content Search Plugin" element="content" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_content.xml"/>
+	<extension name="Newsfeeds Search Plugin" element="newsfeeds" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_newsfeeds.xml"/>
+	<extension name="Weblinks Search Plugin" element="weblinks" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_weblinks.xml"/>
+	<extension name="Redirect System Plugin" element="redirect" type="plugin" folder="system" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_system_redirect.xml"/>
+	<extension name="Highlight System Plugin" element="highlight" type="plugin" folder="system" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_system_highlight.xml"/>
+	<extension name="Contact Creator User Plugin" element="contactcreator" type="plugin" folder="user" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_contactcreator.xml"/>
+	<extension name="Profile User Plugin" element="profile" type="plugin" folder="user" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_profile.xml"/>
 	
 	<!-- Templates -->
-	<extension name="Atomic Template" element="tpl_atomic" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_atomic.xml"/>
-	<extension name="Beez_20 Template" element="tpl_beez_20" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_beez_20.xml"/>
-	<extension name="Beez5 Template" element="tpl_beez5" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_beez5.xml"/>
-	<extension name="Hathor Administrator Template" element="tpl_hathor" type="plugin" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_hathor.xml"/>
+	<extension name="Atomic Template" element="atomic" type="template" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_atomic.xml"/>
+	<extension name="Beez_20 Template" element="beez_20" type="template" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_beez_20.xml"/>
+	<extension name="Beez5 Template" element="beez5" type="template" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_beez5.xml"/>
+	<extension name="Hathor Administrator Template" element="hathor" type="template" client="administrator" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_hathor.xml"/>
 	
 </extensionset>

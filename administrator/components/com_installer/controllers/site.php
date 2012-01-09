@@ -1,10 +1,12 @@
 <?php
+
 /**
- * @version		$Id$
- * @package		Joomla.Administrator
- * @subpackage	com_installer
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License, see LICENSE.php
+ * @author      Jeremy Wilken - Gnome on the run
+ * @link        www.gnomeontherun.com
+ * @copyright   Copyright 2011 Gnome on the run. All Rights Reserved.
+ * @category    Administrator
+ * @package     com_installer
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // No direct access
@@ -17,7 +19,8 @@ require_once JPATH_COMPONENT_ADMINISTRATOR . '/models/extension.php';
  * @package		Joomla.Administrator
  * @subpackage	com_installer
  */
-class InstallerControllerSite extends JController {
+class InstallerControllerSite extends JController 
+{
     
     /**
 	 * Install a set of extensions.
@@ -30,11 +33,10 @@ class InstallerControllerSite extends JController {
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		$model	= $this->getModel('site');
-		$eid	= JRequest::getVar('eid', array(), '', 'array');
+		$cid	= JRequest::getVar('cid', array(), '', 'array');
         $id = JRequest::getVar('id', 0, '', 'int');
 
-		JArrayHelper::toInteger($eid, array());
-		if ($model->install($eid)) {
+		if ($model->install($cid)) {
 			$cache = JFactory::getCache('mod_menu');
 			$cache->clean();
 		}

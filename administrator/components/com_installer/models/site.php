@@ -1,9 +1,11 @@
 <?php
+
 /**
- * @version		$Id$
- * @package		Joomla.Administrator
- * @subpackage	com_installer
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @author      Jeremy Wilken - Gnome on the run
+ * @link        www.gnomeontherun.com
+ * @copyright   Copyright 2011 Gnome on the run. All Rights Reserved.
+ * @category    Administrator
+ * @package     com_installer
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -18,9 +20,9 @@ jimport('joomla.updater.updater');
 jimport('joomla.updater.update');
 
 /**
- * @package		Joomla.Administrator
+ * @package		Administrator
  * @subpackage	com_installer
- * @since		1.6
+ * @since		2.5
  */
 class InstallerModelSite extends JModelList
 {
@@ -29,7 +31,7 @@ class InstallerModelSite extends JModelList
 	 *
 	 * @param	array	An optional associative array of configuration settings.
 	 * @see		JController
-	 * @since	1.6
+	 * @since	2.5
 	 */
 	public function __construct($config = array())
 	{
@@ -53,7 +55,7 @@ class InstallerModelSite extends JModelList
 	 *
 	 * Note. Calling getState in this method will result in recursion.
 	 *
-	 * @since	1.6
+	 * @since	2.5
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
@@ -69,7 +71,7 @@ class InstallerModelSite extends JModelList
 	 * Method to get the database query
 	 *
 	 * @return	JDatabaseQuery	The database query
-	 * @since	1.6
+	 * @since	2.5
 	 */
 	protected function getListQuery()
 	{
@@ -88,12 +90,12 @@ class InstallerModelSite extends JModelList
 	 *
 	 * @param	int		Extension identifier to look for
 	 * @return	boolean Result
-	 * @since	1.6
+	 * @since	2.5
 	 */
-	public function findUpdates($eid=0)
+	public function findUpdates($cid=0)
 	{
 		$updater = JUpdater::getInstance();
-		$results = $updater->findUpdates($eid);
+		$results = $updater->findUpdates($cid);
 		return true;
 	}
 
@@ -101,7 +103,7 @@ class InstallerModelSite extends JModelList
 	 * Removes all of the updates from the table.
 	 *
 	 * @return	boolean result of operation
-	 * @since	1.6
+	 * @since	2.5
 	 */
 	public function purge()
 	{
@@ -169,22 +171,22 @@ class InstallerModelSite extends JModelList
 	 * Sets the "result" state with the result of the operation.
 	 *
 	 * @param	Array[int] List of updates to apply
-	 * @since	1.7
+	 * @since	2.5
 	 */
-	public function install($eids)
+	public function install($cids)
 	{
 		$result = true;
-		foreach($eids as $eid) {
+		foreach($cids as $cid) {
 			$update = new JUpdate();
 			$instance = JTable::getInstance('update');
-			$instance->load($eid);
+			$instance->load($cid);
 			$update->loadFromXML($instance->detailsurl);
 			// install sets state and enqueues messages
 			$res = $this->install_install($update->get('downloadurl')->_data);
 
             // Disabling the purging of the update list, instead deleting specific row
 			if ($res) {
-				$instance->delete($uid);
+				$instance->delete($cid);
 			}
 
 			$result = $res & $result;
@@ -194,6 +196,13 @@ class InstallerModelSite extends JModelList
 		$this->setState('result', $result);
 	}
     
+    /**
+     * Installs the extension
+     * 
+     * @param   string  $url
+     * @return  boolean 
+     * @since   2.5
+     */
     function install_install($url)
 	{
 		jimport('joomla.client.helper');
@@ -250,7 +259,7 @@ class InstallerModelSite extends JModelList
 	 * Install an extension from a URL
 	 *
 	 * @return	Package details or false on failure
-	 * @since	1.5
+	 * @since	2.5
 	 */
 	protected function _getPackageFromUrl($url)
 	{
@@ -279,75 +288,5 @@ class InstallerModelSite extends JModelList
 		$package = JInstallerHelper::unpack($tmp_dest . '/' . $p_file);
 
 		return $package;
-	}
-
-	/**
-	 * Handles the actual update installation.
-	 *
-	 * @param	JUpdate	An update definition
-	 * @return	boolean	Result of install
-	 * @since	1.6
-	 */
-	private function install_update($update)
-	{
-		$app = JFactory::getApplication();
-		if (isset($update->get('downloadurl')->_data)) {
-			$url = $update->downloadurl->_data;
-		} else {
-			JError::raiseWarning('', JText::_('COM_INSTALLER_INVALID_EXTENSION_UPDATE'));
-			return false;
-		}
-
-		jimport('joomla.installer.helper');
-		$p_file = JInstallerHelper::downloadPackage($url);
-
-		// Was the package downloaded?
-		if (!$p_file) {
-			JError::raiseWarning('', JText::sprintf('COM_INSTALLER_PACKAGE_DOWNLOAD_FAILED', $url));
-			return false;
-		}
-
-		$config		= JFactory::getConfig();
-		$tmp_dest	= $config->get('tmp_path');
-
-		// Unpack the downloaded package file
-		$package	= JInstallerHelper::unpack($tmp_dest . '/' . $p_file);
-
-		// Get an installer instance
-		$installer	= JInstaller::getInstance();
-		$update->set('type', $package['type']);
-
-		// Install the package
-		if (!$installer->update($package['dir'])) {
-			// There was an error updating the package
-			$msg = JText::sprintf('COM_INSTALLER_MSG_UPDATE_ERROR', JText::_('COM_INSTALLER_TYPE_TYPE_'.strtoupper($package['type'])));
-			$result = false;
-		} else {
-			// Package updated successfully
-			$msg = JText::sprintf('COM_INSTALLER_MSG_UPDATE_SUCCESS', JText::_('COM_INSTALLER_TYPE_TYPE_'.strtoupper($package['type'])));
-			$result = true;
-		}
-
-		// Quick change
-		$this->type = $package['type'];
-
-		// Set some model state values
-		$app->enqueueMessage($msg);
-
-		// TODO: Reconfigure this code when you have more battery life left
-		$this->setState('name', $installer->get('name'));
-		$this->setState('result', $result);
-		$app->setUserState('com_installer.message', $installer->message);
-		$app->setUserState('com_installer.extension_message', $installer->get('extension_message'));
-
-		// Cleanup the install files
-		if (!is_file($package['packagefile'])) {
-			$config = JFactory::getConfig();
-			$package['packagefile'] = $config->get('tmp_path') . '/' . $package['packagefile'];
-		}
-
-		JInstallerHelper::cleanupInstall($package['packagefile'], $package['extractdir']);
-
-		return $result;
 	}
 }

@@ -129,7 +129,83 @@ class InstallerModelInstall extends JModelList
 
 		return $query;
 	}
+    
+    /**
+	 * Removes all of the updates from the table.
+	 *
+	 * @return	boolean result of operation
+	 * @since	1.6
+	 */
+	public function purge()
+	{
+		$db = JFactory::getDBO();
+		// Note: TRUNCATE is a DDL operation
+		// This may or may not mean depending on your database
+		$db->setQuery('TRUNCATE TABLE #__updates');
+		if ($db->Query()) {
+			// Reset the last update check timestamp
+			$query = $db->getQuery(true);
+			$query->update($db->nq('#__update_sites'));
+			$query->set($db->nq('last_check_timestamp').' = '.$db->q(0));
+			$db->setQuery($query);
+			$db->query();
+			
+			$this->_message = JText::_('COM_INSTALLER_PURGED_UPDATES');
+			return true;
+		} else {
+			$this->_message = JText::_('COM_INSTALLER_FAILED_TO_PURGE_UPDATES');
+			return false;
+		}
+	}
 
+    /**
+	 * Finds updates for an extension.
+	 *
+	 * @param	int		Extension identifier to look for
+	 * @return	boolean Result
+	 * @since	1.6
+	 */
+	public function findUpdates($eid=0, $cache_timeout = 0)
+	{
+		$updater = JUpdater::getInstance();
+		$results = $updater->findUpdates($eid, $cache_timeout);
+		return true;
+	}
+    
+    /**
+     * Get current extensions
+     * 
+     * @since   2.5
+     * @return  object
+     */
+    public function getUpdates()
+    {
+        $db = JFactory::getDBO();
+        $db->setQuery('SELECT * FROM #__updates');
+        if ($updates = $db->loadObjectList())
+        {
+            return $updates;
+        }
+        return false;
+    }
+    
+    /**
+     * Get current extensions
+     * 
+     * @since   2.5
+     * @return  object
+     */
+    public function getExtensions()
+    {
+        $db = JFactory::getDBO();
+        $db->setQuery('SELECT * FROM #__extensions');
+        if ($extensions = $db->loadObjectList())
+        {
+            return $extensions;
+        }
+        return false;
+    }
+    
 	/**
 	 * Install an extension from either folder, url or upload.
 	 *
@@ -507,22 +583,45 @@ class InstallerModelInstall extends JModelList
 		$app->setUserState('com_installer.extension_message', $installer->get('extension_message'));
 		$app->setUserState('com_installer.redirect_url', $installer->get('redirect_url'));
 
-		// Cleanup the install files
-		if (!is_file($packagefile)) {
-			$config = JFactory::getConfig();
-			$packagefile = $config->get('tmp_path') . '/' . $packagefile;
-		}
-
-		JInstallerHelper::cleanupInstall($packagefile, $extractdir);
-
         if ($result->result) {
             $result->result = true;
+            $result->extractdir = $extractdir;
+            $result->packagefile = $packagefile;
             $result->task = 'distro_install';
             $result->message = $msg;
         }
 
 		return $result;
 	}
+    
+    public function distro_sql()
+    {
+        // Distro sql files
+    }
+    
+    public function distro_script()
+    {
+        // Distro script files
+    }
+    
+    public function distro_cleanup()
+    {
+        $extractdir = JRequest::getString('extractdir', '', 'post');
+        $packagefile = JRequest::getString('packagefile', '', 'post');
+        $result->result = false;
+        
+        // Cleanup the install files
+		if (!is_file($packagefile)) {
+			$config = JFactory::getConfig();
+			$packagefile = $config->get('tmp_path') . '/' . $packagefile;
+		}
+
+		if (JInstallerHelper::cleanupInstall($packagefile, $extractdir))
+        {
+            $result->result = true;
+            $result->message = '';
+        }
+    }
     
     /**
 	 * Method to get the row form.

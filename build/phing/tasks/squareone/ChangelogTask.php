@@ -58,7 +58,7 @@ class ChangelogTask extends Task {
     echo [$DATE]
     GIT_PAGER=cat git log --no-merges --format=" * %s" --since=$DATE --until=$NEXT
     NEXT=$DATE
-    done;';
+	';
         
         exec($command, $response);
         

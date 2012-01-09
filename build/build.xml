@@ -21,7 +21,11 @@
         <copy file="administrator/manifests/files/squareone.xml" tofile="squareone.xml" />
         
         <!-- Build Changelog -->
-        <changelog />
+        <exec command="git log --no-merges --format='%cd' --date=short | sort -u -r | while read DATE ; do
+    echo
+    echo [$DATE]
+    GIT_PAGER=cat git log --no-merges --format=' * %s' --since='$DATE 00:00:00' --until='$DATE 24:00:00'
+done > CHANGELOG.txt" />
         
         <!-- Build zip file -->
         <zip destfile="build/${filename}">
