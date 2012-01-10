@@ -3,10 +3,10 @@
   <name>Afrikaans (Suid-Afrika)</name>
   <version>1.7.1</version>
   <creationDate>2011</creationDate>
-  <author>Joomla4Africa Project</author>
+  <author>Square One4Africa Project</author>
   <copyright>Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-  <description>1.7 Joomla Afrikaanse Taalpaket</description>
+  <description>1.7 Square One Afrikaanse Taalpaket</description>
   <files>
     <filename>af-ZA.ini</filename>
   </files>
