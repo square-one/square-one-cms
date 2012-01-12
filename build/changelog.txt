@@ -1,0 +1,6 @@
+This is the Square One changelog. It is a complete list of the commit messages,
+and may not clearly explain every change. View the source code on github to see
+which files were affected by each change.
+
+https://github.com/square-one/square-one-cms
+

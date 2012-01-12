@@ -1,3 +1,0 @@
-This is the Square One changelog. It is a complete list of the commit messages,
-and may not clearly explain every change.
-
