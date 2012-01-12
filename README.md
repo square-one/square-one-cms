@@ -96,7 +96,6 @@ Square One will also function on a release cycle along with Joomla! Once it is r
 * plg_search_newsfeeds - Newsfeeds search plugin
 * plg_search_weblinks - Weblinks search plugin
 * plg_system_highlight - Highlight system plugin
-* plg_system_finder - Finder system plugin
 * plg_system_redirect - Redirect system plugin
 * plg_user_contactcreator - Contactcreator user plugin
 * plg_user_profile - Profile user plugin

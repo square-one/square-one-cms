@@ -5,6 +5,7 @@
 	<!-- Components -->
 	<extension name="Banners" element="com_banners" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_banners.xml"/>
 	<extension name="Contacts" element="com_contact" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_contact.xml"/>
+	<extension name="Smart Search (Finder)" element="com_finder" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_finder.xml"/>
 	<extension name="Messages" element="com_messages" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_messages.xml"/>
 	<extension name="Newsfeeds" element="com_newsfeeds" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_newsfeeds.xml"/>
 	<extension name="Redirect" element="com_redirect" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_redirect.xml"/>
@@ -20,6 +21,7 @@
 	<extension name="Articles Newsflash Module" element="mod_articles_news" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_articles_news.xml"/>
 	<extension name="Articles Popular Module" element="mod_articles_popular" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_articles_popular.xml"/>
 	<extension name="Banners Module" element="mod_banners" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_banners.xml"/>
+	<extension name="Smart Search (Finder) Module" element="mod_finder" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_finder.xml"/>
 	<extension name="Footer Module" element="mod_footer" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_footer.xml"/>
 	<extension name="Random Image Module" element="mod_random_image" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_random_image.xml"/>
 	<extension name="Related Items Module" element="mod_related_items" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_related_items.xml"/>
@@ -35,6 +37,7 @@
 	<extension name="Gmail Authentication Plugin" element="gmail" type="plugin" folder="authentication" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_authentication_gmail.xml"/>
 	<extension name="LDAP Authentication Plugin" element="ldap" type="plugin" folder="authentication" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_authentication_ldap.xml"/>
 	<extension name="Email Cloak Content Plugin" element="emailcloak" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_emailcloak.xml"/>
+	<extension name="Smart Search (Finder) Content Plugin" element="finder" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_finder.xml"/>
 	<extension name="Geshi Content Plugin" element="geshi" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_geshi.xml"/>
 	<extension name="Load Module Content Plugin" element="loadmodule" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_loadmodule.xml"/>
 	<extension name="Page Break Content Plugin" element="pagebreak" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_pagebreak.xml"/>
@@ -46,13 +49,18 @@
 	<extension name="Image Editor Button Plugin" element="image" type="plugin" folder="editors-xtd" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_image.xml"/>
 	<extension name="Page Break Editor Button Plugin" element="pagebreak" type="plugin" folder="editors-xtd" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_pagebreak.xml"/>
 	<extension name="Readmore Editor Button Plugin" element="readmore" type="plugin" folder="editors-xtd" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_readmore.xml"/>
+	<extension name="Categories Smart Search (Finder) Plugin" element="categories" type="plugin" folder="finder" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_finder_categories.xml"/>
+	<extension name="Contacts Smart Search (Finder) Plugin" element="contacts" type="plugin" folder="finder" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_finder_contacts.xml"/>
+	<extension name="Content Smart Search (Finder) Plugin" element="content" type="plugin" folder="finder" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_finder_content.xml"/>
+	<extension name="Newsfeeds Smart Search (Finder) Plugin" element="newsfeeds" type="plugin" folder="finder" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_finder_newsfeeds.xml"/>
+	<extension name="Weblinks Smart Search (Finder) Plugin" element="weblinks" type="plugin" folder="finder" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_finder_weblinks.xml"/>
 	<extension name="Categories Search Plugin" element="categories" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_categories.xml"/>
 	<extension name="Contacts Search Plugin" element="contacts" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_contacts.xml"/>
 	<extension name="Content Search Plugin" element="content" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_content.xml"/>
 	<extension name="Newsfeeds Search Plugin" element="newsfeeds" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_newsfeeds.xml"/>
 	<extension name="Weblinks Search Plugin" element="weblinks" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_weblinks.xml"/>
-	<extension name="Redirect System Plugin" element="redirect" type="plugin" folder="system" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_system_redirect.xml"/>
 	<extension name="Highlight System Plugin" element="highlight" type="plugin" folder="system" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_system_highlight.xml"/>
+	<extension name="Redirect System Plugin" element="redirect" type="plugin" folder="system" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_system_redirect.xml"/>
 	<extension name="Contact Creator User Plugin" element="contactcreator" type="plugin" folder="user" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_contactcreator.xml"/>
 	<extension name="Profile User Plugin" element="profile" type="plugin" folder="user" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_profile.xml"/>
 	
