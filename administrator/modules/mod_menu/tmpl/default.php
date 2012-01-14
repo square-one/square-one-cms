@@ -19,7 +19,7 @@ foreach ($list as $i => &$item) :
 		$class .= ' current';
 	}
 
-	if ($item->parent) {
+	if ($item->parent || $item->type == 'menus') {
 		$class .= ' node';
 	}
 

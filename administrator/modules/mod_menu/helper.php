@@ -66,7 +66,10 @@ class modMenuHelper
 						continue;
 					}
                     
-                    if ($item->component) $lang->load($item->component.'.sys', JPATH_ADMINISTRATOR);
+                    if ($item->component) {
+                        $lang->load($item->component.'.sys', JPATH_ADMINISTRATOR);
+                        $lang->load($item->component.'.menu', JPATH_ADMINISTRATOR);
+                    }
 
 					$item->deeper = false;
 					$item->shallower = false;
