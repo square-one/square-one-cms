@@ -130,13 +130,43 @@ class InstallerControllerInstall extends JController
      * Ajax method for distro management
      * @return  object
      */
-    public function distro_script()
+    public function distro_script_install()
     {
         JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
         
         $model = $this->getModel('install');
         
-        echo json_encode($model->distro_script());
+        echo json_encode($model->distro_script_install());
+        
+        JFactory::getApplication()->close();
+    }
+    
+        /**
+     * Ajax method for distro management
+     * @return  object
+     */
+    public function distro_script_preflight()
+    {
+        JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = $this->getModel('install');
+        
+        echo json_encode($model->distro_script_preflight());
+        
+        JFactory::getApplication()->close();
+    }
+    
+        /**
+     * Ajax method for distro management
+     * @return  object
+     */
+    public function distro_script_postflight()
+    {
+        JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = $this->getModel('install');
+        
+        echo json_encode($model->distro_script_postflight());
         
         JFactory::getApplication()->close();
     }
@@ -152,6 +182,17 @@ class InstallerControllerInstall extends JController
         $model = $this->getModel('install');
         
         echo json_encode($model->distro_sql());
+        
+        JFactory::getApplication()->close();
+    }
+    
+    public function distro_cleanup()
+    {
+        JRequest::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = $this->getModel('install');
+        
+        echo json_encode($model->distro_cleanup());
         
         JFactory::getApplication()->close();
     }

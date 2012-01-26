@@ -597,30 +597,135 @@ class InstallerModelInstall extends JModelList
     public function distro_sql()
     {
         // Distro sql files
+        $sqlfile = JRequest::getString('path', '', 'post');
+        $db = JFactory::getDBO();
+        $result->result = false;
+        
+        $buffer = file_get_contents(base64_decode($sqlfile));
+        
+        if ($buffer === false) {
+            $result->message = JText::_('JLIB_INSTALLER_ERROR_SQL_READBUFFER');
+            return $result;
+        }
+        
+        $queries = JInstallerHelper::splitSql($buffer);
+        
+        if (count($queries) == 0)
+        {
+            // No queries to process
+            $result->message = 'No queries';
+            return $result;
+        }
+
+        // Process each query in the $queries array (split out of sql file).
+        foreach ($queries as $query)
+        {
+            $query = trim($query);
+            if ($query != '' && $query{0} != '#')
+            {
+                $db->setQuery($query);
+                if (!$db->query())
+                {
+                    $result->message = JText::sprintf('JLIB_INSTALLER_ERROR_SQL_ERROR', $db->stderr(true));
+                    return $result;
+                }
+            }
+        }
+        
+        $result->result = true;
+        $result->message = JText::_('Install SQL');
+        
+        return $result;
     }
     
-    public function distro_script()
+    public function distro_script_install()
     {
         // Distro script files
+        $class = JRequest::getString('class', '', 'post');
+        $path = JRequest::getString('path', '', 'post');
+        $result->result = false;
+        $result->message = 'Script unable to run';
+        
+        include(base64_decode($path));
+        $script = new $class();
+        
+        $root = realpath($path);
+        $root = substr($root, 0, strrpos($root, '/'));
+        
+        $script->install($root);
+
+        $result->result = true;
+        $result->message = 'Script ran';
+        
+        return $result;
+    }
+    
+    public function distro_script_preflight()
+    {
+        // Distro script files
+        $class = JRequest::getString('class', '', 'post');
+        $path = JRequest::getString('path', '', 'post');
+        $result->result = false;
+        $result->message = 'Script unable to run';
+        
+        include(base64_decode($path));
+        $script = new $class();
+        
+        $root = realpath($path);
+        $root = substr($root, 0, strrpos($root, '/'));
+        
+        $script->preflight($root);
+
+        $result->result = true;
+        $result->message = 'Script ran';
+        
+        return $result;
+    }
+    
+    public function distro_script_postflight()
+    {
+        // Distro script files
+        $class = JRequest::getString('class', '', 'post');
+        $path = JRequest::getString('path', '', 'post');
+        $result->result = false;
+        $result->message = 'Script unable to run';
+        
+        include(base64_decode($path));
+        $script = new $class();
+        
+        $root = realpath($path);
+        $root = substr($root, 0, strrpos($root, '/'));
+        
+        $script->postflight($root);
+
+        $result->result = true;
+        $result->message = 'Script ran';
+        
+        return $result;
     }
     
     public function distro_cleanup()
     {
-        $extractdir = JRequest::getString('extractdir', '', 'post');
-        $packagefile = JRequest::getString('packagefile', '', 'post');
         $result->result = false;
+        $config = JFactory::getConfig();
         
         // Cleanup the install files
-		if (!is_file($packagefile)) {
-			$config = JFactory::getConfig();
-			$packagefile = $config->get('tmp_path') . '/' . $packagefile;
-		}
-
-		if (JInstallerHelper::cleanupInstall($packagefile, $extractdir))
+        $folders = JFolder::folders($config->get('tmp_path'), '.', false, true);
+        foreach ($folders as $folder)
         {
-            $result->result = true;
-            $result->message = '';
+            JFolder::delete($folder);
         }
+
+        $files = JFolder::files($config->get('tmp_path'), '.', false, true, array('index.html'));
+        foreach ($files as $file)
+        {
+            JFile::delete($file);
+        }
+        
+        $result->result = true;
+        $result->message = 'Cleaned up';
+
+        return $result;
     }
     
     /**

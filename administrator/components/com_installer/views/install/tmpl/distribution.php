@@ -34,6 +34,25 @@ defined('_JEXEC') or die;
 			</tr>
 		</thead>
 		<tbody>
+            <?php if (isset($this->result->preflight) && $this->result->preflight == true) : ?>
+            <tr id="script_preflight" data-path="<?php echo base64_encode($this->result->preflight); ?>" data-class="<?php echo $this->result->scriptclass; ?>">
+                <td class="jgrid">
+                    <span class="state unpublish">&nbsp;</span>
+                </td>
+                <td>
+					<?php echo JText::_('Preflight'); ?>
+				</td>
+				<td class="center">
+					Script
+				</td>
+				<td class="center">
+					
+				</td>
+                <td class="result">
+                    
+                </td>
+			</tr>
+            <?php endif; ?>
 		<?php foreach ($this->result->extensions->xpath('//extension') as $i => $extension) : if (isset($extension['detailsurl'])) : ?>
 			<tr class="row<?php echo $i%2; ?> extension" data-detailsurl="<?php echo $extension['detailsurl']; ?>">
 				<td class="jgrid">
@@ -53,6 +72,80 @@ defined('_JEXEC') or die;
                 </td>
 			</tr>
 		<?php endif; endforeach; ?>
+            <?php if (isset($this->result->sql) && $this->result->sql == true) : ?>
+            <tr id="sql" data-path="<?php echo base64_encode($this->result->sql); ?>">
+                <td class="jgrid">
+                    <span class="state unpublish">&nbsp;</span>
+                </td>
+                <td>
+					<?php echo JText::_('SQL'); ?>
+				</td>
+				<td class="center">
+					SQL
+				</td>
+				<td class="center">
+					
+				</td>
+                <td class="result">
+                    
+                </td>
+			</tr>
+            <?php endif; ?>
+            <?php if (isset($this->result->install) && $this->result->install == true) : ?>
+            <tr id="script_install" data-path="<?php echo base64_encode($this->result->install); ?>" data-class="<?php echo $this->result->scriptclass; ?>">
+                <td class="jgrid">
+                    <span class="state unpublish">&nbsp;</span>
+                </td>
+                <td>
+					<?php echo JText::_('Install'); ?>
+				</td>
+				<td class="center">
+					Script
+				</td>
+				<td class="center">
+					
+				</td>
+                <td class="result">
+                    
+                </td>
+			</tr>
+            <?php endif; ?>
+            <?php if (isset($this->result->postflight) && $this->result->postflight == true) : ?>
+            <tr id="script_postflight" data-path="<?php echo base64_encode($this->result->postflight); ?>" data-class="<?php echo $this->result->scriptclass; ?>">
+                <td class="jgrid">
+                    <span class="state unpublish">&nbsp;</span>
+                </td>
+                <td>
+					<?php echo JText::_('Postflight'); ?>
+				</td>
+				<td class="center">
+					Script
+				</td>
+				<td class="center">
+					
+				</td>
+                <td class="result">
+                    
+                </td>
+			</tr>
+            <?php endif; ?>
+            <tr id="cleanup">
+                <td class="jgrid">
+                    <span class="state unpublish">&nbsp;</span>
+                </td>
+                <td>
+					<?php echo JText::_('Cleanup'); ?>
+				</td>
+				<td class="center">
+					
+				</td>
+				<td class="center">
+					
+				</td>
+                <td class="result">
+                    
+                </td>
+			</tr>
 		</tbody>
 	</table>
         
@@ -69,11 +162,23 @@ window.addEvent('domready', function() {
     
     var installer = new DistroInstaller();
     
+    // Add preflight
+    if ($('script_preflight')) installer.addItem($('script_preflight'));
+    
     // Loop through extensions to install
     for (i = 0; i < extensions.length; i++)
     {
         installer.addItem(extensions[i]);
     }
+    
+    // Add sql
+    if ($('sql')) installer.addItem($('sql'));
+    
+    // Add install
+    if ($('script_install')) installer.addItem($('script_install'));
+    
+    // Add postflight
+    if ($('script_postflight')) installer.addItem($('script_postflight'));
     
     installer.process();
 });
@@ -90,8 +195,13 @@ var DistroInstaller = new Class({
     },
     
     process : function() {
-        if (this.queue.length) this.download();
-        else this.complete();
+        if (this.queue.length){
+            if (this.queue[0].hasClass('extension')) this.download();
+            else this.call();
+        }
+        else {
+            this.complete();
+        }
     },
     
     error : function() {
@@ -101,8 +211,47 @@ var DistroInstaller = new Class({
     },
     
     complete: function() {
-        
-        //window.location.href = '<?php echo JRoute::_('index.php?option=com_installer&view=installer') ?>';
+        this.request = new Request({
+            url:    'index.php?option=com_installer',
+            data:   '<?php echo JUtility::getToken(); ?>=1&task=install.distro_cleanup',
+            onFailure : function() {
+                $('cleanup').getFirst('td.result').set('text', '<?php echo JText::_('COM_INSTALLER_INSTALL_FAILED') ?>');
+                $('cleanup').getFirst('td.jgrid span').set('class', 'state unpublish');
+            },
+            onSuccess : function(response) {
+                this.response = JSON.decode(response);
+                $('cleanup').getFirst('td.result').set('text', this.response.message);
+                if (this.response.result == true) {
+                    $('cleanup').getFirst('td.jgrid span').set('class', 'state publish');
+                } else {
+                    $('cleanup').getFirst('td.jgrid span').set('class', 'state unpublish');
+                }
+            }.bind(this)
+        }).send();
+    },
+    
+    call : function() {
+        this.request = new Request({
+            url:    'index.php?option=com_installer',
+            data:   '<?php echo JUtility::getToken(); ?>=1&task=install.distro_'+this.queue[0].get('id')+'&path='+this.queue[0].get('data-path')+'&class='+this.queue[0].get('data-class'),
+            onFailure : function() {
+                this.queue[0].getFirst('td.result').set('text', '<?php echo JText::_('COM_INSTALLER_INSTALL_FAILED') ?>');
+                this.queue[0].getFirst('td.jgrid span').set('class', 'state unpublish');
+                this.queue.shift();
+                this.process();
+            },
+            onSuccess : function(response) {
+                this.response = JSON.decode(response);
+                this.queue[0].getFirst('td.result').set('text', this.response.message);
+                if (this.response.result == true) {
+                    this.queue[0].getFirst('td.jgrid span').set('class', 'state publish');
+                } else {
+                    this.queue[0].getFirst('td.jgrid span').set('class', 'state unpublish');
+                }
+                this.queue.shift();
+                this.process();
+            }.bind(this)
+        }).send();
     },
     
     install : function() {

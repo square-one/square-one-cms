@@ -29,7 +29,7 @@ class InstallerViewInstall extends InstallerViewDefault
 		$paths->first = '';
 
 		$this->assignRef('paths', $paths);
-		$this->state = $this->get('State');
+		$this->state        = $this->get('State');
         $this->items        = $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
         $this->form			= $this->get('Form');
@@ -40,7 +40,7 @@ class InstallerViewInstall extends InstallerViewDefault
             
             // Extract the list and return it
             $installer = JInstaller::getInstance();
-            $installer->setPath('source', $state->get('install.directory'));
+            $installer->setPath('source', $this->state->get('install.directory'));
             $manifest = $installer->getManifest();
             
             $result = false;
@@ -48,15 +48,24 @@ class InstallerViewInstall extends InstallerViewDefault
             if ($manifest)
             {
                 $result->extensions = isset($manifest->extensions) ? $manifest->extensions : false;
-                $result->sql = isset($manifest->install) ? true : false;
-                $result->script = isset($manifest->scriptfile) ? true : false;
+                $result->sql = isset($manifest->install->sql->file) ? $installer->getPath('source').'/'.$manifest->install->sql->file : false;
+                $result->script = isset($manifest->scriptfile) ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
+                if ($result->script) {
+                    include($installer->getPath('source').'/'.$manifest->scriptfile);
+                    $class = $manifest->name.'InstallerScript';
+                    $script = new $class();
+                    $result->scriptclass = $class;
+                    $result->preflight = method_exists($script, 'preflight') ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
+                    $result->install = method_exists($script, 'install') ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
+                    $result->update = method_exists($script, 'update') ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
+                    $result->postflight = method_exists($script, 'postflight') ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
+                    $result->uninstall = method_exists($script, 'uninstall') ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
+                }
             }
             
             $this->result = $result;
         }
         
-        
-
 		parent::display($tpl);
 	}
 
