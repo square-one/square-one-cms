@@ -40,7 +40,7 @@
 		<field name="sample_installed" type="text" id="sample_installed" class="hidden"
 			label=""
 			default="0"
-			required="true"
+			required="false"
 		/>
 
 		<!-- Advanced Settings -->

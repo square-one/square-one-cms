@@ -104,7 +104,6 @@ else
                 </div>
                 <input type="hidden" name="task" value="setup.saveconfig" />
                 <?php echo JHtml::_('form.token'); ?>
-                <?php echo $this->form->getInput('sample_installed'); ?>
             </div>
         </form>
 
