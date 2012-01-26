@@ -56,6 +56,22 @@ class modMenuHelper
 			if ($items) {
 				foreach($items as $i => $item)
 				{
+                    if (isset($item->component) && !$user->authorise('core.manage', $item->component))
+                    {
+                        unset($items[$i]);
+                        continue;
+                    }
+                    
+                    // Need to run a few hard checks because Joomla does
+                    if (isset($item->component) && ($item->component == 'com_config' || $item->component == 'com_admin'))
+                    {
+                        if (!$user->authorise('core.admin', 'com_admin'))
+                        {
+                            unset($items[$i]);
+                            continue;
+                        }
+                    }
+                    
 					if (($start && $start > $item->level)
 						|| ($end && $item->level > $end)
 						|| (!$showAll && $item->level > 1 && !in_array($item->parent_id, $path))
