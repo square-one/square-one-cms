@@ -11,3 +11,6 @@ fieldset#jform_db_old label {
 	clear: both;
 	margin: -17px 0 0 25px;
 }
+#stepbar {
+    position: static;
+}
