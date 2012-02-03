@@ -3,7 +3,7 @@
  * @package     Joomla.Libraries
  * @subpackage  Captcha
  *
- * @copyright   Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -86,16 +86,15 @@ class JCaptcha extends JObject
 	 * Returns the global Captcha object, only creating it
 	 * if it doesn't already exist.
 	 *
-	 * @param	string	$editor  The editor to use.
+	 * @param	string	$captcha  The plugin to use.
 	 * @param	array	$options  Associative array of options.
 	 *
 	 * @return	object	The JCaptcha object.
 	 *
 	 * @since 2.5
 	 */
-	public static function getInstance($captcha = '', array $options = array())
+	public static function getInstance($captcha, array $options = array())
 	{
-		$captcha = empty($captcha) ? JFactory::getConfig()->get('captcha') : $captcha;
 		$signature = md5(serialize(array($captcha, $options)));
 
 		if (empty(self::$_instances[$signature]))
@@ -215,7 +214,7 @@ class JCaptcha extends JObject
 		$plugin = JPluginHelper::getPlugin('captcha', $this->_name);
 		if (!$plugin)
 		{
-			throw new RuntimeException(JText::sprintf('JLIB_CAPTCHA_ERROR_LOADING', $name));
+			throw new RuntimeException(JText::sprintf('JLIB_CAPTCHA_ERROR_PLUGIN_NOT_FOUND', $name));
 		}
 		$params = new JRegistry($plugin->params);
 		$plugin->params = $params;

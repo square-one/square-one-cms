@@ -1,9 +1,8 @@
 <?php
 /**
- * @version		$Id$
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -102,7 +101,7 @@ class ContentModelArticle extends JModelItem
 				// Join on user table.
 				$query->select('u.name AS author');
 				$query->join('LEFT', '#__users AS u on u.id = a.created_by');
-
+		
 				// Join over the categories to get parent category titles
 				$query->select('parent.title as parent_title, parent.id as parent_id, parent.path as parent_route, parent.alias as parent_alias');
 				$query->join('LEFT', '#__categories as parent ON parent.id = c.parent_id');
@@ -116,9 +115,9 @@ class ContentModelArticle extends JModelItem
 				// Filter by start and end dates.
 				$nullDate = $db->Quote($db->getNullDate());
 				$date = JFactory::getDate();
-				
+
 				$nowDate = $db->Quote($date->toSql());
-				
+
 				$query->where('(a.publish_up = ' . $nullDate . ' OR a.publish_up <= ' . $nowDate . ')');
 				$query->where('(a.publish_down = ' . $nullDate . ' OR a.publish_down >= ' . $nowDate . ')');
 
@@ -147,12 +146,12 @@ class ContentModelArticle extends JModelItem
 				}
 
 				if (empty($data)) {
-					return JError::raiseError(404,JText::_('COM_CONTENT_ERROR_ARTICLE_NOT_FOUND'));
+					return JError::raiseError(404, JText::_('COM_CONTENT_ERROR_ARTICLE_NOT_FOUND'));
 				}
 
 				// Check for published state if filter set.
 				if (((is_numeric($published)) || (is_numeric($archived))) && (($data->state != $published) && ($data->state != $archived))) {
-					return JError::raiseError(404,JText::_('COM_CONTENT_ERROR_ARTICLE_NOT_FOUND'));
+					return JError::raiseError(404, JText::_('COM_CONTENT_ERROR_ARTICLE_NOT_FOUND'));
 				}
 
 				// Convert parameter fields to objects.

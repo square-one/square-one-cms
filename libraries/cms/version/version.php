@@ -2,7 +2,7 @@
 /**
  * @package    Joomla.Site
  *
- * @copyright  Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -26,7 +26,7 @@ final class JVersion
 	public $DEV_LEVEL = '0_beta1';
 
 	/** @var  string  Development STATUS. */
-	public $DEV_STATUS = 'Beta';
+	public $DEV_STATUS = 'Stable';
 
 	/** @var  string  Build number. */
 	public $BUILD = '';

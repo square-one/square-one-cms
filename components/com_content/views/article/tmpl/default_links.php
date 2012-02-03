@@ -3,7 +3,7 @@
  * @version
  * @package		Joomla.Site
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -18,9 +18,9 @@ $params		= $this->item->params;
 		<?php
 		if ($urls) :
 			$urlarray = array(
-			array($urls->urla,$urls->urlatext,$urls->targeta,'a'),
-			array($urls->urlb,$urls->urlbtext,$urls->targetb,'b'),
-			array($urls->urlc,$urls->urlctext,$urls->targetc,'c')
+			array($urls->urla, $urls->urlatext, $urls->targeta, 'a'),
+			array($urls->urlb, $urls->urlbtext, $urls->targetb, 'b'),
+			array($urls->urlc, $urls->urlctext, $urls->targetc, 'c')
 			);
 			foreach($urlarray as $url) :
 				$link = $url[0];
@@ -38,7 +38,7 @@ $params		= $this->item->params;
 				// If no target is present, use the default
 				$target = $target ? $target : $params->get('target'.$id);
 				?>
-			<li>
+			<li class="content-links-<?php echo $id; ?>">
 				<?php
 					// Compute the correct link
 
@@ -46,30 +46,31 @@ $params		= $this->item->params;
 					{
 						case 1:
 							// open in a new window
-							echo '<a href="'. $link .'" target="_blank"  rel="nofollow">'.
-								$label .'</a>';
+							echo '<a href="'. htmlspecialchars($link) .'" target="_blank"  rel="nofollow">'.
+								htmlspecialchars($label) .'</a>';
 							break;
 
 						case 2:
 							// open in a popup window
 							$attribs = 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=600';
-							echo "<a href=\"$link\" onclick=\"window.open(this.href, 'targetWindow', '".$attribs."'); return false;\">".
-								$label.'</a>';
+							echo "<a href=\"" . htmlspecialchars($link) . "\" onclick=\"window.open(this.href, 'targetWindow', '".$attribs."'); return false;\">".
+								htmlspecialchars($label).'</a>';
 							break;
 						case 3:
 							// open in a modal window
 							JHtml::_('behavior.modal', 'a.modal'); ?>
-							<a class="modal" href="<?php echo $link;?>"  rel="{handler: 'iframe', size: {x:600, y:600}}">
-								<?php echo $label. ' </a>' ;
+							<a class="modal" href="<?php echo htmlspecialchars($link); ?>"  rel="{handler: 'iframe', size: {x:600, y:600}}">
+								<?php echo htmlspecialchars($label) . ' </a>';
 							break;
 
 						default:
 							// open in parent window
-							echo '<a href="'.  $link . '" rel="nofollow">'.
-								$label . ' </a>';
+							echo '<a href="'.  htmlspecialchars($link) . '" rel="nofollow">'.
+								htmlspecialchars($label) . ' </a>';
 							break;
 					}
 				?>
+				</li>
 		<?php endforeach; ?>
 	</ul>
 	<?php endif; ?>

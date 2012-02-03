@@ -1,7 +1,6 @@
 <?php
 /**
- * @version		$Id$
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -114,7 +113,7 @@ class MenusHelper
 
 		ksort($request);
 
-		return 'index.php?'.http_build_query($request,'','&');
+		return 'index.php?'.http_build_query($request, '', '&');
 	}
 
 	/**
@@ -127,7 +126,7 @@ class MenusHelper
 	{
 		$db = JFactory::getDbo();
 		$db->setQuery('SELECT a.menutype FROM #__menu_types AS a');
-		return $db->loadResultArray();
+		return $db->loadColumn();
 	}
 
 	/**
@@ -168,7 +167,7 @@ class MenusHelper
 		}
 
 		if (!empty($published)) {
-			if (is_array($published)) $published = '(' . implode(',',$published) .')';
+			if (is_array($published)) $published = '(' . implode(',', $published) .')';
 			$query->where('a.published IN ' . $published);
 		}
 
@@ -189,7 +188,7 @@ class MenusHelper
 
 		// Pad the option text with spaces using depth level as a multiplier.
 		foreach ($links as &$link) {
-			$link->text = str_repeat('- ',$link->level).$link->text;
+			$link->text = str_repeat('- ', $link->level).$link->text;
 		}
 
 		if (empty($menuType)) {

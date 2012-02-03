@@ -1,9 +1,8 @@
 <?php
 /**
- * @version		$Id$
  * @package		Joomla.Administrator
  * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -11,6 +10,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modeladmin');
+
 
 require_once JPATH_COMPONENT_ADMINISTRATOR.'/helpers/content.php';
 
@@ -204,7 +204,7 @@ class ContentModelArticle extends JModelAdmin
 		}
 		// Default to component settings if neither article nor category known.
 		else {
-			return parent::canEditState($record);
+			return parent::canEditState('com_content');
 		}
 	}
 
@@ -277,7 +277,7 @@ class ContentModelArticle extends JModelAdmin
 			$registry->loadString($item->urls);
 			$item->urls = $registry->toArray();
 
-			
+
 
 			$item->articletext = trim($item->fulltext) != '' ? $item->introtext . "<hr id=\"system-readmore\" />" . $item->fulltext : $item->introtext;
 		}
@@ -301,21 +301,41 @@ class ContentModelArticle extends JModelAdmin
 		if (empty($form)) {
 			return false;
 		}
+		$jinput = JFactory::getApplication()->input;
 
+		// The front end calls this model and uses a_id to avoid id clashes so we need to check for that first.
+		if ($jinput->get('a_id'))
+		{
+			$id =  $jinput->get('a_id', 0);
+		}
+		// The back end uses id so we use that the rest of the time and set it to 0 by default.
+		else
+		{
+			$id =  $jinput->get('id', 0);
+		}
 		// Determine correct permissions to check.
-		if ($id = (int) $this->getState('article.id')) {
+		if ($this->getState('article.id'))
+		{
+			$id = $this->getState('article.id');
 			// Existing record. Can only edit in selected categories.
 			$form->setFieldAttribute('catid', 'action', 'core.edit');
 			// Existing record. Can only edit own articles in selected categories.
 			$form->setFieldAttribute('catid', 'action', 'core.edit.own');
 		}
-		else {
+		else
+		{
 			// New record. Can only create in selected categories.
 			$form->setFieldAttribute('catid', 'action', 'core.create');
 		}
 
+		$user = JFactory::getUser();
+
+		// Check for existing article.
 		// Modify the form based on Edit State access controls.
-		if (!$this->canEditState((object) $data)) {
+		if ($id != 0 && (!$user->authorise('core.edit.state', 'com_content.article.'.(int) $id))
+		|| ($id == 0 && !$user->authorise('core.edit.state', 'com_content'))
+		)
+		{
 			// Disable fields for display.
 			$form->setFieldAttribute('featured', 'disabled', 'true');
 			$form->setFieldAttribute('ordering', 'disabled', 'true');
@@ -330,6 +350,7 @@ class ContentModelArticle extends JModelAdmin
 			$form->setFieldAttribute('publish_up', 'filter', 'unset');
 			$form->setFieldAttribute('publish_down', 'filter', 'unset');
 			$form->setFieldAttribute('state', 'filter', 'unset');
+
 		}
 
 		return $form;
@@ -384,7 +405,7 @@ class ContentModelArticle extends JModelAdmin
 			}
 		// Alter the title for save as copy
 		if (JRequest::getVar('task') == 'save2copy') {
-			list($title,$alias) = $this->generateNewTitle($data['catid'], $data['alias'], $data['title']);
+			list($title, $alias) = $this->generateNewTitle($data['catid'], $data['alias'], $data['title']);
 			$data['title']	= $title;
 			$data['alias']	= $alias;
 		}
@@ -395,7 +416,7 @@ class ContentModelArticle extends JModelAdmin
 				$this->featured($this->getState($this->getName().'.id'), $data['featured']);
 			}
 
-			
+
 			return true;
 		}
 
@@ -455,7 +476,7 @@ class ContentModelArticle extends JModelAdmin
 				//echo $query;
 				$db->setQuery($query);
 
-				if (!is_array($old_featured = $db->loadResultArray())) {
+				if (!is_array($old_featured = $db->loadColumn())) {
 					throw new Exception($db->getErrorMsg());
 				}
 

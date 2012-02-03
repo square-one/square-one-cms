@@ -53,7 +53,7 @@ JHtml::_('behavior.modal');
 				<?php echo $this->form->getInput('title'); ?></li>
 
 				<?php if ($this->item->type =='url'): ?>
-					<?php $this->form->setFieldAttribute('link','readonly','false');?>
+					<?php $this->form->setFieldAttribute('link', 'readonly', 'false');?>
 					<li><?php echo $this->form->getLabel('link'); ?>
 					<?php echo $this->form->getInput('link'); ?></li>
 				<?php endif; ?>

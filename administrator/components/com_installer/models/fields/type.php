@@ -1,9 +1,8 @@
 <?php
 /**
- * @version		$Id$
  * @package		Joomla.Administrator
  * @subpackage	com_installer
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License, see LICENSE.php
  */
 
@@ -44,7 +43,7 @@ class JFormFieldType extends JFormField
 		$query = $db->getQuery(true);
 		$query->select('type')->from('#__extensions');
 		$db->setQuery($query);
-		$types = array_unique($db->loadResultArray());
+		$types = array_unique($db->loadColumn());
 		foreach($types as $type)
 		{
 			$options[] = JHtml::_('select.option', $type, JText::_('COM_INSTALLER_TYPE_'. strtoupper($type)));

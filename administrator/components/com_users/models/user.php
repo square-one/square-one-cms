@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -603,27 +603,27 @@ class UsersModelUser extends JModelAdmin
 			$db->setQuery($query);
 			$users = $db->loadColumn();
 
-			// Build the groups array for the assignment query.
-			$groups = array();
+			// Build the values clause for the assignment query.
+			$query->clear();
+			$groups = false;
 			foreach ($user_ids as $id)
 			{
 				if (!in_array($id, $users))
 				{
-					$groups[] = $id . ',' . $group_id;
+					$query->values($id . ',' . $group_id);
+					$groups = true;
 				}
 			}
 
 			// If we have no users to process, throw an error to notify the user
-			if (empty($groups))
+			if (!$groups)
 			{
 				$this->setError(JText::_('COM_USERS_ERROR_NO_ADDITIONS'));
 				return false;
 			}
 
-			$query->clear();
 			$query->insert($db->quoteName('#__user_usergroup_map'));
 			$query->columns(array($db->quoteName('user_id'), $db->quoteName('group_id')));
-			$query->values(implode(',', $groups));
 			$db->setQuery($query);
 
 			// Check for database errors.

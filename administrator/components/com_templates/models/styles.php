@@ -1,7 +1,6 @@
 <?php
 /**
- * @version		$Id$
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -115,12 +114,13 @@ class TemplatesModelStyles extends JModelList
 		// Join on menus.
 		$query->select('COUNT(m.template_style_id) AS assigned');
 		$query->leftjoin('#__menu AS m ON m.template_style_id = a.id');
-		$query->group('a.id, a.template, a.title, a.home, a.client_id, l.title, l.image');
+		$query->group('a.id, a.template, a.title, a.home, a.client_id, l.title, l.image, e.extension_id');
 
 		// Join over the language
 		$query->join('LEFT', '#__languages AS l ON l.lang_code = a.home');
 
 		// Filter by extension enabled
+		$query->select('extension_id AS e_id');
 		$query->join('LEFT', '#__extensions AS e ON e.element = a.template');
 		$query->where('e.enabled = 1');
 
@@ -147,7 +147,7 @@ class TemplatesModelStyles extends JModelList
 		}
 
 		// Add the list ordering clause.
-		$query->order($db->escape($this->getState('list.ordering', 'a.name')).' '.$db->escape($this->getState('list.direction', 'ASC')));
+		$query->order($db->escape($this->getState('list.ordering', 'a.title')).' '.$db->escape($this->getState('list.direction', 'ASC')));
 
 		//echo nl2br(str_replace('#__','jos_',$query));
 		return $query;

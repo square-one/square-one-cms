@@ -1,9 +1,8 @@
 <?php
 /**
- * @version		$Id$
  * @package		Joomla.Site
  * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -86,8 +85,17 @@ class UsersModelRemind extends JModelForm
 		// Validate the data.
 		$data = $this->validate($form, $data);
 
-		// Check the validator results.
-		if (empty($data)) {
+		// Check for an error.
+		if ($data instanceof Exception) {
+			return $return;
+		}
+
+		// Check the validation results.
+		if ($data === false) {
+			// Get the validation messages from the form.
+			foreach ($form->getErrors() as $message) {
+				$this->setError($message);
+			}
 			return false;
 		}
 

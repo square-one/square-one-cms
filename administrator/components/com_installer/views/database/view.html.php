@@ -1,9 +1,8 @@
 <?php
 /**
- * @version		$Id$
  * @package		Joomla.Administrator
  * @subpackage	com_installer
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -32,8 +31,26 @@ class InstallerViewDatabase extends InstallerViewDefault
 		$this->errors = $this->changeSet->check();
 		$this->results = $this->changeSet->getStatus();
 		$this->schemaVersion = $this->get('SchemaVersion');
-		$this->schemaVersion = ($this->schemaVersion) ?  $this->schemaVersion : '**not found**';
+		$this->updateVersion = $this->get('UpdateVersion');
+		$this->filterParams =$this->get('DefaultTextFilters');
+		$this->schemaVersion = ($this->schemaVersion) ?  $this->schemaVersion : JText::_('JNONE');
+		$this->updateVersion = ($this->updateVersion) ?  $this->updateVersion : JText::_('JNONE');
 		$this->pagination = $this->get('Pagination');
+		$this->errorCount = count($this->errors);
+
+		$errors = count($this->errors);
+		if (!(strncmp($this->schemaVersion, JVERSION, 5) === 0))
+		{
+			$this->errorCount++;
+		}
+		if (!$this->filterParams)
+		{
+			$this->errorCount++;
+		}
+		if (($this->updateVersion != JVERSION))
+		{
+			$this->errorCount++;
+		}
 
 		parent::display($tpl);
 	}
@@ -49,7 +66,7 @@ class InstallerViewDatabase extends InstallerViewDefault
 		/*
 		 * Set toolbar items for the page
 		 */
-		JToolBarHelper::custom('database.fix', 'refresh', 'refresh','COM_INSTALLER_TOOLBAR_DATABASE_FIX',false, false);
+		JToolBarHelper::custom('database.fix', 'refresh', 'refresh', 'COM_INSTALLER_TOOLBAR_DATABASE_FIX', false, false);
 		JToolBarHelper::divider();
 		parent::addToolbar();
 		JToolBarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_DATABASE');

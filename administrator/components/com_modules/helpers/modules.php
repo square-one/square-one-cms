@@ -1,7 +1,6 @@
 <?php
 /**
- * @version		$Id$
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -90,7 +89,7 @@ abstract class ModulesHelper
 		$query->order('position');
 
 		$db->setQuery($query);
-		$positions = $db->loadResultArray();
+		$positions = $db->loadColumn();
 		$positions = (is_array($positions)) ? $positions : array();
 
 		if ($error = $db->getErrorMsg()) {

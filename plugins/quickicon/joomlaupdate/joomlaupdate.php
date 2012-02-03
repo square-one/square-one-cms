@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -28,21 +28,23 @@ class plgQuickiconJoomlaupdate extends JPlugin
 		parent::__construct($subject, $config);
 		$this->loadLanguage();
 	}
-	
+
 	/**
 	 * This method is called when the Quick Icons module is constructing its set
 	 * of icons. You can return an array which defines a single icon and it will
 	 * be rendered right after the stock Quick Icons.
-	 * 
-	 * @return array An icon definition associative array, consisting of the
+	 *
+	 * @param  $context  The calling context
+	 *
+	 * @return array A list of icon definition associative arrays, consisting of the
 	 *				 keys link, image, text and access.
 	 *
 	 * @since       2.5
 	 */
-	public function onGetIcon()
+	public function onGetIcons($context)
 	{
-		if (!JFactory::getUser()->authorise('core.manage', 'com_installer')) {
-			return array();
+		if ($context != $this->params->get('context', 'mod_quickicon') || !JFactory::getUser()->authorise('core.manage', 'com_installer')) {
+			return;
 		}
 
 		$cur_template = JFactory::getApplication()->getTemplate();
@@ -60,12 +62,12 @@ class plgQuickiconJoomlaupdate extends JPlugin
 		$document = JFactory::getDocument();
 		$document->addScriptDeclaration($script);
 		$document->addScript(JURI::base().'../media/plg_quickicon_joomlaupdate/jupdatecheck.js');
-		
-		return array(
+
+		return array(array(
 			'link' => 'index.php?option=com_installer&view=update',
 			'image' => 'header/icon-48-download.png',
 			'text' => JText::_('PLG_QUICKICON_JOOMLAUPDATE_CHECKING'),
 			'id' => 'plg_quickicon_joomlaupdate'
-		);
+		));
 	}
 }

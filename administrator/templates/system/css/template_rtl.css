@@ -1,8 +1,7 @@
 /**
- * @version		$Id$
  * @package		Joomla.Administrator
  * @subpackage	templates.bluestork
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -167,6 +166,7 @@ table.adminform td {
 	text-align: right;
 }
 
+.cpanel div.icon ,
 #cpanel div.icon {
 	margin-right: 0;
 	margin-left: 5px;
@@ -343,6 +343,7 @@ div.cpanel-right {
 	width: 45%;
 	float: left;
 }
+.cpanel div.icon ,
 #cpanel div.icon {
 	float: right;
 }
@@ -721,3 +722,15 @@ ul#new-modules-list li {
 	margin: 0 0 0 20px;
 	font-size: 1.091em;
 }
+
+/* Installer Database */
+#installer-database p.warning {
+	padding-left: 0;
+	padding-right: 20px;	
+	background-position: center right;
+}
+
+#installer-database p.nowarning {
+	padding-left: 0;
+	padding-right: 20px;	
+	background-position: center right;}

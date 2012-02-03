@@ -1,7 +1,6 @@
 <?php
 /**
- * @version		$Id$
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -59,7 +58,7 @@ class LanguagesModelLanguage extends JModelAdmin
 	 * @return	mixed	User data object on success, false on failure.
 	 * @since	1.0
 	 */
-	public function &getItem($langId = null)
+	public function getItem($langId = null)
 	{
 		// Initialise variables.
 		$langId	= (!empty($langId)) ? $langId : (int) $this->getState('language.id');
@@ -176,45 +175,6 @@ class LanguagesModelLanguage extends JModelAdmin
 		$dispatcher->trigger('onExtensionAfterSave', array('com_languages.language', &$table, $isNew));
 
 		$this->setState('language.id', $table->lang_id);
-
-		// Clean the cache.
-		$this->cleanCache();
-
-		return true;
-	}
-
-	/**
-	 * Method to delete from the database.
-	 *
-	 * @param	integer	$cid	An array of	numeric ids of the rows.
-	 *
-	 * @return	boolean	True on success/false on failure.
-	 * @since	1.6
-	 */
-	public function delete($cid)
-	{
-		$table = $this->getTable();
-
-		for ($i = 0, $c = count($cid); $i < $c; $i++)
-		{
-			// Load the row.
-			$return = $table->load($cid[$i]);
-
-			// Check for an error.
-			if ($return === false) {
-				$this->setError($table->getError());
-				return false;
-			}
-
-			// Delete the row.
-			$return = $table->delete();
-
-			// Check for an error.
-			if ($return === false) {
-				$this->setError($table->getError());
-				return false;
-			}
-		}
 
 		// Clean the cache.
 		$this->cleanCache();

@@ -1,8 +1,7 @@
 <?php
 /**
- * @version		$Id$
  * @package		Joomla
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  *
  * -------------------------------------------------------------------------
@@ -25,7 +24,7 @@ class JConfig {
 	public $offline_image = '';
 	public $sitename = 'Joomla!';				// Name of Joomla site
 	public $editor = 'tinymce';
-	public $captcha = 'recaptcha';
+	public $captcha = '0';
 	public $list_limit = '20';
 	public $root_user = '42';
 	public $access = '1';
