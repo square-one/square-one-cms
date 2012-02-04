@@ -23,10 +23,10 @@ final class JVersion
 	public $RELEASE = '2.5';
 
 	/** @var  string  Maintenance version. */
-	public $DEV_LEVEL = '0_beta1';
+	public $DEV_LEVEL = 'b2';
 
 	/** @var  string  Development STATUS. */
-	public $DEV_STATUS = 'Stable';
+	public $DEV_STATUS = 'Beta';
 
 	/** @var  string  Build number. */
 	public $BUILD = '';
@@ -35,7 +35,7 @@ final class JVersion
 	public $CODENAME = 'Berners-Lee';
 
 	/** @var  string  Release date. */
-	public $RELDATE = '10-Jan-2012';
+	public $RELDATE = '04-Feb-2012';
 
 	/** @var  string  Release time. */
 	public $RELTIME = '14:00';
@@ -44,7 +44,7 @@ final class JVersion
 	public $RELTZ = 'GMT';
 
 	/** @var  string  Copyright Notice. */
-	public $COPYRIGHT = 'Copyright (C) 2005 - 2011 Open Source Matters, Inc and Square One CMS. All rights reserved.';
+	public $COPYRIGHT = 'Copyright (C) 2005 - 2012 Open Source Matters, Inc and Square One CMS. All rights reserved.';
 
 	/** @var  string  Link text. */
 	public $URL = '<a href="http://www.squareonecms.org">Square One CMS</a> is Free Software released under the GNU General Public License.';
