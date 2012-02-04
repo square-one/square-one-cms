@@ -59,10 +59,11 @@ class ModulesModelPositions extends JModelList
 		$clientId = JRequest::getInt('client_id', 0);
 		$this->setState('filter.client_id', $clientId);
 
-		$template = $this->getUserStateFromRequest($this->context.'.filter.template', 'filter_template', '', 'string');
+        $defaultTemplate = JFactory::getApplication()->getTemplate();
+		$template = $this->getUserStateFromRequest($this->context.'.filter.template', 'filter_template', $defaultTemplate, 'string');
 		$this->setState('filter.template', $template);
 
-		$type = $this->getUserStateFromRequest($this->context.'.filter.type', 'filter_type', '', 'string');
+		$type = $this->getUserStateFromRequest($this->context.'.filter.type', 'filter_type', 'template', 'string');
 		$this->setState('filter.type', $type);
 
 		// Load the parameters.

@@ -60,7 +60,18 @@ endif;
 	<div class="width-60 fltlft">
 		<fieldset class="adminform">
 			<legend><?php echo empty($this->item->id) ? JText::_('COM_CONTENT_NEW_ARTICLE') : JText::sprintf('COM_CONTENT_EDIT_ARTICLE', $this->item->id); ?></legend>
-			<ul class="adminformlist">
+			
+			<?php echo $this->form->getLabel('articletext'); ?>
+			<div class="clr"></div>
+			<?php echo $this->form->getInput('articletext'); ?>
+		</fieldset>
+	</div>
+
+	<div class="width-40 fltrt">
+		<?php echo JHtml::_('sliders.start', 'content-sliders-'.$this->item->id, array('useCookie'=>1)); ?>
+        <?php echo JHtml::_('sliders.panel', JText::_('Details'), 'article-details'); ?>
+        <fieldset class="panelform">
+            <ul class="adminformlist">
 				<li><?php echo $this->form->getLabel('title'); ?>
 				<?php echo $this->form->getInput('title'); ?></li>
 
@@ -95,16 +106,7 @@ endif;
 				<li><?php echo $this->form->getLabel('id'); ?>
 				<?php echo $this->form->getInput('id'); ?></li>
 			</ul>
-
-			<div class="clr"></div>
-			<?php echo $this->form->getLabel('articletext'); ?>
-			<div class="clr"></div>
-			<?php echo $this->form->getInput('articletext'); ?>
-		</fieldset>
-	</div>
-
-	<div class="width-40 fltrt">
-		<?php echo JHtml::_('sliders.start', 'content-sliders-'.$this->item->id, array('useCookie'=>1)); ?>
+        </fieldset>
 		<?php // Do not show the publishing options if the edit form is configured not to. ?>
 		<?php  if ($params['show_publishing_options'] || ( $params['show_publishing_options'] = '' && !empty($editoroptions)) ): ?>
 			<?php echo JHtml::_('sliders.panel', JText::_('COM_CONTENT_FIELDSET_PUBLISHING'), 'publishing-details'); ?>
