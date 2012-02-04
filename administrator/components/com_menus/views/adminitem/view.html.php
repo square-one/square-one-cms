@@ -89,20 +89,5 @@ class MenusViewAdminitem extends JView
 			JToolBarHelper::cancel('adminitem.cancel', 'JTOOLBAR_CLOSE');
 		}
 
-		JToolBarHelper::divider();
-
-		// Get the help information for the menu item.
-		$lang = JFactory::getLanguage();
-
-		$help = $this->get('Help');
-		if ($lang->hasKey($help->url)) {
-			$debug = $lang->setDebug(false);
-			$url = JText::_($help->url);
-			$lang->setDebug($debug);
-		}
-		else {
-			$url = $help->url;
-		}
-		JToolBarHelper::help($help->key, $help->local, $url);
 	}
 }

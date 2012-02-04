@@ -81,9 +81,6 @@ JHtml::_('behavior.modal');
 				<li><?php echo $this->form->getLabel('published'); ?>
 				<?php echo $this->form->getInput('published'); ?></li>
 
-				<li><?php echo $this->form->getLabel('access'); ?>
-				<?php echo $this->form->getInput('access'); ?></li>
-
 				<li><?php echo $this->form->getLabel('menutype'); ?>
 				<?php echo $this->form->getInput('menutype'); ?></li>
 
@@ -95,17 +92,6 @@ JHtml::_('behavior.modal');
 
 				<li><?php echo $this->form->getLabel('browserNav'); ?>
 				<?php echo $this->form->getInput('browserNav'); ?></li>
-
-				<?php if ($this->item->type == 'component') : ?>
-					<li><?php echo $this->form->getLabel('home'); ?>
-					<?php echo $this->form->getInput('home'); ?></li>
-				<?php endif; ?>
-
-				<li><?php echo $this->form->getLabel('language'); ?>
-				<?php echo $this->form->getInput('language'); ?></li>
-
-				<li><?php echo $this->form->getLabel('template_style_id'); ?>
-				<?php echo $this->form->getInput('template_style_id'); ?></li>
 
 				<li><?php echo $this->form->getLabel('id'); ?>
 				<?php echo $this->form->getInput('id'); ?></li>

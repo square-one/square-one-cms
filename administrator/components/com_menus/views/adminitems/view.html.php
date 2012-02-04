@@ -197,12 +197,11 @@ class MenusViewAdminitems extends JView
 
 		if ($canDo->get('core.edit.state')) {
 			JToolBarHelper::makeDefault('adminitems.setDefault', 'COM_MENUS_TOOLBAR_SET_HOME');
-			JToolBarHelper::divider();
+			
 		}
 		if (JFactory::getUser()->authorise('core.admin')) {
-			JToolBarHelper::custom('adminitems.rebuild', 'refresh.png', 'refresh_f2.png', 'JToolbar_Rebuild', false);
 			JToolBarHelper::divider();
+            JToolBarHelper::custom('adminitems.rebuild', 'refresh.png', 'refresh_f2.png', 'JToolbar_Rebuild', false);
 		}
-		JToolBarHelper::help('JHELP_MENUS_MENU_ITEM_MANAGER');
 	}
 }

@@ -23,7 +23,7 @@
         <field
             name="type"
             type="list"
-            label="COM_MENUS_TYPE_CHOOSE"
+            label="COM_MENUS_FIELD_TYPE_CHOOSE"
             description=""
             class="inputbox"
             required="true">
@@ -129,50 +129,6 @@
 			description="JFIELD_ORDERING_DESC"
 			filter="int"
 			class="inputbox"/>
-
-		<field
-			name="access"
-			type="accesslevel"
-			id="access"
-			class="inputbox"
-			label="JFIELD_ACCESS_LABEL"
-			description="JFIELD_ACCESS_DESC"
-			default="1"
-			filter="integer"/>
-
-
-		<field
-			name="template_style_id"
-			type="templatestyle"
-			label="COM_MENUS_ITEM_FIELD_TEMPLATE_LABEL"
-			description="COM_MENUS_ITEM_FIELD_TEMPLATE_DESC"
-			filter="int"
-			class="inputbox">
-			<option value="0">JOPTION_USE_DEFAULT</option>
-		</field>
-
-		<field
-			name="home"
-			type="radio"
-			label="COM_MENUS_ITEM_FIELD_HOME_LABEL"
-			description="COM_MENUS_ITEM_FIELD_HOME_DESC"
-			default="0"
-			class="inputbox"
-			filter="integer">
-			<option
-				value="0">JNO</option>
-			<option
-				value="1">JYES</option>
-		</field>
-
-		<field
-			name="language"
-			type="contentlanguage"
-			label="JFIELD_LANGUAGE_LABEL"
-			description="COM_MENUS_ITEM_FIELD_LANGUAGE_DESC"
-			class="inputbox">
-			<option value="*">JALL</option>
-		</field>
 
 		<field
 			name="path"
