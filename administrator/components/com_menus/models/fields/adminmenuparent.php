@@ -45,18 +45,18 @@ class JFormFieldAdminmenuParent extends JFormFieldList
 
 		$query->select('a.id AS value, a.title AS text, a.level');
 		$query->from('#__menu AS a');
-		$query->join('LEFT', '`#__menu` AS b ON a.lft > b.lft AND a.rgt < b.rgt');
+		$query->join('LEFT', '#__menu AS b ON a.lft > b.lft AND a.rgt < b.rgt');
 		$query->where('a.menutype = '.$db->quote('admin'));
 
 		// Prevent parenting to children of this item.
 		if ($id = $this->form->getValue('id')) {
-			$query->join('LEFT', '`#__menu` AS p ON p.id = '.(int) $id);
+			$query->join('LEFT', '#__menu AS p ON p.id = '.(int) $id);
 			$query->where('NOT(a.lft >= p.lft AND a.rgt <= p.rgt)');
 		}
 
 		$query->where('a.published != -2');
         $query->where('a.client_id = 1');
-		$query->group('a.id');
+		$query->group('a.id, a.title, a.level, a.lft');
 		$query->order('a.lft ASC');
 
 		// Get the options.
