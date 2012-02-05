@@ -67,7 +67,7 @@ class InstallerModelInstall extends JModelList
 
 		parent::__construct($config);
 	}
-    
+
 	/**
 	 * Method to auto-populate the model state.
 	 *
@@ -96,15 +96,15 @@ class InstallerModelInstall extends JModelList
 		// Recall the 'Install from Directory' path.
 		$path = $app->getUserStateFromRequest($this->_context.'.install_directory', 'install_directory', $app->getCfg('tmp_path'));
 		$this->setState('install.directory', $path);
-        
+
         $this->setState('filter.type', isset($filters['type']) ? $filters['type'] : '');
         if (!isset($filters['update_site_id'])) JRequest::setVar('update_site_id', '1');
         $this->setState('filter.update_site_id', isset($filters['update_site_id']) ? $filters['update_site_id'] : '1');
         $this->setState('filter.folder', isset($filters['folder']) ? $filters['folder'] : '');
-        
-		parent::populateState('name', 'asc');
+
+		parent::populateState('a.name', 'asc');
 	}
-    
+
     /**
 	 * Method to get the database query
 	 *
@@ -118,17 +118,17 @@ class InstallerModelInstall extends JModelList
 		// grab updates ignoring new installs
 		$query->select('a.*, u.name AS update_site')->from('#__updates AS a')->where('extension_id = 0')->where('u.enabled = 1');
 		$query->order($this->getState('list.ordering').' '.$this->getState('list.direction'));
-        
+
         if ($this->getState('filter.type') != '') $query->where('a.type = '.$db->quote($this->getState('filter.type')));
         if ($this->getState('filter.update_site_id') != '') $query->where('a.update_site_id = '.$db->quote($this->getState('filter.update_site_id')));
         if ($this->getState('filter.folder') != '') $query->where('a.folder = '.$db->quote($this->getState('filter.folder')));
-        
+
         // Join update_sites
         $query->join('left', $db->nameQuote('#__update_sites').' AS u ON u.update_site_id = a.update_site_id');
 
 		return $query;
 	}
-    
+
     /**
 	 * Removes all of the updates from the table.
 	 *
@@ -148,7 +148,7 @@ class InstallerModelInstall extends JModelList
 			$query->set($db->nq('last_check_timestamp').' = '.$db->q(0));
 			$db->setQuery($query);
 			$db->query();
-			
+
 			$this->_message = JText::_('COM_INSTALLER_PURGED_UPDATES');
 			return true;
 		} else {
@@ -170,10 +170,10 @@ class InstallerModelInstall extends JModelList
 		$results = $updater->findUpdates($eid, $cache_timeout);
 		return true;
 	}
-    
+
     /**
      * Get current extensions
-     * 
+     *
      * @since   2.5
      * @return  object
      */
@@ -187,10 +187,10 @@ class InstallerModelInstall extends JModelList
         }
         return false;
     }
-    
+
     /**
      * Get current extensions
-     * 
+     *
      * @since   2.5
      * @return  object
      */
@@ -204,7 +204,7 @@ class InstallerModelInstall extends JModelList
         }
         return false;
     }
-    
+
 	/**
 	 * Install an extension from either folder, url or upload.
 	 *
@@ -233,21 +233,21 @@ class InstallerModelInstall extends JModelList
 			case 'url':
 				$package = $this->_getPackageFromUrl();
 				break;
-            
+
 			default:
 				$app->setUserState('com_installer.message', JText::_('COM_INSTALLER_NO_INSTALL_TYPE_FOUND'));
 				return false;
 				break;
 		}
-        
+
 		// Was the package unpacked?
 		if (!$package) {
 			$app->setUserState('com_installer.message', JText::_('COM_INSTALLER_UNABLE_TO_FIND_INSTALL_PACKAGE'));
 			return false;
 		}
 
-        // Check if its a distribution        
-        
+        // Check if its a distribution
+
         if ($package['type'] == 'distribution')
         {
             // Set some model state values
@@ -289,10 +289,10 @@ class InstallerModelInstall extends JModelList
             JInstallerHelper::cleanupInstall($package['packagefile'], $package['extractdir']);
 
         }
-        
+
         return $result;
 	}
-    
+
     /**
 	 * Install function.
 	 *
@@ -319,11 +319,11 @@ class InstallerModelInstall extends JModelList
 
 			$result = $res & $result;
 		}
-        
+
 		// Set the final state
 		$this->setState('result', $result);
 	}
-    
+
     function install_install($url)
 	{
 		jimport('joomla.client.helper');
@@ -332,7 +332,7 @@ class InstallerModelInstall extends JModelList
 		// Set FTP credentials, if given.
 		JClientHelper::setCredentialsFromRequest('ftp');
 		$app = JFactory::getApplication();
-        
+
         $package = $this->_getPackageFromUrl($url);
 
 		// Was the package unpacked?
@@ -497,8 +497,8 @@ class InstallerModelInstall extends JModelList
 
 		return $package;
 	}
-    
-    
+
+
     /**
      * Square One Additions
      */
@@ -507,9 +507,9 @@ class InstallerModelInstall extends JModelList
         $update = new JUpdate();
         $detailsurl = JRequest::getString('detailsurl', '', 'post');
         $update->loadFromXML($detailsurl);
-        
+
         $result->result = false;
-        
+
         $file = JInstallerHelper::downloadPackage($update->get('downloadurl')->_data);
         if (!$file) {
             $result->message = JText::_('COM_INSTALLER_MSG_INSTALL_INVALID_URL');
@@ -521,19 +521,19 @@ class InstallerModelInstall extends JModelList
             $result->file = $file;
             $result->message = JText::_('Downloaded the package');
         }
-        
+
         return $result;
     }
-    
+
     public function distro_extract()
     {
         $file = JRequest::getString('file', '', 'post');
-        
+
         $config		= JFactory::getConfig();
 		$tmp_dest	= $config->get('tmp_path');
 
         $result->result = false;
-        
+
         $package = JInstallerHelper::unpack($tmp_dest . '/' . $file);
         if (!$package) {
             $result->message = JText::_('COM_INSTALLER_EXTRACT_FAILED');
@@ -548,17 +548,17 @@ class InstallerModelInstall extends JModelList
             $result->type = $package['type'];
             $result->message = JText::_('Extracted the package');
         }
-        
+
         return $result;
     }
-    
+
     function distro_install()
 	{
         $dir = JRequest::getString('dir', '', 'post');
         $extractdir = JRequest::getString('extractdir', '', 'post');
         $packagefile = JRequest::getString('packagefile', '', 'post');
         $type = JRequest::getString('type', '', 'post');
-        
+
 		// Get an installer instance
 		$installer = JInstaller::getInstance();
 
@@ -592,23 +592,23 @@ class InstallerModelInstall extends JModelList
 
 		return $result;
 	}
-    
+
     public function distro_sql()
     {
         // Distro sql files
         $sqlfile = JRequest::getString('path', '', 'post');
         $db = JFactory::getDBO();
         $result->result = false;
-        
+
         $buffer = file_get_contents(base64_decode($sqlfile));
-        
+
         if ($buffer === false) {
             $result->message = JText::_('JLIB_INSTALLER_ERROR_SQL_READBUFFER');
             return $result;
         }
-        
+
         $queries = JInstallerHelper::splitSql($buffer);
-        
+
         if (count($queries) == 0)
         {
             // No queries to process
@@ -630,13 +630,13 @@ class InstallerModelInstall extends JModelList
                 }
             }
         }
-        
+
         $result->result = true;
         $result->message = JText::_('Install SQL');
-        
+
         return $result;
     }
-    
+
     public function distro_script_install()
     {
         // Distro script files
@@ -644,21 +644,21 @@ class InstallerModelInstall extends JModelList
         $path = JRequest::getString('path', '', 'post');
         $result->result = false;
         $result->message = 'Script unable to run';
-        
+
         include(base64_decode($path));
         $script = new $class();
-        
+
         $root = realpath($path);
         $root = substr($root, 0, strrpos($root, '/'));
-        
+
         $script->install($root);
 
         $result->result = true;
         $result->message = 'Script ran';
-        
+
         return $result;
     }
-    
+
     public function distro_script_preflight()
     {
         // Distro script files
@@ -666,21 +666,21 @@ class InstallerModelInstall extends JModelList
         $path = JRequest::getString('path', '', 'post');
         $result->result = false;
         $result->message = 'Script unable to run';
-        
+
         include(base64_decode($path));
         $script = new $class();
-        
+
         $root = realpath($path);
         $root = substr($root, 0, strrpos($root, '/'));
-        
+
         $script->preflight($root);
 
         $result->result = true;
         $result->message = 'Script ran';
-        
+
         return $result;
     }
-    
+
     public function distro_script_postflight()
     {
         // Distro script files
@@ -688,26 +688,26 @@ class InstallerModelInstall extends JModelList
         $path = JRequest::getString('path', '', 'post');
         $result->result = false;
         $result->message = 'Script unable to run';
-        
+
         include(base64_decode($path));
         $script = new $class();
-        
+
         $root = realpath($path);
         $root = substr($root, 0, strrpos($root, '/'));
-        
+
         $script->postflight($root);
 
         $result->result = true;
         $result->message = 'Script ran';
-        
+
         return $result;
     }
-    
+
     public function distro_cleanup()
     {
         $result->result = false;
         $config = JFactory::getConfig();
-        
+
         // Cleanup the install files
         $folders = JFolder::folders($config->get('tmp_path'), '.', false, true);
         foreach ($folders as $folder)
@@ -720,13 +720,13 @@ class InstallerModelInstall extends JModelList
         {
             JFile::delete($file);
         }
-        
+
         $result->result = true;
         $result->message = 'Cleaned up';
 
         return $result;
     }
-    
+
     /**
 	 * Method to get the row form.
 	 *
@@ -772,5 +772,5 @@ class InstallerModelInstall extends JModelList
 
 		return $data;
 	}
-    
+
 }
