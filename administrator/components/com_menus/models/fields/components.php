@@ -16,15 +16,15 @@ class JFormFieldComponents extends JFormFieldList
 {
 
 	protected $type = 'Components';
-    
+
     protected function getOptions()
     {
         $options = array();
         $lang = JFactory::getLanguage();
-        
+
         $options[] = JHtml::_('select.option', '0', JText::_('JNONE'));
-        
-        foreach ($this->_getComponents() as $component) 
+
+        foreach ($this->_getComponents() as $component)
         {
             $lang->load($component->element.'.sys', JPATH_ADMINISTRATOR, null, false, false)
 							||	$lang->load($component->element.'.sys', JPATH_ADMINISTRATOR.'/components/'.$component->element, null, false, false)
@@ -32,7 +32,7 @@ class JFormFieldComponents extends JFormFieldList
 							||	$lang->load($component->element.'.sys', JPATH_ADMINISTRATOR.'/components/'.$component->element, $lang->getDefault(), false, false);
 			$options[] = JHtml::_('select.option', $component->extension_id, JText::_($component->name));
 		}
-                
+
         return $options;
     }
 
@@ -42,14 +42,14 @@ class JFormFieldComponents extends JFormFieldList
 		// Get the list of components.
 		$db = JFactory::getDBO();
 		$db->setQuery(
-			'SELECT `extension_id`, `name`, `element` ' .
-			' FROM `#__extensions`' .
-			' WHERE `type` = "component"' .
-			' AND `enabled` = 1' .
-			' ORDER BY `name`'
+			'SELECT extension_id, name, element ' .
+			' FROM #__extensions' .
+			' WHERE type = '.$db->quote('component') .
+			' AND enabled = 1' .
+			' ORDER BY name'
 		);
 		$components = $db->loadObjectList();
-        
+
         $components = JArrayHelper::sortObjects($components, 'name', 1, true, $lang->getLocale());
 
 		return $components;
