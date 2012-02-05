@@ -22,27 +22,27 @@ CREATE TABLE IF NOT EXISTS `#__assets` (
 #
 
 INSERT INTO `#__assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`) VALUES
-(1, 0, 1, 418, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
-(2, 1, 1, 2, 1, 'com_admin', 'com_admin', '{}'),
-(4, 1, 7, 8, 1, 'com_cache', 'com_cache', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
-(5, 1, 9, 10, 1, 'com_checkin', 'com_checkin', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
-(6, 1, 11, 12, 1, 'com_config', 'com_config', '{}'),
-(8, 1, 17, 24, 1, 'com_content', 'com_content', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
-(9, 1, 25, 26, 1, 'com_cpanel', 'com_cpanel', '{}'),
-(10, 1, 27, 28, 1, 'com_installer', 'com_installer', '{"core.admin":{"7":1},"core.manage":{"7":1},"core.delete":[],"core.edit.state":[]}'),
-(11, 1, 29, 30, 1, 'com_languages', 'com_languages', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(12, 1, 31, 32, 1, 'com_login', 'com_login', '{}'),
-(13, 1, 33, 34, 1, 'com_mailto', 'com_mailto', '{}'),
-(14, 1, 35, 36, 1, 'com_massmail', 'com_massmail', '{}'),
-(15, 1, 37, 38, 1, 'com_media', 'com_media', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":{"5":1}}'),
-(16, 1, 39, 40, 1, 'com_menus', 'com_menus', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(18, 1, 43, 44, 1, 'com_modules', 'com_modules', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(20, 1, 49, 50, 1, 'com_plugins', 'com_plugins', '{"core.admin":{"7":1},"core.manage":[],"core.edit":[],"core.edit.state":[]}'),
-(23, 1, 55, 56, 1, 'com_templates', 'com_templates', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(24, 1, 57, 58, 1, 'com_users', 'com_users', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.own":{"6":1},"core.edit.state":[]}'),
-(27, 8, 18, 23, 2, 'com_content.category.2', 'Uncategorised', '{"core.create":{"8":1},"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(29, 27, 23, 24, 3, 'com_content.article.1', 'Welcome to Square One', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(32, 24, 54, 55, 1, 'com_users.notes.category.7','Uncategorised','{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+(1, 0, 1, 42, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
+(2, 1, 2, 3, 1, 'com_admin', 'com_admin', '{}'),
+(3, 1, 4, 5, 1, 'com_cache', 'com_cache', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
+(4, 1, 6, 7, 1, 'com_checkin', 'com_checkin', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
+(5, 1, 8, 9, 1, 'com_config', 'com_config', '{}'),
+(6, 1, 10, 15, 1, 'com_content', 'com_content', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
+(7, 1, 16, 17, 1, 'com_cpanel', 'com_cpanel', '{}'),
+(8, 1, 18, 19, 1, 'com_installer', 'com_installer', '{"core.admin":{"7":1},"core.manage":{"7":1},"core.delete":[],"core.edit.state":[]}'),
+(9, 1, 20, 21, 1, 'com_languages', 'com_languages', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(10, 1, 22, 23, 1, 'com_login', 'com_login', '{}'),
+(11, 1, 24, 25, 1, 'com_mailto', 'com_mailto', '{}'),
+(12, 1, 26, 27, 1, 'com_massmail', 'com_massmail', '{}'),
+(13, 1, 28, 29, 1, 'com_media', 'com_media', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":{"5":1}}'),
+(14, 1, 30, 31, 1, 'com_menus', 'com_menus', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(15, 1, 32, 33, 1, 'com_modules', 'com_modules', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(16, 1, 34, 35, 1, 'com_plugins', 'com_plugins', '{"core.admin":{"7":1},"core.manage":[],"core.edit":[],"core.edit.state":[]}'),
+(17, 1, 36, 37, 1, 'com_templates', 'com_templates', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(18, 1, 38, 41, 1, 'com_users', 'com_users', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.own":{"6":1},"core.edit.state":[]}'),
+(19, 6, 11, 14, 2, 'com_content.category.2', 'Uncategorised', '{"core.create":{"8":1},"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(20, 19, 12, 13, 3, 'com_content.article.1', 'Welcome to Square One', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(21, 18, 39, 40, 1, 'com_users.notes.category.3','Uncategorised','{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}');
 
 # -------------------------------------------------------
 
@@ -103,7 +103,8 @@ CREATE TABLE `#__categories` (
 
 INSERT INTO `#__categories` VALUES
 (1, 0, 0, 0, 13, 0, '', 'system', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '', 0, '2009-10-18 16:07:09', 0, '0000-00-00 00:00:00', 0, '*'),
-(2, 27, 1, 1, 2, 1, 'uncategorised', 'com_content', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2010-06-28 13:26:37', 0, '0000-00-00 00:00:00', 0, '*');
+(2, 19, 1, 1, 2, 1, 'uncategorised', 'com_content', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2010-06-28 13:26:37', 0, '0000-00-00 00:00:00', 0, '*'),
+(3, 21, 1, 3, 4, 1, 'uncategorised', 'com_users', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2010-06-28 13:28:33', 0, '0000-00-00 00:00:00', 0, '*');
 
 # -------------------------------------------------------
 
@@ -158,7 +159,7 @@ CREATE TABLE `#__content` (
 )  DEFAULT CHARSET=utf8;
 
 INSERT INTO `#__content` (`id`, `asset_id`, `title`, `alias`, `title_alias`, `introtext`, `fulltext`, `state`, `sectionid`, `mask`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `parentid`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
-(1, 29, 'Welcome to Square One', 'welcome-to-square-one', '', '<p>If you are familiar with <a href="http://www.joomla.org">Joomla!</a>, you should find <a href="http://www.squareonecms.org">Square One</a> to be very easy to pick up. The major differences are:</p>\r\n<ul>\r\n<li>Many core extensions were removed from the package</li>\r\n<li>There are no templates except the system template for the front</li>\r\n<li>You can reinstall them by going to the Extensions Manager -&gt; Core Extensions to find and install them remotely</li>\r\n<li>The installer does not contain sample content</li>\r\n<li>Joomla! branding was changed to Square One</li>\r\n</ul>\r\n<p>Other than that, its what you are familiar with!</p>\r\n<h3>If you have a problem</h3>\r\n<p>If you find a bug in Square One, and you can report it on the <a href="http://github.com/square-one/square-one-cms/issues">Square One Github tracker</a>. You will need an account to submit a new issue or to comment. Please check if there is an existing issue related to your report first.</p>', '', 1, 0, 0, 2, '2011-12-06 17:14:11', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2011-12-06 17:14:11', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 0, 0, '', '', 1, 1, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
+(1, 20, 'Welcome to Square One', 'welcome-to-square-one', '', '<p>If you are familiar with <a href="http://www.joomla.org">Joomla!</a>, you should find <a href="http://www.squareonecms.org">Square One</a> to be very easy to pick up. The major differences are:</p>\r\n<ul>\r\n<li>Many core extensions were removed from the package</li>\r\n<li>There are no templates except the system template for the front</li>\r\n<li>You can reinstall them by going to the Extensions Manager -&gt; Core Extensions to find and install them remotely</li>\r\n<li>The installer does not contain sample content</li>\r\n<li>Joomla! branding was changed to Square One</li>\r\n</ul>\r\n<p>Other than that, its what you are familiar with!</p>\r\n<h3>If you have a problem</h3>\r\n<p>If you find a bug in Square One, and you can report it on the <a href="http://github.com/square-one/square-one-cms/issues">Square One Github tracker</a>. You will need an account to submit a new issue or to comment. Please check if there is an existing issue related to your report first.</p>', '', 1, 0, 0, 2, '2011-12-06 17:14:11', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2011-12-06 17:14:11', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 0, 0, '', '', 1, 1, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
 
 # -------------------------------------------------------
 
