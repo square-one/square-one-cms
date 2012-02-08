@@ -1482,7 +1482,7 @@ SELECT 101, 'mainmenu', 'Home', 'home', '', 'home', 'index.php?option=com_conten
 UNION ALL
 SELECT 107, 'admin', 'MOD_MENU_COM_CONTENT_ARTICLE_MANAGER', 'comcontent', '', 'modmenucomcontent/comcontent', 'index.php?option=com_content', 'component', 1, 128, 2, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:article', 0, '', 48, 51, 0, '*', 1
 UNION ALL
-SELECT 108, 'admin', 'MOD_MENU_COM_CONTENT_NEW_ARTICLE', 'modmenucomcontentnewarticle', '', 'modmenucomcontent/comcontent/modmenucomcontentnewarticle', 'index.php?option=com_content&task=article.add', 'component', 1, 107, 3, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, '', 0, '', 49, 50, 0, '*', 1
+SELECT 108, 'admin', 'MOD_MENU_COM_CONTENT_NEW_ARTICLE', 'modmenucomcontentnewarticle', '', 'modmenucomcontent/comcontent/modmenucomcontentnewarticle', 'index.php?option=com_content&task=article.add', 'component', 1, 107, 3, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newarticle', 0, '', 49, 50, 0, '*', 1
 UNION ALL
 SELECT 109, 'admin', 'MOD_MENU_CONTROL_PANEL', 'modmenucontrolpanel', '', 'modmenucontrolpanel', 'index.php', 'component', 1, 1, 1, 9, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:cpanel', 0, '', 3, 20, 0, '*', 1
 UNION ALL
