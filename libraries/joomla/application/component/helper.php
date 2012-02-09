@@ -49,7 +49,7 @@ class JComponentHelper
 	{
 		if (!isset(self::$components[$option]))
 		{
-			if (self::_load($option))
+			if (self::_load($option, $strict))
 			{
 				$result = self::$components[$option];
 			}
@@ -400,7 +400,7 @@ class JComponentHelper
 	 *
 	 * @since   11.1
 	 */
-	protected static function _load($option)
+	protected static function _load($option, $strict = false)
 	{
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
@@ -417,7 +417,10 @@ class JComponentHelper
 		if ($error = $db->getErrorMsg() || empty(self::$components[$option]))
 		{
 			// Fatal error.
-			JError::raiseWarning(500, JText::sprintf('JLIB_APPLICATION_ERROR_COMPONENT_NOT_LOADING', $option, $error));
+			if (!$strict)
+			{
+				JError::raiseWarning(500, JText::sprintf('JLIB_APPLICATION_ERROR_COMPONENT_NOT_LOADING', $option, $error));
+			}
 			return false;
 		}
 
