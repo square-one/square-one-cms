@@ -65,23 +65,6 @@ $notice_switchers	= !$this->switchers && ($this->homes > 1 || $this->language_fi
 				</tr>
 			<?php endif; ?>
 		<?php endforeach; ?>
-		<?php if ($this->listUsersError) : ?>
-			<tr>
-				<td>
-					<?php echo JHtml::_('image', 'menu/icon-16-notice.png', JText::_('NOTICE'), NULL, true); ?>
-				</td>
-				<td>
-					<?php echo JText::_('COM_LANGUAGES_MULTILANGSTATUS_CONTACTS_ERROR_TIP'); ?>
-					<ul>
-					<?php foreach ($this->listUsersError as $user) : ?>
-						<li>
-						<?php echo JText::sprintf('COM_LANGUAGES_MULTILANGSTATUS_CONTACTS_ERROR', $user->name); ?>
-						</li>
-					<?php endforeach; ?>
-					</ul>
-				</td>
-			</tr>
-		<?php endif; ?>
 		</tbody>
 	</table>
 	<table class="adminlist" style="border-top: 1px solid #CCCCCC;">
