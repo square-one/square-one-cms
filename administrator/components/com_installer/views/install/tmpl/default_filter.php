@@ -1,13 +1,8 @@
 <?php
 /**
  * @package		Joomla.Administrator
-<<<<<<< HEAD:administrator/components/com_installer/views/install/tmpl/default_filter.php
  * @subpackage	com_installer
  * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
-=======
- * @subpackage	Templates.hathor
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
->>>>>>> 2.5.1:administrator/templates/hathor/html/com_installer/manage/default_filter.php
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  * @since		1.6
  */
