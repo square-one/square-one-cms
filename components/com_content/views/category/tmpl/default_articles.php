@@ -126,7 +126,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 						<?php $author =  $article->author ?>
 						<?php $author = ($article->created_by_alias ? $article->created_by_alias : $author);?>
 
-						<?php if (!empty($article->contactid ) &&  $this->params->get('link_author') == true):?>
+						<?php if (JComponentHelper::isEnabled('com_contact', true) && !empty($article->contactid ) &&  $this->params->get('link_author') == true):?>
 							<?php echo JHtml::_(
 									'link',
 									JRoute::_('index.php?option=com_contact&view=contact&id='.$article->contactid),

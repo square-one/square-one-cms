@@ -45,7 +45,8 @@ header a{
 	text-decoration: none;
 }
 section.content {
-		background: #EDEDED;
+    background: #EDEDED;
+    overflow: hidden;
 }
 footer {
 	background: #333333;

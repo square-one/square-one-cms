@@ -104,7 +104,7 @@ $canEdit	= $this->item->params->get('access-edit');
 		<?php $author =  $this->item->author; ?>
 		<?php $author = ($this->item->created_by_alias ? $this->item->created_by_alias : $author);?>
 
-			<?php if (!empty($this->item->contactid ) &&  $params->get('link_author') == true):?>
+			<?php if (JComponentHelper::isEnabled('com_contact', true) && !empty($this->item->contactid ) &&  $params->get('link_author') == true):?>
 				<?php 	echo JText::sprintf('COM_CONTENT_WRITTEN_BY' ,
 				 JHtml::_('link', JRoute::_('index.php?option=com_contact&view=contact&id='.$this->item->contactid), $author)); ?>
 

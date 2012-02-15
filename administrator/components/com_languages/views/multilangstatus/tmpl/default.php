@@ -65,7 +65,7 @@ $notice_switchers	= !$this->switchers && ($this->homes > 1 || $this->language_fi
 				</tr>
 			<?php endif; ?>
 		<?php endforeach; ?>
-		<?php if ($this->listUsersError) : ?>
+		<?php if (JComponentHelper::isEnabled('com_contact', true) && $this->listUsersError) : ?>
 			<tr>
 				<td>
 					<?php echo JHtml::_('image', 'menu/icon-16-notice.png', JText::_('NOTICE'), NULL, true); ?>

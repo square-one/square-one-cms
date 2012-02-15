@@ -127,7 +127,7 @@ endif; ?>
 <?php if ($params->get('show_author') && !empty($this->item->author )) : ?>
 	<dd class="createdby">
 	<?php $author = $this->item->created_by_alias ? $this->item->created_by_alias : $this->item->author; ?>
-	<?php if (!empty($this->item->contactid) && $params->get('link_author') == true): ?>
+	<?php if (JComponentHelper::isEnabled('com_contact', true) && !empty($this->item->contactid) && $params->get('link_author') == true): ?>
 	<?php
 		$needle = 'index.php?option=com_contact&view=contact&id=' . $this->item->contactid;
 		$item = JSite::getMenu()->getItems('link', $needle, true);
