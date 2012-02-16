@@ -23,10 +23,10 @@ final class JVersion
 	public $RELEASE = '2.5';
 
 	/** @var  string  Maintenance version. */
-	public $DEV_LEVEL = 'b2';
+	public $DEV_LEVEL = '0rc1';
 
 	/** @var  string  Development STATUS. */
-	public $DEV_STATUS = 'Beta';
+	public $DEV_STATUS = 'Release Candidate';
 
 	/** @var  string  Build number. */
 	public $BUILD = '';
@@ -35,7 +35,7 @@ final class JVersion
 	public $CODENAME = 'Berners-Lee';
 
 	/** @var  string  Release date. */
-	public $RELDATE = '04-Feb-2012';
+	public $RELDATE = '16-Feb-2012';
 
 	/** @var  string  Release time. */
 	public $RELTIME = '14:00';
