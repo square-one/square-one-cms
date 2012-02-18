@@ -14,28 +14,24 @@ defined('_JEXEC') or die;
 <ul id="menu">
 <?php
 foreach ($list as $i => &$item) :
-	$class = '';
+	$class = array();
 	if ($item->id == $active_id) {
-		$class .= ' current';
+		$class[] = 'current';
 	}
 
 	if ($item->parent || $item->type == 'menus') {
-		$class .= ' node';
-	}
-
-	if (!empty($class)) {
-		$class = ' class="'.trim($class) .'"';
+		$class[] = 'node';
 	}
     
     if ($disabled) {
-		$class = ' class="disabled"';
+		$class[] = 'disabled';
 	}
     
     if ($item->type == 'separator') {
-        $class = ' class="separator"';
+        $class[] = 'separator';
     }
 
-	echo '<li'.$class.'>';
+	echo '<li class="'.implode(' ', $class).'">';
 
 	// Render the menu item.
     if ($disabled) {
@@ -48,6 +44,7 @@ foreach ($list as $i => &$item) :
             case 'url':
             case 'component':
             case 'menus':
+            case 'placeholder' : 
                 require JModuleHelper::getLayoutPath('mod_menu', 'default_'.$item->type);
                 break;
 

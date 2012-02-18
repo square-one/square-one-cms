@@ -8,7 +8,7 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-JModel::addIncludePath(JPATH_ADMINISTRATOR.'/components/com_menus/models');
+require_once(JPATH_ADMINISTRATOR.'/components/com_menus/models/menus.php');
 $model = JModel::getInstance('Menus', 'MenusModel');
 $menus = $model->getItems();
 

@@ -31,6 +31,7 @@
                 <option value="menus">COM_MENUS_SUBMENU_MENUS</option>
                 <option value="separator">COM_MENUS_TYPE_SEPARATOR</option>
                 <option value="url">COM_MENUS_TYPE_EXTERNAL_URL</option>
+                <option value="placeholder">COM_MENUS_TYPE_PLACEHOLDER</option>
         </field>
 
 		<field
