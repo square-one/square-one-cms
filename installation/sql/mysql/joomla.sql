@@ -612,28 +612,6 @@ CREATE TABLE  `#__update_categories` (
   PRIMARY KEY  (`categoryid`)
 )  DEFAULT CHARSET=utf8 COMMENT='Update Categories';
 
-
-# -------------------------------------------------------
-
-#
-# Table structure for table `#__template_styles`
-#
-
-CREATE TABLE IF NOT EXISTS `#__template_styles` (
-  `id` integer unsigned NOT NULL AUTO_INCREMENT,
-  `template` varchar(50) NOT NULL DEFAULT '',
-  `client_id` tinyint(1) unsigned NOT NULL DEFAULT 0,
-  `home` char(7) NOT NULL DEFAULT '0',
-  `title` varchar(255) NOT NULL DEFAULT '',
-  `params` TEXT NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `idx_template` (`template`),
-  KEY `idx_home` (`home`)
-)  DEFAULT CHARSET=utf8 ;
-
-INSERT INTO `#__template_styles` VALUES (1, 'system', 1, 1, 'System - Default', '{"useRoundedCorners":"1","showSiteName":"0"}');
-INSERT INTO `#__template_styles` VALUES (2, 'system', 0, 1, 'System - Default', '');
-
 # -------------------------------------------------------
 #
 # Table structure for table `#__user_usergroup_map`
