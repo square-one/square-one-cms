@@ -296,8 +296,8 @@ INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 # Templates
 
 INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
-(502, 'system', 'template', 'system', '', 1, 1, 1, 1, '{"legacy":false,"name":"system","type":"template","creationDate":"07\\/02\\/09","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"http:\\/\\/www.joomla.org","version":"1.6.0","description":"TPL_BLUESTORK_XML_DESCRIPTION","group":""}', '{"useRoundedCorners":"1","showSiteName":"0","textBig":"0","highContrast":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(503, 'system', 'template', 'system', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0);
+(502, 'system', 'template', 'tpl_system_admin', '', 1, 1, 1, 1, '{"legacy":false,"name":"system","type":"template","creationDate":"07\\/02\\/09","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"http:\\/\\/www.joomla.org","version":"1.6.0","description":"TPL_BLUESTORK_XML_DESCRIPTION","group":""}', '{"useRoundedCorners":"1","showSiteName":"0","textBig":"0","highContrast":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(503, 'system', 'template', 'tpl_system_site', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0);
 
 # Languages
 INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
@@ -611,6 +611,28 @@ CREATE TABLE  `#__update_categories` (
   `updatesite` int(11) default '0',
   PRIMARY KEY  (`categoryid`)
 )  DEFAULT CHARSET=utf8 COMMENT='Update Categories';
+
+
+# -------------------------------------------------------
+
+#
+# Table structure for table `#__template_styles`
+#
+
+CREATE TABLE IF NOT EXISTS `#__template_styles` (
+  `id` integer unsigned NOT NULL AUTO_INCREMENT,
+  `template` varchar(50) NOT NULL DEFAULT '',
+  `client_id` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `home` char(7) NOT NULL DEFAULT '0',
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `params` TEXT NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `idx_template` (`template`),
+  KEY `idx_home` (`home`)
+)  DEFAULT CHARSET=utf8 ;
+
+INSERT INTO `#__template_styles` VALUES (1, 'tpl_system_admin', 1, 1, 'System - Default', '{"useRoundedCorners":"1","showSiteName":"0"}');
+INSERT INTO `#__template_styles` VALUES (2, 'tpl_system_site', 0, 1, 'System - Default', '');
 
 # -------------------------------------------------------
 #
