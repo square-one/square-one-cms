@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extensionset name="Square One" description="Square One CMS">
-	<extension name="Square One" element="squareone" type="file" version="2.5.0_beta2" detailsurl="http://update.squareonecms.org/versions.xml"/>
+	<extension name="Square One" element="squareone" type="file" version="2.5.0" detailsurl="http://update.squareonecms.org/versions.xml"/>
 	
 	<!-- Components -->
 	<extension name="Banners" element="com_banners" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_banners.xml"/>
@@ -70,4 +70,13 @@
 	<extension name="Beez5 Template" element="beez5" type="template" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_beez5.xml"/>
 	<extension name="Hathor Administrator Template" element="hathor" type="template" client="administrator" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_hathor.xml"/>
 	
+	<!-- Languages -->
+	<extension name="Afrikaans af-ZA" element="af-ZA" type="package" version="2.5.1.1" detailsurl="http://joomla4africa.org/updates/af-ZA_details.xml"/>
+	<extension name="Arabic ar-AA" element="ar-AA" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_ar-AA.xml"/>
+	<extension name="Azeri az-AZ" element="az-AZ" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_az-AZ.xml"/>
+	<!-- Basque eu-ES -->
+	<!-- Belarusian be-BY -->
+	<extension name="Bengali bn-BD" element="bn-BD" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_bn-BD.xml"/>
+	<extension name="Bulgarian bg-BG" element="bg-BG" type="package" version="2.5.1.0" detailsurl="http://translations.joomla-bg.com/bg-BG_details.xml"/>
+	<extension name="Swahili sw-TZ" element="sw-TZ" type="package" version="2.5.1.a1" detailsurl="http://joomla4africa.org/updates/sw-TZ_details.xml"/>
 </extensionset>
