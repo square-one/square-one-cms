@@ -26,14 +26,16 @@ abstract class modVersionHelper
 		$format = $params->get('format', 'short');
 		$product = $params->get('product', 0);
 		$method = 'get' . ucfirst($format) . "Version";
+		$jmethod = 'get' . ucfirst($format) . "JVersion";
 
 		// Get the joomla version
 		$instance = new JVersion();
 		$version = call_user_func(array($instance, $method));//$instance->{$method};
+		$jversion = call_user_func(array($instance, $jmethod));//$instance->{$method};
 
 		if ($format=='short' && !empty($product)) {
 			//add the product name to short format only (in long format it's included)
-			$version = $instance->PRODUCT . ' ' . $version;
+			$version = $instance->PRODUCT . ' ' . $version . ', based on ' . $instance->JPRODUCT . ' ' . $jversion;
 		}
 		return $version;
 	}

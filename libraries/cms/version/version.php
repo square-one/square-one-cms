@@ -19,11 +19,17 @@ final class JVersion
 	/** @var  string  Product name. */
 	public $PRODUCT = 'Square One';
 
+	/** @var  string  Product name. */
+	public $JPRODUCT = 'Joomla!';
+
 	/** @var  string  Release version. */
 	public $RELEASE = '2.5';
 
 	/** @var  string  Maintenance version. */
 	public $DEV_LEVEL = '0';
+
+	/** @var  string  Maintenance version. */
+	public $JDEV_LEVEL = '1';
 
 	/** @var  string  Development STATUS. */
 	public $DEV_STATUS = 'Stable';
@@ -93,6 +99,11 @@ final class JVersion
 		return $this->RELEASE.'.'.$this->DEV_LEVEL;
 	}
 
+	public function getShortJVersion()
+	{
+		return $this->RELEASE.'.'.$this->JDEV_LEVEL;
+	}
+
 	/**
 	 * Gets a version string for the current Joomla with all release information.
 	 *
@@ -103,6 +114,13 @@ final class JVersion
 	public function getLongVersion()
 	{
 		return $this->PRODUCT.' '. $this->RELEASE.'.'.$this->DEV_LEVEL.' '
+				. $this->DEV_STATUS.' [ '.$this->CODENAME.' ] '.$this->RELDATE.' '
+				.$this->RELTIME.' '.$this->RELTZ;
+	}
+
+	public function getLongJVersion()
+	{
+		return $this->PRODUCT.' '. $this->RELEASE.'.'.$this->JDEV_LEVEL.' '
 				. $this->DEV_STATUS.' [ '.$this->CODENAME.' ] '.$this->RELDATE.' '
 				.$this->RELTIME.' '.$this->RELTZ;
 	}
