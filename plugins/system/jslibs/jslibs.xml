@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.5" type="plugin" group="system" method="upgrade">
+	<name>plg_system_jslibs</name>
+	<author>Joseph LeBlanc</author>
+	<creationDate>March 2012</creationDate>
+	<copyright>Copyright (C) 2012</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>contact@jlleblanc.com</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<version>1.0</version>
+	<description>PLG_SYSTEM_JSLIBS_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="jslibs">jslibs.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.plg_system_log.sys.ini</language>
+	</languages>
+	<config />
+</extension>
