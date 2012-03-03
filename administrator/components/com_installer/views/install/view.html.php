@@ -61,7 +61,8 @@ class InstallerViewInstall extends InstallerViewDefault
                     $result->uninstall = method_exists($script, 'uninstall') ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
                 }
             }
-            
+			
+			$this->source = base64_encode($installer->getPath('source'));
             $this->result = $result;
         }
         

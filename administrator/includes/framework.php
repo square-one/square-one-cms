@@ -40,6 +40,7 @@ JError::setErrorHandling(E_ERROR, 'message', array('JError', 'customErrorPage'))
 
 // Botstrap the CMS libraries.
 require_once JPATH_LIBRARIES.'/cms.php';
+require_once JPATH_LIBRARIES.'/squareone.php';
 
 // Pre-Load configuration.
 ob_start();

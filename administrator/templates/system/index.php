@@ -108,9 +108,7 @@ if ($this->params->get('highContrast')) {
 	<jdoc:include type="modules" name="footer" style="none" />
 	<div id="footer">
 		<p class="copyright">
-			<?php $joomla = '<a href="http://www.squareonecms.org">Square One CMS</a>';
-				echo JText::sprintf('JGLOBAL_ISFREESOFTWARE', $joomla) ?>
-			<span class="version"><?php echo  JText::_('JVERSION') ?> <?php echo  JVERSION; ?></span>
+			<a href="http://www.squareonecms.org">Square One CMS</a> <?php echo S1VERSION ?> (Joomla! <?php echo JVERSION ?>)
 		</p>
 	</div>
 </body>

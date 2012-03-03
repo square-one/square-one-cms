@@ -505,22 +505,38 @@ class InstallerModelInstall extends JModelList
     public function distro_download()
     {
         $update = new JUpdate();
-        $detailsurl = JRequest::getString('detailsurl', '', 'post');
-        $update->loadFromXML($detailsurl);
+        $detailsurl = base64_decode(JRequest::getString('detailsurl', '', 'post'));
+		
+		if (substr($detailsurl, 0, 4) == 'http')
+		{
+			// Url to an update manifest
+			$update->loadFromXML($detailsurl);
 
-        $result->result = false;
+			$result->result = false;
 
-        $file = JInstallerHelper::downloadPackage($update->get('downloadurl')->_data);
-        if (!$file) {
-            $result->message = JText::_('COM_INSTALLER_MSG_INSTALL_INVALID_URL');
+			$file = JInstallerHelper::downloadPackage($update->get('downloadurl')->_data);
+			if (!$file) {
+				$result->message = JText::_('COM_INSTALLER_MSG_INSTALL_INVALID_URL');
+			}
+			else
+			{
+				$result->result = true;
+				$result->task = 'distro_download';
+				$result->file = $file;
+				$result->message = JText::_('Downloaded the package');
+			}
 		}
-        else
-        {
-            $result->result = true;
-            $result->task = 'distro_download';
-            $result->file = $file;
-            $result->message = JText::_('Downloaded the package');
-        }
+		else
+		{
+			// We have a file
+			$config	= JFactory::getConfig();
+			$source = base64_decode(JRequest::getString('source'));
+			JFile::move($source.'/'.$detailsurl, $config->get('tmp_path').'/'.$detailsurl);
+			$result->result = true;
+			$result->task = 'distro_download';
+			$result->file = $detailsurl;
+			$result->message = JText::_('Found the package');
+		}
 
         return $result;
     }

@@ -53,8 +53,8 @@ defined('_JEXEC') or die;
                 </td>
 			</tr>
             <?php endif; ?>
-		<?php foreach ($this->result->extensions->xpath('//extension') as $i => $extension) : if (isset($extension['detailsurl'])) : ?>
-			<tr class="row<?php echo $i%2; ?> extension" data-detailsurl="<?php echo $extension['detailsurl']; ?>">
+		<?php foreach ($this->result->extensions->xpath('//extensions/extension') as $i => $extension) : if (isset($extension['detailsurl'])) : ?>
+			<tr class="row<?php echo $i%2; ?> extension" data-detailsurl="<?php echo base64_encode($extension['detailsurl']); ?>">
 				<td class="jgrid">
                     <span class="state unpublish">&nbsp;</span>
 				</td>
@@ -306,7 +306,7 @@ var DistroInstaller = new Class({
         this.queue[0].getFirst('td.jgrid span').set('class', 'state progress');
         this.request = new Request({
             url:    'index.php?option=com_installer',
-            data:   '<?php echo JUtility::getToken(); ?>=1&task=install.distro_download&detailsurl='+this.queue[0].get('data-detailsurl'),
+            data:   '<?php echo JUtility::getToken(); ?>=1&task=install.distro_download&detailsurl='+this.queue[0].get('data-detailsurl')+'&source=<?php echo $this->source; ?>',
             onFailure : function() {
                 this.queue[0].getFirst('td.result').set('text', '<?php echo JText::_('COM_INSTALLER_DOWNLOAD_FAILED') ?>');
                 this.queue[0].getFirst('td.jgrid span').set('class', 'state unpublish');
