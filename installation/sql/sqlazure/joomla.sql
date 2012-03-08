@@ -1520,7 +1520,7 @@ SELECT 125, 'admin', 'MOD_MENU_MENUS', 'modmenumenus', '', 'modmenumenus', 'inde
 UNION ALL
 SELECT 126, 'admin', 'MOD_MENU_MENU_MANAGER', 'modmenumenumanager', '', 'modmenumenus/modmenumenumanager', 'index.php?option=com_menus&view=menus', 'component', 1, 125, 2, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:menumgr', 0, '', 38, 41, 0, '*', 1
 UNION ALL
-SELECT 127, 'admin', 'MOD_MENU_MENU_MANAGER_NEW_MENU', 'modmenumenumanagernewmenu', '', 'modmenumenus/modmenumenumanager/modmenumenumanagernewmenu', 'index.php?option=com_content&task=article.add', 'component', 1, 126, 3, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newarticle', 0, '', 39, 40, 0, '*', 1
+SELECT 127, 'admin', 'MOD_MENU_MENU_MANAGER_NEW_MENU', 'modmenumenumanagernewmenu', '', 'modmenumenus/modmenumenumanager/modmenumenumanagernewmenu', 'index.php?option=com_menus&task=menu.add', 'component', 1, 126, 3, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newarticle', 0, '', 39, 40, 0, '*', 1
 UNION ALL
 SELECT 128, 'admin', 'MOD_MENU_COM_CONTENT', 'modmenucomcontent', '', 'modmenucomcontent', 'index.php?option=com_content', 'component', 1, 1, 1, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:content', 0, '', 47, 60, 0, '*', 1
 UNION ALL
