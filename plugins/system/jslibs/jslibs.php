@@ -7,11 +7,6 @@
 defined( '_JEXEC' ) or die;
 
 /**
- * Allows for one-line checking of whether or not this plugin is installed.
- */
-define('JOOMLA_JSLIBS', true);
-
-/**
  * This class strictly responds to plugin events, leaving the heavy lifting
  * to the JavascriptLibraries class.
  *
