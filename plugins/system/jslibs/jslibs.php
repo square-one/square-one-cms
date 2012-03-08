@@ -46,20 +46,22 @@ class JavascriptLibraries
 	static public $libraries = array();
 
 	/**
-	 * A quick and dirty check to see if jQuery has already been loaded.
-	 * Assumes that jQuery is already loaded if a JavaScript file with the
-	 * string 'jquery' is present.
+	 * A quick and dirty check to see if a particular library has already been
+	 * loaded. Assumes that the library is already loaded if a JavaScript file
+	 * with the search string is present.
 	 *
+	 * @param string $lib_name
 	 * @return boolean
+	 * @author Joseph LeBlanc
 	 */
-	static public function jquery_loaded()
+	static public function library_loaded($lib_name)
 	{
 		$document = JFactory::getDocument();
 
 		$head_data = $document->getHeadData();
 
 		foreach (array_keys($head_data['scripts']) as $script) {
-			if (stristr($script, 'jquery')) {
+			if (stristr($script, $lib_name)) {
 				return true;
 			}
 		}
@@ -68,14 +70,14 @@ class JavascriptLibraries
 	}
 
 	/**
-	 * This function would determine if MooTools is loaded. Would be useful in
-	 * cases where pulling a CDN copy is desired.
+	 * A convenience wrapper for library_loaded.
 	 *
 	 * @return boolean
+	 * @author Joseph LeBlanc
 	 */
-	static public function mootools_loaded()
+	static public function jquery_loaded()
 	{
-		// TODO
+		return self::library_loaded('jquery');
 	}
 
 	/**
