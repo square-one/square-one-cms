@@ -46,6 +46,13 @@ class JavascriptLibraries
 	static public $libraries = array();
 
 	/**
+	 * Keeps track of scripts depending on libraries, keyed by library name
+	 *
+	 * @var array
+	 */
+	static public $scripts = array();
+
+	/**
 	 * A quick and dirty check to see if a particular library has already been
 	 * loaded. Assumes that the library is already loaded if a JavaScript file
 	 * with the search string is present.
@@ -92,7 +99,7 @@ class JavascriptLibraries
 	 * @throws JavascriptException
 	 * @author Joseph LeBlanc
 	 */
-	static public function register($name, $min_version, $path)
+	static public function register_library($name, $min_version, $path)
 	{
 		$name = strtolower($name);
 
@@ -107,10 +114,22 @@ class JavascriptLibraries
 		self::$libraries[$name][$min_version] = $path;
 	}
 
+	public function register_script($path, $relies_on)
+	{
+		$relies_on = strtolower($relies_on);
+
+		if (is_array(self::$scripts[$relies_on]) && !in_array($path, self::$scripts[$relies_on])) {
+			self::$scripts[$relies_on][] = $path;
+		} else {
+			self::$scripts[$relies_on] = array($path);
+		}
+	}
+
 	/**
-	 * This function takes the accumulated JavaScript libraries and adds them
-	 * into the document object before it is used to generate the head
-	 * section of the document
+	 * This function takes the accumulated JavaScript libraries and scripts,
+	 * adding them into the document object before it is used to generate the
+	 * head section of the document. The minimum acceptable version of the
+	 * JavaScript library is used.
 	 *
 	 * @return void
 	 * @throws JavascriptException
@@ -150,6 +169,14 @@ class JavascriptLibraries
 				} else {
 					$doc->addScript(JURI::base() . $records[$min_version]);
 				}
+			}
+
+			/**
+			 * Finally, add all of the scripts that rely on this library
+			 *
+			 */
+			foreach (self::$scripts[$lib_name] as $script) {
+				$doc->addScript($script);
 			}
 		}
 	}
