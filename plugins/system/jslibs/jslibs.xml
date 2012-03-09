@@ -14,7 +14,7 @@
 		<filename>index.html</filename>
 	</files>
 	<languages>
-		<language tag="en-GB">en-GB.plg_system_log.sys.ini</language>
+		<language tag="en-GB">en-GB.plg_system_jslibs.sys.ini</language>
 	</languages>
 	<config />
 </extension>
