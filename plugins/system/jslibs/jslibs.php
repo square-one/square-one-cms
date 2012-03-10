@@ -52,6 +52,14 @@ class JavascriptLibraries
 	 */
 	static public $scripts = array();
 
+
+	/**
+	 * Toggles whether jQuery.noConflict() gets called.
+	 *
+	 * @var bool
+	 */
+	static public $jquery_no_conflict = true;
+
 	/**
 	 * A quick and dirty check to see if a particular library has already been
 	 * loaded. Assumes that the library is already loaded if a JavaScript file
@@ -85,6 +93,18 @@ class JavascriptLibraries
 	static public function jquery_loaded()
 	{
 		return self::library_loaded('jquery');
+	}
+
+	/**
+	 * Convenience function for setting jquery_no_conflict
+	 *
+	 * @param bool $value
+	 * @return void
+	 * @author Joseph LeBlanc
+	 */
+	static public function jquery_no_conflict($value)
+	{
+		self::$jquery_no_conflict = (bool) $value;
 	}
 
 	/**
@@ -195,8 +215,10 @@ class JavascriptLibraries
 
 		self::add_javascript_path($min_version_path);
 
-		// finally, send into noConflict mode immediately
-		self::add_javascript_path('plugins/system/jslibs/jquery_no_conflict.js');
+		// finally, send into noConflict mode immediately (if set)
+		if (self::$jquery_no_conflict) {
+			self::add_javascript_path('plugins/system/jslibs/jquery_no_conflict.js');
+		}
 	}
 
 	/**
