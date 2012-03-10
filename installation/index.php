@@ -67,6 +67,7 @@ JError::$legacy = true;
 
 // Botstrap the CMS libraries.
 require_once JPATH_LIBRARIES.'/cms.php';
+require_once JPATH_LIBRARIES.'/squareone.php';
 
 // Joomla library imports.
 jimport('joomla.database.table');

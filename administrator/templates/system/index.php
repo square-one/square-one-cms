@@ -106,10 +106,5 @@ if ($this->params->get('highContrast')) {
 	</div>
 
 	<jdoc:include type="modules" name="footer" style="none" />
-	<div id="footer">
-		<p class="copyright">
-			<a href="http://www.squareonecms.org">Square One CMS</a> <?php echo S1VERSION ?> (Joomla! <?php echo JVERSION ?>)
-		</p>
-	</div>
 </body>
 </html>

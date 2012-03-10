@@ -904,6 +904,8 @@ UNION ALL
 SELECT 15,0
 UNION ALL
 SELECT 79,0
+UNION ALL
+SELECT 80,0
 
 
 /****** Object:  Table [#__modules]    Script Date: 11/08/2010 18:41:22 ******/
@@ -1140,6 +1142,8 @@ UNION ALL
 SELECT 15, 'Title', '', '', 1, 'title', 0, '1900-01-01 00:00:00', '1900-01-01 00:00:00', '1900-01-01 00:00:00', 1, 'mod_title', 3, 1, '', 1, '*'
 UNION ALL
 SELECT 79, 'Multilanguage status', '', '', 1, 'status', 0, '1900-01-01 00:00:00', '1900-01-01 00:00:00', '1900-01-01 00:00:00', 0, 'mod_multilangstatus', 3, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*';
+UNION ALL
+SELECT (80, 'Version', '', '', 1, 'footer', 42, '2012-03-10 18:15:01', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_version', 1, 1, '{"format":"short","product":"1","layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*';
 SET IDENTITY_INSERT #__modules  OFF;
 
 
