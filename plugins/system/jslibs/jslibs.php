@@ -171,8 +171,10 @@ class JavascriptLibraries
 			 * Finally, add all of the scripts that rely on this library
 			 *
 			 */
-			foreach (self::$scripts[$lib_name] as $script) {
-				self::add_javascript_path($script);
+			if (isset(self::$scripts[$lib_name])) {
+				foreach (self::$scripts[$lib_name] as $script) {
+					self::add_javascript_path($script);
+				}
 			}
 		}
 	}
