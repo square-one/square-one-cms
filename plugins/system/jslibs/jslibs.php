@@ -136,8 +136,6 @@ class JavascriptLibraries
 	 */
 	static public function seed_document_head()
 	{
-		$doc = JFactory::getDocument();
-
 		foreach (self::$libraries as $lib_name => $records) {
 
 			$min_version = '0.0.0';
@@ -163,12 +161,10 @@ class JavascriptLibraries
 			 * ultimately work best as a separate function.
 			 *
 			 */
-			if ( ($lib_name != 'jquery') || ($lib_name == 'jquery' && !self::jquery_loaded()) ) {
-				if (stripos($records[$min_version], 'http') === 0) {
-					$doc->addScript($records[$min_version]);
-				} else {
-					$doc->addScript(JURI::base() . $records[$min_version]);
-				}
+			if ($lib_name == 'jquery') {
+				self::add_jquery($records[$min_version]);
+			} else {
+				self::add_javascript_path($records[$min_version]);
 			}
 
 			/**
@@ -176,8 +172,47 @@ class JavascriptLibraries
 			 *
 			 */
 			foreach (self::$scripts[$lib_name] as $script) {
-				$doc->addScript($script);
+				self::add_javascript_path($script);
 			}
+		}
+	}
+
+	/**
+	 * This function handles adding jQuery specifically, putting it into
+	 * noConflict mode immediately.
+	 *
+	 * @param string $min_version_path
+	 * @return void
+	 * @author Joseph LeBlanc
+	 */
+	static public function add_jquery($min_version_path)
+	{
+		if (self::jquery_loaded()) {
+			return false;
+		}
+
+		self::add_javascript_path($min_version_path);
+
+		// finally, send into noConflict mode immediately
+		self::add_javascript_path('plugins/system/jslibs/jquery_no_conflict.js');
+	}
+
+	/**
+	 * Given a local path or a URL to a JavaScript file, this function adds
+	 * it to the document head.
+	 *
+	 * @param string $path
+	 * @return void
+	 * @author Joseph LeBlanc
+	 */
+	static public function add_javascript_path($path)
+	{
+		$doc = JFactory::getDocument();
+
+		if (stripos($path, 'http') === 0) {
+			$doc->addScript($path);
+		} else {
+			$doc->addScript(JURI::base() . $path);
 		}
 	}
 }
