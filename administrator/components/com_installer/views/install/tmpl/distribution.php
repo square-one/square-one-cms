@@ -91,25 +91,6 @@ defined('_JEXEC') or die;
                 </td>
 			</tr>
             <?php endif; ?>
-            <?php if (isset($this->result->install) && $this->result->install == true) : ?>
-            <tr id="script_install" data-path="<?php echo base64_encode($this->result->install); ?>" data-class="<?php echo $this->result->scriptclass; ?>">
-                <td class="jgrid">
-                    <span class="state unpublish">&nbsp;</span>
-                </td>
-                <td>
-					<?php echo JText::_('Install'); ?>
-				</td>
-				<td class="center">
-					Script
-				</td>
-				<td class="center">
-					
-				</td>
-                <td class="result">
-                    
-                </td>
-			</tr>
-            <?php endif; ?>
             <?php if (isset($this->result->postflight) && $this->result->postflight == true) : ?>
             <tr id="script_postflight" data-path="<?php echo base64_encode($this->result->postflight); ?>" data-class="<?php echo $this->result->scriptclass; ?>">
                 <td class="jgrid">
