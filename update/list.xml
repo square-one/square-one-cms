@@ -59,8 +59,8 @@
 	<extension name="Content Search Plugin" element="content" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_content.xml"/>
 	<extension name="Newsfeeds Search Plugin" element="newsfeeds" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_newsfeeds.xml"/>
 	<extension name="Weblinks Search Plugin" element="weblinks" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_weblinks.xml"/>
-	<extension name="Highlight System Plugin" element="highlight" type="plugin" folder="system" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_system_highlight.xml"/>
-	<extension name="Redirect System Plugin" element="redirect" type="plugin" folder="system" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_system_redirect.xml"/>
+	<extension name="Highlight System Plugin" element="highlight" type="plugin" folder="system" version="2.5.2" detailsurl="http://update.squareonecms.org/extensions/plg_system_highlight.xml"/>
+	<extension name="Redirect System Plugin" element="redirect" type="plugin" folder="system" version="2.5.2" detailsurl="http://update.squareonecms.org/extensions/plg_system_redirect.xml"/>
 	<extension name="Contact Creator User Plugin" element="contactcreator" type="plugin" folder="user" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_contactcreator.xml"/>
 	<extension name="Profile User Plugin" element="profile" type="plugin" folder="user" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_profile.xml"/>
 	
@@ -75,8 +75,23 @@
 	<extension name="Arabic ar-AA" element="ar-AA" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_ar-AA.xml"/>
 	<extension name="Azeri az-AZ" element="az-AZ" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_az-AZ.xml"/>
 	<!-- Basque eu-ES -->
-	<!-- Belarusian be-BY -->
+	<extension name="Belarusian be-BY" element="be-BY" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_be-BY.xml"/>
 	<extension name="Bengali bn-BD" element="bn-BD" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_bn-BD.xml"/>
 	<extension name="Bulgarian bg-BG" element="bg-BG" type="package" version="2.5.1.0" detailsurl="http://translations.joomla-bg.com/bg-BG_details.xml"/>
+	<extension name="Bosnian bs-BA" element="bs-BA" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_bs-BA.xml"/>
+	<!-- Catalan ca-ES -->
+	<extension name="Chinese Simplified zh-CN" element="zh-CN" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_zh-CN.xml" />
+	<extension name="Chinese Traditional zh-TW" element="zh-TW" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_zh-TW.xml" />
+	<extension name="Croatian hr-HR" element="hr-HR" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_hr-HR.xml" />
+	<extension name="Czech cs-CZ" element="cs-CZ" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_cs-CZ.xml" />
+	<extension name="Danish da-DK" element="da-DK" type="package" version="2.5.2" detailsurl="http://danskjoomla.dk/updates/langupdate.xml" />
+	<extension name="Dutch nl-NL" element="nl-NL" type="package" version="2.5.2" detailsurl="http://download.joomlacommunity.eu/downloads/updates/translationlist.xml" />
+	<extension name="English Australian en-AU" element="en-AU" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_en-AU.xml" />
+	<extension name="English American en-US" element="en-US" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_en-US.xml" />
+	<extension name="Estonian et-EE" element="et-EE" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_et-EE.xml" />
+	<extension name="Finnish fi-FL" element="fi-FL" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_fi-FL.xml" />
+	<extension name="Flemish nl-BE" element="nl-BE" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_nl-BE.xml" />
+	<extension name="French fr-FR" element="fr-FR" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_fr-FR.xml" />
+	
 	<extension name="Swahili sw-TZ" element="sw-TZ" type="package" version="2.5.1.a1" detailsurl="http://joomla4africa.org/updates/sw-TZ_details.xml"/>
 </extensionset>
