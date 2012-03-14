@@ -33,45 +33,6 @@ class InstallerModelSites extends JModelList
         return $query;
     }
     
-    public function refreshList()
-    {
-        jimport('joomla.utilities.xmlelement');
-        jimport('joomla.client.http');
-        
-        $http = new JHttp();
-        
-        $file = $http->get('http://update.squareonecms.org/updatesites.xml');
-        $list = new JXMLElement($file->body);
-        
-        $db = $this->getDbo();
-        $query = $db->getQuery(true);
-        $query->select('location')
-              ->from('#__update_sites');
-        $locations = $db->setQuery($query)->loadResultArray();
-        
-        JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.'/tables');
-        $update_site = JTable::getInstance('Updatesites', 'InstallerTable');
-        
-        foreach ($list->xpath('//site') as $site)
-        {
-            if (!in_array($site->getAttribute('location'), $locations))
-            {
-                $update_site->bind(array(
-                    'name' => $site->getAttribute('name'),
-                    'location' => $site->getAttribute('location'),
-                    'type' => $site->getAttribute('type'),
-                ));
-                
-                if (!$update_site->store())
-                {
-                    JError::raiseWarning('500', JText::_('COM_INSTALLER_MSG_FAILEDTOREFRESHSITES'));
-                }
-            }
-        }
-        
-        return true;
-    }
-    
     public function publish($ids = array(), $value = 1)
     {
         $result = true;

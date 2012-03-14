@@ -33,11 +33,7 @@ class InstallerViewSites extends InstallerViewDefault
     }
     
     protected function addToolbar()
-    {
-        $canDo = InstallerHelper::getActions();
-        
-        JToolBarHelper::custom('sites.refresh', 'refresh', 'refresh', 'COM_INSTALLER_TOOLBAR_REFRESH', false, false);
-        JToolBarHelper::divider();
+    {        
         JToolBarHelper::publish('sites.publish', 'JTOOLBAR_ENABLE', true);
         JToolBarHelper::unpublish('sites.unpublish', 'JTOOLBAR_DISABLE', true);
         JToolBarHelper::divider();
