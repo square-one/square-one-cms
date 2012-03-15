@@ -23,7 +23,7 @@ final class S1Version
 	public $RELEASE = '2.5';
 
 	/** @var  string  Maintenance version. */
-	public $DEV_LEVEL = '0';
+	public $DEV_LEVEL = '1';
 
 	/** @var  string  Development STATUS. */
 	public $DEV_STATUS = 'Stable';
@@ -35,7 +35,7 @@ final class S1Version
 	public $CODENAME = 'Berners-Lee';
 
 	/** @var  string  Release date. */
-	public $RELDATE = '24-Feb-2012';
+	public $RELDATE = '15-Mar-2012';
 
 	/** @var  string  Release time. */
 	public $RELTIME = '14:00';
