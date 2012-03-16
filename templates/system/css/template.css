@@ -252,7 +252,6 @@ nav ul.menu ul ul{
 /*
  * Float Clearing
  */
-
 .clearfix:before,
 .clearfix:after {
     content: "\0020";
@@ -269,3 +268,17 @@ nav ul.menu ul ul{
 .clear {
     clear: both;
 }
+
+/*
+ * Misc Layout
+ */
+ .actions {
+    float: right;
+}
+
+.actions li {
+    float: left;
+    list-style: none !important;
+    margin: 0 0 0 5px;
+}
+
