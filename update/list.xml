@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extensionset name="Square One" description="Square One CMS">
-	<extension name="Square One" element="squareone" type="file" version="2.5.0" detailsurl="http://update.squareonecms.org/versions.xml"/>
+	<extension name="Square One" element="squareone" type="file" version="2.5.1" detailsurl="http://update.squareonecms.org/versions.xml"/>
 	
 	<!-- Components -->
 	<extension name="Banners" element="com_banners" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_banners.xml"/>
@@ -60,7 +60,7 @@
 	<extension name="Newsfeeds Search Plugin" element="newsfeeds" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_newsfeeds.xml"/>
 	<extension name="Weblinks Search Plugin" element="weblinks" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_weblinks.xml"/>
 	<extension name="Highlight System Plugin" element="highlight" type="plugin" folder="system" version="2.5.2" detailsurl="http://update.squareonecms.org/extensions/plg_system_highlight.xml"/>
-	<extension name="Redirect System Plugin" element="redirect" type="plugin" folder="system" version="2.5.2" detailsurl="http://update.squareonecms.org/extensions/plg_system_redirect.xml"/>
+	<extension name="Redirect System Plugin" element="redirect" type="plugin" folder="system" version="2.5.3" detailsurl="http://update.squareonecms.org/extensions/plg_system_redirect.xml"/>
 	<extension name="Contact Creator User Plugin" element="contactcreator" type="plugin" folder="user" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_contactcreator.xml"/>
 	<extension name="Profile User Plugin" element="profile" type="plugin" folder="user" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_profile.xml"/>
 	
