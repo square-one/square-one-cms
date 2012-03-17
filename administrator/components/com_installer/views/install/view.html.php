@@ -51,17 +51,15 @@ class InstallerViewInstall extends InstallerViewDefault
                 $result->script = isset($manifest->scriptfile) ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
                 if ($result->script) {
                     include($installer->getPath('source').'/'.$manifest->scriptfile);
-                    $class = $manifest->name.'InstallerScript';
+                    $class = JRequest::$manifest->name.'InstallerScript';
                     $script = new $class();
                     $result->scriptclass = $class;
                     $result->preflight = method_exists($script, 'preflight') ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
-                    $result->install = method_exists($script, 'install') ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
-                    $result->update = method_exists($script, 'update') ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
                     $result->postflight = method_exists($script, 'postflight') ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
-                    $result->uninstall = method_exists($script, 'uninstall') ? $installer->getPath('source').'/'.$manifest->scriptfile : false;
                 }
             }
-            
+			
+			$this->source = base64_encode($installer->getPath('source'));
             $this->result = $result;
         }
         

@@ -904,6 +904,8 @@ UNION ALL
 SELECT 15,0
 UNION ALL
 SELECT 79,0
+UNION ALL
+SELECT 80,0
 
 
 /****** Object:  Table [#__modules]    Script Date: 11/08/2010 18:41:22 ******/
@@ -1140,6 +1142,8 @@ UNION ALL
 SELECT 15, 'Title', '', '', 1, 'title', 0, '1900-01-01 00:00:00', '1900-01-01 00:00:00', '1900-01-01 00:00:00', 1, 'mod_title', 3, 1, '', 1, '*'
 UNION ALL
 SELECT 79, 'Multilanguage status', '', '', 1, 'status', 0, '1900-01-01 00:00:00', '1900-01-01 00:00:00', '1900-01-01 00:00:00', 0, 'mod_multilangstatus', 3, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*';
+UNION ALL
+SELECT (80, 'Version', '', '', 1, 'footer', 42, '2012-03-10 18:15:01', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_version', 1, 1, '{"format":"short","product":"1","layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*';
 SET IDENTITY_INSERT #__modules  OFF;
 
 
@@ -1520,7 +1524,7 @@ SELECT 125, 'admin', 'MOD_MENU_MENUS', 'modmenumenus', '', 'modmenumenus', 'inde
 UNION ALL
 SELECT 126, 'admin', 'MOD_MENU_MENU_MANAGER', 'modmenumenumanager', '', 'modmenumenus/modmenumenumanager', 'index.php?option=com_menus&view=menus', 'component', 1, 125, 2, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:menumgr', 0, '', 38, 41, 0, '*', 1
 UNION ALL
-SELECT 127, 'admin', 'MOD_MENU_MENU_MANAGER_NEW_MENU', 'modmenumenumanagernewmenu', '', 'modmenumenus/modmenumenumanager/modmenumenumanagernewmenu', 'index.php?option=com_content&task=article.add', 'component', 1, 126, 3, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newarticle', 0, '', 39, 40, 0, '*', 1
+SELECT 127, 'admin', 'MOD_MENU_MENU_MANAGER_NEW_MENU', 'modmenumenumanagernewmenu', '', 'modmenumenus/modmenumenumanager/modmenumenumanagernewmenu', 'index.php?option=com_menus&task=menu.add', 'component', 1, 126, 3, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newarticle', 0, '', 39, 40, 0, '*', 1
 UNION ALL
 SELECT 128, 'admin', 'MOD_MENU_COM_CONTENT', 'modmenucomcontent', '', 'modmenucomcontent', 'index.php?option=com_content', 'component', 1, 1, 1, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:content', 0, '', 47, 60, 0, '*', 1
 UNION ALL

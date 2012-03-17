@@ -14,16 +14,16 @@ defined('_JEXEC') or die;
  * @package  Joomla.Site
  * @since    1.0
  */
-final class JVersion
+final class S1Version
 {
 	/** @var  string  Product name. */
-	public $PRODUCT = 'Joomla!';
+	public $PRODUCT = 'Square One';
 
 	/** @var  string  Release version. */
 	public $RELEASE = '2.5';
 
 	/** @var  string  Maintenance version. */
-	public $DEV_LEVEL = '3';
+	public $DEV_LEVEL = '1';
 
 	/** @var  string  Development STATUS. */
 	public $DEV_STATUS = 'Stable';
@@ -32,10 +32,10 @@ final class JVersion
 	public $BUILD = '';
 
 	/** @var  string  Code name. */
-	public $CODENAME = 'Ember';
+	public $CODENAME = 'Berners-Lee';
 
 	/** @var  string  Release date. */
-	public $RELDATE = '15-March-2012';
+	public $RELDATE = '15-Mar-2012';
 
 	/** @var  string  Release time. */
 	public $RELTIME = '14:00';
@@ -44,10 +44,10 @@ final class JVersion
 	public $RELTZ = 'GMT';
 
 	/** @var  string  Copyright Notice. */
-	public $COPYRIGHT = 'Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.';
+	public $COPYRIGHT = 'Copyright (C) 2005 - 2012 Open Source Matters, Inc and Square One CMS. All rights reserved.';
 
 	/** @var  string  Link text. */
-	public $URL = '<a href="http://www.joomla.org">Joomla!</a> is Free Software released under the GNU General Public License.';
+	public $URL = '<a href="http://www.squareonecms.org">Square One CMS</a> is Free Software released under the GNU General Public License.';
 
 	/**
 	 * Compares two a "PHP standardized" version number against the current Joomla version.
