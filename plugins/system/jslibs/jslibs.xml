@@ -27,10 +27,9 @@
 					<option value="">- None -</option>
 					<option value="google">Google</option>
 					<option value="microsoft">Microsoft</option>
-					<option value="cdnjs">cdnjs.com</option>
 				</field>
 				<field name="overrides" type="textarea"
-					description="Add specific CDN overrides to use in the following format, one per line: nameoflibrary,http://cdnlocation.com/path/to/lib.js. Values in this override system are used even if None is selected."
+					description="Add specific CDN overrides to use in the following format, one per line: nameoflibrary,cdnlocation.com/path/to/lib.js.  DO NOT add http:// or https://. Values in this override system are used even if None is selected."
 					label="CDN Overrides"
 					rows="10"
 					cols="30"
