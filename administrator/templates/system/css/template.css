@@ -282,7 +282,6 @@ p.footer-tip {
 	float: left;
 	line-height: 16px;
 	padding: 4px 10px 0 22px;
-	margin-bottom: 5px;
 }
 
 #module-status .viewsite {
@@ -2267,6 +2266,7 @@ a.jgrid:hover {	text-decoration: none;}
 #menu li {
 	border-left: 1px solid #fff;
 	border-right: 1px solid #D6D6D6;
+	line-height: 1.6em;
 }
 
 #menu li li {
