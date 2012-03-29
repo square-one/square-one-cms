@@ -30,6 +30,7 @@ class modMenuHelper
 		asort($levels);
 		$key = 'menu_items'.implode(',', $levels);
 		$cache = JFactory::getCache('mod_menu', '');
+		$lang = JFactory::getLanguage();
 		if (!($items = $cache->get($key)))
 		{
 			// Initialise variables.
@@ -48,8 +49,6 @@ class modMenuHelper
 			$showAll	= ($disabled) ? false : true;
 			$maxdepth	= false;
 			$items 		= $menu->getItems('menutype', 'admin');
-
-            $lang = JFactory::getLanguage();
 
 			$lastitem	= 0;
 
@@ -126,6 +125,18 @@ class modMenuHelper
 			}
 
 			$cache->store($items, $key);
+		}
+		else
+		{
+			foreach ($items as $item)
+			{
+				if ($item->component) {
+					$lang->load($item->component.'.sys', JPATH_ADMINISTRATOR);
+					$lang->load($item->component.'.sys', JPATH_ADMINISTRATOR.'/components/'.$item->component);
+					$lang->load($item->component.'.menu', JPATH_ADMINISTRATOR);
+					$lang->load($item->component.'.menu', JPATH_ADMINISTRATOR.'/components/'.$item->component);
+				}
+			}
 		}
 		return $items;
 	}
