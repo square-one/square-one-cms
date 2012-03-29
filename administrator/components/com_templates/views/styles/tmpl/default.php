@@ -13,8 +13,6 @@ defined('_JEXEC') or die;
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.multiselect');
-$system_admin = false;
-$system_site = false;
 
 $user		= JFactory::getUser();
 $listOrder	= $this->escape($this->state->get('list.ordering'));
@@ -80,11 +78,6 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				$canCreate	= $user->authorise('core.create',		'com_templates');
 				$canEdit	= $user->authorise('core.edit',			'com_templates');
 				$canChange	= $user->authorise('core.edit.state',	'com_templates');
-				if ($system_admin == true && $item->template == 'system' && $item->client_id == 1) continue;
-				if ($system_site == true && $item->template == 'system' && $item->client_id == 0) continue;
-				if ($system_admin == false && $item->template == 'system' && $item->client_id == 1) $system_admin = true;
-				if ($system_site == false && $item->template == 'system' && $item->client_id == 0) $system_site = true;
-				
 			?>
 			<tr class="row<?php echo $i % 2; ?>">
 				<td width="1%" class="center">

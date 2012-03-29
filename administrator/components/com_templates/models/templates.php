@@ -101,6 +101,9 @@ class TemplatesModelTemplates extends JModelList
 				$query->where('a.element LIKE '.$search.' OR a.name LIKE '.$search);
 			}
 		}
+		
+		// Hide the system templates
+		$query->where('a.element != '.$db->quote('system'));
 
 		// Add the list ordering clause.
 		$query->order($db->escape($this->getState('list.ordering', 'a.folder')).' '.$db->escape($this->getState('list.direction', 'ASC')));
