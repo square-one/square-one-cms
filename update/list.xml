@@ -71,27 +71,65 @@
 	<extension name="Hathor Administrator Template" element="hathor" type="template" client="administrator" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_hathor.xml"/>
 	
 	<!-- Languages -->
-	<extension name="Afrikaans af-ZA" element="af-ZA" type="package" version="2.5.1.1" detailsurl="http://joomla4africa.org/updates/af-ZA_details.xml"/>
-	<extension name="Arabic ar-AA" element="ar-AA" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_ar-AA.xml"/>
-	<extension name="Azeri az-AZ" element="az-AZ" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_az-AZ.xml"/>
+	<extension name="Afrikaans af-ZA" element="af-ZA" type="language" version="2.5.1.1" detailsurl="http://joomla4africa.org/updates/af-ZA_details.xml"/>
+	<extension name="Arabic ar-AA" element="ar-AA" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_ar-AA.xml"/>
+	<extension name="Azeri az-AZ" element="az-AZ" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_az-AZ.xml"/>
 	<!-- Basque eu-ES -->
-	<extension name="Belarusian be-BY" element="be-BY" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_be-BY.xml"/>
-	<extension name="Bengali bn-BD" element="bn-BD" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_bn-BD.xml"/>
-	<extension name="Bulgarian bg-BG" element="bg-BG" type="package" version="2.5.1.0" detailsurl="http://translations.joomla-bg.com/bg-BG_details.xml"/>
-	<extension name="Bosnian bs-BA" element="bs-BA" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_bs-BA.xml"/>
+	<extension name="Belarusian be-BY" element="be-BY" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_be-BY.xml"/>
+	<extension name="Bengali bn-BD" element="bn-BD" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_bn-BD.xml"/>
+	<extension name="Bulgarian bg-BG" element="bg-BG" type="language" version="2.5.1.0" detailsurl="http://translations.joomla-bg.com/bg-BG_details.xml"/>
+	<extension name="Bosnian bs-BA" element="bs-BA" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_bs-BA.xml"/>
 	<!-- Catalan ca-ES -->
-	<extension name="Chinese Simplified zh-CN" element="zh-CN" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_zh-CN.xml" />
-	<extension name="Chinese Traditional zh-TW" element="zh-TW" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_zh-TW.xml" />
-	<extension name="Croatian hr-HR" element="hr-HR" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_hr-HR.xml" />
-	<extension name="Czech cs-CZ" element="cs-CZ" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_cs-CZ.xml" />
-	<extension name="Danish da-DK" element="da-DK" type="package" version="2.5.2" detailsurl="http://danskjoomla.dk/updates/langupdate.xml" />
-	<extension name="Dutch nl-NL" element="nl-NL" type="package" version="2.5.2" detailsurl="http://download.joomlacommunity.eu/downloads/updates/translationlist.xml" />
-	<extension name="English Australian en-AU" element="en-AU" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_en-AU.xml" />
-	<extension name="English American en-US" element="en-US" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_en-US.xml" />
-	<extension name="Estonian et-EE" element="et-EE" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_et-EE.xml" />
-	<extension name="Finnish fi-FL" element="fi-FL" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_fi-FL.xml" />
-	<extension name="Flemish nl-BE" element="nl-BE" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_nl-BE.xml" />
-	<extension name="French fr-FR" element="fr-FR" type="package" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_fr-FR.xml" />
+	<extension name="Chinese Simplified zh-CN" element="zh-CN" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_zh-CN.xml" />
+	<extension name="Chinese Traditional zh-TW" element="zh-TW" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_zh-TW.xml" />
+	<extension name="Croatian hr-HR" element="hr-HR" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_hr-HR.xml" />
+	<extension name="Czech cs-CZ" element="cs-CZ" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_cs-CZ.xml" />
+	<extension name="Danish da-DK" element="da-DK" type="language" version="2.5.2" detailsurl="http://danskjoomla.dk/updates/langupdate.xml" />
+	<extension name="Dutch nl-NL" element="nl-NL" type="language" version="2.5.2" detailsurl="http://download.joomlacommunity.eu/downloads/updates/translationlist.xml" />
+	<extension name="English Australian en-AU" element="en-AU" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_en-AU.xml" />
+	<extension name="English American en-US" element="en-US" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_en-US.xml" />
+	<extension name="Estonian et-EE" element="et-EE" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_et-EE.xml" />
+	<extension name="Finnish fi-FL" element="fi-FL" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_fi-FL.xml" />
+	<extension name="Flemish nl-BE" element="nl-BE" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_nl-BE.xml" />
+	<extension name="French fr-FR" element="fr-FR" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_fr-FR.xml" />
+	<extension name="Galacian gl-ES" element="gl-ES" type="language" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/lng_gl-ES.xml" />
+	<!-- Georgian ka-GE -->
+	<extension name="German de-DE" element="de-DE" type="language" version="2.5.3" detailsurl="http://update.jgerman.de/translationlist.xml" />
+	<extension name="Greek el-GR" element="el-GR" type="language" version="2.5.1" detailsurl="http://www.joomla.gr/el-GR_joomla_lang_full-update.xml" />
+	<extension name="Hebrew he-IL" element="he-IL" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_he-IL.xml" />
+	<extension name="Hungarian hu-HU" element="hu-HU" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_hu-HU.xml" />
+	<!-- Icelandic is-IS -->
+	<extension name="Italian it-IT" element="it-IT" type="language" version="2.5.2" detailsurl="http://update.squareonecms.org/extensions/lng_it-IT.xml" />
+	<extension name="Japanese ja-JP" element="ja-JP" type="language" version="2.5.3" detailsurl="http://update.squareonecms.org/extensions/lng_ja-JP.xml" />
+	<extension name="Khmer km-KH" element="km-KH" type="language" version="2.5.2" detailsurl="http://update.squareonecms.org/extensions/lng_km-KH.xml" />
+	<extension name="Korean ko-KR" element="ko-KR" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_hu-HU.xml" />
+	<extension name="Central Kurdish ckb-IQ" element="ckb-IQ" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_ckb-IQ.xml" />
+	<extension name="Latvian lv-LV" element="lv-LV" type="language" version="2.5.2" detailsurl="http://www.joomlalv.org/update/joomla-latvian-full.xml" />
+	<!-- Lithuanian lt-LT -->
+	<extension name="Macedonian mk-MK" element="mk-MK" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_mk-MK.xml" />
+	<extension name="Malayalam ml-IN" element="ml-IN" type="language" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/lng_ml-IN.xml" />
+	<!-- Mongolian mn-MN -->
+	<extension name="Norwegian Bokmål nb-NO" element="nb-NO" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_nb-NO.xml" />
+	<extension name="Norwegian Nynorsk nn-NO" element="nn-NO" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_nn-NO.xml" />
+	<extension name="Persian fa-IR" element="fa-IR" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_fa-IR.xml" />
+	<extension name="Polish pl-PL" element="pl-PL" type="language" version="2.5.3" detailsurl="http://update.squareonecms.org/extensions/lng_pl-PL.xml" />
+	<extension name="Portuguese Brazil pt-BR" element="pt-BR" type="language" version="2.5.3" detailsurl="http://update.squareonecms.org/extensions/lng_pt-BR.xml" />
+	<extension name="Portuguese Portugal pt-PT" element="pt-PT" type="language" version="2.5.1" detailsurl="http://update.joomlapt.com/translationlist.xml" />
+	<extension name="Romanian ro-RO" element="ro-RO" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_ro-RO.xml" />
+	<extension name="Russian ru-RU" element="ru-RU" type="language" version="2.5.1.3" detailsurl="http://joomlaportal.ru/translations.xml" />
+	<extension name="Scottish Gaelic gd-GB" element="gd-GB" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_gd-GB.xml" />
+	<extension name="Serbian Cyrillic sr-RS" element="sr-RS" type="language" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/lng_sr-RS.xml" />
+	<extension name="Serbian Latin sr-YU" element="sr-YU" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_sr-YU.xml" />
+	<extension name="Slovak sk-SK" element="sk-SK" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_sk-SK.xml" />
+	<extension name="Spanish es-ES" element="es-ES" type="language" version="2.5.3" detailsurl="http://updates.comunidadjoomla.org/es-ES_joomla_lang_packs_list.xml" />
+	<extension name="Swahili sw-TZ" element="sw-TZ" type="language" version="2.5.1.a1" detailsurl="http://joomla4africa.org/updates/sw-TZ_details.xml"/>
+	<extension name="Swedish sv-SE" element="sv-SE" type="language" version="2.5.2" detailsurl="http://update.squareonecms.org/extensions/lng_sv-SE.xml" />
+	<extension name="East Syriac sy-IQ" element="sy-IQ" type="language" version="2.5.2" detailsurl="http://update.squareonecms.org/extensions/lng_sy-IQ.xml" />
+	<extension name="Tamil India ta-IN" element="ta-IN" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_ta-IN.xml" />
+	<extension name="Thai th-TH" element="th-TH" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_th-TH.xml" />
+	<extension name="Turkish tr-TR" element="tr-TR" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_tr-TR.xml" />
+	<extension name="Ukrainian uk-UA" element="uk-UA" type="language" version="2.5.1" detailsurl="http://joomla-ua.org/update/lang/joomla25.xml" />
+	<extension name="Urdu Pakistan ur-PK" element="ur-PK" type="language" version="2.5.1" detailsurl="http://update.squareonecms.org/extensions/lng_ur-PK.xml" />
+	<extension name="Uyghur ug-CN" element="ug-CN" type="language" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/lng_ug-CN.xml" />
 	
-	<extension name="Swahili sw-TZ" element="sw-TZ" type="package" version="2.5.1.a1" detailsurl="http://joomla4africa.org/updates/sw-TZ_details.xml"/>
 </extensionset>

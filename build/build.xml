@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="square-one" default="build" basedir="../">
 	
-    <taskdef name="changelog" classname=".usr.share.php.phing.tasks.squareone.ChangelogTask" />
-    
     <target name="build">
         
         <xmlproperty file="administrator/manifests/files/squareone.xml" />
@@ -26,6 +24,13 @@
 		<echo file="installation/CHANGELOG" msg="${squareone.changelog}" />
 		<echo file="installation/CHANGELOG" append="true" msg="${squareone.log}" />
         
+		<!-- Remove old zips -->
+		<delete>
+			<fileset dir="build">
+				<include name="*.zip" />
+			</fileset>
+		</delete>
+		
         <!-- Build zip file -->
         <zip destfile="build/${filename}">
             <fileset dir=".">
