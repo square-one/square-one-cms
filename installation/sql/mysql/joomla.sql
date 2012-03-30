@@ -417,7 +417,16 @@ INSERT INTO `#__menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 (138, 'admin', 'MOD_MENU_EXTENSIONS_LANGUAGE_MANAGER', 'modmenuextensionslanguagemanager', '', 'modmenuextensionsextensions/modmenuextensionslanguagemanager', 'index.php?option=com_languages', 'component', 1, 133, 2, 11, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:language', 0, '', 70, 71, 0, '*', 1),
 (139, 'admin', 'Separator', 'separator', '', 'modmenucontrolpanel/separator', '', 'separator', 1, 109, 2, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '', 16, 17, 0, '*', 1),
 (140, 'admin', 'COM_MENUS_SUBMENU_MENUS', 'commenussubmenumenus', '', 'modmenumenus/commenussubmenumenus', '', 'menus', 1, 125, 2, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:menu', 0, '', 44, 45, 0, '*', 1),
+<<<<<<< HEAD
 (141, 'admin', 'MOD_MENU', 'adminmodmenu', '', 'modmenumenus/adminmodmenu', 'index.php?option=com_menus&view=adminitems', 'component', 1, 125, 2, 14, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:menu', 0, '', 42, 43, 0, '*', 1);
+=======
+(141, 'admin', 'MOD_MENU', 'adminmodmenu', '', 'modmenumenus/adminmodmenu', 'index.php?option=com_menus&view=adminitems', 'component', 1, 125, 2, 14, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:menu', 0, '', 42, 43, 0, '*', 1),
+(142, 'admin', 'COM_JOOMLAUPDATE', 'com-joomlaupdate', '', 'modmenucontrolpanel/com-joomlaupdate', 'index.php?option=com_joomlaupdate', 'component', 1, 109, 2, 28, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:help-security', 0, '', 16, 17, 0, '', 1),
+(143, 'admin', 'MOD_MENU_COM_USERS_NOTES', 'mod-menu-com-users-notes', '', 'modmenucomusersusers/mod-menu-com-users-notes', 'index.php?option=com_users&view=notes', 'component', 1, 117, 2, 25, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:user-note', 0, '', 36, 39, 0, '', 1),
+(144, 'admin', 'MOD_MENU_COM_USERS_ADD_NOTE', 'mod-menu-com-users-add-note', '', 'modmenucomusersusers/mod-menu-com-users-notes/mod-menu-com-users-add-note', 'index.php?option=com_users&task=note.add', 'component', 1, 143, 3, 25, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:newarticle', 0, '', 37, 38, 0, '', 1),
+(145, 'admin', 'MOD_MENU_COM_USERS_NOTE_CATEGORIES', 'mod-menu-com-users-note-categories', '', 'modmenucomusersusers/mod-menu-com-users-note-categories', 'index.php?option=com_categories&view=categories&extension=com_users.notes', 'component', 1, 117, 2, 6, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:category', 0, '', 40, 43, 0, '', 1),
+(146, 'admin', 'MOD_MENU_COM_CONTENT_NEW_CATEGORY', 'mod-menu-com-content-new-category', '', 'modmenucomusersusers/mod-menu-com-users-note-categories/mod-menu-com-content-new-category', 'index.php?option=com_categories&task=category.add&extension=com_users', 'component', 1, 145, 3, 6, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:newarticle', 0, '', 41, 42, 0, '', 1);
+>>>>>>> 26a8471... Cleaning install sql
 
 # -------------------------------------------------------
 
