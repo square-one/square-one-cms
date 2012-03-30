@@ -101,11 +101,12 @@ class InstallerModelInstall extends JModelList
         if (!isset($filters['update_site_id'])) JRequest::setVar('update_site_id', '1');
         $this->setState('filter.update_site_id', isset($filters['update_site_id']) ? $filters['update_site_id'] : '1');
         $this->setState('filter.folder', isset($filters['folder']) ? $filters['folder'] : '');
+	$this->setState('filter.search', isset($filters['search']) ? $filters['search'] : '');
 
 		parent::populateState('a.name', 'asc');
 	}
 
-    /**
+        /**
 	 * Method to get the database query
 	 *
 	 * @return	JDatabaseQuery	The database query
@@ -122,6 +123,7 @@ class InstallerModelInstall extends JModelList
         if ($this->getState('filter.type') != '') $query->where('a.type = '.$db->quote($this->getState('filter.type')));
         if ($this->getState('filter.update_site_id') != '') $query->where('a.update_site_id = '.$db->quote($this->getState('filter.update_site_id')));
         if ($this->getState('filter.folder') != '') $query->where('a.folder = '.$db->quote($this->getState('filter.folder')));
+	if ($this->getState('filter.search') != '') $query->where('CONCAT(a.name, a.element, a.folder) LIKE '.$db->quote('%'.$this->getState('filter.search').'%'));
 
         // Join update_sites
         $query->join('left', $db->nameQuote('#__update_sites').' AS u ON u.update_site_id = a.update_site_id');
