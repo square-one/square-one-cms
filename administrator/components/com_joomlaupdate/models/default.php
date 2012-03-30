@@ -37,7 +37,7 @@ class JoomlaupdateModelDefault extends JModel
 		{
 			// "Long Term Support (LTS) branch - Recommended"
 			case 'lts':
-				$updateURL = 'http://update.joomla.org/core/list.xml';
+				$updateURL = 'http://update.squareonecms.org/list.xml';
 				break;
 
 			// "Short term support (STS) branch"
@@ -123,7 +123,7 @@ class JoomlaupdateModelDefault extends JModel
 	{
 		// Initialise the return array
 		$ret = array(
-			'installed'		=> JVERSION,
+			'installed'		=> S1VERSION,
 			'latest'		=> null,
 			'object'		=> null
 		);
@@ -139,7 +139,7 @@ class JoomlaupdateModelDefault extends JModel
 
 		if (is_null($updateObject))
 		{
-			$ret['latest'] = JVERSION;
+			$ret['latest'] = S1VERSION;
 			return $ret;
 		}
 		else
@@ -153,7 +153,7 @@ class JoomlaupdateModelDefault extends JModel
 		$update->loadFromXML($updateObject->detailsurl);
 
 		// Pass the update object
-		if($ret['latest'] == JVERSION) {
+		if($ret['latest'] == S1VERSION) {
 			$ret['object'] = null;
 		} else {
 			$ret['object'] = $update;
@@ -494,7 +494,7 @@ ENDDATA;
 		$query->select($query->qn('extension_id'))
 			->from($query->qn('#__extensions'));
 		$query->where($query->qn('type') . ' = ' . $query->q('file'))
-			->where($query->qn('element') . ' = ' . $query->q('joomla'));
+			->where($query->qn('element') . ' = ' . $query->q('squareone'));
 		$db->setQuery($query);
 		try
 		{
@@ -516,7 +516,7 @@ ENDDATA;
 			// Load the entry and update the manifest_cache
 			$row->load($id);
 			// Update name
-			$row->set('name', 'files_joomla');
+			$row->set('name', 'files_squareone');
 			// Update manifest
 			$row->manifest_cache = $installer->generateManifestCache();
 			if (!$row->store())
@@ -531,13 +531,13 @@ ENDDATA;
 		else
 		{
 			// Add an entry to the extension table with a whole heap of defaults
-			$row->set('name', 'files_joomla');
+			$row->set('name', 'files_squareone');
 			$row->set('type', 'file');
-			$row->set('element', 'joomla');
+			$row->set('element', 'squareone');
 			// There is no folder for files so leave it blank
 			$row->set('folder', '');
 			$row->set('enabled', 1);
-			$row->set('protected', 0);
+			$row->set('protected', 1);
 			$row->set('access', 0);
 			$row->set('client_id', 0);
 			$row->set('params', '');
@@ -662,7 +662,7 @@ ENDDATA;
 		}
 
 		// Remove joomla.xml from the site's root
-		$target = JPATH_ROOT . '/joomla.xml';
+		$target = JPATH_ROOT . '/squareone.xml';
 		if (!@unlink($target))
 		{
 			JFile::delete($target);
