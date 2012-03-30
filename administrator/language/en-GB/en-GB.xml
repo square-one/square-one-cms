@@ -32,6 +32,8 @@
 		<filename>en-GB.com_finder.sys.ini</filename>
 		<filename>en-GB.com_installer.ini</filename>
 		<filename>en-GB.com_installer.sys.ini</filename>
+		<filename>en-GB.com_joomlaupdate.ini</filename>
+		<filename>en-GB.com_joomlaupdate.sys.ini</filename>
 		<filename>en-GB.com_languages.ini</filename>
 		<filename>en-GB.com_languages.sys.ini</filename>
 		<filename>en-GB.com_login.ini</filename>
@@ -160,8 +162,6 @@
 		<filename>en-GB.plg_system_cache.sys.ini</filename>
 		<filename>en-GB.plg_system_debug.ini</filename>
 		<filename>en-GB.plg_system_debug.sys.ini</filename>
-		<filename>en-GB.plg_system_finder.ini</filename>
-		<filename>en-GB.plg_system_finder.sys.ini</filename>
 		<filename>en-GB.plg_system_highlight.ini</filename>
 		<filename>en-GB.plg_system_highlight.sys.ini</filename>
 		<filename>en-GB.plg_system_languagecode.ini</filename>

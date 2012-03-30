@@ -99,7 +99,7 @@ var Installation = new Class({
 				active.removeClass('active');
 				var nextStep = document.id(page);
 				nextStep.addClass('active');
-			}.bind(this),
+			}.bind(this)
 		}).send();
 
 		return false;
@@ -219,7 +219,7 @@ var Installation = new Class({
 	},
 
     addToggler: function() {
-    	new Accordion($$('h4.moofx-toggler'), $$('div.moofx-slider'), {
+		new Fx.Accordion($$('h4.moofx-toggler'), $$('div.moofx-slider'), {
 			onActive: function(toggler, i) {
 				toggler.addClass('moofx-toggler-down');
 			},
