@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extensionset name="Square One" description="Square One CMS">
-	<extension name="Square One" element="squareone" type="file" version="2.5.1" detailsurl="http://update.squareonecms.org/versions.xml"/>
+	<extension name="Square One" element="squareone" type="file" version="2.5.3" detailsurl="http://update.squareonecms.org/versions.xml"/>
 	
 	<!-- Components -->
 	<extension name="Banners" element="com_banners" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_banners.xml"/>
