@@ -1212,6 +1212,7 @@ class MenusModelAdminitem extends JModelAdmin
 		foreach ($pks as $i => $pk)
 		{
 			if ($table->load($pk)) {
+				if ($table->client_id !== '1') continue;
 				if (!array_key_exists($table->language, $languages)) {
 					$languages[$table->language] = true;
 

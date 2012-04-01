@@ -159,10 +159,32 @@ class JTableMenu extends JTableNested
 			return false;
 		}
 		// Verify that the home page for this language is unique
-		if ($this->home == '1')
+		if ($this->home == '1' && $this->client_id == '0')
 		{
 			$table = JTable::getInstance('Menu', 'JTable');
 			if ($table->load(array('home' => '1', 'language' => $this->language)))
+			{
+				if ($table->checked_out && $table->checked_out != $this->checked_out)
+				{
+					$this->setError(JText::_('JLIB_DATABASE_ERROR_MENU_DEFAULT_CHECKIN_USER_MISMATCH'));
+					return false;
+				}
+				$table->home = 0;
+				$table->checked_out = 0;
+				$table->checked_out_time = $db->getNullDate();
+				$table->store();
+			}
+			// Verify that the home page for this menu is unique.
+			if ($table->load(array('home' => '1', 'menutype' => $this->menutype)) && ($table->id != $this->id || $this->id == 0))
+			{
+				$this->setError(JText::_('JLIB_DATABASE_ERROR_MENU_HOME_NOT_UNIQUE_IN_MENU'));
+				return false;
+			}
+		}
+		if ($this->home == '1' && $this->client_id == '1')
+		{
+			$table = JTable::getInstance('Menu', 'JTable');
+			if ($table->load(array('home' => '1', 'client_id' => '1')))
 			{
 				if ($table->checked_out && $table->checked_out != $this->checked_out)
 				{

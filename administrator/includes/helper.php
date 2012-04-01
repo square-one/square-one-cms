@@ -32,10 +32,19 @@ class JAdministratorHelper
 		}
 
 		if (empty($option)) {
-			$option = 'com_cpanel';
+			$menu = JTable::getInstance('Menu', 'JTable');
+			$menu->load(array('home' => '1', 'client_id' => '1'));
+			$uri = JURI::getInstance();
+			$uri->parse($menu->link);
+			$vars = $uri->getQuery(true);
+
+			foreach ($vars as $var => $key)
+			{
+				JRequest::setVar($var, $key);
+				if ($var == 'option') $option = $key;
+			}
 		}
 
-		JRequest::setVar('option', $option);
-		return $option;
+		return ($option) ? $option : 'com_cpanel';
 	}
 }
