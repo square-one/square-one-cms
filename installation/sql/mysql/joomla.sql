@@ -42,7 +42,9 @@ INSERT INTO `#__assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 (18, 1, 38, 41, 1, 'com_users', 'com_users', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.own":{"6":1},"core.edit.state":[]}'),
 (19, 6, 11, 14, 2, 'com_content.category.2', 'Uncategorised', '{"core.create":{"8":1},"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
 (20, 19, 12, 13, 3, 'com_content.article.1', 'Welcome to Square One', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(21, 18, 39, 40, 1, 'com_users.notes.category.3','Uncategorised','{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}');
+(21, 18, 39, 40, 1, 'com_users.notes.category.3','Uncategorised','{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(22, 1, 65, 66, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{"core.admin":[],"core.manage":[],"core.delete":[],"core.edit.state":[]}');
+
 
 # -------------------------------------------------------
 
@@ -104,7 +106,7 @@ CREATE TABLE `#__categories` (
 INSERT INTO `#__categories` VALUES
 (1, 0, 0, 0, 13, 0, '', 'system', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '', 0, '2009-10-18 16:07:09', 0, '0000-00-00 00:00:00', 0, '*'),
 (2, 19, 1, 1, 2, 1, 'uncategorised', 'com_content', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2010-06-28 13:26:37', 0, '0000-00-00 00:00:00', 0, '*'),
-(3, 21, 1, 3, 4, 1, 'uncategorised', 'com_users', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2010-06-28 13:28:33', 0, '0000-00-00 00:00:00', 0, '*');
+(3, 21, 1, 3, 4, 1, 'uncategorised', 'com_users.notes', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2010-06-28 13:28:33', 0, '0000-00-00 00:00:00', 0, '*');
 
 # -------------------------------------------------------
 
@@ -236,7 +238,8 @@ INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (20, 'com_templates', 'component', 'com_templates', '', 1, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (22, 'com_content', 'component', 'com_content', '', 1, 1, 0, 1, '{"legacy":false,"name":"com_content","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2012 Open Source Matters. All rights reserved.\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"2.5.0","description":"COM_CONTENT_XML_DESCRIPTION","group":""}', '{"article_layout":"_:default","show_title":"1","link_titles":"1","show_intro":"1","show_category":"1","link_category":"1","show_parent_category":"0","link_parent_category":"0","show_author":"1","link_author":"0","show_create_date":"0","show_modify_date":"0","show_publish_date":"1","show_item_navigation":"1","show_vote":"0","show_readmore":"1","show_readmore_title":"1","readmore_limit":"100","show_icons":"1","show_print_icon":"1","show_email_icon":"1","show_hits":"1","show_noauth":"0","show_publishing_options":"1","show_article_options":"1","show_urls_images_frontend":"0","show_urls_images_backend":"1","targeta":0,"targetb":0,"targetc":0,"float_intro":"left","float_fulltext":"left","category_layout":"_:blog","show_category_title":"0","show_description":"0","show_description_image":"0","maxLevel":"1","show_empty_categories":"0","show_no_articles":"1","show_subcat_desc":"1","show_cat_num_articles":"0","show_base_description":"1","maxLevelcat":"-1","show_empty_categories_cat":"0","show_subcat_desc_cat":"1","show_cat_num_articles_cat":"1","num_leading_articles":"1","num_intro_articles":"4","num_columns":"2","num_links":"4","multi_column_order":"0","show_subcategory_content":"0","show_pagination_limit":"1","filter_field":"hide","show_headings":"1","list_show_date":"0","date_format":"","list_show_hits":"1","list_show_author":"1","orderby_pri":"order","orderby_sec":"rdate","order_date":"published","show_pagination":"2","show_pagination_results":"1","show_feed_link":"1","feed_summary":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (23, 'com_config', 'component', 'com_config', '', 1, 1, 0, 1, '{"legacy":false,"name":"com_config","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2012 Open Source Matters. All rights reserved.\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"2.5.0","description":"COM_CONFIG_XML_DESCRIPTION","group":""}', '{"filters":{"1":{"filter_type":"NH","filter_tags":"","filter_attributes":""},"6":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"7":{"filter_type":"NONE","filter_tags":"","filter_attributes":""},"2":{"filter_type":"NH","filter_tags":"","filter_attributes":""},"3":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"4":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"5":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"10":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"12":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"8":{"filter_type":"NONE","filter_tags":"","filter_attributes":""}}}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(25, 'com_users', 'component', 'com_users', '', 1, 1, 0, 1, '', '{"allowUserRegistration":"1","new_usertype":"2","useractivation":"1","frontend_userparams":"1","mailSubjectPrefix":"","mailBodySuffix":""}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
+(25, 'com_users', 'component', 'com_users', '', 1, 1, 0, 1, '', '{"allowUserRegistration":"1","new_usertype":"2","useractivation":"1","frontend_userparams":"1","mailSubjectPrefix":"","mailBodySuffix":""}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(28, 'com_joomlaupdate', 'component', 'com_joomlaupdate', '', 1, 1, 0, 1, '{"legacy":false,"name":"com_joomlaupdate","type":"component","creationDate":"February 2012","author":"Joomla! Project","copyright":"(C) 2005 - 2012 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"2.5.0","description":"COM_JOOMLAUPDATE_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
 
 # Libraries
 INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
@@ -291,7 +294,8 @@ INSERT INTO `#__extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (436, 'plg_system_languagecode', 'plugin', 'languagecode', 'system', 0, 0, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 10, 0),
 (437, 'plg_quickicon_joomlaupdate', 'plugin', 'joomlaupdate', 'quickicon', 0, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (438, 'plg_quickicon_extensionupdate', 'plugin', 'extensionupdate', 'quickicon', 0, 1, 1, 1, '', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(439, 'plg_captcha_recaptcha', 'plugin', 'recaptcha', 'captcha', 0, 1, 1, 1, '{}', '{"public_key":"","private_key":"","theme":"clean"}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
+(439, 'plg_captcha_recaptcha', 'plugin', 'recaptcha', 'captcha', 0, 1, 1, 1, '{}', '{"public_key":"","private_key":"","theme":"clean"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(440, 'plg_system_squareone', 'plugin', 'squareone', 'system', 0, 1, 1, 1, '{"legacy":false,"name":"plg_system_squareone","type":"plugin","creationDate":"April 2012","author":"Square One CMS","copyright":"Copyright (C) 2012 Square One CMS. All rights reserved.","authorEmail":"","authorUrl":"www.squareonecms.org","version":"2.5.0","description":"PLG_SQUAREONE_XML_DESC","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
 
 # Templates
 
@@ -328,11 +332,13 @@ CREATE TABLE `#__languages` (
   `metadesc` text NOT NULL,
   `sitename` varchar(1024) NOT NULL default '',
   `published` int(11) NOT NULL default '0',
+  `access` integer unsigned NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL default '0',
   PRIMARY KEY  (`lang_id`),
   UNIQUE `idx_sef` (`sef`),
   UNIQUE `idx_image` (`image`),
   UNIQUE `idx_langcode` (`lang_code`),
+  KEY `idx_access` (`access`),
   INDEX `idx_ordering` (`ordering`)
 )  DEFAULT CHARSET=utf8;
 
@@ -417,16 +423,12 @@ INSERT INTO `#__menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 (138, 'admin', 'MOD_MENU_EXTENSIONS_LANGUAGE_MANAGER', 'modmenuextensionslanguagemanager', '', 'modmenuextensionsextensions/modmenuextensionslanguagemanager', 'index.php?option=com_languages', 'component', 1, 133, 2, 11, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:language', 0, '', 70, 71, 0, '*', 1),
 (139, 'admin', 'Separator', 'separator', '', 'modmenucontrolpanel/separator', '', 'separator', 1, 109, 2, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '', 16, 17, 0, '*', 1),
 (140, 'admin', 'COM_MENUS_SUBMENU_MENUS', 'commenussubmenumenus', '', 'modmenumenus/commenussubmenumenus', '', 'menus', 1, 125, 2, 0, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:menu', 0, '', 44, 45, 0, '*', 1),
-<<<<<<< HEAD
-(141, 'admin', 'MOD_MENU', 'adminmodmenu', '', 'modmenumenus/adminmodmenu', 'index.php?option=com_menus&view=adminitems', 'component', 1, 125, 2, 14, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:menu', 0, '', 42, 43, 0, '*', 1);
-=======
 (141, 'admin', 'MOD_MENU', 'adminmodmenu', '', 'modmenumenus/adminmodmenu', 'index.php?option=com_menus&view=adminitems', 'component', 1, 125, 2, 14, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:menu', 0, '', 42, 43, 0, '*', 1),
 (142, 'admin', 'COM_JOOMLAUPDATE', 'com-joomlaupdate', '', 'modmenucontrolpanel/com-joomlaupdate', 'index.php?option=com_joomlaupdate', 'component', 1, 109, 2, 28, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:help-security', 0, '', 16, 17, 0, '', 1),
 (143, 'admin', 'MOD_MENU_COM_USERS_NOTES', 'mod-menu-com-users-notes', '', 'modmenucomusersusers/mod-menu-com-users-notes', 'index.php?option=com_users&view=notes', 'component', 1, 117, 2, 25, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:user-note', 0, '', 36, 39, 0, '', 1),
 (144, 'admin', 'MOD_MENU_COM_USERS_ADD_NOTE', 'mod-menu-com-users-add-note', '', 'modmenucomusersusers/mod-menu-com-users-notes/mod-menu-com-users-add-note', 'index.php?option=com_users&task=note.add', 'component', 1, 143, 3, 25, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:newarticle', 0, '', 37, 38, 0, '', 1),
 (145, 'admin', 'MOD_MENU_COM_USERS_NOTE_CATEGORIES', 'mod-menu-com-users-note-categories', '', 'modmenucomusersusers/mod-menu-com-users-note-categories', 'index.php?option=com_categories&view=categories&extension=com_users.notes', 'component', 1, 117, 2, 6, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:category', 0, '', 40, 43, 0, '', 1),
 (146, 'admin', 'MOD_MENU_COM_CONTENT_NEW_CATEGORY', 'mod-menu-com-content-new-category', '', 'modmenucomusersusers/mod-menu-com-users-note-categories/mod-menu-com-content-new-category', 'index.php?option=com_categories&task=category.add&extension=com_users', 'component', 1, 145, 3, 6, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:newarticle', 0, '', 41, 42, 0, '', 1);
->>>>>>> 26a8471... Cleaning install sql
 
 # -------------------------------------------------------
 

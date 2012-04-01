@@ -2024,6 +2024,7 @@ a.jgrid:hover {	text-decoration: none;}
 .jgrid span.expired					{ background-image: url(../images/admin/publish_r.png); }
 .jgrid span.pending					{ background-image: url(../images/admin/publish_y.png); }
 .jgrid span.warning					{ background-image: url(../images/admin/publish_y.png); }
+.jgrid span.protected				{ background-image: url(../images/admin/icon-16-protected.png); }
 
 /* -- ICON STYLES ----------------------------- */
 .icon-16-alert						{	background-image: url(../images/menu/icon-16-alert.png);	}
@@ -2138,6 +2139,7 @@ a.jgrid:hover {	text-decoration: none;}
 .icon-32-remove						{	background-image: url(../images/toolbar/icon-32-remove.png);	}
 .icon-32-featured					{	background-image: url(../images/toolbar/icon-32-featured.png);	}
 .icon-32-stats						{	background-image: url(../images/toolbar/icon-32-stats.png);	}
+.icon-32-print						{	background-image: url(../images/toolbar/icon-32-print.png);	}
 .toolbar-inactive					{	background-position: 0 32px;  }
 
 /* -- HEADER ICON STYLES ----------------------------- */

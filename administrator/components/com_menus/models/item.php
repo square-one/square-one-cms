@@ -764,8 +764,8 @@ class MenusModelItem extends JModelAdmin
 		$db->setQuery($query);
 		$result = $db->loadObjectList();
 
-		if ($error = $db->getError()) {
-			$this->setError($error);
+		if ($db->getErrorNum()) {
+			$this->setError($db->getErrorMsg());
 			return false;
 		}
 
@@ -822,7 +822,8 @@ class MenusModelItem extends JModelAdmin
 		}
 		$this->setState('item.parent_id', $parentId);
 
-		if (!($menuType = $app->getUserState('com_menus.edit.item.menutype'))) {
+		$menuType = $app->getUserState('com_menus.edit.item.menutype');
+		if (JRequest::getCmd('menutype', false)) {
 			$menuType = JRequest::getCmd('menutype', 'mainmenu');
 		}
 		$this->setState('item.menutype', $menuType);
