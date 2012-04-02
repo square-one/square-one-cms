@@ -74,7 +74,7 @@ $doc->addCustomTag('<![endif]-->');
   <section class="content">
     <div id="content-container" class="clearfix">
 	    <div id="content-main">
-			<?php if ($this->getBuffer('message')) : ?>
+			<?php if (count($app->getMessageQueue())) : ?>
 				<jdoc:include type="message" />
 			<?php endif; ?>
 
@@ -100,6 +100,7 @@ $doc->addCustomTag('<![endif]-->');
     <footer>
         <jdoc:include type="modules" name="footer" style="xhtml" />
     </footer>
-    
+
 </body>
 </html>
+
