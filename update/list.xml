@@ -3,33 +3,33 @@
 	<extension name="Square One" element="squareone" type="file" version="2.5.3" detailsurl="http://update.squareonecms.org/versions.xml"/>
 	
 	<!-- Components -->
-	<extension name="Banners" element="com_banners" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_banners.xml"/>
-	<extension name="Contacts" element="com_contact" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_contact.xml"/>
-	<extension name="Smart Search (Finder)" element="com_finder" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_finder.xml"/>
+	<extension name="Banners" element="com_banners" type="component" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/com_banners.xml"/>
+	<extension name="Contacts" element="com_contact" type="component" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/com_contact.xml"/>
+	<extension name="Smart Search (Finder)" element="com_finder" type="component" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/com_finder.xml"/>
 	<extension name="Messages" element="com_messages" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_messages.xml"/>
-	<extension name="Newsfeeds" element="com_newsfeeds" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_newsfeeds.xml"/>
+	<extension name="Newsfeeds" element="com_newsfeeds" type="component" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/com_newsfeeds.xml"/>
 	<extension name="Redirect" element="com_redirect" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_redirect.xml"/>
-	<extension name="Search" element="com_search" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_search.xml"/>
-	<extension name="Weblinks" element="com_weblinks" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_weblinks.xml"/>
+	<extension name="Search" element="com_search" type="component" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/com_search.xml"/>
+	<extension name="Weblinks" element="com_weblinks" type="component" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/com_weblinks.xml"/>
 	<extension name="Wrapper" element="com_wrapper" type="component" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/com_wrapper.xml"/>
 	
 	<!-- Frontend Modules -->
-	<extension name="Articles Archive Module" element="mod_articles_archive" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_articles_archive.xml"/>
-	<extension name="Articles Categories Module" element="mod_articles_categories" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_articles_categories.xml"/>
+	<extension name="Articles Archive Module" element="mod_articles_archive" type="module" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/mod_articles_archive.xml"/>
+	<extension name="Articles Categories Module" element="mod_articles_categories" type="module" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/mod_articles_categories.xml"/>
 	<extension name="Articles Category Module" element="mod_articles_category" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_articles_category.xml"/>
-	<extension name="Articles Latest Module" element="mod_articles_latest" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_articles_latest.xml"/>
-	<extension name="Articles Newsflash Module" element="mod_articles_news" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_articles_news.xml"/>
+	<extension name="Articles Latest Module" element="mod_articles_latest" type="module" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/mod_articles_latest.xml"/>
+	<extension name="Articles Newsflash Module" element="mod_articles_news" type="module" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/mod_articles_news.xml"/>
 	<extension name="Articles Popular Module" element="mod_articles_popular" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_articles_popular.xml"/>
 	<extension name="Banners Module" element="mod_banners" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_banners.xml"/>
 	<extension name="Smart Search (Finder) Module" element="mod_finder" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_finder.xml"/>
 	<extension name="Footer Module" element="mod_footer" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_footer.xml"/>
-	<extension name="Random Image Module" element="mod_random_image" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_random_image.xml"/>
+	<extension name="Random Image Module" element="mod_random_image" type="module" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/mod_random_image.xml"/>
 	<extension name="Related Items Module" element="mod_related_items" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_related_items.xml"/>
 	<extension name="Search Module" element="mod_search" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_search.xml"/>
 	<extension name="Stats Module" element="mod_stats" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_stats.xml"/>
 	<extension name="Syndicate Module" element="mod_syndicate" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_syndicate.xml"/>
 	<extension name="Latest Users Module" element="mod_users_latest" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_users_latest.xml"/>
-	<extension name="Weblinks Module" element="mod_weblinks" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_weblinks.xml"/>
+	<extension name="Weblinks Module" element="mod_weblinks" type="module" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/mod_weblinks.xml"/>
 	<extension name="Whos Online Module" element="mod_whosonline" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_whosonline.xml"/>
 	<extension name="Wrapper Module" element="mod_wrapper" type="module" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/mod_wrapper.xml"/>
 	
@@ -44,8 +44,8 @@
 	<extension name="Page Navigation Content Plugin" element="pagenavigation" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_pagenavigation.xml"/>
 	<extension name="Vote Content Plugin" element="vote" type="plugin" folder="content" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_content_vote.xml"/>
 	<extension name="Codemirror Editor Plugin" element="codemirror" type="plugin" folder="editors" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors_codemirror.xml"/>
-	<extension name="TinyMCE Editor Plugin" element="tinymce" type="plugin" folder="editors" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors_tinymce.xml"/>
-	<extension name="Article Editor Button Plugin" element="article" type="plugin" folder="editors-xtd" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_article.xml"/>
+	<extension name="TinyMCE Editor Plugin" element="tinymce" type="plugin" folder="editors" version="3.4.9" detailsurl="http://update.squareonecms.org/extensions/plg_editors_tinymce.xml"/>
+	<extension name="Article Editor Button Plugin" element="article" type="plugin" folder="editors-xtd" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_article.xml"/>
 	<extension name="Image Editor Button Plugin" element="image" type="plugin" folder="editors-xtd" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_image.xml"/>
 	<extension name="Page Break Editor Button Plugin" element="pagebreak" type="plugin" folder="editors-xtd" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_pagebreak.xml"/>
 	<extension name="Readmore Editor Button Plugin" element="readmore" type="plugin" folder="editors-xtd" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_editors-xtd_readmore.xml"/>
@@ -56,19 +56,19 @@
 	<extension name="Weblinks Smart Search (Finder) Plugin" element="weblinks" type="plugin" folder="finder" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_finder_weblinks.xml"/>
 	<extension name="Categories Search Plugin" element="categories" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_categories.xml"/>
 	<extension name="Contacts Search Plugin" element="contacts" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_contacts.xml"/>
-	<extension name="Content Search Plugin" element="content" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_content.xml"/>
+	<extension name="Content Search Plugin" element="content" type="plugin" folder="search" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/plg_search_content.xml"/>
 	<extension name="Newsfeeds Search Plugin" element="newsfeeds" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_newsfeeds.xml"/>
 	<extension name="Weblinks Search Plugin" element="weblinks" type="plugin" folder="search" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_search_weblinks.xml"/>
 	<extension name="Highlight System Plugin" element="highlight" type="plugin" folder="system" version="2.5.2" detailsurl="http://update.squareonecms.org/extensions/plg_system_highlight.xml"/>
 	<extension name="Redirect System Plugin" element="redirect" type="plugin" folder="system" version="2.5.3" detailsurl="http://update.squareonecms.org/extensions/plg_system_redirect.xml"/>
 	<extension name="Contact Creator User Plugin" element="contactcreator" type="plugin" folder="user" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_contactcreator.xml"/>
-	<extension name="Profile User Plugin" element="profile" type="plugin" folder="user" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/plg_user_profile.xml"/>
+	<extension name="Profile User Plugin" element="profile" type="plugin" folder="user" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/plg_user_profile.xml"/>
 	
 	<!-- Templates -->
-	<extension name="Atomic Template" element="atomic" type="template" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_atomic.xml"/>
-	<extension name="Beez_20 Template" element="beez_20" type="template" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_beez_20.xml"/>
-	<extension name="Beez5 Template" element="beez5" type="template" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_beez5.xml"/>
-	<extension name="Hathor Administrator Template" element="hathor" type="template" client="administrator" version="2.5.0" detailsurl="http://update.squareonecms.org/extensions/tpl_hathor.xml"/>
+	<extension name="Atomic Template" element="atomic" type="template" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/tpl_atomic.xml"/>
+	<extension name="Beez_20 Template" element="beez_20" type="template" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/tpl_beez_20.xml"/>
+	<extension name="Beez5 Template" element="beez5" type="template" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/tpl_beez5.xml"/>
+	<extension name="Hathor Administrator Template" element="hathor" type="template" client="administrator" version="2.5.4" detailsurl="http://update.squareonecms.org/extensions/tpl_hathor.xml"/>
 	
 	<!-- Languages -->
 	<extension name="Afrikaans af-ZA" element="af-ZA" type="language" version="2.5.1.1" detailsurl="http://joomla4africa.org/updates/af-ZA_details.xml"/>
