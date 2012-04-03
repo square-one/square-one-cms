@@ -57,13 +57,16 @@ class MenusViewAdminitems extends JView
 				case 'alias':
 					$value = JText::_('COM_MENUS_TYPE_ALIAS');
 					break;
+				
+				case 'placeholder':
+					$value = JText::_('COM_MENUS_TYPE_PLACEHOLDER');
+					break;
 
 				case 'separator':
 					$value = JText::_('COM_MENUS_TYPE_SEPARATOR');
 					break;
 
 				case 'component':
-				default:
 					// load language
 						$lang->load($item->componentname.'.sys', JPATH_ADMINISTRATOR, null, false, false)
 					||	$lang->load($item->componentname.'.sys', JPATH_ADMINISTRATOR.'/components/'.$item->componentname, null, false, false)
@@ -135,6 +138,9 @@ class MenusViewAdminitems extends JView
                                 $value = JText::_('COM_MENUS_SUBMENU_MENUS');
 						}
 					}
+					break;
+				default:
+					$value = '';
 					break;
 			}
 			$item->item_type = $value;

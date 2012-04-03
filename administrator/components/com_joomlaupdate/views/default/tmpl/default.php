@@ -19,7 +19,7 @@ $ftpFieldsDisplay = $this->ftp['enabled'] ? '' : 'style = "display: none"';
 		<?php echo JText::_('COM_JOOMLAUPDATE_VIEW_DEFAULT_NOUPDATES') ?>
 	</legend>
 	<p>
-		<?php echo JText::sprintf('COM_JOOMLAUPDATE_VIEW_DEFAULT_NOUPDATESNOTICE', JVERSION); ?>
+		<?php echo JText::sprintf('COM_JOOMLAUPDATE_VIEW_DEFAULT_NOUPDATESNOTICE', S1VERSION); ?>
 	</p>
 </fieldset>
 

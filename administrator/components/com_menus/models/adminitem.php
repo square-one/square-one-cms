@@ -601,6 +601,11 @@ class MenusModelAdminitem extends JModelAdmin
 
 				parse_str(parse_url($table->link, PHP_URL_QUERY), $args);
 				break;
+			
+			case 'placeholder':
+				$table->link = '';
+				$table->component_id = 0;
+				break;
 
 			case 'separator':
 				$table->link = '';
@@ -920,12 +925,6 @@ class MenusModelAdminitem extends JModelAdmin
 			if (!$form->load($path, true, '/config')) {
 				throw new Exception(JText::_('JERROR_LOADFILE_FAILED'));
 			}
-		}
-
-
-		// Load the specific type file
-		if (!$form->loadFile('item_'.$type, false, false)) {
-			throw new Exception(JText::_('JERROR_LOADFILE_FAILED'));
 		}
 
 		// Association menu items

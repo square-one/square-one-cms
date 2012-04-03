@@ -32,7 +32,7 @@ class MenusViewAdminitem extends JView
 		$this->item		= $this->get('Item');
 		$this->modules	= $this->get('Modules');
 		$this->state	= $this->get('State');
-
+		
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			JError::raiseError(500, implode("\n", $errors));

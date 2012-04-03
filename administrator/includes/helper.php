@@ -29,6 +29,7 @@ class JAdministratorHelper
 		$user = JFactory::getUser();
 		if (!$user->authorise('core.login.admin')) {
 			$option = 'com_login';
+			JRequest::setVar('tmpl', 'login');
 		}
 
 		if (empty($option)) {
