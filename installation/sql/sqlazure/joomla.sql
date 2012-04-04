@@ -1486,78 +1486,85 @@ SELECT 1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, 0, '1900-
 UNION ALL
 SELECT 101, 'mainmenu', 'Home', 'home', '', 'home', 'index.php?option=com_content&view=article&id=1', 'component', 1, 1, 1, 22, 0, 0, '1900-01-01 00:00:00', 0, 1, '', 0, '{"show_title":"1","link_titles":"0","show_intro":"","show_category":"0","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"0","link_author":"","show_create_date":"0","show_modify_date":"0","show_publish_date":"0","show_item_navigation":"0","show_vote":"0","show_icons":"0","show_print_icon":"0","show_email_icon":"0","show_hits":"0","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 1, 2, 1, '*', 0
 UNION ALL
-SELECT 107, 'admin', 'MOD_MENU_COM_CONTENT_ARTICLE_MANAGER', 'comcontent', '', 'modmenucomcontent/comcontent', 'index.php?option=com_content', 'component', 1, 128, 2, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:article', 0, '', 48, 51, 0, '*', 1
+SELECT 107, 'admin', 'MOD_MENU_COM_CONTENT_ARTICLE_MANAGER', 'comcontent', '', 'modmenucomcontent/comcontent', 'index.php?option=com_content', 'component', 1, 128, 2, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:article', 0, '', 58, 61, 0, '*', 1
 UNION ALL
-SELECT 108, 'admin', 'MOD_MENU_COM_CONTENT_NEW_ARTICLE', 'modmenucomcontentnewarticle', '', 'modmenucomcontent/comcontent/modmenucomcontentnewarticle', 'index.php?option=com_content&task=article.add', 'component', 1, 107, 3, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newarticle', 0, '', 49, 50, 0, '*', 1
+SELECT 108, 'admin', 'MOD_MENU_COM_CONTENT_NEW_ARTICLE', 'modmenucomcontentnewarticle', '', 'modmenucomcontent/comcontent/modmenucomcontentnewarticle', 'index.php?option=com_content&task=article.add', 'component', 1, 107, 3, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newarticle', 0, '', 59, 60, 0, '*', 1
 UNION ALL
-SELECT 109, 'admin', 'MOD_MENU_HOME_DEFAULT', 'modmenuhomedefault', '', 'modmenuhomedefault', 'index.php', 'component', 1, 1, 1, 9, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:cpanel', 0, '', 3, 20, 1, '*', 1
+SELECT 109, 'admin', 'MOD_MENU_HOME_DEFAULT', 'modmenuhomedefault', '', 'modmenuhomedefault', 'index.php', 'component', 1, 1, 1, 9, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:cpanel', 0, '', 3, 22, 1, '*', 1
 UNION ALL
-SELECT 110, 'admin', 'MOD_MENU_CONFIGURATION', 'modmenuconfiguration', '', 'modmenucontrolpanel/modmenuconfiguration', 'index.php?option=com_config', 'component', 1, 109, 2, 23, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:config', 0, '', 4, 5, 0, '*', 1
+SELECT 110, 'admin', 'MOD_MENU_CONFIGURATION', 'modmenuconfiguration', '', 'modmenuhomedefault/modmenuconfiguration', 'index.php?option=com_config', 'component', 1, 109, 2, 23, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:config', 0, '', 4, 5, 0, '*', 1
 UNION ALL
-SELECT 111, 'admin', 'MOD_MENU_SYSTEM_INFORMATION', 'modmenusysteminformation', '', 'modmenucontrolpanel/modmenusysteminformation', 'index.php?option=com_admin&view=sysinfo', 'component', 1, 109, 2, 3, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:maintenance', 0, '', 6, 7, 0, '*', 1
+SELECT 111, 'admin', 'MOD_MENU_SYSTEM_INFORMATION', 'modmenusysteminformation', '', 'modmenuhomedefault/modmenusysteminformation', 'index.php?option=com_admin&view=sysinfo', 'component', 1, 109, 2, 3, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:maintenance', 0, '', 6, 7, 0, '*', 1
 UNION ALL
-SELECT 112, 'admin', 'MOD_MENU_LOGOUT', 'modmenulogout', '', 'modmenucontrolpanel/modmenulogout', 'index.php?option=com_login&task=logout', 'component', 1, 109, 2, 12, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:logout', 0, '', 18, 19, 0, '*', 1
+SELECT 112, 'admin', 'MOD_MENU_LOGOUT', 'modmenulogout', '', 'modmenuhomedefault/modmenulogout', 'index.php?option=com_login&task=logout', 'component', 1, 109, 2, 12, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:logout', 0, '', 20, 21, 0, '*', 1
 UNION ALL
-SELECT 113, 'admin', 'MOD_MENU_MAINTENANCE', 'modmenumaintenance', '', 'modmenucontrolpanel/modmenumaintenance', 'index.php?option=com_checkin', 'component', 1, 109, 2, 7, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:maintenance', 0, '', 8, 15, 0, '*', 1
+SELECT 113, 'admin', 'MOD_MENU_MAINTENANCE', 'modmenumaintenance', '', 'modmenuhomedefault/modmenumaintenance', 'index.php?option=com_checkin', 'component', 1, 109, 2, 7, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:maintenance', 0, '', 8, 15, 0, '*', 1
 UNION ALL
-SELECT 114, 'admin', 'MOD_MENU_GLOBAL_CHECKIN', 'modmenuglobalcheckin', '', 'modmenucontrolpanel/modmenumaintenance/modmenuglobalcheckin', 'index.php?option=com_checkin', 'component', 1, 113, 3, 7, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:checkin', 0, '', 9, 10, 0, '*', 1
+SELECT 114, 'admin', 'MOD_MENU_GLOBAL_CHECKIN', 'modmenuglobalcheckin', '', 'modmenuhomedefault/modmenumaintenance/modmenuglobalcheckin', 'index.php?option=com_checkin', 'component', 1, 113, 3, 7, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:checkin', 0, '', 9, 10, 0, '*', 1
 UNION ALL
-SELECT 115, 'admin', 'MOD_MENU_CLEAR_CACHE', 'modmenuclearcache', '', 'modmenucontrolpanel/modmenumaintenance/modmenuclearcache', 'index.php?option=com_cache', 'component', 1, 113, 3, 5, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:clear', 0, '', 11, 12, 0, '*', 1
+SELECT 115, 'admin', 'MOD_MENU_CLEAR_CACHE', 'modmenuclearcache', '', 'modmenuhomedefault/modmenumaintenance/modmenuclearcache', 'index.php?option=com_cache', 'component', 1, 113, 3, 5, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:clear', 0, '', 11, 12, 0, '*', 1
 UNION ALL
-SELECT 116, 'admin', 'MOD_MENU_PURGE_EXPIRED_CACHE', 'modmenupurgeexpiredcache', '', 'modmenucontrolpanel/modmenumaintenance/modmenupurgeexpiredcache', 'index.php?option=com_cache&view=purge', 'component', 1, 113, 3, 5, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:purge', 0, '', 13, 14, 0, '*', 1
+SELECT 116, 'admin', 'MOD_MENU_PURGE_EXPIRED_CACHE', 'modmenupurgeexpiredcache', '', 'modmenuhomedefault/modmenumaintenance/modmenupurgeexpiredcache', 'index.php?option=com_cache&view=purge', 'component', 1, 113, 3, 5, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:purge', 0, '', 13, 14, 0, '*', 1
 UNION ALL
-SELECT 117, 'admin', 'MOD_MENU_COM_USERS_USERS', 'modmenucomusersusers', '', 'modmenucomusersusers', 'index.php?option=com_users&view=users', 'component', 1, 1, 1, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:user', 0, '', 21, 36, 0, '*', 1
+SELECT 117, 'admin', 'MOD_MENU_COM_USERS_USERS', 'modmenucomusersusers', '', 'modmenucomusersusers', 'index.php?option=com_users&view=users', 'component', 1, 1, 1, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:user', 0, '', 23, 46, 0, '*', 1
 UNION ALL
-SELECT 118, 'admin', 'MOD_MENU_COM_USERS_USER_MANAGER', 'modmenucomusersusermanager', '', 'modmenucomusersusers/modmenucomusersusermanager', 'index.php?option=com_users&view=users', 'component', 1, 117, 2, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:user', 0, '', 22, 25, 0, '*', 1
+SELECT 118, 'admin', 'MOD_MENU_COM_USERS_USER_MANAGER', 'modmenucomusersusermanager', '', 'modmenucomusersusers/modmenucomusersusermanager', 'index.php?option=com_users&view=users', 'component', 1, 117, 2, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:user', 0, '', 24, 27, 0, '*', 1
 UNION ALL
-SELECT 119, 'admin', 'MOD_MENU_COM_USERS_ADD_USER', 'modmenucomusersadduser', '', 'modmenucomusersusers/modmenucomusersusermanager/modmenucomusersadduser', 'index.php?option=com_users&task=user.add', 'component', 1, 118, 3, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newuser', 0, '', 23, 24, 0, '*', 1
+SELECT 119, 'admin', 'MOD_MENU_COM_USERS_ADD_USER', 'modmenucomusersadduser', '', 'modmenucomusersusers/modmenucomusersusermanager/modmenucomusersadduser', 'index.php?option=com_users&task=user.add', 'component', 1, 118, 3, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newuser', 0, '', 25, 26, 0, '*', 1
 UNION ALL
-SELECT 120, 'admin', 'MOD_MENU_COM_USERS_GROUPS', 'modmenucomusersgroups', '', 'modmenucomusersusers/modmenucomusersgroups', 'index.php?option=com_users&view=groups', 'component', 1, 117, 2, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newgroup', 0, '', 26, 29, 0, '*', 1
+SELECT 120, 'admin', 'MOD_MENU_COM_USERS_GROUPS', 'modmenucomusersgroups', '', 'modmenucomusersusers/modmenucomusersgroups', 'index.php?option=com_users&view=groups', 'component', 1, 117, 2, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newgroup', 0, '', 28, 31, 0, '*', 1
 UNION ALL
-SELECT 121, 'admin', 'MOD_MENU_COM_USERS_ADD_GROUP', 'modmenucomusersaddgroup', '', 'modmenucomusersusers/modmenucomusersgroups/modmenucomusersaddgroup', 'index.php?option=com_users&task=group.add', 'component', 1, 120, 3, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newgroup', 0, '', 27, 28, 0, '*', 1
+SELECT 121, 'admin', 'MOD_MENU_COM_USERS_ADD_GROUP', 'modmenucomusersaddgroup', '', 'modmenucomusersusers/modmenucomusersgroups/modmenucomusersaddgroup', 'index.php?option=com_users&task=group.add', 'component', 1, 120, 3, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newgroup', 0, '', 29, 30, 0, '*', 1
 UNION ALL
-SELECT 122, 'admin', 'MOD_MENU_COM_USERS_LEVELS', 'modmenucomuserslevels', '', 'modmenucomusersusers/modmenucomuserslevels', 'index.php?option=com_users&view=levels', 'component', 1, 117, 2, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:levels', 0, '', 30, 33, 0, '*', 1
+SELECT 122, 'admin', 'MOD_MENU_COM_USERS_LEVELS', 'modmenucomuserslevels', '', 'modmenucomusersusers/modmenucomuserslevels', 'index.php?option=com_users&view=levels', 'component', 1, 117, 2, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:levels', 0, '', 32, 35, 0, '*', 1
 UNION ALL
-SELECT 123, 'admin', 'MOD_MENU_COM_USERS_ADD_LEVEL', 'modmenucomusersaddlevel', '', 'modmenucomusersusers/modmenucomuserslevels/modmenucomusersaddlevel', 'index.php?option=com_users&task=level.add', 'component', 1, 122, 3, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newlevel', 0, '', 31, 32, 0, '*', 1
+SELECT 123, 'admin', 'MOD_MENU_COM_USERS_ADD_LEVEL', 'modmenucomusersaddlevel', '', 'modmenucomusersusers/modmenucomuserslevels/modmenucomusersaddlevel', 'index.php?option=com_users&task=level.add', 'component', 1, 122, 3, 25, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newlevel', 0, '', 33, 34, 0, '*', 1
 UNION ALL
-SELECT 124, 'admin', 'MOD_MENU_MASS_MAIL_USERS', 'modmenumassmailusers', '', 'modmenucomusersusers/modmenumassmailusers', 'index.php?option=com_users&view=mail', 'component', 1, 117, 2, 23, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:massmail', 0, '', 34, 35, 0, '*', 1
+SELECT 124, 'admin', 'MOD_MENU_MASS_MAIL_USERS', 'modmenumassmailusers', '', 'modmenucomusersusers/modmenumassmailusers', 'index.php?option=com_users&view=mail', 'component', 1, 117, 2, 23, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:massmail', 0, '', 36, 37, 0, '*', 1
 UNION ALL
-SELECT 125, 'admin', 'MOD_MENU_MENUS', 'modmenumenus', '', 'modmenumenus', 'index.php?option=com_menus&view=menus', 'component', 1, 1, 1, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:menumgr', 0, '', 37, 46, 0, '*', 1
+SELECT 125, 'admin', 'MOD_MENU_MENUS', 'modmenumenus', '', 'modmenumenus', 'index.php?option=com_menus&view=menus', 'component', 1, 1, 1, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:menumgr', 0, '', 47, 56, 0, '*', 1
 UNION ALL
-SELECT 126, 'admin', 'MOD_MENU_MENU_MANAGER', 'modmenumenumanager', '', 'modmenumenus/modmenumenumanager', 'index.php?option=com_menus&view=menus', 'component', 1, 125, 2, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:menumgr', 0, '', 38, 41, 0, '*', 1
+SELECT 126, 'admin', 'MOD_MENU_MENU_MANAGER', 'modmenumenumanager', '', 'modmenumenus/modmenumenumanager', 'index.php?option=com_menus&view=menus', 'component', 1, 125, 2, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:menumgr', 0, '', 48, 51, 0, '*', 1
 UNION ALL
-SELECT 127, 'admin', 'MOD_MENU_MENU_MANAGER_NEW_MENU', 'modmenumenumanagernewmenu', '', 'modmenumenus/modmenumenumanager/modmenumenumanagernewmenu', 'index.php?option=com_menus&task=menu.add', 'component', 1, 126, 3, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newarticle', 0, '', 39, 40, 0, '*', 1
+SELECT 127, 'admin', 'MOD_MENU_MENU_MANAGER_NEW_MENU', 'modmenumenumanagernewmenu', '', 'modmenumenus/modmenumenumanager/modmenumenumanagernewmenu', 'index.php?option=com_menus&task=menu.add', 'component', 1, 126, 3, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newarticle', 0, '', 49, 50, 0, '*', 1
 UNION ALL
-SELECT 128, 'admin', 'MOD_MENU_COM_CONTENT', 'modmenucomcontent', '', 'modmenucomcontent', 'index.php?option=com_content', 'component', 1, 1, 1, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:content', 0, '', 47, 60, 0, '*', 1
+SELECT 128, 'admin', 'MOD_MENU_COM_CONTENT', 'modmenucomcontent', '', 'modmenucomcontent', 'index.php?option=com_content', 'component', 1, 1, 1, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:content', 0, '', 57, 70, 0, '*', 1
 UNION ALL
-SELECT 129, 'admin', 'MOD_MENU_COM_CONTENT_CATEGORY_MANAGER', 'modmenucomcontentcategorymanager', '', 'modmenucomcontent/modmenucomcontentcategorymanager', 'index.php?option=com_categories&extension=com_content', 'component', 1, 128, 2, 6, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:category', 0, '', 52, 55, 0, '*', 1
+SELECT 129, 'admin', 'MOD_MENU_COM_CONTENT_CATEGORY_MANAGER', 'modmenucomcontentcategorymanager', '', 'modmenucomcontent/modmenucomcontentcategorymanager', 'index.php?option=com_categories&extension=com_content', 'component', 1, 128, 2, 6, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:category', 0, '', 62, 65, 0, '*', 1
 UNION ALL
-SELECT 130, 'admin', 'MOD_MENU_COM_CONTENT_NEW_CATEGORY', 'modmenucomcontentnewcategory', '', 'modmenucomcontent/modmenucomcontentcategorymanager/modmenucomcontentnewcategory', 'index.php?option=com_categories&task=category.add&extension=com_content', 'component', 1, 129, 3, 6, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newcategory', 0, '', 53, 54, 0, '*', 1
+SELECT 130, 'admin', 'MOD_MENU_COM_CONTENT_NEW_CATEGORY', 'modmenucomcontentnewcategory', '', 'modmenucomcontent/modmenucomcontentcategorymanager/modmenucomcontentnewcategory', 'index.php?option=com_categories&task=category.add&extension=com_content', 'component', 1, 129, 3, 6, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:newcategory', 0, '', 63, 64, 0, '*', 1
 UNION ALL
-SELECT 131, 'admin', 'MOD_MENU_COM_CONTENT_FEATURED', 'modmenucomcontentfeatured', '', 'modmenucomcontent/modmenucomcontentfeatured', 'index.php?option=com_content&view=featured', 'component', 1, 128, 2, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:featured', 0, '', 56, 57, 0, '*', 1
+SELECT 131, 'admin', 'MOD_MENU_COM_CONTENT_FEATURED', 'modmenucomcontentfeatured', '', 'modmenucomcontent/modmenucomcontentfeatured', 'index.php?option=com_content&view=featured', 'component', 1, 128, 2, 20, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:featured', 0, '', 66, 67, 0, '*', 1
 UNION ALL
-SELECT 132, 'admin', 'MOD_MENU_MEDIA_MANAGER', 'modmenumediamanager', '', 'modmenucomcontent/modmenumediamanager', 'index.php?option=com_media', 'component', 1, 128, 2, 3, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:media', 0, '', 58, 59, 0, '*', 1
+SELECT 132, 'admin', 'MOD_MENU_MEDIA_MANAGER', 'modmenumediamanager', '', 'modmenucomcontent/modmenumediamanager', 'index.php?option=com_media', 'component', 1, 128, 2, 3, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:media', 0, '', 68, 69, 0, '*', 1
 UNION ALL
-SELECT 133, 'admin', 'MOD_MENU_EXTENSIONS_EXTENSIONS', 'modmenuextensionsextensions', '', 'modmenuextensionsextensions', 'index.php?option=com_installer', 'component', 1, 1, 1, 10, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:install', 0, '', 61, 72, 0, '*', 1
+SELECT 133, 'admin', 'MOD_MENU_EXTENSIONS_EXTENSIONS', 'modmenuextensionsextensions', '', 'modmenuextensionsextensions', 'index.php?option=com_installer', 'component', 1, 1, 1, 10, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:install', 0, '', 71, 82, 0, '*', 1
 UNION ALL
-SELECT 134, 'admin', 'MOD_MENU_EXTENSIONS_EXTENSION_MANAGER', 'modmenuextensionsextensionmanager', '', 'modmenuextensionsextensions/modmenuextensionsextensionmanager', 'index.php?option=com_installer', 'component', 1, 133, 2, 10, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:install', 0, '', 62, 63, 0, '*', 1
+SELECT 134, 'admin', 'MOD_MENU_EXTENSIONS_EXTENSION_MANAGER', 'modmenuextensionsextensionmanager', '', 'modmenuextensionsextensions/modmenuextensionsextensionmanager', 'index.php?option=com_installer', 'component', 1, 133, 2, 10, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:install', 0, '', 72, 73, 0, '*', 1
 UNION ALL
-SELECT 135, 'admin', 'MOD_MENU_EXTENSIONS_MODULE_MANAGER', 'modmenuextensionsmodulemanager', '', 'modmenuextensionsextensions/modmenuextensionsmodulemanager', 'index.php?option=com_modules', 'component', 1, 133, 2, 10, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:module', 0, '', 64, 65, 0, '*', 1
+SELECT 135, 'admin', 'MOD_MENU_EXTENSIONS_MODULE_MANAGER', 'modmenuextensionsmodulemanager', '', 'modmenuextensionsextensions/modmenuextensionsmodulemanager', 'index.php?option=com_modules', 'component', 1, 133, 2, 10, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:module', 0, '', 74, 75, 0, '*', 1
 UNION ALL
-SELECT 136, 'admin', 'MOD_MENU_EXTENSIONS_PLUGIN_MANAGER', 'modmenuextensionspluginmanager', '', 'modmenuextensionsextensions/modmenuextensionspluginmanager', 'index.php?option=com_plugins', 'component', 1, 133, 2, 10, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:plugin', 0, '', 66, 67, 0, '*', 1
+SELECT 136, 'admin', 'MOD_MENU_EXTENSIONS_PLUGIN_MANAGER', 'modmenuextensionspluginmanager', '', 'modmenuextensionsextensions/modmenuextensionspluginmanager', 'index.php?option=com_plugins', 'component', 1, 133, 2, 10, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:plugin', 0, '', 76, 77, 0, '*', 1
 UNION ALL
-SELECT 137, 'admin', 'MOD_MENU_EXTENSIONS_TEMPLATE_MANAGER', 'modmenuextensionstemplatemanager', '', 'modmenuextensionsextensions/modmenuextensionstemplatemanager', 'index.php?option=com_templates', 'component', 1, 133, 2, 10, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:themes', 0, '', 68, 69, 0, '*', 1
+SELECT 137, 'admin', 'MOD_MENU_EXTENSIONS_TEMPLATE_MANAGER', 'modmenuextensionstemplatemanager', '', 'modmenuextensionsextensions/modmenuextensionstemplatemanager', 'index.php?option=com_templates', 'component', 1, 133, 2, 10, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:themes', 0, '', 78, 79, 0, '*', 1
 UNION ALL
-SELECT 138, 'admin', 'MOD_MENU_EXTENSIONS_LANGUAGE_MANAGER', 'modmenuextensionslanguagemanager', '', 'modmenuextensionsextensions/modmenuextensionslanguagemanager', 'index.php?option=com_languages', 'component', 1, 133, 2, 11, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:language', 0, '', 70, 71, 0, '*', 1
+SELECT 138, 'admin', 'MOD_MENU_EXTENSIONS_LANGUAGE_MANAGER', 'modmenuextensionslanguagemanager', '', 'modmenuextensionsextensions/modmenuextensionslanguagemanager', 'index.php?option=com_languages', 'component', 1, 133, 2, 11, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:language', 0, '', 80, 81, 0, '*', 1
 UNION ALL
-SELECT 139, 'admin', 'Separator', 'separator', '', 'modmenucontrolpanel/separator', '', 'separator', 1, 109, 2, 0, 0, 0, '1900-01-01 00:00:00', 0, 1, '', 0, '', 16, 17, 0, '*', 1
+SELECT 139, 'admin', 'Separator', 'separator', '', 'modmenuhomedefault/separator', '', 'separator', 1, 109, 2, 0, 0, 0, '1900-01-01 00:00:00', 0, 1, '', 0, '', 16, 17, 0, '*', 1
 UNION ALL
-SELECT 140, 'admin', 'COM_MENUS_SUBMENU_MENUS', 'commenussubmenumenus', '', 'modmenumenus/commenussubmenumenus', '', 'menus', 1, 125, 2, 0, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:menu', 0, '', 44, 45, 0, '*', 1
+SELECT 140, 'admin', 'COM_MENUS_SUBMENU_MENUS', 'commenussubmenumenus', '', 'modmenumenus/commenussubmenumenus', '', 'menus', 1, 125, 2, 0, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:menu', 0, '', 54, 55, 0, '*', 1
 UNION ALL
-SELECT 141, 'admin', 'MOD_MENU', 'adminmodmenu', '', 'modmenumenus/adminmodmenu', 'index.php?option=com_menus&view=adminitems', 'component', 1, 125, 2, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:menu', 0, '', 42, 43, 0, '*', 1
+SELECT 141, 'admin', 'MOD_MENU', 'adminmodmenu', '', 'modmenumenus/adminmodmenu', 'index.php?option=com_menus&view=adminitems', 'component', 1, 125, 2, 14, 0, 0, '1900-01-01 00:00:00', 0, 1, 'class:menu', 0, '', 52, 53, 0, '*', 1
 UNION ALL
-SELECT 102, 'admin', 'com_joomlaupdate', 'Joomla! Update', '', 'Joomla! Update', 'index.php?option=com_joomlaupdate', 'component', 0, 1, 1, 28, 0, 0, '1900-01-01 00:00:00', 0, 0, 'class:joomlaupdate', 0, '', 41, 42, 0, '*', 1
+SELECT 102, 'admin', 'com_joomlaupdate', 'Joomla! Update', '', 'Joomla! Update', 'index.php?option=com_joomlaupdate', 'component', 0, 1, 1, 28, 0, 0, '1900-01-01 00:00:00', 0, 0, 'class:joomlaupdate', 0, '', 18, 19, 0, '*', 1
 UNION ALL
+SELECT 143, 'admin', 'MOD_MENU_COM_USERS_NOTES', 'mod-menu-com-users-notes', '', 'modmenucomusersusers/mod-menu-com-users-notes', 'index.php?option=com_users&view=notes', 'component', 1, 117, 2, 25, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:user-note', 0, '', 38, 41, 0, '', 1
+UNION ALL
+SELECT 144, 'admin', 'MOD_MENU_COM_USERS_ADD_NOTE', 'mod-menu-com-users-add-note', '', 'modmenucomusersusers/mod-menu-com-users-notes/mod-menu-com-users-add-note', 'index.php?option=com_users&task=note.add', 'component', 1, 143, 3, 25, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:newarticle', 0, '', 39, 40, 0, '', 1
+UNION ALL
+SELECT 145, 'admin', 'MOD_MENU_COM_USERS_NOTE_CATEGORIES', 'mod-menu-com-users-note-categories', '', 'modmenucomusersusers/mod-menu-com-users-note-categories', 'index.php?option=com_categories&view=categories&extension=com_users.notes', 'component', 1, 117, 2, 6, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:category', 0, '', 42, 45, 0, '', 1
+UNION ALL
+SELECT 146, 'admin', 'MOD_MENU_COM_CONTENT_NEW_CATEGORY', 'mod-menu-com-content-new-category', '', 'modmenucomusersusers/mod-menu-com-users-note-categories/mod-menu-com-content-new-category', 'index.php?option=com_categories&task=category.add&extension=com_users', 'component', 1, 145, 3, 6, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:newarticle', 0, '', 43, 44, 0, '', 1
 SET IDENTITY_INSERT #__menu  OFF;
 
 
