@@ -63,11 +63,11 @@ $doc->addCustomTag('<![endif]-->');
 		</nav>
 		<?php endif; ?>
 
-		<?php if ($this->countModules('header')) : ?>
-		<div>
-		<jdoc:include type="modules" name="header" style="xhtml" />
-		</div>
-		<?php endif; ?>
+		<jdoc:if module="header">
+		<span>
+			<jdoc:include type="modules" name="header" style="xhtml" />
+		</span>
+		</jdoc:if>
 	  </div>
   </header>
 

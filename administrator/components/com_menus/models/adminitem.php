@@ -601,6 +601,11 @@ class MenusModelAdminitem extends JModelAdmin
 
 				parse_str(parse_url($table->link, PHP_URL_QUERY), $args);
 				break;
+			
+			case 'placeholder':
+				$table->link = '';
+				$table->component_id = 0;
+				break;
 
 			case 'separator':
 				$table->link = '';
@@ -922,12 +927,6 @@ class MenusModelAdminitem extends JModelAdmin
 			}
 		}
 
-
-		// Load the specific type file
-		if (!$form->loadFile('item_'.$type, false, false)) {
-			throw new Exception(JText::_('JERROR_LOADFILE_FAILED'));
-		}
-
 		// Association menu items
 		if (JFactory::getApplication()->get('menu_associations', 0)) {
 			$languages = JLanguageHelper::getLanguages('lang_code');
@@ -1212,6 +1211,7 @@ class MenusModelAdminitem extends JModelAdmin
 		foreach ($pks as $i => $pk)
 		{
 			if ($table->load($pk)) {
+				if ($table->client_id !== '1') continue;
 				if (!array_key_exists($table->language, $languages)) {
 					$languages[$table->language] = true;
 

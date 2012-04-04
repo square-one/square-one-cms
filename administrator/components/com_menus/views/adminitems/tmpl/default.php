@@ -28,12 +28,6 @@ $saveOrder 	= ($listOrder == 'a.lft' && $listDirn == 'asc');
 <?php //Set up the filter bar. ?>
 <form action="<?php echo JRoute::_('index.php?option=com_menus&view=adminitems');?>" method="post" name="adminForm" id="adminForm">
 	<fieldset id="filter-bar">
-		<div class="filter-search fltlft">
-			<label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
-			<input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" title="<?php echo JText::_('COM_MENUS_ITEMS_SEARCH_FILTER'); ?>" />
-			<button type="submit"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
-			<button type="button" onclick="document.id('filter_search').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
-		</div>
 		<div class="filter-select fltrt">
 
 			<select name="filter_level" class="inputbox" onchange="this.form.submit()">
@@ -70,6 +64,9 @@ $saveOrder 	= ($listOrder == 'a.lft' && $listDirn == 'asc');
 				</th>
 				<th width="10%">
 					<?php echo JText::_('JGRID_HEADING_MENU_ITEM_TYPE'); ?>
+				</th>
+				<th width="5%">
+					<?php echo JHtml::_('grid.sort', 'COM_MENUS_HEADING_HOME', 'a.home', $listDirn, $listOrder); ?>
 				</th>
 				<?php if ($app->get('menu_associations', 0)):?>
 				<th width="5%">
@@ -145,6 +142,19 @@ $saveOrder 	= ($listOrder == 'a.lft' && $listDirn == 'asc');
 				<td class="nowrap">
 					<span title="<?php echo isset($item->item_type_desc) ? htmlspecialchars($this->escape($item->item_type_desc), ENT_COMPAT, 'UTF-8') : ''; ?>">
 						<?php echo $this->escape($item->item_type); ?></span>
+				</td>
+				<td class="center">
+					<?php if ($item->type == 'component') : ?>
+						<?php if ($item->language=='*' || $item->home=='0'):?>
+							<?php echo JHtml::_('jgrid.isdefault', $item->home, $i, 'adminitems.', ($item->language != '*' || !$item->home) && $canChange);?>
+						<?php elseif ($canChange):?>
+							<a href="<?php echo JRoute::_('index.php?option=com_menus&task=adminitems.unsetDefault&cid[]='.$item->id.'&'.JSession::getFormToken().'=1');?>">
+								<?php echo JHtml::_('image', 'mod_languages/'.$item->image.'.gif', $item->language_title, array('title'=>JText::sprintf('COM_MENUS_GRID_UNSET_LANGUAGE', $item->language_title)), true);?>
+							</a>
+						<?php else:?>
+							<?php echo JHtml::_('image', 'mod_languages/'.$item->image.'.gif', $item->language_title, array('title'=>$item->language_title), true);?>
+						<?php endif;?>
+					<?php endif; ?>
 				</td>
 				<?php if ($app->get('menu_associations', 0)):?>
 				<td class="center">

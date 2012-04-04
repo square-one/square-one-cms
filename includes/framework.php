@@ -20,8 +20,8 @@ defined('_JEXEC') or die;
 // Installation check, and check on removal of the install directory.
 //
 
-if (!file_exists(JPATH_CONFIGURATION.'/configuration.php') || (filesize(JPATH_CONFIGURATION.'/configuration.php') < 10)) {
-//if (!file_exists(JPATH_CONFIGURATION.'/configuration.php') || (filesize(JPATH_CONFIGURATION.'/configuration.php') < 10) || file_exists(JPATH_INSTALLATION.'/index.php')) {
+//if (!file_exists(JPATH_CONFIGURATION.'/configuration.php') || (filesize(JPATH_CONFIGURATION.'/configuration.php') < 10)) {
+if (!file_exists(JPATH_CONFIGURATION.'/configuration.php') || (filesize(JPATH_CONFIGURATION.'/configuration.php') < 10) || file_exists(JPATH_INSTALLATION.'/index.php')) {
 
 	if (file_exists(JPATH_INSTALLATION.'/index.php')) {
 		header('Location: '.substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], 'index.php')).'installation/index.php');
@@ -45,7 +45,7 @@ JError::setErrorHandling(E_NOTICE, 'message');
 JError::setErrorHandling(E_WARNING, 'message');
 JError::setErrorHandling(E_ERROR, 'message', array('JError', 'customErrorPage'));
 
-// Botstrap the CMS libraries.
+// Bootstrap the CMS libraries.
 require_once JPATH_LIBRARIES.'/cms.php';
 require_once JPATH_LIBRARIES.'/squareone.php';
 

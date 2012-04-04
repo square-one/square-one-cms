@@ -92,7 +92,7 @@ class MenusControllerAdminitems extends JControllerAdmin
 
 		// Get items to publish from the request.
 		$cid	= JRequest::getVar('cid', array(), '', 'array');
-		$data	= array('setDefault' => 1, 'unsetDefault' => 0);
+		$data	= array('setDefault' => 1, ' Default' => 0);
 		$task 	= $this->getTask();
 		$value	= JArrayHelper::getValue($data, $task, 0, 'int');
 

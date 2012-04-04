@@ -32,16 +32,13 @@ if (!empty($this->item->pagination) AND $this->item->pagination && !$this->item-
 }
  ?>
 
-<?php if ($params->get('show_title')) : ?>
+	<jdoc:if option="show_title">
 	<h2>
-	<?php if ($params->get('link_titles') && !empty($this->item->readmore_link)) : ?>
-		<a href="<?php echo $this->item->readmore_link; ?>">
-		<?php echo $this->escape($this->item->title); ?></a>
-	<?php else : ?>
-		<?php echo $this->escape($this->item->title); ?>
-	<?php endif; ?>
+		<jdoc:if option="link_titles" empty="<?php echo $this->item->readmore_link; ?>">
+		<a href="<?php echo $this->item->readmore_link; ?>"><?php echo $this->escape($this->item->title); ?></a>
+		</jdoc:if>
 	</h2>
-<?php endif; ?>
+	</jdoc:if>
 
 <?php if ($canEdit ||  $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
 	<ul class="actions">
@@ -130,7 +127,8 @@ endif; ?>
 	<?php if (JComponentHelper::isEnabled('com_contact', true) && !empty($this->item->contactid) && $params->get('link_author') == true): ?>
 	<?php
 		$needle = 'index.php?option=com_contact&view=contact&id=' . $this->item->contactid;
-		$item = JSite::getMenu()->getItems('link', $needle, true);
+		$menu = JFactory::getApplication()->getMenu();
+		$item = $menu->getItems('link', $needle, true);
 		$cntlink = !empty($item) ? $needle . '&Itemid=' . $item->id : $needle;
 	?>
 		<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', JHtml::_('link', JRoute::_($cntlink), $author)); ?>
