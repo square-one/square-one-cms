@@ -326,7 +326,7 @@ class InstallerModelInstall extends JModelList
 		$this->setState('result', $result);
 	}
 
-    protected function install_install($url)
+    private function install_install($url)
 	{
 		jimport('joomla.client.helper');
 		$this->setState('action', 'install');
