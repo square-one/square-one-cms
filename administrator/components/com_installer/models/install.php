@@ -326,7 +326,7 @@ class InstallerModelInstall extends JModelList
 		$this->setState('result', $result);
 	}
 
-    function install_install($url)
+    private function install_install($url)
 	{
 		jimport('joomla.client.helper');
 		$this->setState('action', 'install');
@@ -504,6 +504,7 @@ class InstallerModelInstall extends JModelList
     /**
      * Square One Additions
      */
+	
     public function distro_download()
     {
         $update = new JUpdate();
@@ -550,6 +551,7 @@ class InstallerModelInstall extends JModelList
 
         return $result;
     }
+
 
     public function distro_extract()
     {
