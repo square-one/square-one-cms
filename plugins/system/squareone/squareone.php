@@ -15,22 +15,5 @@ defined('_JEXEC') or die;
  */
 class plgSystemSquareone extends JPlugin
 {	
-	private $buffer;
-	
-	public function onAfterRender()
-	{
-		$this->buffer = JResponse::getBody();
-		
-		// Change Joomla strings to Square One 
-		$this->joomlaToSquareone();
-		
-		JResponse::setBody($this->buffer);
-	}
-	
-	private function joomlaToSquareone()
-	{
-		
-		$this->buffer = preg_replace('/joomla(?:!)/i', 'Square One', $this->buffer);
-		$this->buffer = preg_replace('/_joomla_/i', 'Joomla', $this->buffer);
-	}
+
 }

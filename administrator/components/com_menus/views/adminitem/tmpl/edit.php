@@ -14,6 +14,7 @@ $lang = JFactory::getLanguage();
 $lang->load('mod_menu', JPATH_ADMINISTRATOR);
 
 // Load the tooltip behavior.
+JHtml::_('behavior.framework');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('behavior.modal');

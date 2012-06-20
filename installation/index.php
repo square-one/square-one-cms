@@ -20,11 +20,6 @@ define('_JEXEC', 1);
  */
 define('JPATH_BASE', dirname(__FILE__));
 
-/**
- * Shortcut for the directory separator character.
- */
-define('DS', DIRECTORY_SEPARATOR);
-
 // Set path constants.
 $parts = explode(DIRECTORY_SEPARATOR, JPATH_BASE);
 array_pop($parts);
@@ -69,7 +64,6 @@ require_once JPATH_LIBRARIES.'/squareone.php';
 // Joomla library imports.
 jimport('joomla.database.table');
 jimport('joomla.environment.uri');
-jimport('joomla.utilities.utility');
 jimport('joomla.utilities.arrayhelper');
 
 // Create the application object.

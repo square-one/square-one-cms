@@ -6,8 +6,8 @@
 	<authorUrl>www.gnomeontherun.com</authorUrl>
 	<copyright>(C) 2005 - 2011 Open Source Matters and Square One. All rights reserved</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>2.5.2</version>
-	<creationDate>April 2012</creationDate>
+	<version>2.5.3</version>
+	<creationDate>June 2012</creationDate>
 	<description>Square One CMS</description>
 
 	<scriptfile>administrator/components/com_admin/script.php</scriptfile>

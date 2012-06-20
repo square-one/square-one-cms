@@ -7,15 +7,13 @@
 
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
-
 /**
  * The HTML Joomla Core Filesystem Configuration View
  *
  * @package		Joomla.Installation
  * @since		1.6
  */
-class JInstallationViewFilesystem extends JView
+class JInstallationViewFilesystem extends JViewLegacy
 {
 	/**
 	 * Display the view
@@ -32,10 +30,9 @@ class JInstallationViewFilesystem extends JView
 			return false;
 		}
 
-		$this->assignRef('state', $state);
-		$this->assignRef('form', $form);
+		$this->state = $state;
+		$this->form  = $form;
 
-		JText::script('INSTL_FTP_SETTINGS_CORRECT');
 		parent::display($tpl);
 	}
 }
