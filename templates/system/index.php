@@ -35,12 +35,11 @@ $doc->addCustomTag("\n".'  <!--[if lt IE 9]>');
 $doc->addCustomTag("\n".'  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>');
 $doc->addCustomTag('<![endif]-->');
 ?>
-<!doctype html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="<?php echo substr($this->language, 0, 2); ?>"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="<?php echo substr($this->language, 0, 2); ?>"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="<?php echo substr($this->language, 0, 2); ?>"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo substr($this->language, 0, 2); ?>"> <!--<![endif]-->
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="<?php echo substr($this->language, 0, 2) ?>" dir="<?php echo $this->direction ?>"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="<?php echo substr($this->language, 0, 2) ?>" dir="<?php echo $this->direction ?>"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="<?php echo substr($this->language, 0, 2) ?>" dir="<?php echo $this->direction ?>"> <![endif]-->
+<!--[if gt IE 8]> <!--> <html class="no-js" lang="<?php echo substr($this->language, 0, 2) ?>" dir="<?php echo $this->direction ?>"> <!--<![endif]-->
 <head>
 <jdoc:include type="head" />
 <!--[if !IE 7]>
@@ -74,7 +73,7 @@ $doc->addCustomTag('<![endif]-->');
   <section class="content">
     <div id="content-container" class="clearfix">
 	    <div id="content-main">
-			<?php if ($this->getBuffer('message')) : ?>
+			<?php if (count($app->getMessageQueue())) : ?>
 				<jdoc:include type="message" />
 			<?php endif; ?>
 
@@ -100,6 +99,7 @@ $doc->addCustomTag('<![endif]-->');
     <footer>
         <jdoc:include type="modules" name="footer" style="xhtml" />
     </footer>
-    
+
 </body>
 </html>
+
