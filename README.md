@@ -124,7 +124,7 @@ If you want to contribute, you will need a github account, and a working knowled
 
 ## Who is running this?
 
-Jeremy Wilken of [Gnome on the run](www.gnomeontherun.com) is heading this initiative. You can help too, just check out the mailing list to start, and more information is on the wiki.
+Jeremy Wilken of [Gnome on the run](http://www.gnomeontherun.com) is heading this initiative. You can help too, just check out the mailing list to start, and more information is on the wiki.
 
 ## Legal info
 
