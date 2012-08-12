@@ -403,7 +403,7 @@ INSERT INTO `#__menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 (124, 'admin', 'MOD_MENU_MASS_MAIL_USERS', 'modmenumassmailusers', '', 'modmenucomusersusers/modmenumassmailusers', 'index.php?option=com_users&view=mail', 'component', 1, 117, 2, 23, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:massmail', 0, '', 34, 35, 0, '*', 1),
 (125, 'admin', 'MOD_MENU_MENUS', 'modmenumenus', '', 'modmenumenus', 'index.php?option=com_menus&view=menus', 'component', 1, 1, 1, 14, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:menumgr', 0, '', 37, 46, 0, '*', 1),
 (126, 'admin', 'MOD_MENU_MENU_MANAGER', 'modmenumenumanager', '', 'modmenumenus/modmenumenumanager', 'index.php?option=com_menus&view=menus', 'component', 1, 125, 2, 14, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:menumgr', 0, '', 38, 41, 0, '*', 1),
-(127, 'admin', 'MOD_MENU_MENU_MANAGER_NEW_MENU', 'modmenumenumanagernewmenu', '', 'modmenumenus/modmenumenumanager/modmenumenumanagernewmenu', 'index.php?option=com_content&task=article.add', 'component', 1, 126, 3, 14, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:newarticle', 0, '', 39, 40, 0, '*', 1),
+(127, 'admin', 'MOD_MENU_MENU_MANAGER_NEW_MENU', 'modmenumenumanagernewmenu', '', 'modmenumenus/modmenumenumanager/modmenumenumanagernewmenu', 'index.php?option=com_menu&task=menu.add', 'component', 1, 126, 3, 14, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:newarticle', 0, '', 39, 40, 0, '*', 1),
 (128, 'admin', 'MOD_MENU_COM_CONTENT', 'modmenucomcontent', '', 'modmenucomcontent', 'index.php?option=com_content', 'component', 1, 1, 1, 20, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:content', 0, '', 47, 60, 0, '*', 1),
 (129, 'admin', 'MOD_MENU_COM_CONTENT_CATEGORY_MANAGER', 'modmenucomcontentcategorymanager', '', 'modmenucomcontent/modmenucomcontentcategorymanager', 'index.php?option=com_categories&extension=com_content', 'component', 1, 128, 2, 6, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:category', 0, '', 52, 55, 0, '*', 1),
 (130, 'admin', 'MOD_MENU_COM_CONTENT_NEW_CATEGORY', 'modmenucomcontentnewcategory', '', 'modmenucomcontent/modmenucomcontentcategorymanager/modmenucomcontentnewcategory', 'index.php?option=com_categories&task=category.add&extension=com_content', 'component', 1, 129, 3, 6, 0, 0, '0000-00-00 00:00:00', 0, 1, 'class:newcategory', 0, '', 53, 54, 0, '*', 1),
@@ -479,7 +479,8 @@ INSERT INTO `#__modules` VALUES
 (13, 'Admin Submenu', '', '', 1, 'submenu', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_submenu', 3, 1, '', 1, '*'),
 (14, 'User Status', '', '', 2, 'status', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_status', 3, 1, '', 1, '*'),
 (15, 'Title', '', '', 1, 'title', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_title', 3, 1, '', 1, '*'),
-(79, 'Multilanguage status', '', '', 1, 'status', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_multilangstatus', 3, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*');
+(79, 'Multilanguage status', '', '', 1, 'status', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_multilangstatus', 3, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*'),
+(80, 'Version', '', '', 1, 'footer', 42, '2012-03-10 18:15:01', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_version', 1, 1, '{"format":"short","product":"1","layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*');
 
 # -------------------------------------------------------
 
@@ -510,7 +511,7 @@ INSERT INTO `#__modules_menu` VALUES
 (14,0),
 (15,0),
 (79,0),
-(85,0);
+(80,0);
 
 
 # -------------------------------------------------------

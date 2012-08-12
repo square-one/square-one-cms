@@ -16,11 +16,7 @@ $listOrder = $this->escape($this->state->get('list.order'));
 ?>
 
 <form action="<?php echo JRoute::_('index.php?option=com_installer&view=servers'); ?>" method="post" name="adminForm" id="adminForm">
-        
-    <fieldset id="filter-bar">
-
-    </fieldset>
-
+	
     <table class="adminlist" cellspacing="1">
         <thead>
             <tr>

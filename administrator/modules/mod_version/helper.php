@@ -28,10 +28,10 @@ abstract class modVersionHelper
 		$method = 'get' . ucfirst($format) . "Version";
 
 		// Get the joomla version
-		$instance = new JVersion();
+		$instance = new S1Version();
 		$version = call_user_func(array($instance, $method));//$instance->{$method};
 
-		if ($format=='short' && !empty($product)) {
+		if ($format=='short') {
 			//add the product name to short format only (in long format it's included)
 			$version = $instance->PRODUCT . ' ' . $version;
 		}

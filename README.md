@@ -21,10 +21,6 @@ Square One is being designed to fit specific needs, which primarily focus around
  * Stay in sync with the Joomla Platform and Joomla CMS.
 
 Just because Square One has removed a feature or functionality doesn't mean that it isn't useful. The mindset is to create a baseline for Joomla! which has the fewest number of default extensions while still being capable of being a CMS.
- 
-## Can I use Square One?
-
-You can use Square One for testing, and the timeline is to provide a stable release soon after the Joomla 2.5 release is made. Using it for a production website is not advised until then.
 
 ## Differences between Joomla! and Square One
 
@@ -128,12 +124,12 @@ If you want to contribute, you will need a github account, and a working knowled
 
 ## Who is running this?
 
-Jeremy Wilken of Gnome on the run (www.gnomeontherun.com) is heading this initiative. You can help too, just check out the mailing list to start, and more information is on the wiki.
+Jeremy Wilken of [Gnome on the run](www.gnomeontherun.com) is heading this initiative. You can help too, just check out the mailing list to start, and more information is on the wiki.
 
 ## Legal info
 
 Square One is primarily Joomla! code, and except in cases where code has been modified or added for Square One, the Joomla! project retains the copyright on those materials. The rest is copyright of the individual authors.
 
-Joomla! is Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.
-Square One is Copyright (C) 2011 Gnome on the run. All rights reserved.
+Joomla! is Copyright (C) 2005 - 2012 Open Source Matters. All rights reserved.
+Square One is Copyright (C) 2011-2012 Gnome on the run. All rights reserved.
 Joomla! and Square One are both distributed under the GNU General Public License v2.0 or later

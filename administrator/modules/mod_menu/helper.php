@@ -48,7 +48,7 @@ class modMenuHelper
 			$showAll	= ($disabled) ? false : true;
 			$maxdepth	= false;
 			$items 		= $menu->getItems('menutype', 'admin');
-            
+
             $lang = JFactory::getLanguage();
 
 			$lastitem	= 0;
@@ -61,7 +61,7 @@ class modMenuHelper
                         unset($items[$i]);
                         continue;
                     }
-                    
+
                     // Need to run a few hard checks because Joomla does
                     if (isset($item->component) && ($item->component == 'com_config' || $item->component == 'com_admin'))
                     {
@@ -71,7 +71,7 @@ class modMenuHelper
                             continue;
                         }
                     }
-                    
+
 					if (($start && $start > $item->level)
 						|| ($end && $item->level > $end)
 						|| (!$showAll && $item->level > 1 && !in_array($item->parent_id, $path))
@@ -81,10 +81,12 @@ class modMenuHelper
 						unset($items[$i]);
 						continue;
 					}
-                    
+
                     if ($item->component) {
                         $lang->load($item->component.'.sys', JPATH_ADMINISTRATOR);
+						$lang->load($item->component.'.sys', JPATH_ADMINISTRATOR.'/components/'.$item->component);
                         $lang->load($item->component.'.menu', JPATH_ADMINISTRATOR);
+						$lang->load($item->component.'.menu', JPATH_ADMINISTRATOR.'/components/'.$item->component);
                     }
 
 					$item->deeper = false;

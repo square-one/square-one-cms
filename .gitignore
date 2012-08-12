@@ -216,3 +216,6 @@ configuration.php
 joomla.xml
 squareone.xml
 README.txt
+/.tx/
+tx.exe
+*.bat

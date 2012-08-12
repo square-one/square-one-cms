@@ -21,7 +21,7 @@ for ($i = 0; $i < count($menus); $i++) :
 	if ($menus[$i]->menutype == 'admin') $view = 'adminitems';
 	else $view = 'items';
     $link = JRoute::_('index.php?option=com_menus&view='.$view.'&menutype='.$menus[$i]->menutype);
-    if ($i > 0) : ?><li<?php echo $class ?>><?php endif; ?>
+    if ($i > 0) : ?><li class="node"><?php endif; ?>
     <a <?php echo $linkclass; ?> href="<?php echo $link; ?>" title="<?php echo $menus[$i]->title; ?>"><?php echo $menus[$i]->title; ?></a>
     <ul>
         <li>

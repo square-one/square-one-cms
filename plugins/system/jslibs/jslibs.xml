@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.5" type="plugin" group="system" method="upgrade">
+	<name>PLG_SYSTEM_JSLIBS</name>
+	<author>Joseph LeBlanc</author>
+	<creationDate>March 2012</creationDate>
+	<copyright>Copyright (C) 2012</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>contact@jlleblanc.com</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<version>1.0</version>
+	<description>PLG_SYSTEM_JSLIBS_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="jslibs">jslibs.php</filename>
+		<filename>jquery_no_conflict.js</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages folder="language/en-GB">
+		<language tag="en-GB">en-GB.plg_system_jslibs.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="cdn" type="list"
+					description="Choose a content delivery network to use for select JavaScript libraries."
+					label="CDN"
+					default="">
+					<option value="">- None -</option>
+					<option value="google">Google</option>
+					<option value="microsoft">Microsoft</option>
+				</field>
+				<field name="overrides" type="textarea"
+					description="Add specific CDN overrides to use in the following format, one per line: nameoflibrary,cdnlocation.com/path/to/lib.js.  DO NOT add http:// or https://. Values in this override system are used even if None is selected."
+					label="CDN Overrides"
+					rows="10"
+					cols="30"
+					default=""
+					/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

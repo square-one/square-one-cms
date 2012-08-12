@@ -49,7 +49,7 @@ JHtml::_('script', 'installation/template/js/installation.js', true, false, fals
 	<body>
 		<div id="header">
 			<span class="logo"><a href="http://www.squareonecms.org" target="_blank"><img src="template/images/logo.png" alt="Square One" /></a></span>
-			<h1>Square One <?php echo JVERSION; ?> <?php echo JText::_('INSTL_INSTALLATION') ?></h1>
+			<h1>Square One <?php echo S1VERSION; ?> <?php echo JText::_('INSTL_INSTALLATION') ?></h1>
 		</div>
 		<jdoc:include type="message" />
 		<div id="content-box">

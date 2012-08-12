@@ -104,11 +104,5 @@ if ($this->params->get('highContrast')) {
 		</noscript>
 	</div>
 	<jdoc:include type="modules" name="footer" style="none"  />
-	<div id="footer">
-		<p class="copyright">
-			<?php $joomla = '<a href="http://www.squareonecms.org">Square One CMS</a>';
-				echo JText::sprintf('JGLOBAL_ISFREESOFTWARE', $joomla) ?>
-		</p>
-	</div>
 </body>
 </html>

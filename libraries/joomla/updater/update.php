@@ -210,8 +210,9 @@ class JUpdate extends JObject
 			// Closing update, find the latest version and check
 			case 'UPDATE':
 				$ver = new JVersion;
-				$product = strtolower(JFilterInput::getInstance()->clean($ver->PRODUCT, 'cmd'));
-				if ($product == $this->_current_update->targetplatform->name
+				$s1ver = new S1Version;
+				$products = array(strtolower(JFilterInput::getInstance()->clean($ver->PRODUCT, 'cmd')), strtolower(JFilterInput::getInstance()->clean($s1ver->PRODUCT, 'cmd')));
+				if (in_array($this->_current_update->targetplatform->name, $products)
 					&& preg_match('/' . $this->_current_update->targetplatform->version . '/', $ver->RELEASE))
 				{
 					if (isset($this->_latest))
@@ -290,7 +291,7 @@ class JUpdate extends JObject
 		xml_set_object($this->xml_parser, $this);
 		xml_set_element_handler($this->xml_parser, '_startElement', '_endElement');
 		xml_set_character_data_handler($this->xml_parser, '_characterData');
-
+		
 		while ($data = fread($fp, 8192))
 		{
 			if (!xml_parse($this->xml_parser, $data, feof($fp)))

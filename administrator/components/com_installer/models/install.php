@@ -505,22 +505,46 @@ class InstallerModelInstall extends JModelList
     public function distro_download()
     {
         $update = new JUpdate();
-        $detailsurl = JRequest::getString('detailsurl', '', 'post');
-        $update->loadFromXML($detailsurl);
+        $detailsurl = base64_decode(JRequest::getString('detailsurl', '', 'post'));
+		
+		if (substr($detailsurl, 0, 4) == 'http')
+		{
+			$result->result = false;
+			
+			if (substr($detailsurl, 0, -3) == 'xml')
+			{
+				// Url to an update manifest
+				$update->loadFromXML($detailsurl);
 
-        $result->result = false;
-
-        $file = JInstallerHelper::downloadPackage($update->get('downloadurl')->_data);
-        if (!$file) {
-            $result->message = JText::_('COM_INSTALLER_MSG_INSTALL_INVALID_URL');
+				$file = JInstallerHelper::downloadPackage($update->get('downloadurl')->_data);
+			}
+			else
+			{
+				$file = JInstallerHelper::downloadPackage($detailsurl);
+			}
+			
+			if (!$file) {
+				$result->message = JText::_('COM_INSTALLER_MSG_INSTALL_INVALID_URL');
+			}
+			else
+			{
+				$result->result = true;
+				$result->task = 'distro_download';
+				$result->file = $file;
+				$result->message = JText::_('COM_INSTALLER_PACKAGE_DOWNLOADED');
+			}
 		}
-        else
-        {
-            $result->result = true;
-            $result->task = 'distro_download';
-            $result->file = $file;
-            $result->message = JText::_('Downloaded the package');
-        }
+		else
+		{
+			// We have a file
+			$config	= JFactory::getConfig();
+			$source = base64_decode(JRequest::getString('source'));
+			JFile::move($source.'/'.$detailsurl, $config->get('tmp_path').'/'.$detailsurl);
+			$result->result = true;
+			$result->task = 'distro_download';
+			$result->file = $detailsurl;
+			$result->message = JText::_('COM_INSTALLER_PACKAGE_FOUND');
+		}
 
         return $result;
     }
@@ -546,7 +570,7 @@ class InstallerModelInstall extends JModelList
             $result->extractdir = $package['extractdir'];
             $result->packagefile = $package['packagefile'];
             $result->type = $package['type'];
-            $result->message = JText::_('Extracted the package');
+            $result->message = JText::_('COM_INSTALLER_EXTRACTED');
         }
 
         return $result;
@@ -612,7 +636,7 @@ class InstallerModelInstall extends JModelList
         if (count($queries) == 0)
         {
             // No queries to process
-            $result->message = 'No queries';
+            $result->message = JText::_('COM_INSTALLER_SQL_FAILED');
             return $result;
         }
 
@@ -632,29 +656,7 @@ class InstallerModelInstall extends JModelList
         }
 
         $result->result = true;
-        $result->message = JText::_('Install SQL');
-
-        return $result;
-    }
-
-    public function distro_script_install()
-    {
-        // Distro script files
-        $class = JRequest::getString('class', '', 'post');
-        $path = JRequest::getString('path', '', 'post');
-        $result->result = false;
-        $result->message = 'Script unable to run';
-
-        include(base64_decode($path));
-        $script = new $class();
-
-        $root = realpath($path);
-        $root = substr($root, 0, strrpos($root, '/'));
-
-        $script->install($root);
-
-        $result->result = true;
-        $result->message = 'Script ran';
+        $result->message = JText::_('COM_INSTALLER_SQL_RAN');
 
         return $result;
     }
@@ -665,7 +667,7 @@ class InstallerModelInstall extends JModelList
         $class = JRequest::getString('class', '', 'post');
         $path = JRequest::getString('path', '', 'post');
         $result->result = false;
-        $result->message = 'Script unable to run';
+        $result->message = JText::_('COM_INSTALLER_SCRIPT_FAILED');
 
         include(base64_decode($path));
         $script = new $class();
@@ -676,7 +678,7 @@ class InstallerModelInstall extends JModelList
         $script->preflight($root);
 
         $result->result = true;
-        $result->message = 'Script ran';
+        $result->message = JText::_('COM_INSTALLER_SCRIPT_RAN');
 
         return $result;
     }
@@ -687,7 +689,7 @@ class InstallerModelInstall extends JModelList
         $class = JRequest::getString('class', '', 'post');
         $path = JRequest::getString('path', '', 'post');
         $result->result = false;
-        $result->message = 'Script unable to run';
+        $result->message = JText::_('Script unable to run');
 
         include(base64_decode($path));
         $script = new $class();
@@ -698,7 +700,7 @@ class InstallerModelInstall extends JModelList
         $script->postflight($root);
 
         $result->result = true;
-        $result->message = 'Script ran';
+        $result->message = JText::_('Script ran');
 
         return $result;
     }
@@ -722,7 +724,7 @@ class InstallerModelInstall extends JModelList
         }
 
         $result->result = true;
-        $result->message = 'Cleaned up';
+        $result->message = JText::_('COM_INSTALLER_CLEANED_UP');
 
         return $result;
     }
