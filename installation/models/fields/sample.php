@@ -9,7 +9,7 @@ defined('JPATH_BASE') or die;
 
 jimport('joomla.filesystem.folder');
 jimport('joomla.filesystem.file');
-JLoader::register('JFormFieldList', JPATH_LIBRARIES.'/joomla/form/fields/list.php');
+JLoader::register('JFormFieldRadio', JPATH_LIBRARIES.'/joomla/form/fields/radio.php');
 
 /**
  * Sample data Form Field class.
@@ -17,7 +17,7 @@ JLoader::register('JFormFieldList', JPATH_LIBRARIES.'/joomla/form/fields/list.ph
  * @package		Joomla.Installation
  * @since		1.6
  */
-class JFormFieldSample extends JFormFieldList
+class JFormFieldSample extends JFormFieldRadio
 {
 	/**
 	 * The form field type.
@@ -38,12 +38,16 @@ class JFormFieldSample extends JFormFieldList
 		// Initialize variables.
 		$lang = JFactory::getLanguage();
 		$options = array();
-		$type = $this->form instanceof JForm ? $this->form->getValue('db_type') : 'mysql' || 'sqlazure';
-		if ($type == 'mysqli') {
-			$type='mysql';
+		$type = $this->form->getValue('db_type');
+
+		// Some database drivers share DDLs; point these drivers to the correct parent
+		if ($type == 'mysqli')
+		{
+			$type = 'mysql';
 		}
-		elseif($type='sqlsrv'){
-			$type='sqlazure';
+		elseif ($type == 'sqlsrv')
+		{
+			$type = 'sqlazure';
 		}
 		// Get a list of files in the search path with the given filter.
 		$files = JFolder::files(JPATH_INSTALLATION.'/sql/'.$type, '^sample.*\.sql$');

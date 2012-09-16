@@ -10,6 +10,9 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 class SeleniumJoomlaTestCase extends PHPUnit_Extensions_SeleniumTestCase
 {
 	public $cfg; // configuration so tests can get at the fields
+	protected $captureScreenshotOnFailure = false;
+	protected $screenshotPath = null;
+	protected $screenshotUrl = null;
 
 	public function setUp()
 	{
@@ -22,6 +25,13 @@ class SeleniumJoomlaTestCase extends PHPUnit_Extensions_SeleniumTestCase
 			$this->setHost($cfg->selhost);
 		}
 		echo ".\n" . 'Starting ' . get_class($this) . ".\n";
+
+		if (isset($cfg->captureScreenshotOnFailure) && $cfg->captureScreenshotOnFailure)
+		{
+			$this->captureScreenshotOnFailure = true;
+			$this->screenshotPath = $cfg->folder . $cfg->path . $cfg->screenShotPath;
+			$this->screenshotUrl = $cfg->host . $cfg->path . $cfg->screenShotPath;
+		}
 	}
 
 	function checkMessage($message)
@@ -692,19 +702,46 @@ class SeleniumJoomlaTestCase extends PHPUnit_Extensions_SeleniumTestCase
 		}
 	}
 
-	function setTinyText($text)
+	function setEditor($editor)
+	{
+		echo "Changing editor to $editor\n";
+		$this->jClick('Global Configuration');
+		$this->click("id=site");
+		switch (strtoupper($editor))
 		{
-			$this->selectFrame("jform_articletext_ifr");
-			$this->type("tinymce", $text);
-			$this->selectFrame("relative=top");
+			case 'NO EDITOR':
+			case 'NONE':
+				$select = 'label=Editor - None';
+				break;
+
+			case 'CODEMIRROR':
+				$select = 'label=Editor - CodeMirror';
+
+			case 'TINYMCE':
+			case 'TINY':
+			default:
+				$select = 'label=Editor - TinyMCE';
+				break;
 		}
 
+		$this->select("id=jform_editor", $select);
+		$this->click("css=span.icon-32-save");
+		$this->waitForPageToLoad("30000");
+	}
+
+	function setTinyText($text)
+	{
+		$this->selectFrame("jform_articletext_ifr");
+		$this->type("tinymce", $text);
+		$this->selectFrame("relative=top");
+	}
+
 	function toggleFeatured($articleTitle)
-		{
-			echo "Toggling Featured on/off for article " . $articleTitle . "\n";
-			$this->click("//table[@class='adminlist']/tbody//tr//td/a[contains(text(), '" . $articleTitle . "')]/../../td[4]/a/img");
-			$this->waitForPageToLoad("30000");
-		}
+	{
+		echo "Toggling Featured on/off for article " . $articleTitle . "\n";
+		$this->click("//table[@class='adminlist']/tbody//tr//td/a[contains(text(), '" . $articleTitle . "')]/../../td[4]/a/img");
+		$this->waitForPageToLoad("30000");
+	}
 
 	function togglePublished($articleTitle)
 	{
@@ -813,12 +850,15 @@ class SeleniumJoomlaTestCase extends PHPUnit_Extensions_SeleniumTestCase
 			sleep(1);
 		}
 		sleep(1);
+		$this->checkNotices();
 	}
 
 	function checkNotices()
 	{
 		try {
 			$this->assertFalse($this->isTextPresent("( ! ) Notice"), "**Warning: PHP Notice found on page!");
+			$this->assertElementNotPresent("//tr[contains(., '( ! ) Notice:')]", "**Warning: PHP Notice found on page!");
+			$this->assertElementNotPresent("//tr[contains(., '( ! ) Warning:')]", "**Warning: PHP Warning found on page!");
 		}
 		catch (PHPUnit_Framework_AssertionFailedError $e) {
 			echo "**Warning: PHP Notice found on page\n";
@@ -841,6 +881,8 @@ class SeleniumJoomlaTestCase extends PHPUnit_Extensions_SeleniumTestCase
 		{
 			try {
 				$this->assertFalse($this->isTextPresent("( ! ) Notice") || $this->isTextPresent("( ! ) Warning"), "**Warning: PHP Notice found on page!");
+				$this->assertElementNotPresent("//tr[contains(., '( ! ) Notice:')]", "**Warning: PHP Notice found on page!");
+				$this->assertElementNotPresent("//tr[contains(., '( ! ) Warning:')]", "**Warning: PHP Warning found on page!");
 			}
 			catch (PHPUnit_Framework_AssertionFailedError $e) {
 				echo "**Warning: PHP Notice found on page\n";
