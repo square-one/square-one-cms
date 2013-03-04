@@ -1,5 +1,6 @@
 .gitignore
 .htaccess
+.DS_Store
 administrator/cache/*
 administrator/components/com_banners/*
 administrator/components/com_contact/*
